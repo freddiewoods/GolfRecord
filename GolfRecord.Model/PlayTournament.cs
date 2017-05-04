@@ -29,7 +29,7 @@ namespace GolfRecord.Model
 
         public IQueryable<Golfer> FindGolferByName(string name)
         {
-            //Filters students to find a match
+            //Filters students to find a match to play
             return AllGolfers().Where(c => c.FullName.ToUpper().Contains(name.ToUpper()));
         }
     }
