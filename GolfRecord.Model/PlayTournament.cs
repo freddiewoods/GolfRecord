@@ -13,7 +13,7 @@ namespace GolfRecord.Model
         //An implementation of this interface is injected automatically by the framework
         public IDomainObjectContainer Container { set; protected get; }
         #endregion
-        public Golfer CreateNewStudent()
+        public Golfer CreateNewGolfer()
         {
             //'Transient' means 'unsaved' -  returned to the user
             //for fields to be filled-in and the object saved.
