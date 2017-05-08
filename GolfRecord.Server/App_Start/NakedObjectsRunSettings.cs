@@ -47,7 +47,8 @@ namespace NakedObjects.GolfRecord {
             get
             {
                 return new Type[] {
-                    typeof(PlayTournament)
+                    typeof(PlayerConfig),
+                    typeof(MatchConfig)
                 };
             }
         }
@@ -67,7 +68,8 @@ namespace NakedObjects.GolfRecord {
         public static IMenu[] MainMenus(IMenuFactory factory)
         {
             return new IMenu[] {
-                factory.NewMenu<PlayTournament>(true, "Menu")
+                factory.NewMenu<PlayerConfig>(true, "Players"),
+                factory.NewMenu<MatchConfig>(true,"Match")
             };
         }
     }
