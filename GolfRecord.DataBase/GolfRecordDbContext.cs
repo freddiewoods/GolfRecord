@@ -10,7 +10,7 @@ namespace GolfRecord.DataBase
         {
             Database.SetInitializer(new GolfRecordDbInitializer());
         }
-
+        public DbSet<Match> Matches { get; set; }
         public DbSet<Golfer> Golfers { get; set; }
     }
 

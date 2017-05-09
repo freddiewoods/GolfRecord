@@ -12,7 +12,7 @@ namespace GolfRecord.Model
             [Title]
             public virtual string CourseName{ get; set; }
 
-        
+
             public virtual int NumberOfHoles { get; set; }
 
             [Optionally]

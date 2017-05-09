@@ -21,5 +21,10 @@ namespace GolfRecord.DataBase
             var st = new Golfer() { FullName = name };
             Context.Golfers.Add(st);
         }
+        private void AddNewMatch(string name)
+        {
+            var st = new Match() { MatchName = name };
+            Context.Matches.Add(st);
+        }
     }
 }

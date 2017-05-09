@@ -15,10 +15,14 @@ namespace GolfRecord.Model
             [Title]
             public virtual string MatchName { get; set; }
 
+
             public virtual DateTime When { get; set; }
             
-        [Optionally]
+            [Optionally]
             public virtual int EventualResult { get; set; }
+
+
+            public virtual string CourseName { get; set; }
 
         }
     }

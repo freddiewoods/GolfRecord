@@ -12,7 +12,7 @@ namespace GolfRecord.Model
         [Title]//This property will be used for the object's title at the top of the view and in a link
         public virtual string FullName { get; set; }
 
-        [Optionally]
+        [Optionally] //this property is not neccessary
         public virtual int Handicap { get; set; }
     }
 }
