@@ -10,14 +10,15 @@ namespace GolfRecord.Model
 {
     public class MatchConfig
     {
-            public IDomainObjectContainer Container { set; protected get; }
+ 
+        public IDomainObjectContainer Container { set; protected get; }
  
             public Match CreateNewMatch()
             {
                 return Container.NewTransientInstance<Match>();
             }
 
-            public IQueryable<Match> JoinMatch()
+            public IQueryable<Match> ShowMatches()
             {
                 return Container.Instances<Match>();
             }

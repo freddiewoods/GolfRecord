@@ -1,0 +1,7 @@
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Match.EventualResult
+ERROR 9 NakedObjects.Persistor.Entity.Component.EntityObjectStore - Failed to create Code First DbContext: One or more validation errors were detected during model generation:
+
+GolfRecord.DataBase.Match: : EntityType 'Match' has no key defined. Define the key for this EntityType.
+Matches: EntityType: EntitySet 'Matches' is based on type 'Match' that has no keys defined.
+
