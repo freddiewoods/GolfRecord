@@ -21,5 +21,30 @@ namespace GolfRecord.Model
             
             public virtual string CourseName { get; set; }
 
+
+
+        #region Players (collection)
+        private ICollection<Golfer> _Players = new List<Golfer>();
+
+        public virtual ICollection<Golfer> Players
+        {
+            get
+            {
+                return _Players;
+            }
+            set
+            {
+                _Players = value;
+            }
+        }
+        #endregion
+
+
+
+        public void AddPlayer(Golfer player)
+           {
+            Players.Add(player);
+           }
+
         }
     }
