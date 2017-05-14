@@ -1,0 +1,21 @@
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Match.EventualResult
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Match.EventualResult
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Match.EventualResult
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+ERROR 9 NakedObjects.Rest.Model.ModelBinderUtils - Malformed argument map: Unable to cast object of type 'Newtonsoft.Json.Linq.JObject' to type 'Newtonsoft.Json.Linq.JValue'.
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap

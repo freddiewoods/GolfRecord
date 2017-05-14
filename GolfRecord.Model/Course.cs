@@ -9,10 +9,10 @@ namespace GolfRecord.Model
 {
     public class Course
     {
-        [NakedObjectsIgnore]
-        public virtual int Id { get; set; }
+            [NakedObjectsIgnore]
+            public virtual int Id { get; set; }
 
-        [Title]
+            [Title]
             public virtual string CourseName{ get; set; }
 
 

@@ -3,11 +3,13 @@ using System.Data.Entity;
 using System.Linq;
 using GolfRecord.Model;
 using System;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace GolfRecord.DataBase
 {
     public class GolfRecordDbInitializer : DropCreateDatabaseAlways<GolfRecordDbContext>
     {
+       
         public DateTime date1 = new DateTime(2017,05, 11);
         private GolfRecordDbContext Context;
         protected override void Seed(GolfRecordDbContext context)
@@ -29,5 +31,6 @@ namespace GolfRecord.DataBase
             var st = new Match() {CourseName = courseName, MatchName = name, When = date };
             Context.Matches.Add(st);
         }
+      
     }
 }
