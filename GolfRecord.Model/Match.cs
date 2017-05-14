@@ -60,7 +60,7 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]
         public virtual string PhotoMime { get; set; }
 
-        public void AddOrChangePhoto(Image newImage)
+        public void AddTournamentTemplate(Image newImage)
         {
             PhotoContent = newImage.GetResourceAsByteArray();
             PhotoName = newImage.Name;
