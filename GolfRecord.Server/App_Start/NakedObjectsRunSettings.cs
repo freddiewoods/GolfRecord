@@ -48,7 +48,8 @@ namespace NakedObjects.GolfRecord {
             {
                 return new Type[] {
                     typeof(GolferConfig),
-                    typeof(MatchConfig)
+                    typeof(MatchConfig),
+                    typeof(CourseConfig)
                 };
             }
         }
@@ -69,7 +70,8 @@ namespace NakedObjects.GolfRecord {
         {
             return new IMenu[] {
                 factory.NewMenu<GolferConfig>(true, "Golfers"),
-                factory.NewMenu<MatchConfig>(true,"Match")
+                factory.NewMenu<MatchConfig>(true,"Match"),
+                factory.NewMenu<CourseConfig>(true,"Course")
             };
         }
     }

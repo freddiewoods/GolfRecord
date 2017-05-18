@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CourseConfig.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="Golfer.cs" />
     <Compile Include="Course.cs" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NakedObjects;
+using NakedObjects.Menu;
 
 namespace GolfRecord.Model
 {
@@ -19,7 +20,7 @@ namespace GolfRecord.Model
             public virtual int NumberOfHoles { get; set; }
 
             [Optionally]
-            public virtual string Position { get; set; }
+            public virtual string Location { get; set; }
    }
 }
 

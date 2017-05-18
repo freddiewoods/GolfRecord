@@ -11,17 +11,19 @@ namespace GolfRecord.Model
 {
     public class Match
     {
-       
+
         [NakedObjectsIgnore]
         public virtual int ID { get; set; }
 
         [Title]
         public virtual string MatchName { get; set; }
 
-        public virtual DateTime When { get; set; }
+        public virtual DateTime DateOfMatch { get; set; }
 
-        public virtual string CourseName { get; set; }
+        [NakedObjectsIgnore]
+        public virtual int CourseID { get; set; }
 
+        public virtual Course Course { get; set; }
 
         public void AddGolfers(Golfer Golfer)
         {
