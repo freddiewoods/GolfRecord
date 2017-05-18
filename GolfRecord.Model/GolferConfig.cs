@@ -7,7 +7,7 @@ namespace GolfRecord.Model
     //This example service acts as both a 'repository' (with methods for
     //retrieving objects from the database) and as a 'factory' i.e. providing
     //one or more methods for creating new object(s) from scratch.
-    public class PlayerConfig
+    public class GolferConfig
     {
         #region Injected Services
         //An implementation of this interface is injected automatically by the framework

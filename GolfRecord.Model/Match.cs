@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NakedObjects;
 using NakedObjects.Value;
+using NakedObjects.Menu;
 
 namespace GolfRecord.Model
 {
@@ -22,49 +23,52 @@ namespace GolfRecord.Model
         public virtual string CourseName { get; set; }
 
 
-        public void AddPlayer(Golfer player)
+        public void AddGolfers(Golfer Golfer)
         {
-            Players.Add(player);
+            Golfers.Add(Golfer);
         }
-        #region Players (collection)
-        private ICollection<Golfer> _Players = new List<Golfer>();
+        #region Golfers (collection)
+        private ICollection<Golfer> _Golfers = new List<Golfer>();
         [Optionally]
-        public virtual ICollection<Golfer> Players
+        public virtual ICollection<Golfer> Golfers
         {
             get
             {
-                return _Players;
+                return _Golfers;
             }
             set
             {
-                _Players = value;
+                _Golfers = value;
             }
         }
         #endregion
 
-        [Optionally]
-        public virtual Image Photo
+        [Hidden(WhenTo.UntilPersisted)]
+        public virtual FileAttachment ScoreSheet
         {
             get
             {
-                return new Image(PhotoContent, PhotoName, PhotoMime);
+                if (AttContent != null)
+                {
+                    return new FileAttachment(AttContent, AttName, AttMime);
+                }
+                return null;
             }
         }
+        [NakedObjectsIgnore]
+        public virtual byte[] AttContent { get; set; }
 
         [NakedObjectsIgnore]
-        public virtual byte[] PhotoContent { get; set; }
+        public virtual string AttName { get; set; }
 
         [NakedObjectsIgnore]
-        public virtual string PhotoName { get; set; }
+        public virtual string AttMime { get; set; }
 
-        [NakedObjectsIgnore]
-        public virtual string PhotoMime { get; set; }
-
-        public void AddTournamentTemplate(Image newImage)
+        public void AddScoreSheet (FileAttachment newAttachment)
         {
-            PhotoContent = newImage.GetResourceAsByteArray();
-            PhotoName = newImage.Name;
-            PhotoMime = newImage.MimeType;
+            AttContent = newAttachment.GetResourceAsByteArray();
+            AttName = newAttachment.Name;
+            AttMime = newAttachment.MimeType;
         }
 
     }

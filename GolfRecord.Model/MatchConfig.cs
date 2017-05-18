@@ -15,7 +15,7 @@ namespace GolfRecord.Model
  
             public Match CreateNewMatch()
             {
-                return Container.NewTransientInstance<Match>();
+            return Container.NewTransientInstance<Match>();
             }
 
             public IQueryable<Match> ShowMatches()

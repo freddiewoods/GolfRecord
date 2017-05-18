@@ -61,7 +61,7 @@
     <Compile Include="Golfer.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="MatchConfig.cs" />
-    <Compile Include="PlayerConfig.cs" />
+    <Compile Include="GolferConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
