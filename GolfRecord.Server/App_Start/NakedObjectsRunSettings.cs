@@ -70,8 +70,8 @@ namespace NakedObjects.GolfRecord {
         {
             return new IMenu[] {
                 factory.NewMenu<GolferConfig>(true, "Golfers"),
-                factory.NewMenu<MatchConfig>(true,"Match"),
-                factory.NewMenu<CourseConfig>(true,"Course")
+                factory.NewMenu<MatchConfig>(true,"Matches"),
+                factory.NewMenu<CourseConfig>(true,"Courses")
             };
         }
     }

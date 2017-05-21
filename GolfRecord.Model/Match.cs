@@ -31,7 +31,7 @@ namespace GolfRecord.Model
         }
         #region Golfers (collection)
         private ICollection<Golfer> _Golfers = new List<Golfer>();
-        [Optionally]
+        [Hidden(WhenTo.UntilPersisted)]
         public virtual ICollection<Golfer> Golfers
         {
             get
@@ -66,12 +66,11 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]
         public virtual string AttMime { get; set; }
 
-        public void AddScoreSheet (FileAttachment newAttachment)
+        public void AddScoreSheet(FileAttachment newAttachment)
         {
             AttContent = newAttachment.GetResourceAsByteArray();
             AttName = newAttachment.Name;
             AttMime = newAttachment.MimeType;
         }
-
     }
 }
