@@ -39,10 +39,10 @@ namespace GolfRecord.DataBase
             Context.SaveChanges();
             var s1 = AddNewMatch("Stowe 1st Team", date1, 1);
             Context.SaveChanges();
-            AddNewGolfer(s1,"Andrew Hancocks", 0);
-            AddNewGolfer(s1,"Adam Gabriel", 0);
+            AddNewGolfer(s1,"Tiger Hancox", 0);
+            AddNewGolfer(s1,"Rory Gabriel", 0);
             AddNewGolfer(s1, "Rookie Player", 72);
-            AddNewGolfer(s1, "Tiger Woods", 18);
+            AddNewGolfer(s1, "Adam Woods", 18);
             context.SaveChanges();
            
         }

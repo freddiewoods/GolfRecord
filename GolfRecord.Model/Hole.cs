@@ -12,7 +12,7 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]
         public virtual int Id { get; set; }
 
-        [Title]
+        [Title][MemberOrder(1)]
         public virtual int HoleNumber { get; set; }
 
         public virtual int Par { get; set; }
