@@ -18,27 +18,40 @@ namespace GolfRecord.DataBase
             AddNewGolfer("Alie Algooool",2);
             AddNewGolfer("Forrest Fortran",3);
             AddNewGolfer("James Java", 5);       
-            AddNewCourse("Royal Oak", 18, "Scotland");
-            AddNewCourse("Pebble Beach", 9, "Croatia");
+          var ro = AddNewCourse("Royal Oak", "Scotland");
+            AddNewCourse("Pebble Beach","Croatia");
             context.SaveChanges();
-            AddNewMatch("Stowe 1st Team", date1, 1); 
-
+            AddNewMatch("Stowe 1st Team", date1, 1);
+            Context.SaveChanges();
+            AddNewHole(ro , 1, 3, 1120, 2);
+            Context.SaveChanges();
         }
-        private void AddNewGolfer(string name, int handi)
+        private Golfer AddNewGolfer(string name, int handi)
         {
-            var st = new Golfer() { FullName = name, Handicap = handi };
-            Context.Golfers.Add(st);
+            var g = new Golfer() { FullName = name, Handicap = handi };
+            Context.Golfers.Add(g);
+            return (g);
         }
-        private void AddNewMatch(string name, DateTime date, int courseID)
+        private Match AddNewMatch(string name, DateTime date, int courseID)
         {
-            var st = new Match() {MatchName = name, DateOfMatch = date, CourseID = courseID };
-            Context.Matches.Add(st);
+            var m = new Match() {MatchName = name, DateOfMatch = date, CourseID = courseID};
+            Context.Matches.Add(m);
+            return(m);
         }
-        private void AddNewCourse(string CourseName, int NumberOfHoles, string Location)
+        private Course AddNewCourse(string CourseName, string Location)
         {
-            var st = new Course() { CourseName = CourseName, NumberOfHoles = NumberOfHoles, Location = Location };
-            Context.Courses.Add(st);
-        } 
+            var c= new Course() { CourseName = CourseName,Location = Location };
+            Context.Courses.Add(c);
+            return (c);
+        }
+        private Hole AddNewHole(Course c, int HoleNumeber, int Par, int Distance, int DifficultyRating)
+        {
+            var h = new Hole() { HoleNumber = HoleNumeber, Par = Par, Distance = Distance , DifficultyRating = DifficultyRating};
+            Context.Holes.Add(h);
+            Context.SaveChanges();
+            c.Holes.Add(h);
+            return (h);
+        }
       
     }
 }

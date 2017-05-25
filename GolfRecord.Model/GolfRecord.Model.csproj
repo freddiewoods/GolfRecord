@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CourseConfig.cs" />
+    <Compile Include="Hole.cs" />
+    <Compile Include="HoleConfig.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="Golfer.cs" />
     <Compile Include="Course.cs" />

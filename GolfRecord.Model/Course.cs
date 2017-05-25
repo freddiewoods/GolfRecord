@@ -17,11 +17,23 @@ namespace GolfRecord.Model
             [Title]
             public virtual string CourseName{ get; set; }
 
-
-            public virtual int NumberOfHoles { get; set; }
-
             [Optionally]
             public virtual string Location { get; set; }
+
+         private ICollection<Hole> _Holes = new List<Hole>();
+          [Hidden(WhenTo.UntilPersisted)]
+           public virtual ICollection<Hole> Holes
+         {
+            get
+            {
+                return _Holes;
+            }
+            set
+            {
+                _Holes = value;
+            }
+        }
+
     }
 }
 

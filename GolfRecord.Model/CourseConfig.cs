@@ -21,6 +21,8 @@ namespace GolfRecord.Model
         {
             return Container.Instances<Course>();
         }
+        [NakedObjectsIgnore]
+        public virtual int HoleID { get; set; }
 
     }
 }

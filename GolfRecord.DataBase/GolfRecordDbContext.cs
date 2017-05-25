@@ -13,6 +13,7 @@ namespace GolfRecord.DataBase
         public DbSet<Match> Matches { get; set; }
         public DbSet<Golfer> Golfers { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<Hole> Holes { get; set; }
     }
 
 }
