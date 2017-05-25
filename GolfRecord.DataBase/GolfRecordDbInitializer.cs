@@ -18,12 +18,31 @@ namespace GolfRecord.DataBase
             AddNewGolfer("Alie Algooool",2);
             AddNewGolfer("Forrest Fortran",3);
             AddNewGolfer("James Java", 5);       
-          var ro = AddNewCourse("Royal Oak", "Scotland");
+            var ro = AddNewCourse("Royal Oak", "Scotland");
             AddNewCourse("Pebble Beach","Croatia");
             context.SaveChanges();
-            AddNewMatch("Stowe 1st Team", date1, 1);
+            var Stowe1st = AddNewMatch("Stowe 1st Team", date1, 1);
             Context.SaveChanges();
-            AddNewHole(ro , 1, 3, 1120, 2);
+            AddNewHole(ro , 1, 3, 400, 2);
+            AddNewHole(ro, 2, 4, 600, 3);
+            AddNewHole(ro, 3, 3, 420, 4);
+            AddNewHole(ro, 4, 3, 450, 6);
+            AddNewHole(ro, 5, 4, 620, 9);
+            AddNewHole(ro, 6, 3, 410, 11);
+            AddNewHole(ro, 7, 3, 350, 1);
+            AddNewHole(ro, 8, 3, 450, 5);
+            AddNewHole(ro, 9, 4, 550, 7);
+            AddNewHole(ro, 10, 4, 600, 15);
+            AddNewHole(ro, 11, 4, 700, 18);
+            AddNewHole(ro, 12, 3, 600, 17);
+            AddNewHole(ro, 13, 4, 500, 8);
+            AddNewHole(ro, 14, 3, 410, 10);
+            AddNewHole(ro, 15, 4, 575, 12);
+            AddNewHole(ro, 16, 3, 550, 13);
+            AddNewHole(ro, 17, 4, 600, 14);
+            AddNewHole(ro, 18, 3, 525, 16);
+
+
             Context.SaveChanges();
         }
         private Golfer AddNewGolfer(string name, int handi)
