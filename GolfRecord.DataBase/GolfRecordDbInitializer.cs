@@ -15,15 +15,10 @@ namespace GolfRecord.DataBase
         protected override void Seed(GolfRecordDbContext context)
         {
             this.Context = context;
-            AddNewGolfer("Alie Algooool",2);
-            AddNewGolfer("Forrest Fortran",3);
-            AddNewGolfer("James Java", 5);       
             var ro = AddNewCourse("Royal Oak", "Scotland");
-            AddNewCourse("Pebble Beach","Croatia");
+            var pb = AddNewCourse("Pebble Beach", "Croatia");
             context.SaveChanges();
-            var Stowe1st = AddNewMatch("Stowe 1st Team", date1, 1);
-            Context.SaveChanges();
-            AddNewHole(ro , 1, 3, 400, 2);
+            AddNewHole(ro, 1, 3, 400, 2);
             AddNewHole(ro, 2, 4, 600, 3);
             AddNewHole(ro, 3, 3, 420, 4);
             AddNewHole(ro, 4, 3, 450, 6);
@@ -41,14 +36,22 @@ namespace GolfRecord.DataBase
             AddNewHole(ro, 16, 3, 550, 13);
             AddNewHole(ro, 17, 4, 600, 14);
             AddNewHole(ro, 18, 3, 525, 16);
-
-
             Context.SaveChanges();
+            var s1 = AddNewMatch("Stowe 1st Team", date1, 1);
+            Context.SaveChanges();
+            AddNewGolfer(s1,"Andrew Hancocks", 0);
+            AddNewGolfer(s1,"Adam Gabriel", 0);
+            AddNewGolfer(s1, "Rookie Player", 72);
+            AddNewGolfer(s1, "Tiger Woods", 18);
+            context.SaveChanges();
+           
         }
-        private Golfer AddNewGolfer(string name, int handi)
+        private Golfer AddNewGolfer(Match m, string name, int handi)
         {
             var g = new Golfer() { FullName = name, Handicap = handi };
             Context.Golfers.Add(g);
+            Context.SaveChanges();
+            m.Golfers.Add(g);
             return (g);
         }
         private Match AddNewMatch(string name, DateTime date, int courseID)
