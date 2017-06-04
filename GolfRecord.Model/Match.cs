@@ -29,6 +29,7 @@ namespace GolfRecord.Model
         {
             Golfers.Add(Golfer);
         }
+
         #region Golfers (collection)
         private ICollection<Golfer> _Golfers = new List<Golfer>();
         [Hidden(WhenTo.UntilPersisted)]
