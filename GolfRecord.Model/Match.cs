@@ -11,7 +11,11 @@ namespace GolfRecord.Model
 {
     public class Match
     {
+        #region InjectedServices
 
+        public IDomainObjectContainer Container { set; protected get; }
+
+        #endregion
         [NakedObjectsIgnore]
         public virtual int ID { get; set; }
 
@@ -24,6 +28,8 @@ namespace GolfRecord.Model
         public virtual int CourseID { get; set; }
 
         public virtual Course Course { get; set; }
+
+       // public virtual MatchType matchType { get; set; }
 
         public void AddGolfers(Golfer Golfer)
         {
@@ -46,32 +52,38 @@ namespace GolfRecord.Model
         }
         #endregion
 
+        // public enum MatchType { StrokePlay = 1, MatchPlay = 2, Foursome = 3, StableFord = 4 }
+        private ICollection<HoleScore> _HoleScores = new List<HoleScore>();
         [Hidden(WhenTo.UntilPersisted)]
-        public virtual FileAttachment ScoreSheet
+        public virtual ICollection<HoleScore> HoleScores
         {
             get
             {
-                if (AttContent != null)
-                {
-                    return new FileAttachment(AttContent, AttName, AttMime);
-                }
-                return null;
+                return _HoleScores;
+            }
+            set
+            {
+                _HoleScores = value;
             }
         }
-        [NakedObjectsIgnore]
-        public virtual byte[] AttContent { get; set; }
-
-        [NakedObjectsIgnore]
-        public virtual string AttName { get; set; }
-
-        [NakedObjectsIgnore]
-        public virtual string AttMime { get; set; }
-
-        public void AddScoreSheet(FileAttachment newAttachment)
+        public void AddScore(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
-            AttContent = newAttachment.GetResourceAsByteArray();
-            AttName = newAttachment.Name;
-            AttMime = newAttachment.MimeType;
+            var hs = Container.NewTransientInstance<HoleScore>();
+            hs.Hole = hole;
+            hs.GolferA = ScoreA;
+            hs.GolferB = ScoreB;
+            hs.GolferC = ScoreC;
+            hs.GolferD = ScoreD;    
+            Container.Persist(ref hs);
+            HoleScores.Add(hs);
+    }
+
+        public IList<Hole> Choices0AddScore()
+        {
+
+            return Course.Holes.ToList();
         }
+
+
     }
 }

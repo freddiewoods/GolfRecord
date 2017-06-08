@@ -60,7 +60,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GolfRecord.Model\GolfRecord.Model.csproj">
       <Project>{b24f4158-9795-4e37-997c-0b25a6c4fc8a}</Project>
-      <Name>Template.Model</Name>
+      <Name>GolfRecord.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
