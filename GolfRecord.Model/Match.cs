@@ -70,7 +70,7 @@ namespace GolfRecord.Model
         {
             var hs = Container.NewTransientInstance<HoleScore>();
             hs.Hole = hole;
-            hs.GolferA = ScoreA;
+            hs.GolferA= ScoreA;
             hs.GolferB = ScoreB;
             hs.GolferC = ScoreC;
             hs.GolferD = ScoreD;    
@@ -80,10 +80,20 @@ namespace GolfRecord.Model
 
         public IList<Hole> Choices0AddScore()
         {
-
             return Course.Holes.ToList();
         }
 
+
+        public Hole Default0AddScore()
+        {
+            int nextHole = 1;
+            if (HoleScores.Count > 0)
+            {
+                nextHole = HoleScores.Max(hs => hs.Hole.HoleNumber) + 1;
+            }
+                return Course.Holes.First(h => h.HoleNumber == nextHole);
+            
+        }
 
     }
 }
