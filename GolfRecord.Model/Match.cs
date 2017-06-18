@@ -29,11 +29,12 @@ namespace GolfRecord.Model
 
         public virtual Course Course { get; set; }
 
-       // public virtual MatchType matchType { get; set; }
+        public virtual MatchType matchType { get; set; }
 
-        public void AddGolfers(Golfer Golfer)
+        public Golfer AddGolfers(Golfer Golfer)
         {
             Golfers.Add(Golfer);
+            return Golfer;
         }
 
         #region Golfers (collection)
@@ -52,7 +53,7 @@ namespace GolfRecord.Model
         }
         #endregion
 
-        // public enum MatchType { StrokePlay = 1, MatchPlay = 2, Foursome = 3, StableFord = 4 }
+        public enum MatchType { StrokePlay = 1, MatchPlay = 2, Foursome = 3, StableFord = 4 }
         private ICollection<HoleScore> _HoleScores = new List<HoleScore>();
         [Hidden(WhenTo.UntilPersisted)]
         public virtual ICollection<HoleScore> HoleScores
@@ -73,16 +74,19 @@ namespace GolfRecord.Model
             hs.GolferA= ScoreA;
             hs.GolferB = ScoreB;
             hs.GolferC = ScoreC;
-            hs.GolferD = ScoreD;    
+            hs.GolferD = ScoreD;
             Container.Persist(ref hs);
-            HoleScores.Add(hs);
+            HoleScores.Add(hs);       
+            if ((Convert.ToString(matchType) == "Strokeplay")& (hole.Id == 18))
+            {
+
+            }
     }
 
         public IList<Hole> Choices0AddScore()
         {
             return Course.Holes.ToList();
         }
-
 
         public Hole Default0AddScore()
         {

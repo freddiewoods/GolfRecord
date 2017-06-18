@@ -37,6 +37,17 @@ namespace GolfRecord.DataBase
             AddNewHole(ro, 17, 4, 600, 14);
             AddNewHole(ro, 18, 3, 525, 16);
             Context.SaveChanges();
+            AddNewHole(pb, 1, 3, 400, 1);
+            AddNewHole(pb, 2, 3, 420, 2);
+            AddNewHole(pb, 3, 4, 525, 6);
+            AddNewHole(pb, 4, 3, 410, 4);
+            AddNewHole(pb, 5, 4, 530, 7);
+            AddNewHole(pb, 6, 5, 650, 9);
+            AddNewHole(pb, 7, 3, 410, 3);
+            AddNewHole(pb, 8, 3, 430, 5);
+            AddNewHole(pb, 9, 4, 500, 8);
+            Context.SaveChanges();
+           
             var s1 = AddNewMatch("Stowe 1st Team", date1, 1);
             Context.SaveChanges();
             AddNewGolfer(s1,"Tiger Hancox", 0);
@@ -44,7 +55,16 @@ namespace GolfRecord.DataBase
             AddNewGolfer(s1, "Rookie Player", 72);
             AddNewGolfer(s1, "Adam Woods", 18);
             context.SaveChanges();
-           
+
+            var s2 = AddNewMatch("Stowe Tour Team", date1, 2);
+            Context.SaveChanges();
+            AddNewGolfer(s1, "Novak Lacoste", 16);
+            AddNewGolfer(s1, "Rafa Lauren", 16);
+            AddNewGolfer(s1, "Roger Perry", 16);
+            AddNewGolfer(s1, "Andy Hacket", 16);
+            Context.SaveChanges();
+
+
         }
         private Golfer AddNewGolfer(Match m, string name, int handi)
         {

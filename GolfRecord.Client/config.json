@@ -6,7 +6,9 @@
   "appPath": "http://localhost:5000/rest",
   "colors": {
     "typeMap": {
-      "GolfRecord.Model.Student": 1
+      
+    },
+    "subtypeMap": {
     }
   },
   "masks": {
