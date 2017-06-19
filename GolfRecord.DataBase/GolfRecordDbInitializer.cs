@@ -58,10 +58,10 @@ namespace GolfRecord.DataBase
 
             var s2 = AddNewMatch("Stowe Tour Team", date1, 2);
             Context.SaveChanges();
-            AddNewGolfer(s1, "Novak Lacoste", 16);
-            AddNewGolfer(s1, "Rafa Lauren", 16);
-            AddNewGolfer(s1, "Roger Perry", 16);
-            AddNewGolfer(s1, "Andy Hacket", 16);
+            AddNewGolfer(s2, "Novak Lacoste", 16);
+            AddNewGolfer(s2, "Rafa Lauren", 16);
+            AddNewGolfer(s2, "Roger Perry", 16);
+            AddNewGolfer(s2, "Andy Hacket", 16);
             Context.SaveChanges();
 
 
