@@ -4,6 +4,7 @@ using System.Linq;
 using GolfRecord.Model;
 using System;
 using static System.Net.Mime.MediaTypeNames;
+using static GolfRecord.Model.Enums;
 
 namespace GolfRecord.DataBase
 {
@@ -74,9 +75,9 @@ namespace GolfRecord.DataBase
             m.Golfers.Add(g);
             return (g);
         }
-        private Match AddNewMatch(string name, DateTime date, int courseID)
+        private Match AddNewMatch(string name, DateTime date, int courseID, MatchType matchType = MatchType.StrokePlay)
         {
-            var m = new Match() {MatchName = name, DateOfMatch = date, CourseID = courseID};
+            var m = new Match() {MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType};
             Context.Matches.Add(m);
             return(m);
         }
