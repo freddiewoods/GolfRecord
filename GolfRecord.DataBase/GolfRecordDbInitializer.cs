@@ -65,6 +65,13 @@ namespace GolfRecord.DataBase
             AddNewGolfer(s2, "Andy Hacket", 16);
             Context.SaveChanges();
 
+            var s3 = AddNewMatch("Stowe MatchPlay", date1, 1, MatchType.MatchPlay);
+            Context.SaveChanges();
+            AddNewGolfer(s3, "Obi Wan", 13);
+            AddNewGolfer(s3, "Count Duuko", 3);
+            AddNewGolfer(s3, "Mace Windu", 10);
+            AddNewGolfer(s3, "Yoda", 0);
+            Context.SaveChanges();
 
         }
         private Golfer AddNewGolfer(Match m, string name, int handi)
