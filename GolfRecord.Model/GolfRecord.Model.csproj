@@ -66,9 +66,9 @@
     <Compile Include="Match.cs" />
     <Compile Include="MatchConfig.cs" />
     <Compile Include="MatchPlay.cs" />
+    <Compile Include="MatchStrokePlay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HoleScore.cs" />
-    <Compile Include="MatchStrokePlay.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

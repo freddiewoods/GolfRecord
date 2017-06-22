@@ -14,5 +14,7 @@ namespace GolfRecord.Model
 
         [Optionally] //this property is not neccessary
         public virtual int Handicap { get; set; }
+
+        public virtual int Wins { get; set; }
     }
 }

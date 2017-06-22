@@ -51,10 +51,10 @@ namespace GolfRecord.DataBase
            
             var s1 = AddNewMatch("Stowe 1st Team", date1, 1);
             Context.SaveChanges();
-            AddNewGolfer(s1,"Tiger Hancox", 0);
-            AddNewGolfer(s1,"Rory Gabriel", 0);
-            AddNewGolfer(s1, "Rookie Player", 72);
-            AddNewGolfer(s1, "Adam Woods", 18);
+            AddNewGolfer(s1,"Tiger Hancox", 13);
+            AddNewGolfer(s1,"Rory Gabriel", 14);
+            AddNewGolfer(s1, "Rookie Player", 12);
+            AddNewGolfer(s1, "Adam Chair", 13);
             context.SaveChanges();
 
             var s2 = AddNewMatch("Stowe Tour Team", date1, 2);
@@ -65,14 +65,13 @@ namespace GolfRecord.DataBase
             AddNewGolfer(s2, "Andy Hacket", 16);
             Context.SaveChanges();
 
-            var s3 = AddNewMatch("Stowe MatchPlay", date1, 1, MatchType.MatchPlay);
+            var s3 = AddNewMatch("Stowe MatchPlay Team", date1, 1, MatchType.MatchPlay);
             Context.SaveChanges();
-            AddNewGolfer(s3, "Obi Wan", 13);
-            AddNewGolfer(s3, "Count Duuko", 3);
-            AddNewGolfer(s3, "Mace Windu", 10);
-            AddNewGolfer(s3, "Yoda", 0);
+            AddNewGolfer(s3, "Obi Wan", 10);
+            AddNewGolfer(s3, "Mace Windu", 5);
+            AddNewGolfer(s3, "Luke Landwalker", 7);
+            AddNewGolfer(s3, "Han Duo", 4);
             Context.SaveChanges();
-
         }
         private Golfer AddNewGolfer(Match m, string name, int handi)
         {
