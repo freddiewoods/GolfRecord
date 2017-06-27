@@ -7,6 +7,7 @@ using NakedObjects;
 using NakedObjects.Value;
 using NakedObjects.Menu;
 using static GolfRecord.Model.Enums;
+using GolfRecord.Model;
 
 namespace GolfRecord.Model
 {
@@ -32,23 +33,23 @@ namespace GolfRecord.Model
 
         public virtual MatchType MatchType { get; set; }
 
- 
-        public virtual int TotalScoreA { get; set; }
-        
-        public virtual int TotalScoreB { get; set; }
-
-        public virtual int TotalScoreC { get; set; }
-
-
-        public virtual int TotalScoreD { get; set; }
-
-
-        public virtual String Winner { get; set; }
+        [Optionally]
+        public virtual Golfer Winner { get; set; }
 
         public void AddGolfers(Golfer Golfer)
         {
-            Golfers.Add(Golfer);
-
+            if (MatchType == MatchType.MatchPlay & Golfers.Count < 2)
+            {
+                Golfers.Add(Golfer);
+            }
+            else if (MatchType == MatchType.StrokePlay & Golfers.Count < 4)
+            {
+                Golfers.Add(Golfer);
+            }
+            else
+            {
+                Container.InformUser("Too many players in this match");
+            }
         }
         #region Golfers (collection)
         private ICollection<Golfer> _Golfers = new List<Golfer>();
@@ -79,20 +80,45 @@ namespace GolfRecord.Model
                 _HoleScores = value;
             }
         }
-
+        public IList<Hole> Choices0AddScore()
+        {
+            return Course.Holes.ToList();
+        }
+        public Hole Default0AddScore()
+        {
+            int nextHole = 1;
+            if (HoleScores.Count > 0)
+            {
+                nextHole = HoleScores.Max(hs => hs.Hole.HoleNumber) + 1;
+            }
+            return Course.Holes.First(h => h.HoleNumber == nextHole);
+        }
         public void AddScore(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
 
+            var hs = Container.NewTransientInstance<HoleScore>();
             if (MatchType == MatchType.StrokePlay)
             {
                 MatchStrokePlay match = new MatchStrokePlay();
-                match.AddScoreStrokePlay(hole, ScoreA, ScoreB, ScoreC, ScoreD);
-            }
+                Golfer Gwin = match.AddScoreStrokePlay(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs, Container);
+                Winner = Gwin;
+
+                //to do get this to add the match to each of the golfers (Find out what this match is called)     
+            }      
             else if (MatchType == MatchType.MatchPlay)
             {
-                MatchPlayL match = new MatchPlayL();
-                match.AddScoreMatchPlay(hole, ScoreA, ScoreB, ScoreC, ScoreD);
+                MatchPlay match = new MatchPlay();
+                Golfer Gwin = match.AddScoreMatchPlay(hole, ScoreA, ScoreB, hs, Container);
+                Winner = Gwin;
             }
+            Container.Persist(ref hs);
+            HoleScores.Add(hs);
         }
-    }
+
+        [NakedObjectsIgnore]
+        public void AddMatchToHistory(Match match, int i)
+        {
+            Golfers.ElementAt(i).MatchHistory.Add(match);
+        }
+    }  
 }

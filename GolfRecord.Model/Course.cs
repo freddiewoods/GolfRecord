@@ -20,8 +20,9 @@ namespace GolfRecord.Model
             [Optionally]
             public virtual string Location { get; set; }
 
-         private ICollection<Hole> _Holes = new List<Hole>();
-          [Hidden(WhenTo.UntilPersisted)]
+
+            private ICollection<Hole> _Holes = new List<Hole>();
+            [Hidden(WhenTo.UntilPersisted)]
            public virtual ICollection<Hole> Holes
          {
             get

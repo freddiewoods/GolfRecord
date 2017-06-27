@@ -4,71 +4,69 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GolfRecord.Model;
 
 namespace GolfRecord.Model
 {
-    public class MatchStrokePlay:Match
+    public class MatchStrokePlay : Match 
     {
-        public void AddScoreStrokePlay(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
+        [NakedObjectsIgnore]
+        public virtual int TotalScoreA { get; set; }
+
+        [NakedObjectsIgnore]
+        public virtual int TotalScoreB { get; set; }
+
+        [NakedObjectsIgnore]
+        public virtual int TotalScoreC { get; set; }
+
+        public virtual int TotalScoreD { get; set; }
+        public  Golfer AddScoreStrokePlay(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD, HoleScore hs, IDomainObjectContainer Container)
         {
-            var hs = Container.NewTransientInstance<HoleScore>();
             hs.Hole = hole;
             hs.GolferA = ScoreA;
-            TotalScoreA += ScoreA;
             hs.GolferB = ScoreB;
-            TotalScoreB += ScoreB;
             hs.GolferC = ScoreC;
-            TotalScoreC += ScoreC;
             hs.GolferD = ScoreD;
-            TotalScoreD += ScoreD;
-            Container.Persist(ref hs);
             HoleScores.Add(hs);
-            if (hole.Id == 3) //to do temp only
+            TotalScoreA += ScoreA;
+            TotalScoreB += ScoreB;
+            TotalScoreC += ScoreC;
+            TotalScoreD += ScoreD;
+            if (hole.Id == 4)
             {
-                HandicapeffectStrokePlay();
-                Winner = FindWinnerStrokePlay(); // to do change to object of golfer
+                HandicapEffect();
+                return FindWinnerStrokePlay();
             }
-        }
-        public IList<Hole> Choices0AddScoreStrokePlay()
-        {
-            return Course.Holes.ToList();
-        }
-
-        public Hole Default0AddScoreStrokePlay()
-        {
-            int nextHole = 1;
-            if (HoleScores.Count > 0)
-            {
-                nextHole = HoleScores.Max(hs => hs.Hole.HoleNumber) + 1;
-            }
-            return Course.Holes.First(h => h.HoleNumber == nextHole);
+            return null;
         }
         [NakedObjectsIgnore]
-        public string FindWinnerStrokePlay()
+        public Golfer FindWinnerStrokePlay()
         {
-            if (TotalScoreA < TotalScoreB & TotalScoreA < TotalScoreC & TotalScoreA < TotalScoreD)
+            List<int> Scores = new List<int>();
+            Scores.Add(TotalScoreA);
+            Scores.Add(TotalScoreB);
+            Scores.Add(TotalScoreC);
+            Scores.Add(TotalScoreD);
+            if (Scores.Min() == TotalScoreA)
             {
-                return ("Golfer A is the Winner");
+                return Golfers.ElementAt(1);
             }
-            else if (TotalScoreB < TotalScoreA & TotalScoreB < TotalScoreC & TotalScoreB < TotalScoreD)
+            else if (Scores.Min() == TotalScoreB)
             {
-                return ("Golfer B is the Winner");
+                return Golfers.ElementAt(2);
             }
-            else if (TotalScoreC < TotalScoreA & TotalScoreC < TotalScoreB & TotalScoreC < TotalScoreD)
+            else if (Scores.Min() == TotalScoreC)
             {
-                return ("Golfer C is the winner");
+                return Golfers.ElementAt(3);
             }
-            else if (TotalScoreD < TotalScoreA & TotalScoreD < TotalScoreB & TotalScoreD < TotalScoreC)
+            else if (Scores.Min() == TotalScoreD)
             {
-                return ("Golfer D is the winner");
+                return Golfers.ElementAt(4);
             }
-            else
-            {
-                return ("There is a draw");
-            }
+            return null;
         }
         [NakedObjectsIgnore]
-        public void HandicapeffectStrokePlay()
+        public void HandicapEffect()
         {
             TotalScoreA -= Golfers.First().Handicap;
             TotalScoreB -= Golfers.ElementAt(1).Handicap;

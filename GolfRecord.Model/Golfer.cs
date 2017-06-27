@@ -1,4 +1,5 @@
 ﻿using NakedObjects;
+using System.Collections.Generic;
 
 namespace GolfRecord.Model
 {
@@ -15,6 +16,25 @@ namespace GolfRecord.Model
         [Optionally] //this property is not neccessary
         public virtual int Handicap { get; set; }
 
-        public virtual int Wins { get; set; }
+        #region MatchHistory(collection)
+        private ICollection<Match> _PastMatches = new List<Match>();
+        [Hidden(WhenTo.UntilPersisted)]
+        public virtual ICollection<Match> MatchHistory
+        {
+            get
+            {
+                return _PastMatches;
+            }
+            set
+            {
+                _PastMatches = value;
+            }
+        }
+
+        public void AddMatchToHistory(Match match)
+        {
+           MatchHistory.Add(match);
+        }
+        #endregion
     }
 }
