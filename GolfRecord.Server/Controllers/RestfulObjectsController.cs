@@ -12,7 +12,6 @@ using System.Web.Http.ModelBinding;
 using NakedObjects.Facade;
 using NakedObjects.Rest;
 using NakedObjects.Rest.Model;
-
 namespace NakedObjects.Template.Controllers {
 
     //[Authorize]

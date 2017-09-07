@@ -51,32 +51,38 @@ namespace GolfRecord.DataBase
 
             var s1 = AddNewMatch("Stowe 1st Team", date1, 1);
             Context.SaveChanges();
-            AddNewGolfer(s1, "Tiger Hancox", 13);
-            AddNewGolfer(s1, "Rory Gabriel", 14);
-            AddNewGolfer(s1, "Rookie Player", 12);
-            AddNewGolfer(s1, "Adam Chair", 13);
+            AddNewGolfer(s1, "Tiger Hancox", 13, "56473 829106", "Tiger@UsA.com", "Every Club");
+            AddNewGolfer(s1, "Rory Gabriel", 14, "01296 234324", "Rory@Ireland.com" , "driver");
+            AddNewGolfer(s1, "Rookie Player", 12, "07810 675443", "Rookie@England.com", "Sand Wedge");
+            AddNewGolfer(s1, "Adam Chair", 13, "01234 753234", "Chairs@NewZealand.com", "Wood");
             context.SaveChanges();
 
             var s2 = AddNewMatch("Stowe Tour Team", date1, 2);
             Context.SaveChanges();
-            AddNewGolfer(s2, "Novak Lacoste", 16);
-            AddNewGolfer(s2, "Rafa Lauren", 16);
-            AddNewGolfer(s2, "Roger Perry", 16);
-            AddNewGolfer(s2, "Andy Hacket", 16);
+            AddNewGolfer(s2, "Novak Lacoste", 16, "01234 567891", "Novak.Locoste@goowiz.com", "Driver");
+            AddNewGolfer(s2, "Rafa Lauren", 16, "19876 543210", "Rafa@T.com", "Putter");
+            AddNewGolfer(s2, "Roger Perry", 16, "10202 304050", "Roger@T.com", "Driver");
+            AddNewGolfer(s2, "Andy Hacket", 16, "01020 030405", "Andy@Gmai.com", "Iron");
             Context.SaveChanges();
 
             var s3 = AddNewMatch("Stowe MatchPlay Team", date1, 1, MatchType.MatchPlay);
             Context.SaveChanges();
-            AddNewGolfer(s3, "Obi Wan", 10);
-            AddNewGolfer(s3, "Mace Windu", 5);
+            AddNewGolfer(s3, "Obi Wan", 10,"12345 098765", "Obi@Tatoine.com", "Putter");
+            AddNewGolfer(s3, "Mace Windu", 5, "98754 123415", "Mace@jedi.com", "Wedge");
+            Context.SaveChanges();
+
+            var s4 = AddNewMatch("Stowe StableFord Team", date1, 1, MatchType.StableFord);
+            context.SaveChanges();
+            AddNewGolfer(s4, "Albert Einstein", 0, "57324 321414", "Albert@Genius.com", "Putter");
             Context.SaveChanges();
 
 
 
+
         }
-        private Golfer AddNewGolfer(Match m, string name, int handi)
+        private Golfer AddNewGolfer(Match m, string name, int handi, string mobile, string mail, string favouriteC)
         {
-            var g = new Golfer() { FullName = name, Handicap = handi };
+            var g = new Golfer() { FullName = name, Handicap = handi, Email = mail, Mobile = mobile, Favourites = favouriteC};
             Context.Golfers.Add(g);
             Context.SaveChanges();
             m.Golfers.Add(g);
@@ -102,6 +108,7 @@ namespace GolfRecord.DataBase
             c.Holes.Add(h);
             return (h);
         }
+       
 
     }
 }
