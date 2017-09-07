@@ -37,16 +37,11 @@ namespace GolfRecord.Model
 
         [Optionally]
         public virtual string CourseDescription { get; set; } //So people can look at the course and see whats its like
-
         //event schedule using a callender.
-
-
-        [Optionally]
-        public virtual int OverallRating { get; set; }
 
         [NakedObjectsIgnore]
         [Optionally]
-        public virtual int Rating { get; set; } //to make the overall rating fromt the small ratings.
+        public virtual string Rating { get; set; } //to make the overall rating fromt the small ratings.
 
         [Optionally]
         public virtual string Facillites { get; set; } //csv list of facilities.
@@ -54,8 +49,6 @@ namespace GolfRecord.Model
         [Optionally]
         public virtual string WebsiteLink { get; set; } //link to the course website.
 
-        [Optionally]
-        public virtual int CostPerRound { get; set; } //cost to play at the club for 1 round.
     }
 }
 

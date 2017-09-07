@@ -117,8 +117,8 @@ namespace GolfRecord.Model
             }
             else if (MatchType == MatchType.StableFord)
             {
-                MatchStrokePlay match = new MatchStrokePlay();
-                Golfer Gwin = match.AddScoreStrokePlay(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs, Container);
+                MatchStableFord match = new MatchStableFord();
+                Golfer Gwin = match.AddScoreStableford(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs, Container);
                 Winner = Gwin;
             }
             Container.Persist(ref hs);

@@ -1,5 +1,6 @@
 ﻿using NakedObjects;
 using System.Collections.Generic;
+using static GolfRecord.Model.Enums;
 
 namespace GolfRecord.Model
 {
@@ -23,7 +24,7 @@ namespace GolfRecord.Model
         public virtual string Mobile { get; set; }
 
         [Optionally]
-         public virtual string Favourites { get; set; } // csv list of their favourite things like club, course, player. just so you can get to know the golfer
+         public virtual FavouriteClub FavouriteClub { get; set; }
 
 
         #region MatchHistory(collection)

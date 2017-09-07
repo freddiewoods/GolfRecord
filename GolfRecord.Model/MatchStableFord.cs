@@ -7,7 +7,7 @@ using NakedObjects;
 
 namespace GolfRecord.Model
 {
-    public class MathStableFord : Match
+    public class MatchStableFord : Match
     {
         [NakedObjectsIgnore]
         public virtual int TotalScoreA { get; set; }

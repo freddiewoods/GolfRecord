@@ -68,7 +68,7 @@
     <Compile Include="MatchConfig.cs" />
     <Compile Include="MatchPlay.cs" />
     <Compile Include="MatchStrokePlay.cs" />
-    <Compile Include="MathStableFord.cs" />
+    <Compile Include="MatchStableFord.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HoleScore.cs" />
