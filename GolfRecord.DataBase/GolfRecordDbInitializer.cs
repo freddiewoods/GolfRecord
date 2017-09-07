@@ -10,8 +10,8 @@ namespace GolfRecord.DataBase
 {
     public class GolfRecordDbInitializer : DropCreateDatabaseAlways<GolfRecordDbContext>
     {
-       
-        public DateTime date1 = new DateTime(2017,05, 11);
+
+        public DateTime date1 = new DateTime(2017, 05, 11);
         private GolfRecordDbContext Context;
         protected override void Seed(GolfRecordDbContext context)
         {
@@ -48,11 +48,11 @@ namespace GolfRecord.DataBase
             AddNewHole(pb, 8, 3, 430, 5);
             AddNewHole(pb, 9, 4, 500, 8);
             Context.SaveChanges();
-           
+
             var s1 = AddNewMatch("Stowe 1st Team", date1, 1);
             Context.SaveChanges();
-            AddNewGolfer(s1,"Tiger Hancox", 13);
-            AddNewGolfer(s1,"Rory Gabriel", 14);
+            AddNewGolfer(s1, "Tiger Hancox", 13);
+            AddNewGolfer(s1, "Rory Gabriel", 14);
             AddNewGolfer(s1, "Rookie Player", 12);
             AddNewGolfer(s1, "Adam Chair", 13);
             context.SaveChanges();
@@ -70,6 +70,9 @@ namespace GolfRecord.DataBase
             AddNewGolfer(s3, "Obi Wan", 10);
             AddNewGolfer(s3, "Mace Windu", 5);
             Context.SaveChanges();
+
+
+
         }
         private Golfer AddNewGolfer(Match m, string name, int handi)
         {
@@ -81,24 +84,24 @@ namespace GolfRecord.DataBase
         }
         private Match AddNewMatch(string name, DateTime date, int courseID, MatchType matchType = MatchType.StrokePlay)
         {
-            var m = new Match() {MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType};
+            var m = new Match() { MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType };
             Context.Matches.Add(m);
-            return(m);
+            return (m);
         }
         private Course AddNewCourse(string CourseName, string Location)
         {
-            var c= new Course() { CourseName = CourseName,Location = Location };
+            var c = new Course() { CourseName = CourseName, Location = Location };
             Context.Courses.Add(c);
             return (c);
         }
-        private Hole AddNewHole(Course c, int HoleNumeber, int Par, int Distance, int DifficultyRating)
+        private Hole AddNewHole(Course c, int HoleNumeber, int Par, int Distance, int StrokeIndex)
         {
-            var h = new Hole() { HoleNumber = HoleNumeber, Par = Par, Distance = Distance , DifficultyRating = DifficultyRating};
+            var h = new Hole() { HoleNumber = HoleNumeber, Par = Par, Distance = Distance, Stroke = StrokeIndex };
             Context.Holes.Add(h);
             Context.SaveChanges();
             c.Holes.Add(h);
             return (h);
         }
-      
+
     }
 }

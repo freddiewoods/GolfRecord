@@ -19,7 +19,7 @@ namespace GolfRecord.Model
 
         public virtual int Distance { get; set; }
 
-        public virtual int DifficultyRating { get; set; }
+        public virtual int Stroke { get; set; }
         
     }
 }

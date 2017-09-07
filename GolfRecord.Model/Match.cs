@@ -46,6 +46,10 @@ namespace GolfRecord.Model
             {
                 Golfers.Add(Golfer);
             }
+            else if (MatchType == MatchType.StableFord & Golfers.Count < 4)
+            {
+                Golfers.Add(Golfer);
+            }
             else
             {
                 Container.InformUser("Too many players in this match");
@@ -104,11 +108,17 @@ namespace GolfRecord.Model
                 Winner = Gwin;
 
                 //to do get this to add the match to each of the golfers (Find out what this match is called)     
-            }      
+            }
             else if (MatchType == MatchType.MatchPlay)
             {
                 MatchPlay match = new MatchPlay();
                 Golfer Gwin = match.AddScoreMatchPlay(hole, ScoreA, ScoreB, hs, Container);
+                Winner = Gwin;
+            }
+            else if (MatchType == MatchType.StableFord)
+            {
+                MatchStrokePlay match = new MatchStrokePlay();
+                Golfer Gwin = match.AddScoreStrokePlay(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs, Container);
                 Winner = Gwin;
             }
             Container.Persist(ref hs);

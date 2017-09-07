@@ -16,12 +16,12 @@ namespace GolfRecord.Model
         public Golfer AddScoreMatchPlay(Hole hole, int ScoreA, int ScoreB, HoleScore hs, IDomainObjectContainer Container)
         {
             
-          int difficulty =  19 - hole.DifficultyRating;
+          int difficulty =  19 - hole.Stroke;
           int handiA = Golfers.First().Handicap - difficulty;
             int handiB = Golfers.Last().Handicap- difficulty;
             if (handiA > 1)
             {
-                if (handiA > 18)
+                if (handiA >= 18)
                 {
                     ScoreA -= 2;
                 }

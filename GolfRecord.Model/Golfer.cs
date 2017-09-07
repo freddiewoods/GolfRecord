@@ -10,11 +10,21 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]//Indicates that this property will never be seen in the UI
         public virtual int Id { get; set; }
 
-        [Title]//This property will be used for the object's title at the top of the view and in a link
+        [Title][MemberOrder(1)]//This property will be used for the object's title at the top of the view and in a link
         public virtual string FullName { get; set; }
 
-        [Optionally] //this property is not neccessary
+        [Optionally][MemberOrder(2)] //this property is not neccessary
         public virtual int Handicap { get; set; }
+
+        [Optionally][MemberOrder(3)]
+        public virtual string Email { get; set; }
+
+        [Optionally][MemberOrder(4)]
+        public virtual string Mobile { get; set; }
+
+        [Optionally]
+         public virtual string Favourites { get; set; } // csv list of their favourite things like club, course, player. just so you can get to know the golfer
+
 
         #region MatchHistory(collection)
         private ICollection<Match> _PastMatches = new List<Match>();
@@ -33,8 +43,47 @@ namespace GolfRecord.Model
 
         public void AddMatchToHistory(Match match)
         {
-           MatchHistory.Add(match);
+            MatchHistory.Add(match);
         }
         #endregion
+
+        private ICollection<Course> _Favourites = new List<Course>();
+        [Hidden(WhenTo.UntilPersisted)]
+        public virtual ICollection<Course> FavouriteCourses
+        {
+            get
+            {
+                return _Favourites;
+            }
+            set
+            {
+                _Favourites = value;
+            }
+        }
+        public void AddFavouriteCourse(Course course)
+        {
+            FavouriteCourses.Add(course);
+        }
+
+ //       #region Friend(collection)
+ //       private ICollection<Friend> _Friend = new List<Friend>();
+ //       [Hidden(WhenTo.UntilPersisted)]
+ //       public virtual ICollection<Friend> Friends
+ //       {
+ //           get
+ //           {
+ //               return _Friend;
+ //           }
+ //           set
+ //           {
+ //               _Friend = value;
+ //           }
+ //       }
+ //       public void AddFried(Friend friend)
+ //       {
+  //          Friends.Add(friend);
+  //      }
+  //      #endregion
     }
 }
+
