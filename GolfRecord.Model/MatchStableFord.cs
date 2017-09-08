@@ -41,7 +41,7 @@ namespace GolfRecord.Model
             hs.GolferC = ScoreC;
             hs.GolferD = ScoreD;
             HoleScores.Add(hs);
-            int difficulty = 19 - hole.Stroke;
+            int difficulty = 19 - hole.StrokeIndex;
             int handiA = Golfers.First().Handicap - difficulty;
             int handiB = Golfers.ElementAt(1).Handicap - difficulty;
             int handiC = Golfers.ElementAt(2).Handicap - difficulty;

@@ -17,8 +17,11 @@ namespace GolfRecord.Model
         [Title]
         public virtual string CourseName { get; set; }
 
-        [Optionally]
         public virtual string Location { get; set; }
+
+        public virtual string Address { get; set; }
+
+        public virtual int Par { get; set; }
 
 
         private ICollection<Hole> _Holes = new List<Hole>();
@@ -41,13 +44,12 @@ namespace GolfRecord.Model
 
         [NakedObjectsIgnore]
         [Optionally]
-        public virtual string Rating { get; set; } //to make the overall rating fromt the small ratings.
-
-        [Optionally]
-        public virtual string Facillites { get; set; } //csv list of facilities.
+        public virtual double Rating { get; set; } //to make the overall rating fromt the small ratings.
 
         [Optionally]
         public virtual string WebsiteLink { get; set; } //link to the course website.
+
+        public virtual int Yardage { get; set; }
 
     }
 }

@@ -15,11 +15,31 @@ namespace GolfRecord.Model
         [Title][MemberOrder(1)]
         public virtual int HoleNumber { get; set; }
 
+        [MemberOrder(5)]
         public virtual int Par { get; set; }
 
-        public virtual int Distance { get; set; }
+        [MemberOrder(6)]
+        public virtual int StrokeIndex { get; set; }
 
-        public virtual int Stroke { get; set; }
+        [MemberOrder(2)]
+        public virtual string Name { get; set; }
+
+        [MemberOrder(3)]
+        public virtual int WhiteYards { get; set; }
+
+        [MemberOrder(4)]
+        public virtual int YellowYards { get; set; }
+
+        [MemberOrder(7)]
+        public virtual int LadiesRedYards { get; set; }
+
+        [MemberOrder(8)]
+        public virtual int RedPar { get; set; }
+
+        [MemberOrder(9)]
+        public virtual int RedStrokeIndex { get; set; }
+
+        
         
     }
 }
