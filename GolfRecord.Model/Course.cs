@@ -51,6 +51,7 @@ namespace GolfRecord.Model
 
         public virtual int Yardage { get; set; }
 
+        public virtual string PhoneNumber { get; set; }
     }
 }
 

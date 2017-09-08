@@ -16,10 +16,10 @@ namespace GolfRecord.DataBase
         protected override void Seed(GolfRecordDbContext context)
         {
             this.Context = context;
-            var ro = AddNewCourse("Royal Oak", "Scotland", "http://www.golfroyaloak.com" , "Royal Oak Golf Club is a beautiful, and challenging 9 Hole Golf Course with a great location, (10 minutes from the downtown core, 15 minutes from Swartz Bay Ferry Terminal).", 79.4d, "540 Marsett Place, Victoria B.C. V8Z-5M1", 32, 2000);
-            var pb = AddNewCourse("Pebble Beach", "Croatia", "https://www.pebblebeach.com/golf/", "The sport of golf is at its worldwide best at Pebble Beach Resorts. Whether you want to play the most exciting closing hole in golf, finally master the toughest hole on the PGA TOUR or simply anticipate walking in the footsteps of golf’s greatest names, we invite you to become a part of the incomparable experience that is Pebble Beach.", 74.7, "1700 17 - Mile Drive, PebbleBeach, CA 93953", 72, 6828);
-            var ss = AddNewCourse("Stowe Golf Club", "England", "https://www.stowe.co.uk/house/venue-hire/golf-club", "Stowe has a 9-hole course situated in the historic setting of Lancelot ‘Capability’ Brown’s landscaped garden. The Club has an extensive range of social gatherings and competitions to get involved in.", 60.5d,"Stowe House Preservation Trust, Stowe, Buckingham, MK18 5EH", 66, 4500);
-            var st = AddNewCourse("Silverstone Golf Club", "England", " http://www.silverstonegolfclub.co.uk/", "Set on the Buckinghamshire/Northamptonshire border and surrounded by forest this beautiful 18 hole parkland course was designed by David Snell and offers the golfers a great challenge", 55.6d, "Silverstone Road, Stowe, Buckingham MK18 5LH", 72, 6600);
+            var ro = AddNewCourse("Royal Oak", "Scotland", "http://www.golfroyaloak.com" , "Royal Oak Golf Club is a beautiful, and challenging 9 Hole Golf Course with a great location, (10 minutes from the downtown core, 15 minutes from Swartz Bay Ferry Terminal).", 79.4d, "540 Marsett Place, Victoria B.C. V8Z-5M1", 32, 2000, " 250 658 - 1433");
+            var pb = AddNewCourse("Pebble Beach", "Croatia", "https://www.pebblebeach.com/golf/", "The sport of golf is at its worldwide best at Pebble Beach Resorts. Whether you want to play the most exciting closing hole in golf, finally master the toughest hole on the PGA TOUR or simply anticipate walking in the footsteps of golf’s greatest names, we invite you to become a part of the incomparable experience that is Pebble Beach.", 74.7, "1700 17 - Mile Drive, PebbleBeach, CA 93953", 72, 6828, "(800) 877‑0597");
+            var ss = AddNewCourse("Stowe Golf Club", "England", "https://www.stowe.co.uk/house/venue-hire/golf-club", "Stowe has a 9-hole course situated in the historic setting of Lancelot ‘Capability’ Brown’s landscaped garden. The Club has an extensive range of social gatherings and competitions to get involved in.", 60.5d,"Stowe House Preservation Trust, Stowe, Buckingham, MK18 5EH", 66, 4500, "01280 818282");
+            var st = AddNewCourse("Silverstone Golf Club", "England", " http://www.silverstonegolfclub.co.uk/", "Set on the Buckinghamshire/Northamptonshire border and surrounded by forest this beautiful 18 hole parkland course was designed by David Snell and offers the golfers a great challenge", 55.6d, "Silverstone Road, Stowe, Buckingham MK18 5LH", 72, 6600, "01280-850005");
             context.SaveChanges();
             AddNewHole(pb, 1, 3, 400, 2);
             AddNewHole(pb, 2, 4, 600, 3);
@@ -92,41 +92,41 @@ namespace GolfRecord.DataBase
 
             var s1 = AddNewMatch("Stowe 1st Team", date1, 2);
             Context.SaveChanges();
-            AddNewGolfer(s1, "Tiger Hancox", 13, "56473 829106", "Tiger@Usa.com", FavouriteClub.Iron);
-            AddNewGolfer(s1, "Rory Gabriel", 14, "01296 234324", "Rory@Ireland.com" , FavouriteClub.Iron);
-            AddNewGolfer(s1, "Rookie Player", 12, "07810 675443", "Rookie@England.com", FavouriteClub.PitchingWedge);
-            AddNewGolfer(s1, "Adam Chair", 13, "01234 753234", "Chairs@NewZealand.com", FavouriteClub.Putter);
+            AddNewGolfer(s1, "Tiger Hancox", 13, "56473 829106", "Tiger@Usa.com", FavouriteClub.Iron, Gender.Other);
+            AddNewGolfer(s1, "Rory Gabriel", 14, "01296 234324", "Rory@Ireland.com" , FavouriteClub.Iron, Gender.Male);
+            AddNewGolfer(s1, "Rookie Player", 12, "07810 675443", "Rookie@England.com", FavouriteClub.PitchingWedge, Gender.Male);
+            AddNewGolfer(s1, "Adam Chair", 13, "01234 753234", "Chairs@NewZealand.com", FavouriteClub.Putter, Gender.Male);
             context.SaveChanges();
 
             var s2 = AddNewMatch("Stowe Tour Team", date1, 1);
             Context.SaveChanges();
-            AddNewGolfer(s2, "Novak Lacoste", 16, "01234 567891", "Novak.Locoste@goowiz.com", FavouriteClub.Wood);
-            AddNewGolfer(s2, "Rafa Lauren", 16, "19876 543210", "Rafa@T.com", FavouriteClub.Putter);
-            AddNewGolfer(s2, "Roger Perry", 16, "10202 304050", "Roger@T.com", FavouriteClub.Wood);
-            AddNewGolfer(s2, "Andy Hacket", 16, "01020 030405", "Andy@Gmai.com", FavouriteClub.Sandwedge);
+            AddNewGolfer(s2, "Novak Lacoste", 16, "01234 567891", "Novak.Locoste@goowiz.com", FavouriteClub.Wood, Gender.Female);
+            AddNewGolfer(s2, "Rafa Lauren", 16, "19876 543210", "Rafa@T.com", FavouriteClub.Putter, Gender.Female);
+            AddNewGolfer(s2, "Roger Perry", 16, "10202 304050", "Roger@T.com", FavouriteClub.Wood, Gender.Female);
+            AddNewGolfer(s2, "Andy Hacket", 16, "01020 030405", "Andy@Gmai.com", FavouriteClub.Sandwedge, Gender.Female);
             Context.SaveChanges();
 
             var s3 = AddNewMatch("Stowe MatchPlay Team", date1, 2, MatchType.MatchPlay);
             Context.SaveChanges();
-            AddNewGolfer(s3, "Obi Wan", 10,"12345 098765", "Obi@Tatoine.com", FavouriteClub.Putter);
-            AddNewGolfer(s3, "Mace Windu", 5, "98754 123415", "Mace@jedi.com", FavouriteClub.Sandwedge);
+            AddNewGolfer(s3, "Obi Wan", 10,"12345 098765", "Obi@Tatoine.com", FavouriteClub.Putter,Gender.Male);
+            AddNewGolfer(s3, "Mace Windu", 5, "98754 123415", "Mace@jedi.com", FavouriteClub.Sandwedge, Gender.Female);
             Context.SaveChanges();
 
             var s4 = AddNewMatch("Stowe StableFord Team", date1, 2, MatchType.StableFord);
             context.SaveChanges();
-            AddNewGolfer(s4, "Albert Einstein", 0, "57324 321414", "Albert@Genius.com", FavouriteClub.Putter);
-            AddNewGolfer(s4, "Max Born", 2, "12345 123456", "Max@Genie.com",FavouriteClub.Iron);
-            AddNewGolfer(s4, "Isaac Newton", 5, "56392 123441", "Newton@Apple.com", FavouriteClub.Wood);
-            AddNewGolfer(s4, "Nikola Tesla", 7, "09832 111111", "Tesla@Cars.com", FavouriteClub.PitchingWedge);
+            AddNewGolfer(s4, "Albert Einstein", 0, "57324 321414", "Albert@Genius.com", FavouriteClub.Putter,Gender.Male);
+            AddNewGolfer(s4, "Max Born", 2, "12345 123456", "Max@Genie.com",FavouriteClub.Iron, Gender.Male);
+            AddNewGolfer(s4, "Isaac Newton", 5, "56392 123441", "Newton@Apple.com", FavouriteClub.Wood, Gender.Male);
+            AddNewGolfer(s4, "Nikola Tesla", 7, "09832 111111", "Tesla@Cars.com", FavouriteClub.PitchingWedge,Gender.Male);
             Context.SaveChanges();
 
 
 
 
         }
-        private Golfer AddNewGolfer(Match m, string name, int handi, string mobile, string mail, FavouriteClub favouriteclub)
+        private Golfer AddNewGolfer(Match m, string name, int handi, string mobile, string mail, FavouriteClub favouriteclub, Gender gender)
         {
-            var g = new Golfer() { FullName = name, Handicap = handi, Email = mail, Mobile = mobile, FavouriteClub = favouriteclub};
+            var g = new Golfer() { FullName = name, Handicap = handi, Email = mail, Mobile = mobile, FavouriteClub = favouriteclub, Gender = gender};
             Context.Golfers.Add(g);
             Context.SaveChanges();
             m.Golfers.Add(g);
@@ -138,9 +138,9 @@ namespace GolfRecord.DataBase
             Context.Matches.Add(m);
             return (m);
         }
-        private Course AddNewCourse(string CourseName, string Location, string WebsiteLink, string ShortParagraph, double rating, string address, int par, int yardage)
+        private Course AddNewCourse(string CourseName, string Location, string WebsiteLink, string ShortParagraph, double rating, string address, int par, int yardage, string Phone)
         {
-            var c = new Course() { CourseName = CourseName, Location = Location, WebsiteLink = WebsiteLink, CourseDescription = ShortParagraph, Rating = rating, Address = address, Par = par, Yardage = yardage};
+            var c = new Course() { CourseName = CourseName, Location = Location, WebsiteLink = WebsiteLink, CourseDescription = ShortParagraph, Rating = rating, Address = address, Par = par, Yardage = yardage, PhoneNumber = Phone};
             Context.Courses.Add(c);
             return (c);
         }

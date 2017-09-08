@@ -26,6 +26,8 @@ namespace GolfRecord.Model
         [Optionally]
          public virtual FavouriteClub FavouriteClub { get; set; }
 
+        public virtual Gender Gender { get; set; }
+
 
         #region MatchHistory(collection)
         private ICollection<Match> _PastMatches = new List<Match>();
