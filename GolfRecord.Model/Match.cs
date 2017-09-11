@@ -84,11 +84,11 @@ namespace GolfRecord.Model
                 _HoleScores = value;
             }
         }
-        public IList<Hole> Choices0AddScore()
+        public IList<Hole> Choices0AddScoreMatchPlay()
         {
             return Course.Holes.ToList();
         }
-        public Hole Default0AddScore()
+        public Hole Default0AddScoreMatchPlay()
         {
             int nextHole = 1;
             if (HoleScores.Count > 0)
@@ -97,7 +97,38 @@ namespace GolfRecord.Model
             }
             return Course.Holes.First(h => h.HoleNumber == nextHole);
         }
-        public void AddScore(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
+        public IList<Hole> Choices0AddScores()
+        {
+            return Course.Holes.ToList();
+        }
+        public Hole Default0AddScores()
+        {
+            int nextHole = 1;
+            if (HoleScores.Count > 0)
+            {
+                nextHole = HoleScores.Max(hs => hs.Hole.HoleNumber) + 1;
+            }
+            return Course.Holes.First(h => h.HoleNumber == nextHole);
+        }
+
+        public void AddScoreMatchPlay(Hole hole, int ScoreA, int ScoreB)
+        {
+
+            var hs = Container.NewTransientInstance<HoleScore>();
+            if (MatchType == MatchType.MatchPlay)
+            {
+                MatchPlay match = new MatchPlay();
+                Golfer Gwin = match.AddScoreMatchPlay(hole, ScoreA, ScoreB, hs, Container);
+                Winner = Gwin;
+
+                //to do get this to add the match to each of the golfers (Find out what this match is called)     
+            }
+            Container.Persist(ref hs);
+            HoleScores.Add(hs);
+        }
+
+
+        public void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
 
             var hs = Container.NewTransientInstance<HoleScore>();

@@ -23,6 +23,5 @@ namespace GolfRecord.Model
         }
         [NakedObjectsIgnore]
         public virtual int HoleID { get; set; }
-
     }
 }

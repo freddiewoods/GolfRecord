@@ -59,6 +59,7 @@
     <Compile Include="Course.cs" />
     <Compile Include="CourseConfig.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Foursome.cs" />
     <Compile Include="Friends.cs" />
     <Compile Include="Golfer.cs" />
     <Compile Include="GolferConfig.cs" />
