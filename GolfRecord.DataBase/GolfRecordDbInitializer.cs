@@ -179,7 +179,7 @@ namespace GolfRecord.DataBase
             Context.Courses.Add(c);
             return (c);
         }
-        private Hole AddNewHole(Course c, int HoleNumeber, int par, int distance, int strokeindex)
+        private Hole AddNewHole(Course c, int HoleNumeber, int par, int distance,  int strokeindex)
         {
             var h = new Hole() { HoleNumber = HoleNumeber, Par = par, WhiteYards = distance, StrokeIndex = strokeindex};
             Context.Holes.Add(h);
@@ -195,6 +195,7 @@ namespace GolfRecord.DataBase
             c.Holes.Add(h);
             return (h);
         }
+
 
 
     }

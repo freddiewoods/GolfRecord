@@ -42,8 +42,8 @@ namespace GolfRecord.Model
         public virtual string CourseDescription { get; set; } //So people can look at the course and see whats its like
         //event schedule using a callender.
 
-        [NakedObjectsIgnore]
-        [Optionally]
+        
+        [Optionally][NakedObjectsIgnore]
         public virtual double Rating { get; set; } //to make the overall rating fromt the small ratings.
 
         [Optionally]

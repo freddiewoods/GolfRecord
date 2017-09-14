@@ -10,17 +10,16 @@ namespace GolfRecord.Model
 {
     public class MatchStrokePlay : Match 
     {
-        [NakedObjectsIgnore]
+
         public virtual int TotalScoreA { get; set; }
 
-        [NakedObjectsIgnore]
         public virtual int TotalScoreB { get; set; }
 
-        [NakedObjectsIgnore]
         public virtual int TotalScoreC { get; set; }
 
         public virtual int TotalScoreD { get; set; }
-        public  Golfer AddScoreStrokePlay(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD, HoleScore hs, IDomainObjectContainer Container)
+
+        public void AddScoreStrokePlay(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD, HoleScore hs, IDomainObjectContainer Container)
         {
             hs.Hole = hole;
             hs.GolferA = ScoreA;
@@ -32,15 +31,10 @@ namespace GolfRecord.Model
             TotalScoreB += ScoreB;
             TotalScoreC += ScoreC;
             TotalScoreD += ScoreD;
-            if (hole.Id == 4)
-            {
-                HandicapEffect();
-                return FindWinnerStrokePlay();
-            }
-            return null;
+            return TotalScoreD;
         }
         [NakedObjectsIgnore]
-        public Golfer FindWinnerStrokePlay()
+        public int FindWinnerStrokePlay()
         {
             List<int> Scores = new List<int>();
             Scores.Add(TotalScoreA);
@@ -49,29 +43,22 @@ namespace GolfRecord.Model
             Scores.Add(TotalScoreD);
             if (Scores.Min() == TotalScoreA)
             {
-                return Golfers.ElementAt(1);
+                return 0;
             }
             else if (Scores.Min() == TotalScoreB)
             {
-                return Golfers.ElementAt(2);
+                return 1;
             }
             else if (Scores.Min() == TotalScoreC)
             {
-                return Golfers.ElementAt(3);
+                return 2;
             }
             else if (Scores.Min() == TotalScoreD)
             {
-                return Golfers.ElementAt(4);
+                return 3;
             }
-            return null;
+            return 1;
         }
-        [NakedObjectsIgnore]
-        public void HandicapEffect()
-        {
-            TotalScoreA -= Golfers.First().Handicap;
-            TotalScoreB -= Golfers.ElementAt(1).Handicap;
-            TotalScoreC -= Golfers.ElementAt(2).Handicap;
-            TotalScoreD -= Golfers.Last().Handicap;
-        }
+
     }
 }
