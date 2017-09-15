@@ -33,7 +33,8 @@ namespace GolfRecord.Model
 
         public virtual MatchType MatchType { get; set; }
 
-        [Optionally][Hidden(WhenTo.UntilPersisted)]
+        [Optionally]
+        [Hidden(WhenTo.UntilPersisted)]
         public virtual Golfer Winner { get; set; }
 
         public void AddRegisteredGolfers(Golfer Golfer)
@@ -71,6 +72,9 @@ namespace GolfRecord.Model
         }
         #endregion
 
+
+
+
         private ICollection<HoleScore> _HoleScores = new List<HoleScore>();
         [Hidden(WhenTo.UntilPersisted)]
         public virtual ICollection<HoleScore> HoleScores
@@ -97,6 +101,8 @@ namespace GolfRecord.Model
             }
             return Course.Holes.First(h => h.HoleNumber == nextHole);
         }
+
+
 
         public void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
@@ -132,19 +138,19 @@ namespace GolfRecord.Model
                     Winner = Golfers.ElementAt(Gwin);
                 }
             }
-            else if (MatchType == MatchType.MatchPlay)
-            {
-                MatchPlay match = new MatchPlay();
-                int Gwin = 0;
-                int handiA = Golfers.First().Handicap - match.Difficulty;
-                int handiB = Golfers.Last().Handicap - match.Difficulty;
-                match.AddScoreMatchPlay(hole, ScoreA, ScoreB, hs, Container, handiA, handiB);
-                if (hole.HoleNumber == 4)
-                {
-                    Gwin = match.findWinnerMatchPlay();
-                    Winner = Golfers.ElementAt(Gwin);
-                }
-            }
+      //      else if (MatchType == MatchType.MatchPlay)
+      //      {
+      //          MatchPlay match = new MatchPlay();
+      //          int Gwin = 0;
+      //          int handiA = Golfers.First().Handicap - match.Difficulty;
+      //         int handiB = Golfers.Last().Handicap - match.Difficulty;
+      //          match.AddScoreMatchPlay(hole, ScoreA, ScoreB, hs, Container, handiA, handiB);
+      //          if (hole.HoleNumber == 4)
+      //          {
+      //              Gwin = match.findWinnerMatchPlay();
+      //             Winner = Golfers.ElementAt(Gwin);
+      //          }
+      //      }
             Container.Persist(ref hs);
             HoleScores.Add(hs);
         }
@@ -154,5 +160,47 @@ namespace GolfRecord.Model
         {
             Golfers.ElementAt(i).MatchHistory.Add(match);
         }
-    }  
+        private ICollection<HoleScoreMP> _HoleScoreMP = new List<HoleScoreMP>();
+        [Hidden(WhenTo.UntilPersisted)]
+        public virtual ICollection<HoleScoreMP> HoleScoreMP
+        {
+            get
+            {
+                return _HoleScoreMP;
+            }
+            set
+            {
+                _HoleScoreMP = value;
+            }
+        }
+        public IList<Hole> Choices0AddScoreMP()
+        {
+            return Course.Holes.ToList();
+        }
+        public Hole Default0AddScoreMP()
+        {
+            int nextHole = 1;
+            if (HoleScoreMP.Count > 0)
+            {
+                nextHole = HoleScoreMP.Max(hs => hs.Hole.HoleNumber) + 1;
+            }
+            return Course.Holes.First(h => h.HoleNumber == nextHole);
+        }
+        public void AddScoreMP(Hole hole, int ScoreA, int ScoreB)
+        {
+            var hs = Container.NewTransientInstance<HoleScoreMP>();
+            MatchPlay match = new MatchPlay();
+            int Gwin = 0;
+            int handiA = Golfers.First().Handicap - match.Difficulty;
+            int handiB = Golfers.Last().Handicap - match.Difficulty;
+            match.AddScoreMatchPlay(hole, ScoreA, ScoreB, hs, Container, handiA, handiB);
+            if (hole.HoleNumber == 4)
+            {
+                Gwin = match.findWinnerMatchPlay();
+                Winner = Golfers.ElementAt(Gwin);
+            }
+            Container.Persist(ref hs);
+            HoleScoreMP.Add(hs);
+        }
+    }
 }

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace GolfRecord.Model
 {
-    public class HoleScore
+   public  class HoleScoreMP
     {
         [NakedObjectsIgnore]
-        public virtual int ID  { get; set; }
+        public virtual int ID { get; set; }
 
         [NakedObjectsIgnore]
         public virtual int HoleId { get; set; }
@@ -20,11 +20,5 @@ namespace GolfRecord.Model
         public virtual int GolferA { get; set; }
 
         public virtual int GolferB { get; set; }
-
-        public virtual int GolferC { get; set; }
-
-        public virtual int GolferD { get; set; }
-
-
     }
 }
