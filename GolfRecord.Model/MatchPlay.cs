@@ -11,14 +11,10 @@ namespace GolfRecord.Model
     {
         public int TotalScoreA;
         public int TotalScoreB;
-        
-
-        public Golfer AddScoreMatchPlay(Hole hole, int ScoreA, int ScoreB, HoleScore hs, IDomainObjectContainer Container)
+        public int Difficulty;
+        public void AddScoreMatchPlay(Hole hole, int ScoreA, int ScoreB, HoleScore hs, IDomainObjectContainer Container,int handiA, int handiB)
         {
-            
-          int difficulty =  19 - hole.StrokeIndex;
-          int handiA = Golfers.First().Handicap - difficulty;
-            int handiB = Golfers.Last().Handicap- difficulty;
+            Difficulty =  19 - hole.StrokeIndex;           
             if (handiA > 1)
             {
                 if (handiA >= 18)
@@ -38,7 +34,6 @@ namespace GolfRecord.Model
                 }
                 else
                 {
-
                     ScoreB -= 1;
                 }
             }
@@ -52,26 +47,24 @@ namespace GolfRecord.Model
             }
             else
             {
-            }
-         
+            }        
             hs.Hole = hole;           
             hs.GolferA = ScoreA;
             hs.GolferB = ScoreB;
-
-            if (hole.Id == 4) //To do change  to 18 just for practice
+        }
+        public int findWinnerMatchPlay()
+        {
+            int gwin = 0;
+            if (TotalScoreA > TotalScoreB)
             {
-                if (TotalScoreA > TotalScoreB)
-                {
-                    return Golfers.ElementAt(1);
-
-                }
-                else if (TotalScoreB > TotalScoreA)
-                {
-                    return Golfers.ElementAt(2);
-                }
-
-             }
-            return null;
+                gwin = 0;
+            }
+            else if (TotalScoreB > TotalScoreA)
+            {
+                gwin = 1;
+            }
+            else gwin = 0;
+            return gwin;
         }
        
      }

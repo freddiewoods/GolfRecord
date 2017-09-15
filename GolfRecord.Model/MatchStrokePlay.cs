@@ -31,7 +31,6 @@ namespace GolfRecord.Model
             TotalScoreB += ScoreB;
             TotalScoreC += ScoreC;
             TotalScoreD += ScoreD;
-            return TotalScoreD;
         }
         [NakedObjectsIgnore]
         public int FindWinnerStrokePlay()

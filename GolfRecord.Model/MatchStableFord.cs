@@ -30,10 +30,12 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]
         public virtual int ParC { get; set; }
 
-        //[NakedObjectsIgnore]
+        [NakedObjectsIgnore]
         public virtual int ParD { get; set; }
 
-        public Golfer AddScoreStableford(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD, HoleScore hs, IDomainObjectContainer Container)
+        public virtual int difficulty { get; set; }
+
+        public void AddScoreStableford(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD, HoleScore hs, IDomainObjectContainer Container, int handiA, int handiB, int handiC, int handiD)
         {
             hs.Hole = hole;
             hs.GolferA = ScoreA;
@@ -41,11 +43,7 @@ namespace GolfRecord.Model
             hs.GolferC = ScoreC;
             hs.GolferD = ScoreD;
             HoleScores.Add(hs);
-            int difficulty = 19 - hole.StrokeIndex;
-            int handiA = Golfers.First().Handicap - difficulty;
-            int handiB = Golfers.ElementAt(1).Handicap - difficulty;
-            int handiC = Golfers.ElementAt(2).Handicap - difficulty;
-            int handiD = Golfers.ElementAt(3).Handicap - difficulty;
+            difficulty = 19 - hole.StrokeIndex;
             if (handiA > 1)
             {
                 if (handiA >= 18)
@@ -161,38 +159,36 @@ namespace GolfRecord.Model
             {
                 TotalScoreD += 0;
             }
-
-            if (hole.Id == 4) //just for testing will change to 18.
-            {
-                return FindWinnerStableford();
-            }
-            return null;
         }
         [NakedObjectsIgnore]
-        public Golfer FindWinnerStableford()
+        public int FindWinnerStableFord()
         {
             List<int> Scores = new List<int>();
             Scores.Add(TotalScoreA);
             Scores.Add(TotalScoreB);
             Scores.Add(TotalScoreC);
             Scores.Add(TotalScoreD);
+            int gwin = 0;
             if (Scores.Min() == TotalScoreA)
             {
-                return Golfers.ElementAt(1);
+                gwin = 0;
+                
             }
             else if (Scores.Min() == TotalScoreB)
             {
-                return Golfers.ElementAt(2);
+                gwin = 1;
+             
             }
             else if (Scores.Min() == TotalScoreC)
             {
-                return Golfers.ElementAt(3);
+                gwin = 2;
+                
             }
             else if (Scores.Min() == TotalScoreD)
             {
-                return Golfers.ElementAt(4);
+                gwin = 3;
             }
-            return null;
+            return gwin;
         }
     }
 

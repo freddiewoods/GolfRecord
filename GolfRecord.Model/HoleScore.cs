@@ -21,8 +21,10 @@ namespace GolfRecord.Model
 
         public virtual int GolferB { get; set; }
 
+        [Optionally]
         public virtual int GolferC { get; set; }
 
+        [Optionally]
         public virtual int GolferD { get; set; }
 
 
