@@ -126,10 +126,59 @@ namespace GolfRecord.Model
             else if (MatchType == MatchType.StableFord)
             {
                 MatchStableFord match = new MatchStableFord();
-                int handiA = Golfers.First().Handicap - match.difficulty;
-                int handiB = Golfers.ElementAt(1).Handicap - match.difficulty;
-                int handiC = Golfers.ElementAt(2).Handicap - match.difficulty;
-                int handiD = Golfers.ElementAt(3).Handicap - match.difficulty;
+                int Difficulty1 = 0;
+                int Difficulty2 = 0;
+                int Difficulty3 = 0;
+                int Difficulty4 = 0;
+                int ParForM1 = 0;
+                int ParForM2 = 0;
+                int ParForM3 = 0;
+                int ParForM4 = 0;
+                if (Golfers.ElementAt(0).Gender == Gender.Female)
+                {
+                    ParForM1 = 1;
+                    Difficulty1 = 19 - hole.RedStrokeIndex;
+                }
+                else
+                {
+                    ParForM1 = 2;
+                    Difficulty1 = 19 - hole.StrokeIndex;
+                }
+                if(Golfers.ElementAt(1).Gender == Gender.Female)
+                {
+                    ParForM2 = 1;
+                    Difficulty2 = 19 - hole.RedStrokeIndex;
+                }
+                else
+                {
+                    ParForM2 = 2;
+                    Difficulty2 = 19 - hole.StrokeIndex;
+                }
+                if(Golfers.ElementAt(2).Gender == Gender.Female)
+                {
+                    ParForM3 = 1;
+                    Difficulty3 = 19 - hole.RedStrokeIndex;
+                }
+                else
+                {
+                    ParForM3 = 2;
+                    Difficulty3 = 19 - hole.StrokeIndex;
+                }
+                if(Golfers.ElementAt(3).Gender == Gender.Female)
+                {
+                    ParForM4 = 1;
+                   Difficulty4 = 19 - hole.RedStrokeIndex;
+                }
+                else
+                {
+                    ParForM4 = 2;
+                     Difficulty4 = 19 - hole.StrokeIndex;
+                }
+
+                int handiA = Golfers.First().Handicap - Difficulty1;
+                int handiB = Golfers.ElementAt(1).Handicap - Difficulty2;
+                int handiC = Golfers.ElementAt(2).Handicap - Difficulty3;
+                int handiD = Golfers.ElementAt(3).Handicap - Difficulty4;
                 match.AddScoreStableford(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs, Container, handiA, handiB, handiC, handiD);
                 int Gwin = 0;
                 if (hole.HoleNumber == Course.Holes.Count)
@@ -179,11 +228,34 @@ namespace GolfRecord.Model
             var hs = Container.NewTransientInstance<HoleScoreMP>();
             MatchPlay match = new MatchPlay();
             int Gwin = 0;
-            int handiA = Golfers.First().Handicap - match.Difficulty;
-            int handiB = Golfers.Last().Handicap - match.Difficulty;
+            int Difficulty1 = 0;
+            int Difficulty2 = 0;
+        
+            if (Golfers.ElementAt(0).Gender == Gender.Female)
+            {
+               
+                Difficulty1 = 19 - hole.RedStrokeIndex;
+            }
+            else
+            {
+                
+                Difficulty1 = 19 - hole.StrokeIndex;
+            }
+            if (Golfers.ElementAt(1).Gender == Gender.Female)
+            {
+                
+                Difficulty2 = 19 - hole.RedStrokeIndex;
+            }
+            else 
+            {   
+                Difficulty2 = 19 - hole.StrokeIndex;
+            }
+            int handiA = Golfers.First().Handicap -Difficulty1;
+            int handiB = Golfers.Last().Handicap - Difficulty2;
             match.AddScoreMatchPlay(hole, ScoreA, ScoreB, hs, Container, handiA, handiB);
             if (hole.HoleNumber == Course.Holes.Count)
             {
+              
                 Gwin = match.findWinnerMatchPlay();
                 Winner = Golfers.ElementAt(Gwin);
                 Golfers.ElementAt(0).MatchHistory.Add(match);

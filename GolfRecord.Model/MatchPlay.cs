@@ -13,8 +13,7 @@ namespace GolfRecord.Model
         public int TotalScoreB;
         public int Difficulty;
         public void AddScoreMatchPlay(Hole hole, int ScoreA, int ScoreB, HoleScoreMP hs, IDomainObjectContainer Container,int handiA, int handiB)
-        {
-            Difficulty =  19 - hole.StrokeIndex;           
+        {         
             if (handiA > 1)
             {
                 if (handiA >= 18)

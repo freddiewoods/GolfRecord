@@ -33,8 +33,6 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]
         public virtual int ParD { get; set; }
 
-        public virtual int difficulty { get; set; }
-
         public void AddScoreStableford(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD, HoleScore hs, IDomainObjectContainer Container, int handiA, int handiB, int handiC, int handiD)
         {
             hs.Hole = hole;
@@ -43,10 +41,9 @@ namespace GolfRecord.Model
             hs.GolferC = ScoreC;
             hs.GolferD = ScoreD;
             HoleScores.Add(hs);
-            difficulty = 19 - hole.StrokeIndex;
             if (handiA > 1)
             {
-                if (handiA >= 18)
+                if (handiA >= 18 )
                 {
                     ParA = hs.Hole.Par + 2;
                 }
