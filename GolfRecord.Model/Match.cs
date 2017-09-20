@@ -112,7 +112,7 @@ namespace GolfRecord.Model
                 MatchStrokePlay match = new MatchStrokePlay();
                 match.AddScoreStrokePlay(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs, Container);
                 int Gwin = 0;
-                if (hole.HoleNumber == 18)
+                if (hole.HoleNumber == Course.Holes.Count)
                 {
                     match.TotalScoreA -= Golfers.ElementAt(0).Handicap;
                     match.TotalScoreB -= Golfers.ElementAt(1).Handicap;
@@ -132,25 +132,13 @@ namespace GolfRecord.Model
                 int handiD = Golfers.ElementAt(3).Handicap - match.difficulty;
                 match.AddScoreStableford(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs, Container, handiA, handiB, handiC, handiD);
                 int Gwin = 0;
-                if (hole.HoleNumber == 18)
+                if (hole.HoleNumber == Course.Holes.Count)
                 {
                     Gwin = match.FindWinnerStableFord();
                     Winner = Golfers.ElementAt(Gwin);
+                    Golfers.First().MatchHistory.Add(match);
                 }
             }
-      //      else if (MatchType == MatchType.MatchPlay)
-      //      {
-      //          MatchPlay match = new MatchPlay();
-      //          int Gwin = 0;
-      //          int handiA = Golfers.First().Handicap - match.Difficulty;
-      //         int handiB = Golfers.Last().Handicap - match.Difficulty;
-      //          match.AddScoreMatchPlay(hole, ScoreA, ScoreB, hs, Container, handiA, handiB);
-      //          if (hole.HoleNumber == 4)
-      //          {
-      //              Gwin = match.findWinnerMatchPlay();
-      //             Winner = Golfers.ElementAt(Gwin);
-      //          }
-      //      }
             Container.Persist(ref hs);
             HoleScores.Add(hs);
         }
@@ -194,10 +182,14 @@ namespace GolfRecord.Model
             int handiA = Golfers.First().Handicap - match.Difficulty;
             int handiB = Golfers.Last().Handicap - match.Difficulty;
             match.AddScoreMatchPlay(hole, ScoreA, ScoreB, hs, Container, handiA, handiB);
-            if (hole.HoleNumber == 4)
+            if (hole.HoleNumber == Course.Holes.Count)
             {
                 Gwin = match.findWinnerMatchPlay();
                 Winner = Golfers.ElementAt(Gwin);
+                Golfers.ElementAt(0).MatchHistory.Add(match);
+                Golfers.ElementAt(1).MatchHistory.Add(match);
+                Golfers.ElementAt(2).MatchHistory.Add(match);
+                Golfers.ElementAt(3).MatchHistory.Add(match);
             }
             Container.Persist(ref hs);
             HoleScoreMP.Add(hs);

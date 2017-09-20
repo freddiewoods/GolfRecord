@@ -63,30 +63,6 @@ namespace GolfRecord.Model
                 _Favourites = value;
             }
         }
-        public void AddFavouriteCourse(Course course)
-        {
-            FavouriteCourses.Add(course);
-        }
-
- //       #region Friend(collection)
- //       private ICollection<Friend> _Friend = new List<Friend>();
- //       [Hidden(WhenTo.UntilPersisted)]
- //       public virtual ICollection<Friend> Friends
- //       {
- //           get
- //           {
- //               return _Friend;
- //           }
- //           set
- //           {
- //               _Friend = value;
- //           }
- //       }
- //       public void AddFried(Friend friend)
- //       {
-  //          Friends.Add(friend);
-  //      }
-  //      #endregion
     }
 }
 

@@ -61,7 +61,6 @@
     <Compile Include="CourseConfig.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Foursome.cs" />
-    <Compile Include="Friends.cs" />
     <Compile Include="Golfer.cs" />
     <Compile Include="GolferConfig.cs" />
     <Compile Include="Hole.cs" />
@@ -71,7 +70,6 @@
     <Compile Include="MatchPlay.cs" />
     <Compile Include="MatchStrokePlay.cs" />
     <Compile Include="MatchStableFord.cs" />
-    <Compile Include="Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HoleScore.cs" />
   </ItemGroup>
