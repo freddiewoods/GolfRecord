@@ -11,7 +11,7 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]//Indicates that this property will never be seen in the UI
         public virtual int Id { get; set; }
 
-        [Title][MemberOrder(1)]//This property will be used for the object's title at the top of the view and in a link
+        [Optionally][Title][MemberOrder(1)]//This property will be used for the object's title at the top of the view and in a link
         public virtual string FullName { get; set; }
 
         [Optionally][MemberOrder(2)] //this property is not neccessary
@@ -19,6 +19,8 @@ namespace GolfRecord.Model
 
         [Optionally][MemberOrder(3)]
         public virtual string Email { get; set; }
+        // To do find out where the email validation will happen.
+
 
         [Optionally][MemberOrder(4)]
         public virtual string Mobile { get; set; }
@@ -26,6 +28,7 @@ namespace GolfRecord.Model
         [Optionally]
          public virtual FavouriteClub FavouriteClub { get; set; }
 
+        [Optionally]
         public virtual Gender Gender { get; set; }
 
 

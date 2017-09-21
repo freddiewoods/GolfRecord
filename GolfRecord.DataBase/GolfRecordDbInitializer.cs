@@ -156,6 +156,10 @@ namespace GolfRecord.DataBase
             AddNewGolfer(s9, "Linda Green", 14, "01234 123441", "Linda@gmol.com", FavouriteClub.Putter, Gender.Female);
             Context.SaveChanges();
 
+            var s10 = AddNewMatch("Test Empty Match", date1, 1, MatchType.StrokePlay);
+            context.SaveChanges();
+          
+
 
 
         }

@@ -37,6 +37,21 @@ namespace GolfRecord.Model
         [Hidden(WhenTo.UntilPersisted)]
         public virtual Golfer Winner { get; set; }
 
+        public void AddUnregisteredGolfers(String name, Gender gender, int handicap,int Id)
+        {
+            Golfer NewMember = new Golfer();
+            NewMember.Id = Id;
+            NewMember.FullName = name;
+            NewMember.Gender = gender;
+            NewMember.Handicap = handicap;
+            NewMember.Email = null;
+            NewMember.FavouriteClub = FavouriteClub.Iron;
+            NewMember.FavouriteCourses = null;
+            NewMember.MatchHistory = null;
+            NewMember.Mobile = null;
+            AddRegisteredGolfers(NewMember);
+        }
+
         public void AddRegisteredGolfers(Golfer Golfer)
         {
             if (MatchType == MatchType.MatchPlay & Golfers.Count < 2)
