@@ -8,6 +8,7 @@ using NakedObjects.Value;
 using NakedObjects.Menu;
 using static GolfRecord.Model.Enums;
 using GolfRecord.Model;
+using System.ComponentModel.DataAnnotations;
 
 namespace GolfRecord.Model
 {
@@ -16,6 +17,10 @@ namespace GolfRecord.Model
         #region InjectedServices
 
         public IDomainObjectContainer Container { set; protected get; }
+
+        public CourseConfig CourseConfig { set; protected get; }
+
+        public GolferConfig GolferConfig { set; protected get; }
 
         #endregion
         [NakedObjectsIgnore]
@@ -31,26 +36,18 @@ namespace GolfRecord.Model
 
         public virtual Course Course { get; set; }
 
+
+        [PageSize(3)]
+        public IQueryable<Course> AutoCompleteCourse([MinLength(2)] string matching)
+        {
+            return CourseConfig.ShowExistingCourses().Where(c => c.CourseName.Contains(matching));
+        }
+
         public virtual MatchType MatchType { get; set; }
 
         [Optionally]
         [Hidden(WhenTo.UntilPersisted)]
         public virtual Golfer Winner { get; set; }
-
-        public void AddUnregisteredGolfers(String name, Gender gender, int handicap,int Id)
-        {
-            Golfer NewMember = new Golfer();
-            NewMember.Id = Id;
-            NewMember.FullName = name;
-            NewMember.Gender = gender;
-            NewMember.Handicap = handicap;
-            NewMember.Email = null;
-            NewMember.FavouriteClub = FavouriteClub.Iron;
-            NewMember.FavouriteCourses = null;
-            NewMember.MatchHistory = null;
-            NewMember.Mobile = null;
-            AddRegisteredGolfers(NewMember);
-        }
 
         public void AddRegisteredGolfers(Golfer Golfer)
         {
@@ -70,6 +67,11 @@ namespace GolfRecord.Model
             {
                 Container.InformUser("Too many players in this match");
             }
+        }
+        [PageSize(3)]
+        public IQueryable<Golfer> AutoComplete0AddRegisteredGolfers([MinLength(2)] string name)
+        {
+            return GolferConfig.AllGolfers().Where(g => g.FullName.Contains(name));
         }
         #region Golfers (collection)
         private ICollection<Golfer> _Golfers = new List<Golfer>();
