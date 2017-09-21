@@ -179,7 +179,7 @@ namespace GolfRecord.Model
                 int handiB = Golfers.ElementAt(1).Handicap - Difficulty2;
                 int handiC = Golfers.ElementAt(2).Handicap - Difficulty3;
                 int handiD = Golfers.ElementAt(3).Handicap - Difficulty4;
-                match.AddScoreStableford(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs, Container, handiA, handiB, handiC, handiD);
+                match.AddScoreStableford(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs, Container, handiA, handiB, handiC, handiD, ParForM1,ParForM2,ParForM3, ParForM4);
                 int Gwin = 0;
                 if (hole.HoleNumber == Course.Holes.Count)
                 {

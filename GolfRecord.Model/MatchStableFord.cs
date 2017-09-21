@@ -33,7 +33,7 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]
         public virtual int ParD { get; set; }
 
-        public void AddScoreStableford(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD, HoleScore hs, IDomainObjectContainer Container, int handiA, int handiB, int handiC, int handiD)
+        public void AddScoreStableford(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD, HoleScore hs, IDomainObjectContainer Container, int handiA, int handiB, int handiC, int handiD, int ParForM1, int ParForM2, int ParForM3, int ParForM4)
         {
             hs.Hole = hole;
             hs.GolferA = ScoreA;
@@ -41,53 +41,82 @@ namespace GolfRecord.Model
             hs.GolferC = ScoreC;
             hs.GolferD = ScoreD;
             HoleScores.Add(hs);
-            if (handiA > 1)
+            if (handiA >= 1)
             {
-                if (handiA >= 18 )
+                if (handiA >= 18 & ParForM1 == 2)
                 {
                     ParA = hs.Hole.Par + 2;
                 }
-                else
+                else if (handiA >= 1 & handiA < 18 & ParForM1 == 2)
                 {
                     ParA = hs.Hole.Par + 1;
                 }
+                else if (handiA >= 18 & ParForM1 == 1)
+                {
+                    ParA = hs.Hole.RedPar + 2;
+                }
+                else if (handiA >= 1 & handiA < 18 & ParForM1 == 1)
+                {
+                    ParA = hs.Hole.RedPar + 1;
+                }
             }
-            if (handiB > 1)
+            if (handiB >= 1)
             {
-                if (handiB >= 18)
+                if (handiB >= 18 & ParForM2 == 2)
                 {
                     ParB = hs.Hole.Par + 2;
                 }
-                else
+                else if (handiB >= 1 & handiB < 18 & ParForM2 == 2)
                 {
-
-                    ParB = hs.Hole.Par +1;
+                    ParB = hs.Hole.Par + 1;
+                }
+                else if (handiB >= 18 & ParForM2 == 1)
+                {
+                    ParB = hs.Hole.RedPar + 2;
+                }
+                else if (handiB >= 1 & handiB < 18 & ParForM2 == 1)
+                {
+                    ParB = hs.Hole.RedPar + 1;
                 }
             }
-            if (handiC > 1)
+            if (handiC >= 1)
             {
-                if (handiC >= 18)
+                if (handiC >= 18 & ParForM3 == 2)
                 {
                     ParC = hs.Hole.Par + 2;
                 }
-                else
+                else if (handiC >= 1 & handiC < 18 & ParForM3 == 2)
                 {
                     ParC = hs.Hole.Par + 1;
                 }
+                else if (handiC >= 18 & ParForM3 == 1)
+                {
+                    ParC = hs.Hole.RedPar + 2;
+                }
+                else if (handiC >= 1 & handiC < 18 & ParForM3 == 1)
+                {
+                    ParC = hs.Hole.RedPar + 1;
+                }
             }
-            if (handiD > 1)
+            if (handiD >= 1)
             {
-                if (handiD >= 18)
+                if (handiD >= 18 & ParForM4 == 2)
                 {
                     ParD = hs.Hole.Par + 2;
                 }
-                else
+                else if (handiD >= 1 & handiD < 18 & ParForM4 == 2)
                 {
                     ParD = hs.Hole.Par + 1;
                 }
-            } //works out the par for each hole.
-
-
+                else if (handiD >= 18 & ParForM4 == 1)
+                {
+                    ParD = hs.Hole.RedPar + 2;
+                }
+                else if (handiD >= 1 & handiD < 18 & ParForM4 == 1)
+                {
+                    ParD = hs.Hole.RedPar + 1;
+                }
+            }
             if (ScoreA - ParA == 1)
             {
                 TotalScoreA += 1;
