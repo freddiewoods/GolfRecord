@@ -1,5 +1,7 @@
 ﻿using NakedObjects;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using static GolfRecord.Model.Enums;
 
 namespace GolfRecord.Model
@@ -30,6 +32,8 @@ namespace GolfRecord.Model
 
         [Optionally]
         public virtual Gender Gender { get; set; }
+
+        public GolferConfig GolferConfig { set; protected get; }
 
 
         #region MatchHistory(collection)
@@ -66,6 +70,33 @@ namespace GolfRecord.Model
                 _Favourites = value;
             }
         }
+
+        #region Friends (collection)
+        private ICollection<Golfer> _Friends = new List<Golfer>();
+
+        public virtual ICollection<Golfer> Friends
+        {
+            get
+            {
+                return _Friends;
+            }
+            set
+            {
+                _Friends = value;
+            }
+        }
+        #endregion
+        public void AddFriend(Golfer golfer)
+        {
+            Friends.Add(golfer);
+        }
+        [PageSize(3)]
+        public IQueryable<Golfer> AutoComplete0AddFriend([MinLength(2)] string matching)
+        {
+            return GolferConfig.AllGolfers().Where(g => g.FullName.Contains(matching));
+        }
+
+
     }
 }
 

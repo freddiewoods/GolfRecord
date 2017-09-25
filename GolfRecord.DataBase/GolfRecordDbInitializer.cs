@@ -40,6 +40,7 @@ namespace GolfRecord.DataBase
             AddNewHole(pb, 17, 4, 600, 14);
             AddNewHole(pb, 18, 3, 525, 16);
             Context.SaveChanges();
+
             AddNewHole(ro, 1, 3, 400, 1);
             AddNewHole(ro, 2, 3, 420, 2);
             AddNewHole(ro, 3, 4, 525, 6);
@@ -50,6 +51,7 @@ namespace GolfRecord.DataBase
             AddNewHole(ro, 8, 3, 430, 5);
             AddNewHole(ro, 9, 4, 500, 8);
             Context.SaveChanges();
+
             AddNewHole2(ss, 1, "Home Park", 122, 108, 3, 13, 122, 3, 15);
             AddNewHole2(ss, 2, "Chatham", 281, 254, 4, 9, 268, 4, 9);
             AddNewHole2(ss, 3, "Copper Beech", 296, 285, 4, 11, 296, 4, 11);
@@ -150,7 +152,7 @@ namespace GolfRecord.DataBase
 
             var s9 = AddNewMatch("Stowe Mixed Stableford Team", date1, 4, MatchType.StableFord);
             context.SaveChanges();
-            AddNewGolfer(s9, "Jim Breithaupt", 0, "01942 872356", "Jim@AQAOxford", FavouriteClub.Wood, Gender.Male);
+            AddNewGolfer(s9, "Jim Breithaupt", 0, "01942 872356", "Jim@AQAOxford.com", FavouriteClub.Wood, Gender.Male);
             AddNewGolfer(s9, "Saul Muliplem", 5, "01492 845483", "Saul@jimbo.com", FavouriteClub.Sandwedge, Gender.Male);
             AddNewGolfer(s9, "Mary Teapot", 9, "01832 144324", "Tea@coffee.com", FavouriteClub.PitchingWedge, Gender.Female);
             AddNewGolfer(s9, "Linda Green", 14, "01234 123441", "Linda@gmol.com", FavouriteClub.Putter, Gender.Female);
@@ -158,6 +160,16 @@ namespace GolfRecord.DataBase
 
             var s10 = AddNewMatch("Test Empty Match", date1, 1, MatchType.StrokePlay);
             context.SaveChanges();
+
+            var s11 = AddNewMatch("Stableford match with scores", date1, 1, MatchType.StableFord);
+            context.SaveChanges();
+            AddNewGolfer(s11, "Martin Finion", 5, "01278 564127", "Martin@fmail.com", FavouriteClub.Sandwedge, Gender.Male);
+            AddNewGolfer(s11, "Noah Castillo", 6, "01728 123412", "Noah@isky.com", FavouriteClub.PitchingWedge, Gender.Male);
+            AddNewGolfer(s11, "Cody Turner", 6, "01383 132414", "Turner@tt.com", FavouriteClub.None, Gender.Male);
+            AddNewGolfer(s11, "Aidan Hopkins", 5, "01256 122122", "Aidan.Hopkins@asd.com", FavouriteClub.Sandwedge, Gender.Male);
+            Context.SaveChanges();  
+            
+            //Add Scores.
           
 
 
@@ -200,6 +212,8 @@ namespace GolfRecord.DataBase
             return (h);
         }
 
+       //  private HoleScore AddNewScore(Match match, int ScoreA, int ScoreB);
+       //follow same pattern as add new hole
 
 
     }

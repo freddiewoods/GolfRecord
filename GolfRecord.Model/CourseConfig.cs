@@ -12,10 +12,10 @@ namespace GolfRecord.Model
     {
         public IDomainObjectContainer Container { set; protected get; }
 
-        public Course AddNewCourse()
-        {
-            return Container.NewTransientInstance<Course>();
-        }
+    //    public Course AddNewCourse()
+    //    {
+    //        return Container.NewTransientInstance<Course>();
+    //    }
 
         public IQueryable<Course> ShowExistingCourses()
         {

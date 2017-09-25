@@ -36,7 +36,6 @@ namespace GolfRecord.Model
 
         public virtual Course Course { get; set; }
 
-
         [PageSize(3)]
         public IQueryable<Course> AutoCompleteCourse([MinLength(2)] string matching)
         {
@@ -49,6 +48,7 @@ namespace GolfRecord.Model
         [Hidden(WhenTo.UntilPersisted)]
         public virtual Golfer Winner { get; set; }
 
+        #region Add Golfers
         public void AddRegisteredGolfers(Golfer Golfer)
         {
             if (MatchType == MatchType.MatchPlay & Golfers.Count < 2)
@@ -73,6 +73,20 @@ namespace GolfRecord.Model
         {
             return GolferConfig.AllGolfers().Where(g => g.FullName.Contains(name));
         }
+
+        public bool HideAddRegisteredGolfers()
+        {
+            if (MatchType == MatchType.MatchPlay)
+            {
+                return Golfers.Count > 1;
+            }
+            else 
+            {
+                return Golfers.Count > 3;
+            }
+        }
+
+        #endregion
         #region Golfers (collection)
         private ICollection<Golfer> _Golfers = new List<Golfer>();
         [Hidden(WhenTo.UntilPersisted)]
@@ -91,7 +105,7 @@ namespace GolfRecord.Model
 
 
 
-
+        #region HoleScores
         private ICollection<HoleScore> _HoleScores = new List<HoleScore>();
         [Hidden(WhenTo.UntilPersisted)]
         public virtual ICollection<HoleScore> HoleScores
@@ -107,7 +121,18 @@ namespace GolfRecord.Model
         }
         public IList<Hole> Choices0AddScores()
         {
-            return Course.Holes.ToList();
+            if (HoleScores.Count == 0)
+            {
+                return Course.Holes.ToList();
+            }
+            else
+            {
+                // return Course.Holes.ToList();
+                return (from h in Course.Holes
+                        from s in HoleScores                     
+                where h.Id != s.HoleId //a querry across two sources.
+                 select h).ToList();
+            }
         }
         public Hole Default0AddScores()
         {
@@ -120,7 +145,9 @@ namespace GolfRecord.Model
         }
 
 
+        #endregion
 
+        #region AddScores
         public void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
             var hs = Container.NewTransientInstance<HoleScore>();
@@ -204,10 +231,20 @@ namespace GolfRecord.Model
                     Winner = Golfers.ElementAt(Gwin);
                     Golfers.First().MatchHistory.Add(match);
                 }
+
             }
             Container.Persist(ref hs);
             HoleScores.Add(hs);
         }
+        //   public bool HideAddScores()
+        //   {
+        //      if (MatchType == MatchType.MatchPlay)
+        //       {
+        //           return AddScores;
+        //}
+        //      return AddScores;
+        //  }
+        #endregion
 
         [NakedObjectsIgnore]
         public void AddMatchToHistory(Match match, int i)
