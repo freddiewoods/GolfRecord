@@ -236,14 +236,10 @@ namespace GolfRecord.Model
             Container.Persist(ref hs);
             HoleScores.Add(hs);
         }
-        //   public bool HideAddScores()
-        //   {
-        //      if (MatchType == MatchType.MatchPlay)
-        //       {
-        //           return AddScores;
-        //}
-        //      return AddScores;
-        //  }
+           public bool HideAddScores()
+            {
+            return MatchType == MatchType.MatchPlay;
+            }
         #endregion
 
         [NakedObjectsIgnore]
@@ -251,33 +247,36 @@ namespace GolfRecord.Model
         {
             Golfers.ElementAt(i).MatchHistory.Add(match);
         }
-        private ICollection<HoleScoreMP> _HoleScoreMP = new List<HoleScoreMP>();
+        #region MatchPlayScores
+        private ICollection<HoleScoreMP> _HoleScoreMatchPlay = new List<HoleScoreMP>();
         [Hidden(WhenTo.UntilPersisted)]
-        public virtual ICollection<HoleScoreMP> HoleScoreMP
+        public virtual ICollection<HoleScoreMP> HoleScoreMatchPlay
         {
             get
             {
-                return _HoleScoreMP;
+                return _HoleScoreMatchPlay;
             }
             set
             {
-                _HoleScoreMP = value;
+                _HoleScoreMatchPlay = value;
             }
         }
-        public IList<Hole> Choices0AddScoreMP()
+        public IList<Hole> Choices0AddScoreMatchPlay()
         {
             return Course.Holes.ToList();
         }
-        public Hole Default0AddScoreMP()
+        public Hole Default0AddScoreMatchPlay()
         {
             int nextHole = 1;
-            if (HoleScoreMP.Count > 0)
+            if (HoleScoreMatchPlay.Count > 0)
             {
-                nextHole = HoleScoreMP.Max(hs => hs.Hole.HoleNumber) + 1;
+                nextHole = HoleScoreMatchPlay.Max(hs => hs.Hole.HoleNumber) + 1;
             }
             return Course.Holes.First(h => h.HoleNumber == nextHole);
         }
-        public void AddScoreMP(Hole hole, int ScoreA, int ScoreB)
+#endregion
+        #region AddScoresForMatchPlay
+        public void AddScoreMatchPlay(Hole hole, int ScoreA, int ScoreB)
         {
             var hs = Container.NewTransientInstance<HoleScoreMP>();
             MatchPlay match = new MatchPlay();
@@ -318,7 +317,12 @@ namespace GolfRecord.Model
                 Golfers.ElementAt(3).MatchHistory.Add(match);
             }
             Container.Persist(ref hs);
-            HoleScoreMP.Add(hs);
+            HoleScoreMatchPlay.Add(hs);
         }
+        public bool HideAddScoreMatchPlay()
+        {
+            return MatchType != MatchType.MatchPlay;
+        }
+        #endregion
     }
 }
