@@ -14,6 +14,8 @@ namespace GolfRecord.Model
 
         public CourseConfig CourseConfig { set; protected get; }
 
+        public MatchConfig MatchConfig { set; protected get; }
+
         [NakedObjectsIgnore]//Indicates that this property will never be seen in the UI
         public virtual int Id { get; set; }
 
@@ -101,9 +103,17 @@ namespace GolfRecord.Model
                 _MatchHistory = value;
             }
         }
+        public void AddMatchHistory(Match match)
+        {
+            MatchHistory.Add(match);
+        }
+        public IQueryable<Match> AutoComplete0AddMatchHistory([MinLength(2)] string matching)
+        {
+            return MatchConfig.ShowMatches().Where(m => m.MatchName.Contains(matching));
+        }
         #endregion
 
 
-    }
+        }
 }
 
