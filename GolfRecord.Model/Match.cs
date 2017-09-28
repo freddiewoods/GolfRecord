@@ -144,6 +144,11 @@ namespace GolfRecord.Model
             return Course.Holes.First(h => h.HoleNumber == nextHole);
         }
 
+        public bool HideHoleScores()
+        {
+            return MatchType == MatchType.MatchPlay;
+        }
+
 
         #endregion
 
@@ -274,7 +279,13 @@ namespace GolfRecord.Model
             }
             return Course.Holes.First(h => h.HoleNumber == nextHole);
         }
-#endregion
+
+        public bool HideHoleScoreMatchPlay()
+        {
+            return MatchType!=MatchType.MatchPlay;
+        }
+
+        #endregion
         #region AddScoresForMatchPlay
         public void AddScoreMatchPlay(Hole hole, int ScoreA, int ScoreB)
         {
