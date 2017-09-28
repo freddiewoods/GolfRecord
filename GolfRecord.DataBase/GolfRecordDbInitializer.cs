@@ -131,16 +131,16 @@ namespace GolfRecord.DataBase
 
             var s6 = AddNewMatch("Stowe Mixed MatchPlay Team", date1, 3, MatchType.MatchPlay);
             Context.SaveChanges();
-            AddNewGolfer(s6, "Obi Wan", 10,"12345 098765", "Obi@Tatoine.com", FavouriteClub.Putter,Gender.Male);
+            AddNewGolfer(s6, "Obi Wan", 10, "12345 098765", "Obi@Tatoine.com", FavouriteClub.Putter, Gender.Male);
             AddNewGolfer(s6, "Mace Windu", 5, "98754 123415", "Mace@jedi.com", FavouriteClub.Sandwedge, Gender.Female);
             Context.SaveChanges();
 
             var s7 = AddNewMatch("Stowe Mens Stableford Team", date1, 2, MatchType.StableFord);
             context.SaveChanges();
-            AddNewGolfer(s7, "Albert Einstein", 0, "57324 321414", "Albert@Genius.com", FavouriteClub.Putter,Gender.Male);
-            AddNewGolfer(s7, "Max Born", 2, "12345 123456", "Max@Genie.com",FavouriteClub.Iron, Gender.Male);
+            AddNewGolfer(s7, "Albert Einstein", 0, "57324 321414", "Albert@Genius.com", FavouriteClub.Putter, Gender.Male);
+            AddNewGolfer(s7, "Max Born", 2, "12345 123456", "Max@Genie.com", FavouriteClub.Iron, Gender.Male);
             AddNewGolfer(s7, "Isaac Newton", 5, "56392 123441", "Newton@Apple.com", FavouriteClub.Wood, Gender.Male);
-            AddNewGolfer(s7, "Nikola Tesla", 7, "09832 111111", "Tesla@Cars.com", FavouriteClub.PitchingWedge,Gender.Male);
+            AddNewGolfer(s7, "Nikola Tesla", 7, "09832 111111", "Tesla@Cars.com", FavouriteClub.PitchingWedge, Gender.Male);
             Context.SaveChanges();
 
             var s8 = AddNewMatch("Stowe Womens Stableford Team", date1, 1, MatchType.StableFord);
@@ -167,17 +167,17 @@ namespace GolfRecord.DataBase
             AddNewGolfer(s11, "Noah Castillo", 6, "01728 123412", "Noah@isky.com", FavouriteClub.PitchingWedge, Gender.Male);
             AddNewGolfer(s11, "Cody Turner", 6, "01383 132414", "Turner@tt.com", FavouriteClub.None, Gender.Male);
             AddNewGolfer(s11, "Aidan Hopkins", 5, "01256 122122", "Aidan.Hopkins@asd.com", FavouriteClub.Sandwedge, Gender.Male);
-            Context.SaveChanges();  
-            
+            Context.SaveChanges();
+
             //Add Scores.
-          
+
 
 
 
         }
         private Golfer AddNewGolfer(Match m, string name, int handi, string mobile, string mail, FavouriteClub favouriteclub, Gender gender)
         {
-            var g = new Golfer() { FullName = name, Handicap = handi, Email = mail, Mobile = mobile, FavouriteClub = favouriteclub, Gender = gender};
+            var g = new Golfer() { FullName = name, Handicap = handi, Email = mail, Mobile = mobile, FavouriteClub = favouriteclub, Gender = gender };
             Context.Golfers.Add(g);
             Context.SaveChanges();
             m.Golfers.Add(g);
@@ -191,13 +191,13 @@ namespace GolfRecord.DataBase
         }
         private Course AddNewCourse(string CourseName, string Location, string WebsiteLink, string ShortParagraph, double rating, string address, int par, int yardage, string Phone)
         {
-            var c = new Course() { CourseName = CourseName, Location = Location, WebsiteLink = WebsiteLink, CourseDescription = ShortParagraph, Rating = rating, Address = address, Par = par, Yardage = yardage, PhoneNumber = Phone};
+            var c = new Course() { CourseName = CourseName, Location = Location, WebsiteLink = WebsiteLink, CourseDescription = ShortParagraph, Rating = rating, Address = address, Par = par, Yardage = yardage, PhoneNumber = Phone };
             Context.Courses.Add(c);
             return (c);
         }
-        private Hole AddNewHole(Course c, int HoleNumeber, int par, int distance,  int strokeindex)
+        private Hole AddNewHole(Course c, int HoleNumeber, int par, int distance, int strokeindex)
         {
-            var h = new Hole() { HoleNumber = HoleNumeber, Par = par, WhiteYards = distance, StrokeIndex = strokeindex};
+            var h = new Hole() { HoleNumber = HoleNumeber, Par = par, WhiteYards = distance, StrokeIndex = strokeindex };
             Context.Holes.Add(h);
             Context.SaveChanges();
             c.Holes.Add(h);
@@ -211,10 +211,5 @@ namespace GolfRecord.DataBase
             c.Holes.Add(h);
             return (h);
         }
-
-       //  private HoleScore AddNewScore(Match match, int ScoreA, int ScoreB);
-       //follow same pattern as add new hole
-
-
     }
 }

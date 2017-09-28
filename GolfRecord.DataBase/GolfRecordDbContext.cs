@@ -14,6 +14,8 @@ namespace GolfRecord.DataBase
         public DbSet<Golfer> Golfers { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Hole> Holes { get; set; }
+        public DbSet<HoleScoreMP> HoleScoreMP { get; set; }
+        public DbSet<HoleScore> HoleScore { get; set; }
   //      public DbSet<Friend> Friend { get; set; }
   //      public DbSet<Message> Message { get; set; }
     }

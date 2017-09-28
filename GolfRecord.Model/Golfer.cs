@@ -10,6 +10,10 @@ namespace GolfRecord.Model
     {
         //All persisted properties on a domain object must be 'virtual'
 
+        public GolferConfig GolferConfig { set; protected get; }
+
+        public CourseConfig CourseConfig { set; protected get; }
+
         [NakedObjectsIgnore]//Indicates that this property will never be seen in the UI
         public virtual int Id { get; set; }
 
@@ -33,30 +37,7 @@ namespace GolfRecord.Model
         [Optionally]
         public virtual Gender Gender { get; set; }
 
-        public GolferConfig GolferConfig { set; protected get; }
-
-
-        #region MatchHistory(collection)
-        private ICollection<Match> _PastMatches = new List<Match>();
-        [Hidden(WhenTo.UntilPersisted)]
-        public virtual ICollection<Match> MatchHistory
-        {
-            get
-            {
-                return _PastMatches;
-            }
-            set
-            {
-                _PastMatches = value;
-            }
-        }
-
-        public void AddMatchToHistory(Match match)
-        {
-            MatchHistory.Add(match);
-        }
-        #endregion
-
+        #region
         private ICollection<Course> _Favourites = new List<Course>();
         [Hidden(WhenTo.UntilPersisted)]
         public virtual ICollection<Course> FavouriteCourses
@@ -70,7 +51,16 @@ namespace GolfRecord.Model
                 _Favourites = value;
             }
         }
-
+        public void AddFavouriteCourses(Course course)
+        {
+            FavouriteCourses.Add(course);
+        }
+        [PageSize(3)]
+        public IQueryable<Course> AutoComplete0AddFavouriteCourses([MinLength(2)] string matching)
+        {
+            return CourseConfig.ShowExistingCourses().Where(c => c.CourseName.Contains(matching));
+        }
+        #endregion
         #region Friends (collection)
         private ICollection<Golfer> _Friends = new List<Golfer>();
 
@@ -85,7 +75,7 @@ namespace GolfRecord.Model
                 _Friends = value;
             }
         }
-        #endregion
+     
         public void AddFriend(Golfer golfer)
         {
             Friends.Add(golfer);
@@ -95,6 +85,23 @@ namespace GolfRecord.Model
         {
             return GolferConfig.AllGolfers().Where(g => g.FullName.Contains(matching));
         }
+        #endregion
+
+        #region MatchHistory (collection)
+        private ICollection<Match> _MatchHistory = new List<Match>();
+
+        public virtual ICollection<Match> MatchHistory
+        {
+            get
+            {
+                return _MatchHistory;
+            }
+            set
+            {
+                _MatchHistory = value;
+            }
+        }
+        #endregion
 
 
     }
