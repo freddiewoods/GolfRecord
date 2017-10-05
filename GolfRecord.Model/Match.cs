@@ -103,6 +103,8 @@ namespace GolfRecord.Model
         }
         #endregion
 
+
+
         #region HoleScores
         private ICollection<HoleScore> _HoleScores = new List<HoleScore>();
         [Hidden(WhenTo.UntilPersisted)]
@@ -167,7 +169,6 @@ namespace GolfRecord.Model
                     match.TotalScoreD -= Golfers.ElementAt(3).Handicap;
                     Gwin = match.FindWinnerStrokePlay();
                     Winner = Golfers.ElementAt(Gwin);
-                    Golfers.ElementAt(0).MatchHistory.Add(match);
                 }
                 //to do get this to add the match to each of the golfers (Find out what this match is called)     
             }
@@ -233,6 +234,7 @@ namespace GolfRecord.Model
                 {
                     Gwin = match.FindWinnerStableFord();
                     Winner = Golfers.ElementAt(Gwin);
+                    Golfers.First().MatchHistory.Add(match);
                 }
 
             }
@@ -245,6 +247,11 @@ namespace GolfRecord.Model
             }
         #endregion
 
+        [NakedObjectsIgnore]
+        public void AddMatchToHistory(Match match, int i)
+        {
+            Golfers.ElementAt(i).MatchHistory.Add(match);
+        }
         #region MatchPlayScores
         private ICollection<HoleScoreMP> _HoleScoreMatchPlay = new List<HoleScoreMP>();
         [Hidden(WhenTo.UntilPersisted)]
@@ -279,7 +286,6 @@ namespace GolfRecord.Model
         }
 
         #endregion
-
         #region AddScoresForMatchPlay
         public void AddScoreMatchPlay(Hole hole, int ScoreA, int ScoreB)
         {
@@ -316,6 +322,10 @@ namespace GolfRecord.Model
               
                 Gwin = match.findWinnerMatchPlay();
                 Winner = Golfers.ElementAt(Gwin);
+                Golfers.ElementAt(0).MatchHistory.Add(match);
+                Golfers.ElementAt(1).MatchHistory.Add(match);
+                Golfers.ElementAt(2).MatchHistory.Add(match);
+                Golfers.ElementAt(3).MatchHistory.Add(match);
             }
             Container.Persist(ref hs);
             HoleScoreMatchPlay.Add(hs);
