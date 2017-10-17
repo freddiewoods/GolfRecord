@@ -89,7 +89,6 @@ namespace GolfRecord.Model
         }
         #endregion
 
-
         #region MatchHistory (collection)
         private ICollection<Match> _MatchHistory = new List<Match>();
 
@@ -106,7 +105,7 @@ namespace GolfRecord.Model
         }
         public void AddMatchHistory(Match match)
         {
-            _MatchHistory.Add(match);
+            MatchHistory.Add(match);
         }
         public IQueryable<Match> AutoComplete0AddMatchHistory([MinLength(2)] string matching)
         {

@@ -102,6 +102,9 @@ namespace GolfRecord.Model
             }
         }
         #endregion
+
+
+
         #region HoleScores
         private ICollection<HoleScore> _HoleScores = new List<HoleScore>();
         [Hidden(WhenTo.UntilPersisted)]
@@ -148,6 +151,7 @@ namespace GolfRecord.Model
 
 
         #endregion
+
         #region AddScores
         public void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
@@ -166,7 +170,6 @@ namespace GolfRecord.Model
                     Gwin = match.FindWinnerStrokePlay();
                     Winner = Golfers.ElementAt(Gwin);
                 }
-            
                 //to do get this to add the match to each of the golfers (Find out what this match is called)     
             }
             else if (MatchType == MatchType.StableFord)
@@ -184,10 +187,9 @@ namespace GolfRecord.Model
                 {
                     ParForM1 = 1;
                     Difficulty1 = 19 - hole.RedStrokeIndex;
-              
                 }
-                else                    
-                { 
+                else
+                {
                     ParForM1 = 2;
                     Difficulty1 = 19 - hole.StrokeIndex;
                 }
@@ -244,6 +246,7 @@ namespace GolfRecord.Model
             return MatchType == MatchType.MatchPlay;
             }
         #endregion
+
         [NakedObjectsIgnore]
         public void AddMatchToHistory(Match match, int i)
         {
