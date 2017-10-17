@@ -33,8 +33,6 @@ namespace GolfRecord.DataBase
             courseconfiguration.Property(c => c.Address).HasColumnName("PostCode");
             courseconfiguration.Property(c => c.CourseDescription).HasColumnName("DescriptionOfCourse");
             courseconfiguration.Property(c => c.CourseName).HasColumnName("NameOfCourse");
-                
-     
         }
 
         private void DefineMatch(EntityTypeConfiguration<Match> matchconfiguration)
