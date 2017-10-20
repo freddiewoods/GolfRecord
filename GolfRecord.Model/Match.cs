@@ -248,7 +248,7 @@ namespace GolfRecord.Model
         #endregion
 
         [NakedObjectsIgnore]
-        public void AddMatchToHistory(Match match, int i)
+        public void AddMatchPlayToHistory(MatchPlay match, int i)
         {
             Golfers.ElementAt(i).MatchHistory.Add(match);
         }

@@ -92,6 +92,9 @@ namespace GolfRecord.DataBase
             context.SaveChanges();
 
 
+
+
+
             var s1 = AddNewMatch("Stowe boys Strokeplay Match", date1, 1);
             Context.SaveChanges();
             AddNewGolfer(s1, "Tiger Hancox", 13, "56473 829106", "Tiger@Usa.com", FavouriteClub.Iron, Gender.Male);
@@ -169,6 +172,9 @@ namespace GolfRecord.DataBase
             AddNewGolfer(s11, "Aidan Hopkins", 5, "01256 122122", "Aidan.Hopkins@asd.com", FavouriteClub.Sandwedge, Gender.Male);
             Context.SaveChanges();
 
+
+
+            AddNewGolfer2("Peter Miller",1,"08188 464638","Mille@Fmail.com", FavouriteClub.None, Gender.Male);
             //Add Scores.
 
 
@@ -182,6 +188,13 @@ namespace GolfRecord.DataBase
             Context.SaveChanges();
             m.Golfers.Add(g);
             return (g);
+        }
+        private Golfer AddNewGolfer2( string name, int handi, string mobile, string mail, FavouriteClub favouriteclub, Gender gender)
+        {
+            var g2 = new Golfer() { FullName = name, Handicap = handi, Email = mail, Mobile = mobile, FavouriteClub = favouriteclub, Gender = gender };
+            Context.Golfers.Add(g2);
+            Context.SaveChanges();
+            return (g2);
         }
         private Match AddNewMatch(string name, DateTime date, int courseID, MatchType matchType = MatchType.StrokePlay)
         {

@@ -1,0 +1,2 @@
+﻿Select FullName
+From PLAYERS
