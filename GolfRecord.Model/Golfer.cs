@@ -39,6 +39,10 @@ namespace GolfRecord.Model
         [Optionally]
         public virtual Gender Gender { get; set; }
 
+        [NakedObjectsIgnore]
+        public virtual bool WithinMatch { get; set; }
+
+
         #region
         private ICollection<Course> _Favourites = new List<Course>();
         [Hidden(WhenTo.UntilPersisted)]

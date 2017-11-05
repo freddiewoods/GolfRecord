@@ -48,24 +48,30 @@ namespace GolfRecord.Model
         [Hidden(WhenTo.UntilPersisted)]
         public virtual Golfer Winner { get; set; }
 
+        [NakedObjectsIgnore]
+        public virtual bool Completed { get; set; }
+
         #region Add Golfers
         public void AddRegisteredGolfers(Golfer Golfer)
         {
-            if (MatchType == MatchType.MatchPlay & Golfers.Count < 2)
+            if (MatchType == MatchType.MatchPlay & Golfers.Count < 2 & Golfer.WithinMatch == false)
             {
+                Golfer.WithinMatch = true;
                 Golfers.Add(Golfer);
             }
-            else if (MatchType == MatchType.StrokePlay & Golfers.Count < 4)
+            else if (MatchType == MatchType.StrokePlay & Golfers.Count < 4 & Golfer.WithinMatch == false)
             {
+                Golfer.WithinMatch = true;
                 Golfers.Add(Golfer);
             }
-            else if (MatchType == MatchType.StableFord & Golfers.Count < 4)
+            else if (MatchType == MatchType.StableFord & Golfers.Count < 4 & Golfer.WithinMatch == false)
             {
+                Golfer.WithinMatch = true;
                 Golfers.Add(Golfer);
             }
             else
             {
-                Container.InformUser("Too many players in this match");
+                Container.InformUser("Too many players in this match or golfer is alreadyin a match");
             }
         }
         [PageSize(3)]
