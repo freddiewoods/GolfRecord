@@ -303,7 +303,7 @@ namespace GolfRecord.Model
 
         public bool HideHoleScoreMatchPlay()
         {
-            return MatchType!=MatchType.MatchPlay;
+            return (MatchType!=MatchType.MatchPlay) | (Golfers.Count != 2);
         }
 
         #endregion
