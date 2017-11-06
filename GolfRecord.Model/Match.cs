@@ -51,6 +51,18 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]
         public virtual bool Completed { get; set; }
 
+        [NakedObjectsIgnore]
+        public virtual MatchPlay MatchP { get; set; }
+
+        [NakedObjectsIgnore]
+        public virtual MatchStableFord MatchSF { get; set; }
+
+        [NakedObjectsIgnore]
+        public virtual MatchStrokePlay MatchSP { get; set; }
+
+        [NakedObjectsIgnore]
+        public virtual int Gwin { get; set; }
+
         #region Add Golfers
         public void AddRegisteredGolfers(Golfer Golfer)
         {
@@ -164,23 +176,22 @@ namespace GolfRecord.Model
             var hs = Container.NewTransientInstance<HoleScore>();
             if (MatchType == MatchType.StrokePlay)
             {
-                MatchStrokePlay match = new MatchStrokePlay();
-                match.AddScoreStrokePlay(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs, Container);
+                MatchSP.AddScoreStrokePlay(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs, Container);
                 int Gwin = 0;
                 if (hole.HoleNumber == Course.Holes.Count)
                 {
-                    match.TotalScoreA -= Golfers.ElementAt(0).Handicap;
-                    match.TotalScoreB -= Golfers.ElementAt(1).Handicap;
-                    match.TotalScoreC -= Golfers.ElementAt(2).Handicap;
-                    match.TotalScoreD -= Golfers.ElementAt(3).Handicap;
-                    Gwin = match.FindWinnerStrokePlay();
+                    MatchSP.TotalScoreA -= Golfers.ElementAt(0).Handicap;
+                    MatchSP.TotalScoreB -= Golfers.ElementAt(1).Handicap;
+                    MatchSP.TotalScoreC -= Golfers.ElementAt(2).Handicap;
+                    MatchSP.TotalScoreD -= Golfers.ElementAt(3).Handicap;
+                    Gwin = MatchSP.FindWinnerStrokePlay();
                     Winner = Golfers.ElementAt(Gwin);
                 }
                 //to do get this to add the match to each of the golfers (Find out what this match is called)     
             }
             else if (MatchType == MatchType.StableFord)
             {
-                MatchStableFord match = new MatchStableFord();
+                MatchStableFord MatchSF = new MatchStableFord();
                 int Difficulty1 = 0;
                 int Difficulty2 = 0;
                 int Difficulty3 = 0;
@@ -234,29 +245,33 @@ namespace GolfRecord.Model
                 int handiB = Golfers.ElementAt(1).Handicap - Difficulty2;
                 int handiC = Golfers.ElementAt(2).Handicap - Difficulty3;
                 int handiD = Golfers.ElementAt(3).Handicap - Difficulty4;
-                match.AddScoreStableford(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs, Container, handiA, handiB, handiC, handiD, ParForM1,ParForM2,ParForM3, ParForM4);
+                MatchSF.AddScoreStableford(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs, Container, handiA, handiB, handiC, handiD, ParForM1,ParForM2,ParForM3, ParForM4);
                 int Gwin = 0;
                 if (hole.HoleNumber == Course.Holes.Count)
                 {
-                    Gwin = match.FindWinnerStableFord();
+                    Gwin = MatchSF.FindWinnerStableFord();
                     Winner = Golfers.ElementAt(Gwin);
-                    Golfers.First().MatchHistory.Add(match);
+                    Golfers.ElementAt(0).WithinMatch = false;
+                    Golfers.ElementAt(1).WithinMatch = false;
+                    Golfers.ElementAt(2).WithinMatch = false;
+                    Golfers.ElementAt(3).WithinMatch = false;
+                    Golfers.First().MatchHistory.Add(MatchSF);
                 }
 
             }
             Container.Persist(ref hs);
             HoleScores.Add(hs);
         }
-           public bool HideAddScores()
+        public bool HideAddScores()
             {
-            return MatchType == MatchType.MatchPlay;
+            return (MatchType == MatchType.MatchPlay) | (Golfers.Count != 4);
             }
         #endregion
 
         [NakedObjectsIgnore]
-        public void AddMatchPlayToHistory(MatchPlay match, int i)
+        public void AddMatchPlayToHistory(MatchPlay MatchP, int i)
         {
-            Golfers.ElementAt(i).MatchHistory.Add(match);
+            Golfers.ElementAt(i).MatchHistory.Add(MatchP);
         }
         #region MatchPlayScores
         private ICollection<HoleScoreMP> _HoleScoreMatchPlay = new List<HoleScoreMP>();
@@ -296,7 +311,7 @@ namespace GolfRecord.Model
         public void AddScoreMatchPlay(Hole hole, int ScoreA, int ScoreB)
         {
             var hs = Container.NewTransientInstance<HoleScoreMP>();
-            MatchPlay match = new MatchPlay();
+ 
             int Gwin = 0;
             int Difficulty1 = 0;
             int Difficulty2 = 0;
@@ -322,16 +337,16 @@ namespace GolfRecord.Model
             }
             int handiA = Golfers.First().Handicap -Difficulty1;
             int handiB = Golfers.Last().Handicap - Difficulty2;
-            match.AddScoreMatchPlay(hole, ScoreA, ScoreB, hs, Container, handiA, handiB);
+            MatchP.AddScoreMatchPlay(hole, ScoreA, ScoreB, hs, Container, handiA, handiB);
             if (hole.HoleNumber == Course.Holes.Count)
             {
               
-                Gwin = match.findWinnerMatchPlay();
+                Gwin = MatchP.findWinnerMatchPlay();
                 Winner = Golfers.ElementAt(Gwin);
-                Golfers.ElementAt(0).MatchHistory.Add(match);
-                Golfers.ElementAt(1).MatchHistory.Add(match);
-                Golfers.ElementAt(2).MatchHistory.Add(match);
-                Golfers.ElementAt(3).MatchHistory.Add(match);
+                Golfers.ElementAt(0).WithinMatch = false;
+                Golfers.ElementAt(1).WithinMatch = false;
+                Golfers.ElementAt(2).WithinMatch = false;
+                Golfers.ElementAt(3).WithinMatch = false;
             }
             Container.Persist(ref hs);
             HoleScoreMatchPlay.Add(hs);

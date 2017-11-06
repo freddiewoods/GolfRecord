@@ -18,7 +18,7 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]
         public virtual int TotalScoreC { get; set; }
 
-        //[NakedObjectsIgnore]
+        [NakedObjectsIgnore]
         public virtual int TotalScoreD { get; set; }
 
         [NakedObjectsIgnore]

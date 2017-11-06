@@ -181,7 +181,7 @@ namespace GolfRecord.DataBase
 
 
         }
-        private Golfer AddNewGolfer(Match m, string name, int handi, string mobile, string mail, FavouriteClub favouriteclub, Gender gender)
+        private Golfer AddNewGolfer(Match m, string name, int handi, string mobile, string mail, FavouriteClub favouriteclub, Gender gender, bool withinmatch = true)
         {
             var g = new Golfer() { FullName = name, Handicap = handi, Email = mail, Mobile = mobile, FavouriteClub = favouriteclub, Gender = gender };
             Context.Golfers.Add(g);
@@ -189,7 +189,7 @@ namespace GolfRecord.DataBase
             m.Golfers.Add(g);
             return (g);
         }
-        private Golfer AddNewGolfer2( string name, int handi, string mobile, string mail, FavouriteClub favouriteclub, Gender gender)
+        private Golfer AddNewGolfer2( string name, int handi, string mobile, string mail, FavouriteClub favouriteclub, Gender gender, bool withinmatch = true)
         {
             var g2 = new Golfer() { FullName = name, Handicap = handi, Email = mail, Mobile = mobile, FavouriteClub = favouriteclub, Gender = gender };
             Context.Golfers.Add(g2);
