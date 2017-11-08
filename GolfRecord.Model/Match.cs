@@ -191,7 +191,7 @@ namespace GolfRecord.Model
             }
             else if (MatchType == MatchType.StableFord)
             {
-                MatchStableFord MatchSF = new MatchStableFord();
+                MatchStableFord MatchSF = Container.NewTransientInstance<MatchStableFord>();
                 int Difficulty1 = 0;
                 int Difficulty2 = 0;
                 int Difficulty3 = 0;
@@ -247,6 +247,7 @@ namespace GolfRecord.Model
                 int handiD = Golfers.ElementAt(3).Handicap - Difficulty4;
                 MatchSF.AddScoreStableford(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs, Container, handiA, handiB, handiC, handiD, ParForM1,ParForM2,ParForM3, ParForM4);
                 int Gwin = 0;
+                Container.Persist(ref MatchSF);
                 if (hole.HoleNumber == Course.Holes.Count)
                 {
                     Gwin = MatchSF.FindWinnerStableFord();
@@ -257,7 +258,6 @@ namespace GolfRecord.Model
                     Golfers.ElementAt(3).WithinMatch = false;
                     Golfers.First().MatchHistory.Add(MatchSF);
                 }
-
             }
             Container.Persist(ref hs);
             HoleScores.Add(hs);
