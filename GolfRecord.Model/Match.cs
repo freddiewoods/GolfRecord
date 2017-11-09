@@ -259,7 +259,6 @@ namespace GolfRecord.Model
                     Golfers.First().MatchHistory.Add(MatchSF);
                 }
             }
-            Container.Persist(ref hs);
             HoleScores.Add(hs);
         }
         public bool HideAddScores()
