@@ -53,10 +53,6 @@ namespace GolfRecord.Model
 
         [NakedObjectsIgnore]
         public virtual MatchPlay MatchP { get; set; }
-
-        [NakedObjectsIgnore]
-        public virtual MatchStableFord MatchSF { get; set; }
-
         [NakedObjectsIgnore]
         public virtual MatchStrokePlay MatchSP { get; set; }
 
@@ -121,8 +117,6 @@ namespace GolfRecord.Model
         }
         #endregion
 
-
-
         #region HoleScores
         private ICollection<HoleScore> _HoleScores = new List<HoleScore>();
         [Hidden(WhenTo.UntilPersisted)]
@@ -176,7 +170,7 @@ namespace GolfRecord.Model
             var hs = Container.NewTransientInstance<HoleScore>();
             if (MatchType == MatchType.StrokePlay)
             {
-                MatchSP.AddScoreStrokePlay(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs, Container);
+                MatchSP.AddScoreStrokePlay(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs);
                 int Gwin = 0;
                 if (hole.HoleNumber == Course.Holes.Count)
                 {
@@ -191,87 +185,20 @@ namespace GolfRecord.Model
             }
             else if (MatchType == MatchType.StableFord)
             {
-                MatchStableFord MatchSF = Container.NewTransientInstance<MatchStableFord>();
-                int Difficulty1 = 0;
-                int Difficulty2 = 0;
-                int Difficulty3 = 0;
-                int Difficulty4 = 0;
-                int ParForM1 = 0;
-                int ParForM2 = 0;
-                int ParForM3 = 0;
-                int ParForM4 = 0;
-                if (Golfers.ElementAt(0).Gender == Gender.Female)
-                {
-                    ParForM1 = 1;
-                    Difficulty1 = 19 - hole.RedStrokeIndex;
-                }
-                else
-                {
-                    ParForM1 = 2;
-                    Difficulty1 = 19 - hole.StrokeIndex;
-                }
-                if(Golfers.ElementAt(1).Gender == Gender.Female)
-                {
-                    ParForM2 = 1;
-                    Difficulty2 = 19 - hole.RedStrokeIndex;
-                }
-                else
-                {
-                    ParForM2 = 2;
-                    Difficulty2 = 19 - hole.StrokeIndex;
-                }
-                if(Golfers.ElementAt(2).Gender == Gender.Female)
-                {
-                    ParForM3 = 1;
-                    Difficulty3 = 19 - hole.RedStrokeIndex;
-                }
-                else
-                {
-                    ParForM3 = 2;
-                    Difficulty3 = 19 - hole.StrokeIndex;
-                }
-                if(Golfers.ElementAt(3).Gender == Gender.Female)
-                {
-                    ParForM4 = 1;
-                   Difficulty4 = 19 - hole.RedStrokeIndex;
-                }
-                else
-                {
-                    ParForM4 = 2;
-                     Difficulty4 = 19 - hole.StrokeIndex;
-                }
-
-                int handiA = Golfers.First().Handicap - Difficulty1;
-                int handiB = Golfers.ElementAt(1).Handicap - Difficulty2;
-                int handiC = Golfers.ElementAt(2).Handicap - Difficulty3;
-                int handiD = Golfers.ElementAt(3).Handicap - Difficulty4;
-                MatchSF.AddScoreStableford(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs, Container, handiA, handiB, handiC, handiD, ParForM1,ParForM2,ParForM3, ParForM4);
-                int Gwin = 0;
-                Container.Persist(ref MatchSF);
+                MatchStableFord match = Container.NewTransientInstance<MatchStableFord>();            
+                match.AddScore(hole, ScoreA, ScoreB, ScoreC, ScoreD);
+                Container.Persist(ref match);
                 if (hole.HoleNumber == Course.Holes.Count)
                 {
-                    Gwin = MatchSF.FindWinnerStableFord();
-                    Winner = Golfers.ElementAt(Gwin);
-                    Golfers.ElementAt(0).WithinMatch = false;
-                    Golfers.ElementAt(1).WithinMatch = false;
-                    Golfers.ElementAt(2).WithinMatch = false;
-                    Golfers.ElementAt(3).WithinMatch = false;
-                    Golfers.First().MatchHistory.Add(MatchSF);
+                    Golfers.First().MatchHistory.Add(match);
                 }
             }
-            HoleScores.Add(hs);
         }
         public bool HideAddScores()
             {
             return (MatchType == MatchType.MatchPlay) | (Golfers.Count != 4);
             }
         #endregion
-
-        [NakedObjectsIgnore]
-        public void AddMatchPlayToHistory(MatchPlay MatchP, int i)
-        {
-            Golfers.ElementAt(i).MatchHistory.Add(MatchP);
-        }
         #region MatchPlayScores
         private ICollection<HoleScoreMP> _HoleScoreMatchPlay = new List<HoleScoreMP>();
         [Hidden(WhenTo.UntilPersisted)]

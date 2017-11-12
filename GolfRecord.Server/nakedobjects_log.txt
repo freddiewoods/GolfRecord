@@ -1,9 +1,12 @@
 WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
 WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.FavouriteClub
 WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
-WARN 1 NakedObjects.Reflect.FacetFactory.ActionMethodsFacetFactory - Ignoring method: GolfRecord.Model.MatchStableFord.AddScoreStableford because parameter 'Container' is of type NakedObjects.IDomainObjectContainer
-ERROR 12 NakedObjects.Core.Component.IdentityMapImpl - Using a reference to a transient object that has been persisted somewhere else (ie Framework has detected an attempt to use an object that has been replaced by a proxy)object : GolfRecord.Model.HoleScore
 WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
 WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.FavouriteClub
 WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
-WARN 1 NakedObjects.Reflect.FacetFactory.ActionMethodsFacetFactory - Ignoring method: GolfRecord.Model.MatchStableFord.AddScoreStableford because parameter 'Container' is of type NakedObjects.IDomainObjectContainer
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.FavouriteClub
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Handicap
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.FavouriteClub
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender

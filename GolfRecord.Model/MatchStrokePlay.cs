@@ -19,7 +19,7 @@ namespace GolfRecord.Model
 
         public virtual int TotalScoreD { get; set; }
 
-        public void AddScoreStrokePlay(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD, HoleScore hs, IDomainObjectContainer Container)
+        public void AddScoreStrokePlay(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD, HoleScore hs)
         {
             hs.Hole = hole;
             hs.GolferA = ScoreA;

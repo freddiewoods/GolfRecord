@@ -4,219 +4,146 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NakedObjects;
+using static GolfRecord.Model.Enums;
 
 namespace GolfRecord.Model
 {
     public class MatchStableFord : Match
     {
-        [NakedObjectsIgnore]
-        public virtual int TotalScoreA { get; set; }
+        public int[] TotalScores;
 
-        [NakedObjectsIgnore]
-        public virtual int TotalScoreB { get; set; }
+        public void AddScore(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
+        {
+            var hs = Container.NewTransientInstance<HoleScore>();
+            int[] handicaps = CalculateHandicap(hole);
+            int[] ParsForEach = CalculatePar(hole);
+            int[] Scores = { ScoreA, ScoreB, ScoreC, ScoreD };
+            AddScoreStableford(hole, Scores, hs, handicaps, ParsForEach);
+            Container.Persist(ref hs);
+            HoleScores.Add(hs);
+        }
 
-        [NakedObjectsIgnore]
-        public virtual int TotalScoreC { get; set; }
+        private int[] CalculatePar(Hole hole)
+        {
+            int[] ParsForEachG = new int[4];
+            for (int i = 0; i < 4; i++)
+            {
+                if (Golfers.ElementAt(i).Gender == Gender.Female)
+                {
+                    ParsForEachG[i] = 1;
+                }
+                else
+                {
+                    ParsForEachG[i] = 2;
+                }
+            }
+            return ParsForEachG;
+        }
 
-        [NakedObjectsIgnore]
-        public virtual int TotalScoreD { get; set; }
+        private int[] CalculateHandicap(Hole hole)
+        {
+            int[] Difficulties = new int[4];
+            for (int i = 0; i < 4; i++)
+            {
+                if (Golfers.ElementAt(i).Gender == Gender.Female)
+                {
+                    Difficulties[i] = 19 - hole.RedStrokeIndex;
+                }
+                else
+                {
+                    Difficulties[i] = 19 - hole.StrokeIndex;
+                }
+            }
+            int[] Handicaps = new int[4];
+            for (int i = 0; i < 4; i++)
+            {
+                Handicaps[i] = Golfers.ElementAt(i).Handicap - Difficulties[i];
+            }  
+            return Handicaps;
+        }
 
-        [NakedObjectsIgnore]
-        public virtual int ParA { get; set; }
-
-        [NakedObjectsIgnore]
-        public virtual int ParB { get; set; }
-
-        [NakedObjectsIgnore]
-        public virtual int ParC { get; set; }
-
-        [NakedObjectsIgnore]
-        public virtual int ParD { get; set; }
-
-        public void AddScoreStableford(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD, HoleScore hs, IDomainObjectContainer Container, int handiA, int handiB, int handiC, int handiD, int ParForM1, int ParForM2, int ParForM3, int ParForM4)
+        public void AddScoreStableford(Hole hole, int[] Scores, HoleScore hs, int[] handicaps ,int[] ParsForEachG)
         {
             hs.Hole = hole;
-            hs.GolferA = ScoreA;
-            hs.GolferB = ScoreB;
-            hs.GolferC = ScoreC;
-            hs.GolferD = ScoreD;
+            hs.GolferA = Scores[1];
+            hs.GolferB = Scores[2];
+            hs.GolferC = Scores[3];
+            hs.GolferD = Scores[4];
             HoleScores.Add(hs);
-            if (handiA >= 1)
+            int[] FinalPar = new int[4];
+            int[] TotalScores = new int[4];
+            for (int i = 0; i < 4; i++)
             {
-                if (handiA >= 18 & ParForM1 == 2)
-                {
-                    ParA = hs.Hole.Par + 2;
-                }
-                else if (handiA >= 1 & handiA < 18 & ParForM1 == 2)
-                {
-                    ParA = hs.Hole.Par + 1;
-                }
-                else if (handiA >= 18 & ParForM1 == 1)
-                {
-                    ParA = hs.Hole.RedPar + 2;
-                }
-                else if (handiA >= 1 & handiA < 18 & ParForM1 == 1)
-                {
-                    ParA = hs.Hole.RedPar + 1;
-                }
+                FinalPar[i] = ModifiedPar(hs, handicaps[i], ParsForEachG[i]);
             }
-            if (handiB >= 1)
+            for (int i = 0; i < 4; i++)
             {
-                if (handiB >= 18 & ParForM2 == 2)
-                {
-                    ParB = hs.Hole.Par + 2;
-                }
-                else if (handiB >= 1 & handiB < 18 & ParForM2 == 2)
-                {
-                    ParB = hs.Hole.Par + 1;
-                }
-                else if (handiB >= 18 & ParForM2 == 1)
-                {
-                    ParB = hs.Hole.RedPar + 2;
-                }
-                else if (handiB >= 1 & handiB < 18 & ParForM2 == 1)
-                {
-                    ParB = hs.Hole.RedPar + 1;
-                }
-            }
-            if (handiC >= 1)
-            {
-                if (handiC >= 18 & ParForM3 == 2)
-                {
-                    ParC = hs.Hole.Par + 2;
-                }
-                else if (handiC >= 1 & handiC < 18 & ParForM3 == 2)
-                {
-                    ParC = hs.Hole.Par + 1;
-                }
-                else if (handiC >= 18 & ParForM3 == 1)
-                {
-                    ParC = hs.Hole.RedPar + 2;
-                }
-                else if (handiC >= 1 & handiC < 18 & ParForM3 == 1)
-                {
-                    ParC = hs.Hole.RedPar + 1;
-                }
-            }
-            if (handiD >= 1)
-            {
-                if (handiD >= 18 & ParForM4 == 2)
-                {
-                    ParD = hs.Hole.Par + 2;
-                }
-                else if (handiD >= 1 & handiD < 18 & ParForM4 == 2)
-                {
-                    ParD = hs.Hole.Par + 1;
-                }
-                else if (handiD >= 18 & ParForM4 == 1)
-                {
-                    ParD = hs.Hole.RedPar + 2;
-                }
-                else if (handiD >= 1 & handiD < 18 & ParForM4 == 1)
-                {
-                    ParD = hs.Hole.RedPar + 1;
-                }
-            }
-            if (ScoreA - ParA == 1)
-            {
-                TotalScoreA += 1;
-            }
-            else if (ScoreA - ParA == 0)
-            {
-                TotalScoreA += 2;
-            }
-            else if (ScoreA - ParA < 0)
-            {
-                TotalScoreA += 3;
-            }
-            else
-            {
-                TotalScoreA += 0;
-            }
-            // works out how many points won by golfer A
-
-            if (ScoreB - ParB == 1)
-            {
-                TotalScoreB += 1;
-            }
-            else if (ScoreB - ParB == 0)
-            {
-                TotalScoreB += 2;
-            }
-            else if (ScoreB - ParB < 0)
-            {
-                TotalScoreB += 3;
-            }
-            else
-            {
-                TotalScoreB += 0;
-            }
-
-            if (ScoreC - ParC == 1)
-            {
-                TotalScoreC += 1;
-            }
-            else if (ScoreC - ParC == 0)
-            {
-                TotalScoreC += 2;
-            }
-            else if (ScoreC - ParC < 0)
-            {
-                TotalScoreC += 3;
-            }
-            else
-            {
-                TotalScoreC += 0;
-            }
-
-            if (ScoreD - ParD == 1)
-            {
-                TotalScoreD += 1;
-            }
-            else if (ScoreD - ParD == 0)
-            {
-                TotalScoreD += 2;
-            }
-            else if (ScoreD - ParD < 0)
-            {
-                TotalScoreD += 3;
-            }
-            else
-            {
-                TotalScoreD += 0;
+                TotalScores[i] += FindScore(Scores[i], FinalPar[i]);
             }
         }
+
+        private int FindScore(int Score, int Par)
+        {
+            int  TotalScore = 0;
+            if (Score - Par == 1)
+            {
+                TotalScore += 1;
+            }
+            else if (Score - Par == 0)
+            {
+                TotalScore += 2;
+            }
+            else if (Score - Par < 0)
+            {
+                TotalScore += 3;
+            }
+            else
+            {
+                TotalScore += 0;
+            }
+            return TotalScore;
+        }
+
+        private int ModifiedPar(HoleScore hs, int handi, int intitialPar)
+        {
+            int FinalPar = 0;
+            if (handi >= 1)
+            {
+                if (handi >= 18 & intitialPar == 2)
+                {
+                    FinalPar = hs.Hole.Par + 2;
+                }
+                else if (handi >= 1 & handi < 18 & intitialPar == 2)
+                {
+                    FinalPar = hs.Hole.Par + 1;
+                }
+                else if (handi >= 18 & intitialPar == 1)
+                {
+                    FinalPar = hs.Hole.RedPar + 2;
+                }
+                else if (handi >= 1 & handi < 18 & intitialPar == 1)
+                {
+                    FinalPar = hs.Hole.RedPar + 1;
+                }
+            }
+            return FinalPar;
+        }
+
         [NakedObjectsIgnore]
         public int FindWinnerStableFord()
         {
+            int Gwin = 0;
             List<int> Scores = new List<int>();
-            Scores.Add(TotalScoreA);
-            Scores.Add(TotalScoreB);
-            Scores.Add(TotalScoreC);
-            Scores.Add(TotalScoreD);
-            int gwin = 0;
-            if (Scores.Min() == TotalScoreA)
+            for (int i = 0; i < 4; i++)
             {
-                gwin = 0;
-                
+                Scores.Add(TotalScores[i]);
             }
-            else if (Scores.Min() == TotalScoreB)
+            for (int i = 0; i < 4; i++)
             {
-                gwin = 1;
-             
-            }
-            else if (Scores.Min() == TotalScoreC)
-            {
-                gwin = 2;
-                
-            }
-            else if (Scores.Min() == TotalScoreD)
-            {
-                gwin = 3;
-            }
-            return gwin;
+                if (Scores.Min() == TotalScores[i])
+                    Gwin = i;
+            }         
+            return Gwin;
         }
     }
-
 }
-
