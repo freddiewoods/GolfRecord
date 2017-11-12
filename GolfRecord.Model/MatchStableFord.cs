@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NakedObjects;
-using static GolfRecord.Model.Enums;
 
 namespace GolfRecord.Model
 {
@@ -26,9 +25,9 @@ namespace GolfRecord.Model
         private int[] CalculatePar(Hole hole)
         {
             int[] ParsForEachG = new int[4];
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
-                if (Golfers.ElementAt(i).Gender == Gender.Female)
+                if (Golfers.ElementAt(i).Gender == Enums.Gender.Female)
                 {
                     ParsForEachG[i] = 1;
                 }
@@ -43,9 +42,9 @@ namespace GolfRecord.Model
         private int[] CalculateHandicap(Hole hole)
         {
             int[] Difficulties = new int[4];
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
-                if (Golfers.ElementAt(i).Gender == Gender.Female)
+                if (Golfers.ElementAt(i).Gender == Enums.Gender.Female)
                 {
                     Difficulties[i] = 19 - hole.RedStrokeIndex;
                 }
@@ -55,7 +54,7 @@ namespace GolfRecord.Model
                 }
             }
             int[] Handicaps = new int[4];
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
                 Handicaps[i] = Golfers.ElementAt(i).Handicap - Difficulties[i];
             }  
@@ -72,11 +71,11 @@ namespace GolfRecord.Model
             HoleScores.Add(hs);
             int[] FinalPar = new int[4];
             int[] TotalScores = new int[4];
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
                 FinalPar[i] = ModifiedPar(hs, handicaps[i], ParsForEachG[i]);
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
                 TotalScores[i] += FindScore(Scores[i], FinalPar[i]);
             }
@@ -134,11 +133,11 @@ namespace GolfRecord.Model
         {
             int Gwin = 0;
             List<int> Scores = new List<int>();
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
                 Scores.Add(TotalScores[i]);
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
                 if (Scores.Min() == TotalScores[i])
                     Gwin = i;

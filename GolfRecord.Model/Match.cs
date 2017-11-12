@@ -56,9 +56,6 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]
         public virtual MatchStrokePlay MatchSP { get; set; }
 
-        [NakedObjectsIgnore]
-        public virtual int Gwin { get; set; }
-
         #region Add Golfers
         public void AddRegisteredGolfers(Golfer Golfer)
         {
@@ -79,7 +76,7 @@ namespace GolfRecord.Model
             }
             else
             {
-                Container.InformUser("Too many players in this match or golfer is alreadyin a match");
+                Container.InformUser("Too many players in this match or golfer is already in a match");
             }
         }
         [PageSize(3)]
@@ -117,7 +114,7 @@ namespace GolfRecord.Model
         }
         #endregion
 
-        #region HoleScores
+        #region HoleScoresStrokePlay/Stableford
         private ICollection<HoleScore> _HoleScores = new List<HoleScore>();
         [Hidden(WhenTo.UntilPersisted)]
         public virtual ICollection<HoleScore> HoleScores
@@ -163,8 +160,7 @@ namespace GolfRecord.Model
 
 
         #endregion
-
-        #region AddScores
+        #region AddScoresStrokePlay/StableFord
         public void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
             var hs = Container.NewTransientInstance<HoleScore>();
@@ -180,6 +176,10 @@ namespace GolfRecord.Model
                     MatchSP.TotalScoreD -= Golfers.ElementAt(3).Handicap;
                     Gwin = MatchSP.FindWinnerStrokePlay();
                     Winner = Golfers.ElementAt(Gwin);
+                    for (int i = 0; i < 5; i++)
+                    {
+                        Golfers.ElementAt(i).WithinMatch = false;
+                    }
                 }
                 //to do get this to add the match to each of the golfers (Find out what this match is called)     
             }
@@ -191,6 +191,10 @@ namespace GolfRecord.Model
                 if (hole.HoleNumber == Course.Holes.Count)
                 {
                     Golfers.First().MatchHistory.Add(match);
+                    for (int i = 0; i < 5; i++)
+                    {
+                        Golfers.ElementAt(i).WithinMatch = false;
+                    }
                 }
             }
         }
@@ -199,6 +203,7 @@ namespace GolfRecord.Model
             return (MatchType == MatchType.MatchPlay) | (Golfers.Count != 4);
             }
         #endregion
+
         #region MatchPlayScores
         private ICollection<HoleScoreMP> _HoleScoreMatchPlay = new List<HoleScoreMP>();
         [Hidden(WhenTo.UntilPersisted)]
@@ -269,10 +274,10 @@ namespace GolfRecord.Model
               
                 Gwin = MatchP.findWinnerMatchPlay();
                 Winner = Golfers.ElementAt(Gwin);
-                Golfers.ElementAt(0).WithinMatch = false;
-                Golfers.ElementAt(1).WithinMatch = false;
-                Golfers.ElementAt(2).WithinMatch = false;
-                Golfers.ElementAt(3).WithinMatch = false;
+                for (int i = 0; i < 5; i++)
+                {
+                    Golfers.ElementAt(i).WithinMatch = false;
+                }
             }
             Container.Persist(ref hs);
             HoleScoreMatchPlay.Add(hs);
