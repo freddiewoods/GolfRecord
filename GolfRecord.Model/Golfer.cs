@@ -19,10 +19,10 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]//Indicates that this property will never be seen in the UI
         public virtual int Id { get; set; }
 
-        [Optionally][Title][MemberOrder(1)]//This property will be used for the object's title at the top of the view and in a link
+        [Title][MemberOrder(1)]//This property will be used for the object's title at the top of the view and in a link
         public virtual string FullName { get; set; }
 
-        [Optionally][MemberOrder(2)] //this property is not neccessary
+        [MemberOrder(2)] //this property is not neccessary
         public virtual int Handicap { get; set; }
 
         [Optionally][MemberOrder(3)]

@@ -14,7 +14,7 @@ namespace GolfRecord.Model
         public int[] TotalScores = new int[4];
         public int Gwin;
 
-        public override void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
+        public void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
             var hs = Container.NewTransientInstance<HoleScore>();
             hs.Hole = hole;

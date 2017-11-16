@@ -1,30 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="GolfRecord.Model.Match" Collapsed="true">
+  <Class Name="GolfRecord.Model.Match">
     <Position X="6.25" Y="0.5" Width="1.5" />
+    <Members>
+      <Field Name="_Golfers" Hidden="true" />
+      <Field Name="_HoleScores" Hidden="true" />
+      <Property Name="Container" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Golfers" Type="GolfRecord.Model.Golfer" FixedToPoint="true">
+      <Path>
+        <Point X="7" Y="3.978" />
+        <Point X="7" Y="4.228" />
+        <Point X="8.5" Y="4.228" />
+        <Point X="8.5" Y="2.5" />
+        <Point X="10.625" Y="2.5" />
+        <Point X="10.625" Y="3.219" />
+        <Point X="11" Y="3.219" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>ACAAEgQIBAAggBIASIqACAQQgAAEgAQBgAQYAAASAAI=</HashCode>
+      <HashCode>ACAAEgQABAAAgBIACIqACAQQgAAEAAQAgAAYAAASAAA=</HashCode>
       <FileName>Match.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Course" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Golfers" />
+    </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="GolfRecord.Model.MatchPlay" Collapsed="true">
+  <Class Name="GolfRecord.Model.MatchPlay">
     <Position X="4.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAAAAAAAQAAAAAAAgAAAAAAgAAAAAAAQAAAAAA=</HashCode>
+      <HashCode>ACAAAAAIAAAgAQAAQAAAAgAQAAAAgAAAAAQAQAAAAAI=</HashCode>
       <FileName>MatchPlay.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GolfRecord.Model.MatchStableFord" Collapsed="true">
-    <Position X="6.25" Y="1.75" Width="1.5" />
+  <Class Name="GolfRecord.Model.MatchStableFord">
+    <Position X="2.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAABAAIQAAABAAAABAAAAAAAAAABAAAAABAAgAA=</HashCode>
+      <HashCode>AAAAAAABAAIQAAABAAAABAAAAAAAAAABAAAQABAAgAA=</HashCode>
       <FileName>MatchStableFord.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GolfRecord.Model.MatchStrokePlay" Collapsed="true">
-    <Position X="8" Y="1.75" Width="1.5" />
+  <Class Name="GolfRecord.Model.MatchStrokePlay">
+    <Position X="8.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAIAAAAAQAAAACAQAAgAAA=</HashCode>
+      <HashCode>AAAAAEAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAgCAA=</HashCode>
       <FileName>MatchStrokePlay.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -40,6 +66,28 @@
     <TypeIdentifier>
       <HashCode>AAAAAAQAAAAAAAgAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
       <FileName>HoleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GolfRecord.Model.Course" Collapsed="true">
+    <Position X="11" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AADCAAQAAQAAAgEIAAIAQAAAAAAAAAECAAAAAAAAAAA=</HashCode>
+      <FileName>Course.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GolfRecord.Model.Golfer">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <Members>
+      <Field Name="_Favourites" Hidden="true" />
+      <Field Name="_Friends" Hidden="true" />
+      <Field Name="_MatchHistory" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABECAAAAhTBAAICAAAAAAABQAAABAACAAIBAMIAAgAI=</HashCode>
+      <FileName>Golfer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

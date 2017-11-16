@@ -160,118 +160,12 @@ namespace GolfRecord.Model
 
 
         #endregion
-        #region AddScoresStrokePlay/StableFord
-        public virtual void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
-        {
-            var hs = Container.NewTransientInstance<HoleScore>();
-            if (MatchType == MatchType.StrokePlay)
-            {
-                MatchSP.AddScoreStrokePlay(hole, ScoreA, ScoreB, ScoreC, ScoreD, hs);
-                int Gwin = 0;
-                if (hole.HoleNumber == Course.Holes.Count)
-                {
-                    MatchSP.TotalScoreA -= Golfers.ElementAt(0).Handicap;
-                    MatchSP.TotalScoreB -= Golfers.ElementAt(1).Handicap;
-                    MatchSP.TotalScoreC -= Golfers.ElementAt(2).Handicap;
-                    MatchSP.TotalScoreD -= Golfers.ElementAt(3).Handicap;
-                    Gwin = MatchSP.FindWinnerStrokePlay();
-                    Winner = Golfers.ElementAt(Gwin);
-                    for (int i = 0; i < 5; i++)
-                    {
-                        Golfers.ElementAt(i).WithinMatch = false;
-                    }
-                }
-                //to do get this to add the match to each of the golfers (Find out what this match is called)     
-            }
-        }
+        #region HideAddScores()
+
         public bool HideAddScores()
             {
             return (MatchType == MatchType.MatchPlay) | (Golfers.Count != 4);
             }
-        #endregion
-
-        #region MatchPlayScores
-        private ICollection<HoleScoreMP> _HoleScoreMatchPlay = new List<HoleScoreMP>();
-        [Hidden(WhenTo.UntilPersisted)]
-        public virtual ICollection<HoleScoreMP> HoleScoreMatchPlay
-        {
-            get
-            {
-                return _HoleScoreMatchPlay;
-            }
-            set
-            {
-                _HoleScoreMatchPlay = value;
-            }
-        }
-        public IList<Hole> Choices0AddScoreMatchPlay()
-        {
-            return Course.Holes.ToList();
-        }
-        public Hole Default0AddScoreMatchPlay()
-        {
-            int nextHole = 1;
-            if (HoleScoreMatchPlay.Count > 0)
-            {
-                nextHole = HoleScoreMatchPlay.Max(hs => hs.Hole.HoleNumber) + 1;
-            }
-            return Course.Holes.First(h => h.HoleNumber == nextHole);
-        }
-
-        public bool HideHoleScoreMatchPlay()
-        {
-            return (MatchType!=MatchType.MatchPlay) | (Golfers.Count != 2);
-        }
-
-        #endregion
-        #region AddScoresForMatchPlay
-        public void AddScoreMatchPlay(Hole hole, int ScoreA, int ScoreB)
-        {
-            var hs = Container.NewTransientInstance<HoleScoreMP>();
- 
-            int Gwin = 0;
-            int Difficulty1 = 0;
-            int Difficulty2 = 0;
-        
-            if (Golfers.ElementAt(0).Gender == Gender.Female)
-            {
-               
-                Difficulty1 = 19 - hole.RedStrokeIndex;
-            }
-            else
-            {
-                
-                Difficulty1 = 19 - hole.StrokeIndex;
-            }
-            if (Golfers.ElementAt(1).Gender == Gender.Female)
-            {
-                
-                Difficulty2 = 19 - hole.RedStrokeIndex;
-            }
-            else 
-            {   
-                Difficulty2 = 19 - hole.StrokeIndex;
-            }
-            int handiA = Golfers.First().Handicap -Difficulty1;
-            int handiB = Golfers.Last().Handicap - Difficulty2;
-            MatchP.AddScoreMatchPlay(hole, ScoreA, ScoreB, hs, Container, handiA, handiB);
-            if (hole.HoleNumber == Course.Holes.Count)
-            {
-              
-                Gwin = MatchP.findWinnerMatchPlay();
-                Winner = Golfers.ElementAt(Gwin);
-                for (int i = 0; i < 5; i++)
-                {
-                    Golfers.ElementAt(i).WithinMatch = false;
-                }
-            }
-            Container.Persist(ref hs);
-            HoleScoreMatchPlay.Add(hs);
-        }
-        public bool HideAddScoreMatchPlay()
-        {
-            return MatchType != MatchType.MatchPlay;
-        }
-        #endregion
+        #endregion  
     }
 }

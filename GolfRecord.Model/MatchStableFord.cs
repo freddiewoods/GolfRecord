@@ -10,7 +10,7 @@ namespace GolfRecord.Model
     public class MatchStableFord : Match
     {
         public int[] TotalScores;
-        public override void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
+        public void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
             var hs = Container.NewTransientInstance<HoleScore>();
             int[] handicaps = CalculateHandicapForEachGolfer(hole);
@@ -152,5 +152,12 @@ namespace GolfRecord.Model
             }         
             return Gwin;
         }
+
+        #region HideAddScores()
+        public bool HideAddScores()
+        {
+            return (Golfers.Count != 4);
+        }
+        #endregion  
     }
 }
