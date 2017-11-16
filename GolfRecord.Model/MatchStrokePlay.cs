@@ -10,53 +10,54 @@ namespace GolfRecord.Model
 {
     public class MatchStrokePlay : Match 
     {
+        public int[] InitialScorePerHole = new int[4];
+        public int[] TotalScores = new int[4];
+        public int Gwin;
 
-        public virtual int TotalScoreA { get; set; }
-
-        public virtual int TotalScoreB { get; set; }
-
-        public virtual int TotalScoreC { get; set; }
-
-        public virtual int TotalScoreD { get; set; }
-
-        public void AddScoreStrokePlay(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD, HoleScore hs)
+        public override void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
+            var hs = Container.NewTransientInstance<HoleScore>();
             hs.Hole = hole;
-            hs.GolferA = ScoreA;
-            hs.GolferB = ScoreB;
-            hs.GolferC = ScoreC;
-            hs.GolferD = ScoreD;
+            hs.GolferA = InitialScorePerHole[0];
+            hs.GolferB = InitialScorePerHole[1];
+            hs.GolferC = InitialScorePerHole[2];
+            hs.GolferD = InitialScorePerHole[3];
             HoleScores.Add(hs);
-            TotalScoreA += ScoreA;
-            TotalScoreB += ScoreB;
-            TotalScoreC += ScoreC;
-            TotalScoreD += ScoreD;
+            for (int i = 0; i < 4; i++)
+            {
+                TotalScores[i] = InitialScorePerHole[i];
+            }
+            if (hole.HoleNumber == Course.Holes.Count)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    TotalScores[i] -= Golfers.ElementAt(i).Handicap;
+                }
+                int Gwin = FindWinnerStrokePlay();
+                Winner = Golfers.ElementAt(Gwin);
+                for (int i = 0; i < 4; i++)
+                {
+                    Golfers.ElementAt(i).WithinMatch = false;
+                }
+            }
         }
         [NakedObjectsIgnore]
         public int FindWinnerStrokePlay()
         {
             List<int> Scores = new List<int>();
-            Scores.Add(TotalScoreA);
-            Scores.Add(TotalScoreB);
-            Scores.Add(TotalScoreC);
-            Scores.Add(TotalScoreD);
-            if (Scores.Min() == TotalScoreA)
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                Scores.Add(TotalScores[i]);
             }
-            else if (Scores.Min() == TotalScoreB)
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
+                if (Scores.Min() == TotalScores[i])
+                {
+                    Gwin = i;
+                }
             }
-            else if (Scores.Min() == TotalScoreC)
-            {
-                return 2;
-            }
-            else if (Scores.Min() == TotalScoreD)
-            {
-                return 3;
-            }
-            return 1;
+            return Gwin;
+                      
         }
 
     }

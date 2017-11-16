@@ -197,8 +197,21 @@ namespace GolfRecord.DataBase
             return (g2);
         }
         private Match AddNewMatch(string name, DateTime date, int courseID, MatchType matchType = MatchType.StrokePlay)
-        {
-            var m = new Match() { MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType };
+        {// work for each match type
+            switch (matchType)
+            {
+                case MatchType.StrokePlay:
+                    var m1 = new MatchStrokePlay() { MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType };
+                    break;
+                case MatchType.MatchPlay:
+                    var m2 = new MatchPlay() { MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType };
+                    break;
+                case MatchType.StableFord:
+                    var m3 = new MatchStableFord() { MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType };
+                    break;
+                default:
+                    break;
+            }
             Context.Matches.Add(m);
             return (m);
         }

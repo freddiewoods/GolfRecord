@@ -161,7 +161,7 @@ namespace GolfRecord.Model
 
         #endregion
         #region AddScoresStrokePlay/StableFord
-        public void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
+        public virtual void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
             var hs = Container.NewTransientInstance<HoleScore>();
             if (MatchType == MatchType.StrokePlay)
@@ -182,20 +182,6 @@ namespace GolfRecord.Model
                     }
                 }
                 //to do get this to add the match to each of the golfers (Find out what this match is called)     
-            }
-            else if (MatchType == MatchType.StableFord)
-            {
-                MatchStableFord match = Container.NewTransientInstance<MatchStableFord>();            
-                match.AddScore(hole, ScoreA, ScoreB, ScoreC, ScoreD);
-                Container.Persist(ref match);
-                if (hole.HoleNumber == Course.Holes.Count)
-                {
-                    Golfers.First().MatchHistory.Add(match);
-                    for (int i = 0; i < 5; i++)
-                    {
-                        Golfers.ElementAt(i).WithinMatch = false;
-                    }
-                }
             }
         }
         public bool HideAddScores()

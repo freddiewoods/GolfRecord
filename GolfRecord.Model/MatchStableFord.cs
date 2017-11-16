@@ -10,19 +10,26 @@ namespace GolfRecord.Model
     public class MatchStableFord : Match
     {
         public int[] TotalScores;
-
-        public void AddScore(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
+        public override void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
             var hs = Container.NewTransientInstance<HoleScore>();
-            int[] handicaps = CalculateHandicap(hole);
-            int[] ParsForEach = CalculatePar(hole);
+            int[] handicaps = CalculateHandicapForEachGolfer(hole);
+            int[] ParsForEach = CalculateParForEachGolfer(hole);
             int[] Scores = { ScoreA, ScoreB, ScoreC, ScoreD };
-            AddScoreStableford(hole, Scores, hs, handicaps, ParsForEach);
+            ScoresAddedToHs(hole, Scores, hs, handicaps, ParsForEach);
             Container.Persist(ref hs);
             HoleScores.Add(hs);
+            if (hole.HoleNumber == Course.Holes.Count)
+            {
+                Golfers.First().MatchHistory.Add(this);
+                for (int i = 0; i < 5; i++)
+                {
+                    Golfers.ElementAt(i).WithinMatch = false;
+                }
+            }
         }
 
-        private int[] CalculatePar(Hole hole)
+        private int[] CalculateParForEachGolfer(Hole hole)
         {
             int[] ParsForEachG = new int[4];
             for (int i = 0; i < 5; i++)
@@ -39,7 +46,7 @@ namespace GolfRecord.Model
             return ParsForEachG;
         }
 
-        private int[] CalculateHandicap(Hole hole)
+        private int[] CalculateHandicapForEachGolfer(Hole hole)
         {
             int[] Difficulties = new int[4];
             for (int i = 0; i < 5; i++)
@@ -61,7 +68,8 @@ namespace GolfRecord.Model
             return Handicaps;
         }
 
-        public void AddScoreStableford(Hole hole, int[] Scores, HoleScore hs, int[] handicaps ,int[] ParsForEachG)
+        [NakedObjectsIgnore]
+        public void ScoresAddedToHs(Hole hole, int[] Scores, HoleScore hs, int[] handicaps ,int[] ParsForEachG)
         {
             hs.Hole = hole;
             hs.GolferA = Scores[1];
@@ -129,7 +137,7 @@ namespace GolfRecord.Model
         }
 
         [NakedObjectsIgnore]
-        public int FindWinnerStableFord()
+        public int FindWinner()
         {
             int Gwin = 0;
             List<int> Scores = new List<int>();

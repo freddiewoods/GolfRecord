@@ -61,7 +61,6 @@
     <Compile Include="Course.cs" />
     <Compile Include="CourseConfig.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="Foursome.cs" />
     <Compile Include="Golfer.cs" />
     <Compile Include="GolferConfig.cs" />
     <Compile Include="Hole.cs" />
@@ -75,6 +74,7 @@
     <Compile Include="HoleScore.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Diagram of Inheritence.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

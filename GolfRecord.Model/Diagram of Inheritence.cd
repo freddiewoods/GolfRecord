@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GolfRecord.Model.Match" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAEgQIBAAggBIASIqACAQQgAAEgAQBgAQYAAASAAI=</HashCode>
+      <FileName>Match.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GolfRecord.Model.MatchPlay" Collapsed="true">
+    <Position X="4.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAQAAAAAAAgAAAAAAgAAAAAAAQAAAAAA=</HashCode>
+      <FileName>MatchPlay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GolfRecord.Model.MatchStableFord" Collapsed="true">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAIQAAABAAAABAAAAAAAAAABAAAAABAAgAA=</HashCode>
+      <FileName>MatchStableFord.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GolfRecord.Model.MatchStrokePlay" Collapsed="true">
+    <Position X="8" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAIAAAAAQAAAACAQAAgAAA=</HashCode>
+      <FileName>MatchStrokePlay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GolfRecord.Model.Hole" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAACIAAAAAkAACAAAAAQAAAAAAAAABBAAAAAAEAA=</HashCode>
+      <FileName>Hole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GolfRecord.Model.HoleConfig" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAgAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>HoleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
