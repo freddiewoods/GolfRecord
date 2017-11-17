@@ -1,0 +1,15 @@
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.FavouriteClub
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+ERROR 8 NakedObjects.Meta.Component.Metamodel - Failed to Load Specification for: System.Data.Entity.DynamicProxies.MatchStrokePlay_671590F7478A964063D2346E083C998AD663C3EBC941AE5B29BBCAD1A358FD0C error: unexpected null
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.FavouriteClub
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+ERROR 20 NakedObjects.Meta.Component.Metamodel - Failed to Load Specification for: System.Data.Entity.DynamicProxies.MatchStrokePlay_671590F7478A964063D2346E083C998AD663C3EBC941AE5B29BBCAD1A358FD0C error: unexpected null
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.FavouriteClub
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+ERROR 6 NakedObjects.Meta.Component.Metamodel - Failed to Load Specification for: System.Data.Entity.DynamicProxies.MatchStrokePlay_671590F7478A964063D2346E083C998AD663C3EBC941AE5B29BBCAD1A358FD0C error: unexpected null
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.FavouriteClub
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.ActionMethodsFacetFactory - Ignoring method: GolfRecord.Model.MatchPlay.AddScoreMatchPlay because parameter 'Container' is of type NakedObjects.IDomainObjectContainer
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.FavouriteClub
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.ActionMethodsFacetFactory - Ignoring method: GolfRecord.Model.MatchPlay.AddScoreMatchPlay because parameter 'Container' is of type NakedObjects.IDomainObjectContainer

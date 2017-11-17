@@ -18,10 +18,11 @@ namespace GolfRecord.Model
         {
             var hs = Container.NewTransientInstance<HoleScore>();
             hs.Hole = hole;
-            hs.GolferA = InitialScorePerHole[0];
-            hs.GolferB = InitialScorePerHole[1];
-            hs.GolferC = InitialScorePerHole[2];
-            hs.GolferD = InitialScorePerHole[3];
+            int[] scores = { ScoreA, ScoreB, ScoreC, ScoreD };
+            for (int i = 0; i < 4; i++)
+            {
+                hs.GolferScores[i] = scores[i];
+            }
             HoleScores.Add(hs);
             for (int i = 0; i < 4; i++)
             {
@@ -59,6 +60,12 @@ namespace GolfRecord.Model
             return Gwin;
                       
         }
+        #region HideAddScores()
 
+        public bool HideAddScores()
+        {
+            return (Golfers.Count != 4);
+        }
+        #endregion 
     }
 }

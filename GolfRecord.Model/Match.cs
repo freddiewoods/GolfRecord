@@ -160,12 +160,5 @@ namespace GolfRecord.Model
 
 
         #endregion
-        #region HideAddScores()
-
-        public bool HideAddScores()
-            {
-            return (MatchType == MatchType.MatchPlay) | (Golfers.Count != 4);
-            }
-        #endregion  
     }
 }

@@ -72,10 +72,10 @@ namespace GolfRecord.Model
         public void ScoresAddedToHs(Hole hole, int[] Scores, HoleScore hs, int[] handicaps ,int[] ParsForEachG)
         {
             hs.Hole = hole;
-            hs.GolferA = Scores[1];
-            hs.GolferB = Scores[2];
-            hs.GolferC = Scores[3];
-            hs.GolferD = Scores[4];
+            for (int i = 0; i < 4; i++)
+            {
+                hs.GolferScores[i] = Scores[i];
+            }
             HoleScores.Add(hs);
             int[] FinalPar = new int[4];
             int[] TotalScores = new int[4];

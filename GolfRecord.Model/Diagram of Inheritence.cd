@@ -15,15 +15,15 @@
       <Path>
         <Point X="7" Y="3.978" />
         <Point X="7" Y="4.228" />
-        <Point X="8.5" Y="4.228" />
-        <Point X="8.5" Y="2.5" />
+        <Point X="8.125" Y="4.228" />
+        <Point X="8.125" Y="2.5" />
         <Point X="10.625" Y="2.5" />
         <Point X="10.625" Y="3.219" />
         <Point X="11" Y="3.219" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>ACAAEgQABAAAgBIACIqACAQQgAAEAAQAgAAYAAASAAA=</HashCode>
+      <HashCode>ACAAEgQABAAAgBIACIqACAQQgAAEAAQAgAAIAAASAAA=</HashCode>
       <FileName>Match.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -36,7 +36,7 @@
   <Class Name="GolfRecord.Model.MatchPlay">
     <Position X="4.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAIAAAgAQAAQAAAAgAQAAAAgAAAAAQAQAAAAAI=</HashCode>
+      <HashCode>ACAAAAAAAAAAAQAAAAAAAgAAAAAAgAABAAAAQAAAAAA=</HashCode>
       <FileName>MatchPlay.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -50,7 +50,7 @@
   <Class Name="GolfRecord.Model.MatchStrokePlay">
     <Position X="8.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAAAABAAAAAAAAAAAAAAABAAAAAAAgCAA=</HashCode>
+      <HashCode>AAAAAEAAAAAAAAABAAAAAAAAAAAAAAABAAAQAAAgCAA=</HashCode>
       <FileName>MatchStrokePlay.cs</FileName>
     </TypeIdentifier>
   </Class>

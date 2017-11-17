@@ -17,13 +17,7 @@ namespace GolfRecord.Model
 
         public virtual Hole Hole { get; set; }
 
-        public virtual int GolferA { get; set; }
-
-        public virtual int GolferB { get; set; }
-
-        public virtual int GolferC { get; set; }
-
-        public virtual int GolferD { get; set; }
+        public virtual int[] GolferScores { get; set; }
 
 
     }
