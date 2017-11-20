@@ -13,9 +13,9 @@
     </Compartments>
     <AssociationLine Name="Golfers" Type="GolfRecord.Model.Golfer" FixedToPoint="true">
       <Path>
-        <Point X="7" Y="3.978" />
-        <Point X="7" Y="4.228" />
-        <Point X="8.125" Y="4.228" />
+        <Point X="7" Y="3.594" />
+        <Point X="7" Y="3.844" />
+        <Point X="8.125" Y="3.844" />
         <Point X="8.125" Y="2.5" />
         <Point X="10.625" Y="2.5" />
         <Point X="10.625" Y="3.219" />
@@ -23,7 +23,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>ACAAEgQABAAAgBIACIqACAQQgAAEAAQAgAAIAAASAAA=</HashCode>
+      <HashCode>ACAAEAQABAAAgBIACIqACAQQgAAEAAQAgAAAAAAQAAA=</HashCode>
       <FileName>Match.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -36,7 +36,7 @@
   <Class Name="GolfRecord.Model.MatchPlay">
     <Position X="4.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAAAAAAAQAAAAAAAgAAAAAAgAABAAAAQAAAAAA=</HashCode>
+      <HashCode>AAAAIAAAgBAAAAAAAAAAAgAAAAAAAACBAAAAAAAAAAI=</HashCode>
       <FileName>MatchPlay.cs</FileName>
     </TypeIdentifier>
   </Class>

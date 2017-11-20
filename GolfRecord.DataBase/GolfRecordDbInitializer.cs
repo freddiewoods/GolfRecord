@@ -214,6 +214,7 @@ namespace GolfRecord.DataBase
                     break;
             }
             Context.Matches.Add(m);
+            Context.SaveChanges();
             return (m);
         }
         private Course AddNewCourse(string CourseName, string Location, string WebsiteLink, string ShortParagraph, double rating, string address, int par, int yardage, string Phone)

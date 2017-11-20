@@ -12,7 +12,7 @@ namespace GolfRecord.Model
         public int[] TotalScores;
         public void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
-            var hs = Container.NewTransientInstance<HoleScore>();
+            var hs = Container.NewTransientInstance<FourPlayerHoleScore>();
             int[] handicaps = CalculateHandicapForEachGolfer(hole);
             int[] ParsForEach = CalculateParForEachGolfer(hole);
             int[] Scores = { ScoreA, ScoreB, ScoreC, ScoreD };
@@ -69,21 +69,22 @@ namespace GolfRecord.Model
         }
 
         [NakedObjectsIgnore]
-        public void ScoresAddedToHs(Hole hole, int[] Scores, HoleScore hs, int[] handicaps ,int[] ParsForEachG)
+        public void ScoresAddedToHs(Hole hole, int[] Scores, FourPlayerHoleScore hs, int[] handicaps ,int[] ParsForEachG)
         {
+            int[] ScoreGolfer = { hs.ScoreGolferA, hs.ScoreGolferB, hs.ScoreGolferC, hs.ScoreGolferD };
             hs.Hole = hole;
             for (int i = 0; i < 4; i++)
             {
-                hs.GolferScores[i] = Scores[i];
+                ScoreGolfer[i] = Scores[i];
             }
             HoleScores.Add(hs);
             int[] FinalPar = new int[4];
             int[] TotalScores = new int[4];
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 FinalPar[i] = ModifiedPar(hs, handicaps[i], ParsForEachG[i]);
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 TotalScores[i] += FindScore(Scores[i], FinalPar[i]);
             }
@@ -111,7 +112,7 @@ namespace GolfRecord.Model
             return TotalScore;
         }
 
-        private int ModifiedPar(HoleScore hs, int handi, int intitialPar)
+        private int ModifiedPar(FourPlayerHoleScore hs, int handi, int intitialPar)
         {
             int FinalPar = 0;
             if (handi >= 1)

@@ -16,12 +16,14 @@ namespace GolfRecord.Model
 
         public void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
-            var hs = Container.NewTransientInstance<HoleScore>();
+            var hs = Container.NewTransientInstance<FourPlayerHoleScore>();
+            Container.Persist(ref hs);
             hs.Hole = hole;
             int[] scores = { ScoreA, ScoreB, ScoreC, ScoreD };
+            int[] ScoreGolfer = { hs.ScoreGolferA, hs.ScoreGolferB, hs.ScoreGolferC, hs.ScoreGolferD };
             for (int i = 0; i < 4; i++)
             {
-                hs.GolferScores[i] = scores[i];
+                ScoreGolfer[i] = scores[i];
             }
             HoleScores.Add(hs);
             for (int i = 0; i < 4; i++)
@@ -42,6 +44,8 @@ namespace GolfRecord.Model
                 }
             }
         }
+
+
         [NakedObjectsIgnore]
         public int FindWinnerStrokePlay()
         {
@@ -60,6 +64,8 @@ namespace GolfRecord.Model
             return Gwin;
                       
         }
+
+
         #region HideAddScores()
 
         public bool HideAddScores()

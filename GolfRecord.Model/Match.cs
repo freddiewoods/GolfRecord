@@ -51,11 +51,6 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]
         public virtual bool Completed { get; set; }
 
-        [NakedObjectsIgnore]
-        public virtual MatchPlay MatchP { get; set; }
-        [NakedObjectsIgnore]
-        public virtual MatchStrokePlay MatchSP { get; set; }
-
         #region Add Golfers
         public void AddRegisteredGolfers(Golfer Golfer)
         {
@@ -114,10 +109,10 @@ namespace GolfRecord.Model
         }
         #endregion
 
-        #region HoleScoresStrokePlay/Stableford
-        private ICollection<HoleScore> _HoleScores = new List<HoleScore>();
+        #region HoleScores
+        private ICollection<HoleScoreAbstract> _HoleScores = new List<HoleScoreAbstract>();
         [Hidden(WhenTo.UntilPersisted)]
-        public virtual ICollection<HoleScore> HoleScores
+        public virtual ICollection<HoleScoreAbstract> HoleScores
         {
             get
             {
@@ -153,10 +148,6 @@ namespace GolfRecord.Model
             return Course.Holes.First(h => h.HoleNumber == nextHole);
         }
 
-        public bool HideHoleScores()
-        {
-            return MatchType == MatchType.MatchPlay;
-        }
 
 
         #endregion
