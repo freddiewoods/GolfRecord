@@ -13,6 +13,13 @@ namespace GolfRecord.Model
         public void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
             var hs = Container.NewTransientInstance<FourPlayerHoleScore>();
+            Container.Persist(ref hs);
+            hs.ScoreGolferA = ScoreA;
+            hs.ScoreGolferB = ScoreB;
+            hs.ScoreGolferC = ScoreC;
+            hs.ScoreGolferD = ScoreD;
+            hs.Hole = hole;
+            HoleScores.Add(hs);
             int[] handicaps = CalculateHandicapForEachGolfer(hole);
             int[] ParsForEach = CalculateParForEachGolfer(hole);
             int[] Scores = { ScoreA, ScoreB, ScoreC, ScoreD };
@@ -22,7 +29,8 @@ namespace GolfRecord.Model
             if (hole.HoleNumber == Course.Holes.Count)
             {
                 Golfers.First().MatchHistory.Add(this);
-                for (int i = 0; i < 5; i++)
+                Winner = Golfers.ElementAt(FindWinner());
+                for (int i = 0; i < 4; i++)
                 {
                     Golfers.ElementAt(i).WithinMatch = false;
                 }
@@ -32,7 +40,7 @@ namespace GolfRecord.Model
         private int[] CalculateParForEachGolfer(Hole hole)
         {
             int[] ParsForEachG = new int[4];
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 if (Golfers.ElementAt(i).Gender == Enums.Gender.Female)
                 {
@@ -49,7 +57,7 @@ namespace GolfRecord.Model
         private int[] CalculateHandicapForEachGolfer(Hole hole)
         {
             int[] Difficulties = new int[4];
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 if (Golfers.ElementAt(i).Gender == Enums.Gender.Female)
                 {
@@ -61,7 +69,7 @@ namespace GolfRecord.Model
                 }
             }
             int[] Handicaps = new int[4];
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
                 Handicaps[i] = Golfers.ElementAt(i).Handicap - Difficulties[i];
             }  
@@ -71,13 +79,7 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]
         public void ScoresAddedToHs(Hole hole, int[] Scores, FourPlayerHoleScore hs, int[] handicaps ,int[] ParsForEachG)
         {
-            int[] ScoreGolfer = { hs.ScoreGolferA, hs.ScoreGolferB, hs.ScoreGolferC, hs.ScoreGolferD };
-            hs.Hole = hole;
-            for (int i = 0; i < 4; i++)
-            {
-                ScoreGolfer[i] = Scores[i];
-            }
-            HoleScores.Add(hs);
+            
             int[] FinalPar = new int[4];
             int[] TotalScores = new int[4];
             for (int i = 0; i < 4; i++)

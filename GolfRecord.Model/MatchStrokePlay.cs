@@ -17,14 +17,13 @@ namespace GolfRecord.Model
         public void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
             var hs = Container.NewTransientInstance<FourPlayerHoleScore>();
-            Container.Persist(ref hs);
             hs.Hole = hole;
-            int[] scores = { ScoreA, ScoreB, ScoreC, ScoreD };
-            int[] ScoreGolfer = { hs.ScoreGolferA, hs.ScoreGolferB, hs.ScoreGolferC, hs.ScoreGolferD };
-            for (int i = 0; i < 4; i++)
-            {
-                ScoreGolfer[i] = scores[i];
-            }
+            Container.Persist(ref hs);
+            hs.ScoreGolferA = ScoreA;
+            hs.ScoreGolferB = ScoreB;
+            hs.ScoreGolferC = ScoreC;
+            hs.ScoreGolferD = ScoreD;
+
             HoleScores.Add(hs);
             for (int i = 0; i < 4; i++)
             {
