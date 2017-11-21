@@ -23,7 +23,6 @@ namespace GolfRecord.Model
             hs.ScoreGolferB = ScoreB;
             hs.ScoreGolferC = ScoreC;
             hs.ScoreGolferD = ScoreD;
-
             HoleScores.Add(hs);
             for (int i = 0; i < 4; i++)
             {
@@ -41,6 +40,7 @@ namespace GolfRecord.Model
                 {
                     Golfers.ElementAt(i).WithinMatch = false;
                 }
+                Golfers.First().MatchHistory.Add(this);
             }
         }
 

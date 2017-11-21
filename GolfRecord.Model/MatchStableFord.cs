@@ -143,15 +143,12 @@ namespace GolfRecord.Model
         public int FindWinner()
         {
             int Gwin = 0;
-            List<int> Scores = new List<int>();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
-                Scores.Add(TotalScores[i]);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                if (Scores.Min() == TotalScores[i])
+                if (TotalScores.Min() == TotalScores[i])
+                {
                     Gwin = i;
+                }
             }         
             return Gwin;
         }
