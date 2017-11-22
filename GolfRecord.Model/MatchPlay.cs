@@ -24,13 +24,14 @@ namespace GolfRecord.Model
             ScoreCalculation(hole, Scores, hs);
             if (hole.HoleNumber == Course.Holes.Count)
             {
-
                 int Gwin = findWinnerMatchPlay();
                 Winner = Golfers.ElementAt(Gwin);
                 for (int i = 0; i < 2; i++)
                 {
                     Golfers.ElementAt(i).WithinMatch = false;
+                    Golfers.ElementAt(i).MatchHistory.Add(this);
                 }
+                
             }
             Container.Persist(ref hs);
             HoleScores.Add(hs);

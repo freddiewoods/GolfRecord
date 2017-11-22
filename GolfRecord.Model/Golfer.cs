@@ -94,7 +94,7 @@ namespace GolfRecord.Model
         #endregion
 
         #region MatchHistory (collection)
-        private ICollection<Match> _MatchHistory = new List<Match>();
+        public  ICollection<Match> _MatchHistory = new List<Match>();
 
         public virtual ICollection<Match> MatchHistory
         {
