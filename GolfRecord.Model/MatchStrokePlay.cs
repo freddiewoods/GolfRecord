@@ -39,7 +39,9 @@ namespace GolfRecord.Model
                 for (int i = 0; i < 4; i++)
                 {
                     Golfers.ElementAt(i).WithinMatch = false;
-                    Golfers.ElementAt(i).MatchHistory.Add(this);
+                    Golfers.ElementAt(i).AddMatchHistory(this);
+                    //temp delete
+                    int hist = Golfers.ElementAt(i).MatchHistory.Count();
                 }
             }
         }

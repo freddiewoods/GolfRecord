@@ -18,8 +18,8 @@
         <Point X="8.125" Y="3.844" />
         <Point X="8.125" Y="2.5" />
         <Point X="10.625" Y="2.5" />
-        <Point X="10.625" Y="3.219" />
-        <Point X="11" Y="3.219" />
+        <Point X="10.625" Y="3.134" />
+        <Point X="11" Y="3.134" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -79,14 +79,13 @@
     <Position X="11" Y="1.5" Width="1.5" />
     <Members>
       <Field Name="_Favourites" Hidden="true" />
-      <Field Name="_Friends" Hidden="true" />
       <Field Name="_MatchHistory" Hidden="true" />
     </Members>
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>ABECAAAAhTBAAICAAAAAAABQAAABAACAAIBAMIAAgAI=</HashCode>
+      <HashCode>ABACAAAAhTBAAICAAAAAAABQAAAAAACAAIBAEIAAgAI=</HashCode>
       <FileName>Golfer.cs</FileName>
     </TypeIdentifier>
   </Class>

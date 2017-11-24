@@ -42,6 +42,19 @@ namespace GolfRecord.DataBase
 
         }
 
+        private void DefineGolferMatch(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Match>()
+                .HasMany(x => x.Golfers)
+                .WithMany(x => x.MatchHistory)
+            .Map(x =>
+            {
+                x.ToTable("GolferMatch"); // third table is named GolferMatch
+        x.MapLeftKey("GolferId");
+                x.MapRightKey("MatchId");
+            });
+        }
+
         private void DefineGolfer(EntityTypeConfiguration<Golfer> golferconfiguration)
         {
             golferconfiguration.ToTable("PLAYERS");

@@ -67,31 +67,31 @@ namespace GolfRecord.Model
             return CourseConfig.ShowExistingCourses().Where(c => c.CourseName.Contains(matching));
         }
         #endregion
-        #region Friends (collection)
-        private ICollection<Golfer> _Friends = new List<Golfer>();
+      //#region Friends (collection)
+      //  private ICollection<Golfer> _Friends = new List<Golfer>();
 
-        public virtual ICollection<Golfer> Friends
-        {
-            get
-            {
-                return _Friends;
-            }
-            set
-            {
-                _Friends = value;
-            }
-        }
+      //  public virtual ICollection<Golfer> Friends
+      //  {
+      //      get
+      //      {
+      //          return _Friends;
+      //      }
+      //      set
+      //      {
+      //          _Friends = value;
+      //      }
+      //  }
      
-        public void AddFriend(Golfer golfer)
-        {
-            Friends.Add(golfer);
-        }
-        [PageSize(3)]
-        public IQueryable<Golfer> AutoComplete0AddFriend([MinLength(2)] string matching)
-        {
-            return GolferConfig.AllGolfers().Where(g => g.FullName.Contains(matching));
-        }
-        #endregion
+      //  public void AddFriend(Golfer golfer)
+      //  {
+      //      Friends.Add(golfer);
+      //  }
+      //  [PageSize(3)]
+      //  public IQueryable<Golfer> AutoComplete0AddFriend([MinLength(2)] string matching)
+      //  {
+      //      return GolferConfig.AllGolfers().Where(g => g.FullName.Contains(matching));
+      //  }
+      //  #endregion
 
         #region MatchHistory (collection)
         private  ICollection<Match> _MatchHistory = new List<Match>();
