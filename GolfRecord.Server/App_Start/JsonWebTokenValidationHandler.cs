@@ -1,4 +1,4 @@
-namespace NakedObjects.GolfRecord.App_Start
+namespace NakedObjects.GolfRecord
 {
     using System;
     using System.Collections.Generic;
