@@ -26,7 +26,11 @@ namespace GolfRecord.Model
             //dealing with the database directly.
             return Container.Instances<Golfer>();
         }
-
+        public Golfer Me()
+        {
+            var username = Container.Principal.Identity.Name;
+            return AllGolfers().Where(g => g.Username.ToUpper().Contains(username.ToUpper())).SingleOrDefault();
+        }
         public IQueryable<Golfer> FindGolferByName(string name)
         {
             //Filters students to find a match to play

@@ -170,11 +170,12 @@ namespace GolfRecord.DataBase
             AddNewGolfer(s11, "Noah Castillo", 6, "01728 123412", "Noah@isky.com", FavouriteClub.PitchingWedge, Gender.Male);
             AddNewGolfer(s11, "Cody Turner", 6, "01383 132414", "Turner@tt.com", FavouriteClub.None, Gender.Male);
             AddNewGolfer(s11, "Aidan Hopkins", 5, "01256 122122", "Aidan.Hopkins@asd.com", FavouriteClub.Sandwedge, Gender.Male);
-            Context.SaveChanges();
+            
 
 
 
-            AddNewGolfer2("Peter Miller",1,"08188 464638","Mille@Fmail.com", FavouriteClub.None, Gender.Male);
+            AddNewGolfer2("Peter Miller",1,"08188 464638","Mille@Fmail.com", FavouriteClub.None, Gender.Male, "wooodssy@gmail.com");
+            context.SaveChanges();
             //Add Scores.
 
 
@@ -189,9 +190,9 @@ namespace GolfRecord.DataBase
             m.Golfers.Add(g);
             return (g);
         }
-        private Golfer AddNewGolfer2( string name, int handi, string mobile, string mail, FavouriteClub favouriteclub, Gender gender, bool withinmatch = true)
+        private Golfer AddNewGolfer2(string name, int handi, string mobile, string mail, FavouriteClub favouriteclub, Gender gender, string username = "", bool withinmatch = true)
         {
-            var g2 = new Golfer() { FullName = name, Handicap = handi, Email = mail, Mobile = mobile, FavouriteClub = favouriteclub, Gender = gender };
+            var g2 = new Golfer() { FullName = name, Handicap = handi, Email = mail, Mobile = mobile, FavouriteClub = favouriteclub, Gender = gender, Username = username};
             Context.Golfers.Add(g2);
             Context.SaveChanges();
             return (g2);

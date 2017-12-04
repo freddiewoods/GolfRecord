@@ -43,6 +43,10 @@ namespace GolfRecord.Model
         public virtual bool WithinMatch { get; set; }
 
 
+        public virtual string Username { get; set; }
+
+       
+        
         #region
         private ICollection<Course> _Favourites = new List<Course>();
         [Hidden(WhenTo.UntilPersisted)]
@@ -116,7 +120,6 @@ namespace GolfRecord.Model
             return MatchConfig.ShowMatches().Where(m => m.MatchName.Contains(matching));
         }
         #endregion
-
 
         }
 }
