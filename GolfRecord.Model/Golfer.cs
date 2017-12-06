@@ -25,16 +25,8 @@ namespace GolfRecord.Model
         [MemberOrder(2)] //this property is not neccessary
         public virtual int Handicap { get; set; }
 
-        [Optionally][MemberOrder(3)]
-        public virtual string Email { get; set; }
-        // To do find out where the email validation will happen.
-
-
         [Optionally][MemberOrder(4)]
         public virtual string Mobile { get; set; }
-
-        [Optionally]
-         public virtual FavouriteClub FavouriteClub { get; set; }
 
         [Optionally]
         public virtual Gender Gender { get; set; }
