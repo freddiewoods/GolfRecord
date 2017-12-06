@@ -26,6 +26,7 @@ namespace GolfRecord.DataBase
             DefineGolfer(modelBuilder.Entity<Golfer>());
             DefineMatch(modelBuilder.Entity<Match>());
             DefineCourse(modelBuilder.Entity<Course>());
+            DefineGolferMatch(modelBuilder);
         }
         private void DefineCourse(EntityTypeConfiguration<Course> courseconfiguration )
         {

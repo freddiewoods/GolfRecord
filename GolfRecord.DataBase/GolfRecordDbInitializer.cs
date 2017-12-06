@@ -97,7 +97,7 @@ namespace GolfRecord.DataBase
 
             var s1 = AddNewMatch("Stowe boys Strokeplay Match", date1, 1);
             Context.SaveChanges();
-            AddNewGolfer(s1, "Tiger Hancox", 13, "56473 829106", "Tiger@Usa.com", FavouriteClub.Iron, Gender.Male);
+           var p1 =  AddNewGolfer(s1, "Tiger Hancox", 13, "56473 829106", "Tiger@Usa.com", FavouriteClub.Iron, Gender.Male);
             AddNewGolfer(s1, "Rory Gabriel", 14, "01296 234324", "Rory@Ireland.com", FavouriteClub.Iron, Gender.Male);
             AddNewGolfer(s1, "Rookie Player", 12, "07810 675443", "Rookie@England.com", FavouriteClub.PitchingWedge, Gender.Male);
             AddNewGolfer(s1, "Adam Chair", 13, "01234 753234", "Chairs@NewZealand.com", FavouriteClub.Putter, Gender.Male);
@@ -105,7 +105,7 @@ namespace GolfRecord.DataBase
 
             var s2 = AddNewMatch("Stowe girls stroke play match", date1, 2);
             Context.SaveChanges();
-            AddNewGolfer(s2, "Novak Lacoste", 16, "01234 567891", "Novak.Locoste@goowiz.com", FavouriteClub.Wood, Gender.Female);
+            s2.AddRegisteredGolfers(p1);
             AddNewGolfer(s2, "Rafa Lauren", 16, "19876 543210", "Rafa@T.com", FavouriteClub.Putter, Gender.Female);
             AddNewGolfer(s2, "Roger Perry", 16, "10202 304050", "Roger@T.com", FavouriteClub.Wood, Gender.Female);
             AddNewGolfer(s2, "Andy Hacket", 8, "01020 030405", "Andy@Gmai.com", FavouriteClub.Sandwedge, Gender.Female);
@@ -164,15 +164,24 @@ namespace GolfRecord.DataBase
             var s10 = AddNewMatch("Test Empty Match", date1, 1, MatchType.StrokePlay);
             context.SaveChanges();
 
-            var s11 = AddNewMatch("Stableford match with scores", date1, 1, MatchType.StableFord);
+            var s11 = AddNewMatch("Strokeplay match with scores except last", date1, 1, MatchType.StrokePlay);
             context.SaveChanges();
             AddNewGolfer(s11, "Martin Finion", 5, "01278 564127", "Martin@fmail.com", FavouriteClub.Sandwedge, Gender.Male);
             AddNewGolfer(s11, "Noah Castillo", 6, "01728 123412", "Noah@isky.com", FavouriteClub.PitchingWedge, Gender.Male);
             AddNewGolfer(s11, "Cody Turner", 6, "01383 132414", "Turner@tt.com", FavouriteClub.None, Gender.Male);
             AddNewGolfer(s11, "Aidan Hopkins", 5, "01256 122122", "Aidan.Hopkins@asd.com", FavouriteClub.Sandwedge, Gender.Male);
+
             
+            AddScoreStrokePlay(s11, ro.Holes.ElementAt(0), 3, 4, 3, 4);
+            AddScoreStrokePlay(s11, ro.Holes.ElementAt(1), 3, 4, 4, 4);
+            AddScoreStrokePlay(s11, ro.Holes.ElementAt(2), 4, 3, 3, 4);
+            AddScoreStrokePlay(s11, ro.Holes.ElementAt(3), 3, 5, 3, 3);
+            AddScoreStrokePlay(s11, ro.Holes.ElementAt(4), 3, 4, 5, 3);
+            AddScoreStrokePlay(s11, ro.Holes.ElementAt(5), 4, 5, 6, 5);
+            AddScoreStrokePlay(s11, ro.Holes.ElementAt(6), 5, 4, 4, 4);
+            AddScoreStrokePlay(s11, ro.Holes.ElementAt(7), 3, 4, 5, 4);
 
-
+            // AddScoreStrokePlay(s2, 
 
             AddNewGolfer2("Peter Miller",1,"08188 464638","Mille@Fmail.com", FavouriteClub.None, Gender.Male, "wooodssy@gmail.com");
             context.SaveChanges();
@@ -218,6 +227,15 @@ namespace GolfRecord.DataBase
             Context.SaveChanges();
             return (m);
         }
+
+        private FourPlayerHoleScore AddScoreStrokePlay(Match Match, Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
+        {
+          var s = new FourPlayerHoleScore { Hole = hole, ScoreGolferA = ScoreA, ScoreGolferB = ScoreB, ScoreGolferC = ScoreC, ScoreGolferD = ScoreD };
+          Context.FourPlayerHoleScore.Add(s);
+           Context.SaveChanges();
+            Match.HoleScores.Add(s);
+            return (s);
+       }
         private Course AddNewCourse(string CourseName, string Location, string WebsiteLink, string ShortParagraph, double rating, string address, int par, int yardage, string Phone)
         {
             var c = new Course() { CourseName = CourseName, Location = Location, WebsiteLink = WebsiteLink, CourseDescription = ShortParagraph, Rating = rating, Address = address, Par = par, Yardage = yardage, PhoneNumber = Phone };
