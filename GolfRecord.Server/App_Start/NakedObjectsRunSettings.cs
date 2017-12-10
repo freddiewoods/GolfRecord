@@ -39,8 +39,8 @@ namespace NakedObjects.GolfRecord {
                     typeof(MatchStrokePlay),
                     typeof(MatchPlay),
                     typeof(FourPlayerHoleScore),
-                    typeof(TwoPlayerHoleScore)
-
+                    typeof(TwoPlayerHoleScore),
+                    typeof(ClubManager)
                     //You need only register here any domain model types that cannot be
                     //'discovered' by the framework when it 'walks the graph' from the methods
                     //defined on services registered below
@@ -56,8 +56,8 @@ namespace NakedObjects.GolfRecord {
                     typeof(GolferConfig),
                     typeof(MatchConfig),
                     typeof(CourseConfig)
-                };
-            }
+            };
+                }
         }
 
         public static ReflectorConfiguration ReflectorConfig()

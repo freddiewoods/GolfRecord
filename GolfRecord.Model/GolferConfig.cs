@@ -36,6 +36,6 @@ namespace GolfRecord.Model
             //Filters students to find a match to play
             return AllGolfers().Where(c => c.FullName.ToUpper().Contains(name.ToUpper()));
         }
-    }
+}
 
 }

@@ -23,6 +23,9 @@ namespace GolfRecord.Model
 
         public virtual int Par { get; set; }
 
+      //  [Optionally]
+      //  public virtual ClubManager ClubManger { get; set; }
+
 
         private ICollection<Hole> _Holes = new List<Hole>();
         [Hidden(WhenTo.UntilPersisted)]

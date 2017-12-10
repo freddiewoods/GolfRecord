@@ -44,6 +44,7 @@ namespace GolfRecord.Model
 
         public virtual MatchType MatchType { get; set; }
 
+
         [Optionally]
         [Hidden(WhenTo.UntilPersisted)]
         public virtual Golfer Winner { get; set; }

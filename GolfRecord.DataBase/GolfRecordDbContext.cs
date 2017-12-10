@@ -19,6 +19,9 @@ namespace GolfRecord.DataBase
         public DbSet<HoleScoreAbstract> HoleScore { get; set; }
         public DbSet<FourPlayerHoleScore> FourPlayerHoleScore { get; set; }
         public DbSet<TwoPlayerHoleScore> TwoPlayerHoleScore { get; set; }
+
+
+
         //      public DbSet<Friend> Friend { get; set; }
         //      public DbSet<Message> Message { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

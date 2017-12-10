@@ -97,9 +97,9 @@ namespace GolfRecord.DataBase
 
             var s1 = AddNewMatch("Stowe boys Strokeplay Match", date1, 1);
             Context.SaveChanges();
-            var p1 =  AddNewGolfer(s1, "Tiger Hancox", 13, "56473 829106", Gender.Male);
-            AddNewGolfer(s1, "Rory Gabriel", 14, "01296 234324",  Gender.Male);
-            AddNewGolfer(s1, "Rookie Player", 12, "07810 675443",Gender.Male);
+            var p1 = AddNewGolfer(s1, "Tiger Hancox", 13, "56473 829106", Gender.Male);
+            AddNewGolfer(s1, "Rory Gabriel", 14, "01296 234324", Gender.Male);
+            AddNewGolfer(s1, "Rookie Player", 12, "07810 675443", Gender.Male);
             AddNewGolfer(s1, "Adam Chair", 13, "01234 753234", Gender.Male);
             context.SaveChanges();
 
@@ -115,14 +115,14 @@ namespace GolfRecord.DataBase
             context.SaveChanges();
             AddNewGolfer(s3, "Nathan Swanson", 12, "01296 749916", Gender.Male);
             AddNewGolfer(s3, "Rafferty Reeves", 8, "01289 743123", Gender.Male);
-            AddNewGolfer(s3, "Bethany philip", 12, "01233 123414",  Gender.Female);
+            AddNewGolfer(s3, "Bethany philip", 12, "01233 123414", Gender.Female);
             AddNewGolfer(s3, "Rachel wright", 3, "01234 321413", Gender.Female);
             Context.SaveChanges();
 
 
             var s4 = AddNewMatch("Stowe Boys MatchPlay Team", date1, 2, MatchType.MatchPlay);
             context.SaveChanges();
-            AddNewGolfer(s4, "Jimmy Hart", 10, "01234 123414",  Gender.Male);
+            AddNewGolfer(s4, "Jimmy Hart", 10, "01234 123414", Gender.Male);
             AddNewGolfer(s4, "Andrew Tait", 2, "01234 3214312", Gender.Male);
             Context.SaveChanges();
 
@@ -150,7 +150,7 @@ namespace GolfRecord.DataBase
             context.SaveChanges();
             AddNewGolfer(s8, "Marie Curie", 15, "01234 132443", Gender.Female);
             AddNewGolfer(s8, "Rosamund Flip", 18, "01135 353426", Gender.Female);
-            AddNewGolfer(s8, "Genie Booch", 4, "01823 988132",  Gender.Female);
+            AddNewGolfer(s8, "Genie Booch", 4, "01823 988132", Gender.Female);
             context.SaveChanges();
 
             var s9 = AddNewMatch("Stowe Mixed Stableford Team", date1, 4, MatchType.StableFord);
@@ -171,7 +171,7 @@ namespace GolfRecord.DataBase
             AddNewGolfer(s11, "Cody Turner", 6, "01383 132414", Gender.Male);
             AddNewGolfer(s11, "Aidan Hopkins", 5, "01256 122122", Gender.Male);
 
-            
+
             AddScoreStrokePlay(s11, ro.Holes.ElementAt(0), 3, 4, 3, 4);
             AddScoreStrokePlay(s11, ro.Holes.ElementAt(1), 3, 4, 4, 4);
             AddScoreStrokePlay(s11, ro.Holes.ElementAt(2), 4, 3, 3, 4);
@@ -183,25 +183,27 @@ namespace GolfRecord.DataBase
 
             // AddScoreStrokePlay(s2, 
 
-            AddNewGolfer2("Peter Miller",1,"08188 464638", Gender.Male, "wooodssy@gmail.com");
+            AddNewGolfer2("Peter Miller", 1, "08188 464638", Gender.Male);
             context.SaveChanges();
             //Add Scores.
 
+            AddNewCLubManager("Philip Leny", 0, "07123 7392833", Gender.Male, pb, "wooodssy@gmail.com");
+            context.SaveChanges();
 
 
 
         }
-        private Golfer AddNewGolfer(Match m, string name, int handi, string mobile, Gender gender, bool withinmatch = true)
+        private Golfer AddNewGolfer(Match m, string name, int handi, string mobile, Gender gender, bool withinmatch = true, Title title = Title.Player)
         {
-            var g = new Golfer() { FullName = name, Handicap = handi, Mobile = mobile, Gender = gender };
+            var g = new Golfer() { FullName = name, Handicap = handi, Mobile = mobile, Gender = gender, Title = title };
             Context.Golfers.Add(g);
             Context.SaveChanges();
             m.Golfers.Add(g);
             return (g);
         }
-        private Golfer AddNewGolfer2(string name, int handi, string mobile, Gender gender, string username = "", bool withinmatch = true)
+        private Golfer AddNewGolfer2(string name, int handi, string mobile, Gender gender, string username = "", bool withinmatch = true, Title title = Title.Player)
         {
-            var g2 = new Golfer() { FullName = name, Handicap = handi,  Mobile = mobile, Gender = gender, Username = username};
+            var g2 = new Golfer() { FullName = name, Handicap = handi, Mobile = mobile, Gender = gender, Username = username, Title = title };
             Context.Golfers.Add(g2);
             Context.SaveChanges();
             return (g2);
@@ -230,12 +232,12 @@ namespace GolfRecord.DataBase
 
         private FourPlayerHoleScore AddScoreStrokePlay(Match Match, Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
-          var s = new FourPlayerHoleScore { Hole = hole, ScoreGolferA = ScoreA, ScoreGolferB = ScoreB, ScoreGolferC = ScoreC, ScoreGolferD = ScoreD };
-          Context.FourPlayerHoleScore.Add(s);
-           Context.SaveChanges();
+            var s = new FourPlayerHoleScore { Hole = hole, ScoreGolferA = ScoreA, ScoreGolferB = ScoreB, ScoreGolferC = ScoreC, ScoreGolferD = ScoreD };
+            Context.FourPlayerHoleScore.Add(s);
+            Context.SaveChanges();
             Match.HoleScores.Add(s);
             return (s);
-       }
+        }
         private Course AddNewCourse(string CourseName, string Location, string WebsiteLink, string ShortParagraph, double rating, string address, int par, int yardage, string Phone)
         {
             var c = new Course() { CourseName = CourseName, Location = Location, WebsiteLink = WebsiteLink, CourseDescription = ShortParagraph, Rating = rating, Address = address, Par = par, Yardage = yardage, PhoneNumber = Phone };
@@ -257,6 +259,13 @@ namespace GolfRecord.DataBase
             Context.SaveChanges();
             c.Holes.Add(h);
             return (h);
+        }
+        private ClubManager AddNewCLubManager(string name, int handi, string mobile, Gender gender, Course course, string username = "", bool withinmatch = true, Title title = Title.ClubManager)
+        {
+            var g3 = new ClubManager() { FullName = name, Handicap = handi, Mobile = mobile, Gender = gender, course = course, Username = username, Title = title };
+            Context.Golfers.Add(g3);
+            Context.SaveChanges();
+            return (g3);
         }
     }
 }
