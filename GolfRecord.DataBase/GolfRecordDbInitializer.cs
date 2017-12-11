@@ -183,11 +183,11 @@ namespace GolfRecord.DataBase
 
             // AddScoreStrokePlay(s2, 
 
-            AddNewGolfer2("Peter Miller", 1, "08188 464638", Gender.Male);
+            AddNewGolfer2("Peter Miller", 1, "08188 464638", Gender.Male, "wooodssy@gmail.com");
             context.SaveChanges();
             //Add Scores.
 
-            AddNewCLubManager("Philip Leny", 0, "07123 7392833", Gender.Male, pb, "wooodssy@gmail.com");
+            AddNewCLubManager("Philip Leny", 0, "07123 7392833", Gender.Male, pb, "fwoodscomp@gmail.com");
             context.SaveChanges();
 
 

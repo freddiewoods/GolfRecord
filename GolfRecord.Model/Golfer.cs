@@ -1,20 +1,25 @@
 ﻿using NakedObjects;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using static GolfRecord.Model.Enums;
+using System.Security;
 
 namespace GolfRecord.Model
 {
     public class Golfer
     {
         //All persisted properties on a domain object must be 'virtual'
+        public IDomainObjectContainer Container { set; protected get; }
 
         public GolferConfig GolferConfig { set; protected get; }
 
         public CourseConfig CourseConfig { set; protected get; }
 
         public MatchConfig MatchConfig { set; protected get; }
+
+        public GolferAuthoriser GolferAuthoriser { set; protected get; }
 
         [NakedObjectsIgnore]//Indicates that this property will never be seen in the UI
         public virtual int Id { get; set; }
@@ -36,12 +41,9 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]
         public virtual bool WithinMatch { get; set; }
 
-
         public virtual string Username { get; set; }
-
-       
-        
-        #region
+ 
+        #region FavouriteCourse
         private ICollection<Course> _Favourites = new List<Course>();
         [Hidden(WhenTo.UntilPersisted)]
         public virtual ICollection<Course> FavouriteCourses
@@ -55,41 +57,44 @@ namespace GolfRecord.Model
                 _Favourites = value;
             }
         }
+
         public void AddFavouriteCourses(Course course)
         {
             FavouriteCourses.Add(course);
         }
+
+
         [PageSize(3)]
         public IQueryable<Course> AutoComplete0AddFavouriteCourses([MinLength(2)] string matching)
         {
             return CourseConfig.ShowExistingCourses().Where(c => c.CourseName.Contains(matching));
         }
         #endregion
-      //#region Friends (collection)
-      //  private ICollection<Golfer> _Friends = new List<Golfer>();
+        //#region Friends (collection)
+        //  private ICollection<Golfer> _Friends = new List<Golfer>();
 
-      //  public virtual ICollection<Golfer> Friends
-      //  {
-      //      get
-      //      {
-      //          return _Friends;
-      //      }
-      //      set
-      //      {
-      //          _Friends = value;
-      //      }
-      //  }
-     
-      //  public void AddFriend(Golfer golfer)
-      //  {
-      //      Friends.Add(golfer);
-      //  }
-      //  [PageSize(3)]
-      //  public IQueryable<Golfer> AutoComplete0AddFriend([MinLength(2)] string matching)
-      //  {
-      //      return GolferConfig.AllGolfers().Where(g => g.FullName.Contains(matching));
-      //  }
-      //  #endregion
+        //  public virtual ICollection<Golfer> Friends
+        //  {
+        //      get
+        //      {
+        //          return _Friends;
+        //      }
+        //      set
+        //      {
+        //          _Friends = value;
+        //      }
+        //  }
+
+        //  public void AddFriend(Golfer golfer)
+        //  {
+        //      Friends.Add(golfer);
+        //  }
+        //  [PageSize(3)]
+        //  public IQueryable<Golfer> AutoComplete0AddFriend([MinLength(2)] string matching)
+        //  {
+        //      return GolferConfig.AllGolfers().Where(g => g.FullName.Contains(matching));
+        //  }
+        //  #endregion
 
         #region MatchHistory (collection)
         private  ICollection<Match> _MatchHistory = new List<Match>();

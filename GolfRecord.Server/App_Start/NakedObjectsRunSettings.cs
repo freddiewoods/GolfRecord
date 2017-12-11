@@ -12,6 +12,7 @@ using NakedObjects.Menu;
 using NakedObjects.Persistor.Entity.Configuration;
 using GolfRecord.Model;
 using GolfRecord.DataBase;
+using NakedObjects.Meta.Authorization;
 
 namespace NakedObjects.GolfRecord {
     public class NakedObjectsRunSettings
@@ -55,7 +56,10 @@ namespace NakedObjects.GolfRecord {
                 return new Type[] {
                     typeof(GolferConfig),
                     typeof(MatchConfig),
-                    typeof(CourseConfig)
+                    typeof(CourseConfig),
+                    typeof(HoleConfig)
+                    
+
             };
                 }
         }
@@ -80,5 +84,14 @@ namespace NakedObjects.GolfRecord {
                 factory.NewMenu<CourseConfig>(true,"Courses")
             };
         }
+        public static IAuthorizationConfiguration AuthorizationConfig()
+        {
+            var config = new AuthorizationConfiguration<DefaultAuthorizer>();
+            // config.AddNamespaceAuthorizer<MyAppAuthorizer>("MyApp");
+            // config.AddNamespaceAuthorizer<MyCluster1Authorizer>("MyApp.MyCluster1");
+            // config.AddTypeAuthorizer<Bar, MyBarAuthorizer>();
+            return config;
+        }
+
     }
 }

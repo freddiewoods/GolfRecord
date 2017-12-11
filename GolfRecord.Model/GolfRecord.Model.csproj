@@ -60,8 +60,10 @@
     <Compile Include="ClubManager.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="CourseConfig.cs" />
+    <Compile Include="DefaultAuthorizer.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Golfer.cs" />
+    <Compile Include="GolferAuthoriser.cs" />
     <Compile Include="GolferConfig.cs" />
     <Compile Include="Hole.cs" />
     <Compile Include="HoleConfig.cs" />
