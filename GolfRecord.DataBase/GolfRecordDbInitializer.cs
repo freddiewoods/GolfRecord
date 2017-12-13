@@ -183,14 +183,17 @@ namespace GolfRecord.DataBase
 
             // AddScoreStrokePlay(s2, 
 
-            AddNewGolfer2("Peter Miller", 1, "08188 464638", Gender.Male, "wooodssy@gmail.com");
+            var MP = AddNewGolfer2("Peter Miller", 1, "08188 464638", Gender.Male, "wooodssy@gmail.com");
             context.SaveChanges();
             //Add Scores.
 
-            AddNewCLubManager("Philip Leny", 0, "07123 7392833", Gender.Male, pb, "fwoodscomp@gmail.com");
+            var CM = AddNewClubManager("Philip Leny", 0, "07123 7392833", Gender.Male, pb, "fwoodscomp@gmail.com");
             context.SaveChanges();
 
-
+            AddFriend(CM, MP);
+            AddFriend(MP, CM);
+            context.SaveChanges();
+        
 
         }
         private Player AddNewGolfer(Match m, string name, int handi, string mobile, Gender gender, bool withinmatch = true, Title title = Title.Player)
@@ -260,12 +263,17 @@ namespace GolfRecord.DataBase
             c.Holes.Add(h);
             return (h);
         }
-        private ClubManager AddNewCLubManager(string name, int handi, string mobile, Gender gender, Course course, string username = "", bool withinmatch = true, Title title = Title.ClubManager)
+        private ClubManager AddNewClubManager(string name, int handi, string mobile, Gender gender, Course course, string username = "", bool withinmatch = true, Title title = Title.ClubManager)
         {
             var g3 = new ClubManager() { FullName = name, Handicap = handi, Mobile = mobile, Gender = gender, course = course, Username = username, Title = title };
             Context.Golfers.Add(g3);
             Context.SaveChanges();
             return (g3);
+        }
+        private void AddFriend(Golfer golfer1, Golfer golfer2)
+        {
+            golfer1.Friends.Add(golfer2);
+            Context.SaveChanges();
         }
     }
 }

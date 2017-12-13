@@ -5,14 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Principal;
+using NakedObjects.Util;
 
 namespace GolfRecord.Model
 {
     public class DefaultAuthorizer : ITypeAuthorizer<object>
     {
+        
         public bool IsEditable(IPrincipal principal, object target, string memberName)
         {
-            if ((principal.Identity.Name == "wooodssy@gmail.com") &
+            if ((principal.Identity.Name == "wooodssy@gmail.com") & // needs to be changed with
                 (
                   (memberName == "Handicap")
                 | (typeof(Course).IsAssignableFrom(target.GetType())) //layed out just for better understanding of whats happening.
@@ -42,7 +44,7 @@ namespace GolfRecord.Model
             {
                 return false;
             }
-            else
+            else 
             {
                 return true;
             }
