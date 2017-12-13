@@ -193,17 +193,17 @@ namespace GolfRecord.DataBase
 
 
         }
-        private Golfer AddNewGolfer(Match m, string name, int handi, string mobile, Gender gender, bool withinmatch = true, Title title = Title.Player)
+        private Player AddNewGolfer(Match m, string name, int handi, string mobile, Gender gender, bool withinmatch = true, Title title = Title.Player)
         {
-            var g = new Golfer() { FullName = name, Handicap = handi, Mobile = mobile, Gender = gender, Title = title };
+            var g = new Player() { FullName = name, Handicap = handi, Mobile = mobile, Gender = gender, Title = title };
             Context.Golfers.Add(g);
             Context.SaveChanges();
             m.Golfers.Add(g);
             return (g);
         }
-        private Golfer AddNewGolfer2(string name, int handi, string mobile, Gender gender, string username = "", bool withinmatch = true, Title title = Title.Player)
+        private Player AddNewGolfer2(string name, int handi, string mobile, Gender gender, string username = "", bool withinmatch = true, Title title = Title.Player)
         {
-            var g2 = new Golfer() { FullName = name, Handicap = handi, Mobile = mobile, Gender = gender, Username = username, Title = title };
+            var g2 = new Player() { FullName = name, Handicap = handi, Mobile = mobile, Gender = gender, Username = username, Title = title };
             Context.Golfers.Add(g2);
             Context.SaveChanges();
             return (g2);

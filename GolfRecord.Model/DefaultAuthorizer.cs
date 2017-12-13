@@ -34,11 +34,11 @@ namespace GolfRecord.Model
 
         public bool IsVisible(IPrincipal principal, object target, string memberName)
         {
-            if ((typeof(ClubManager).IsAssignableFrom(target.GetType())) & (memberName == "CreateNewGolfer"))
+            if ((memberName == "CreateNewCourse") | (memberName == "CreateNewGolfer") | (memberName == "AddMatchHistory")) 
             {
                 return false;
             }
-            else if ((principal.Identity.Name == "fwoodscomp&gmail.com") & (memberName == "AddFavouriteCourses"))
+            else if ((principal.Identity.Name == "fwoodscomp@gmail.com") & (memberName == "AddFavouriteCourses"))
             {
                 return false;
             }

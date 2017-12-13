@@ -43,33 +43,6 @@ namespace GolfRecord.Model
 
         public virtual string Username { get; set; }
  
-        #region FavouriteCourse
-        private ICollection<Course> _Favourites = new List<Course>();
-        [Hidden(WhenTo.UntilPersisted)]
-        public virtual ICollection<Course> FavouriteCourses
-        {
-            get
-            {
-                return _Favourites;
-            }
-            set
-            {
-                _Favourites = value;
-            }
-        }
-
-        public void AddFavouriteCourses(Course course)
-        {
-            FavouriteCourses.Add(course);
-        }
-
-
-        [PageSize(3)]
-        public IQueryable<Course> AutoComplete0AddFavouriteCourses([MinLength(2)] string matching)
-        {
-            return CourseConfig.ShowExistingCourses().Where(c => c.CourseName.Contains(matching));
-        }
-        #endregion
         //#region Friends (collection)
         //  private ICollection<Golfer> _Friends = new List<Golfer>();
 
