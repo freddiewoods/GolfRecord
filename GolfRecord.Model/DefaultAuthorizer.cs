@@ -16,14 +16,15 @@ namespace GolfRecord.Model
         {
             if ((principal.Identity.Name == "wooodssy@gmail.com") & // needs to be changed with
                 (
-                  (memberName == "Handicap")
+                  (memberName == "Position")
+                | (memberName == "Username")
                 | (typeof(Course).IsAssignableFrom(target.GetType())) //layed out just for better understanding of whats happening.
                 | (typeof(Hole).IsAssignableFrom(target.GetType()))
                 )
-               )//is the target a product only needed in the default
+                )
             {
                 return false;
-            }     //nothing is uneditable to club manager except other golfers and winner.
+            }  //nothing is uneditable to club manager except other golfers and winner.
             else if (memberName == "Winner")
             {
                 return false;
@@ -36,11 +37,7 @@ namespace GolfRecord.Model
 
         public bool IsVisible(IPrincipal principal, object target, string memberName)
         {
-            if ((memberName == "CreateNewCourse") | (memberName == "CreateNewGolfer") | (memberName == "AddMatchHistory")) 
-            {
-                return false;
-            }
-            else if ((principal.Identity.Name == "fwoodscomp@gmail.com") & (memberName == "AddFavouriteCourses"))
+            if ((memberName == "CreateNewCourse") | (memberName == "AddMatchHistory")) 
             {
                 return false;
             }

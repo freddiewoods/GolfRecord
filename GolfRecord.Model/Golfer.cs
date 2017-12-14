@@ -36,7 +36,7 @@ namespace GolfRecord.Model
         [Optionally]
         public virtual Gender Gender { get; set; }
 
-        public virtual Title Title { get; set; }
+        public virtual Title Position { get; set; }
 
         [NakedObjectsIgnore]
         public virtual bool WithinMatch { get; set; }

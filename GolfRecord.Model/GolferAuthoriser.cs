@@ -18,14 +18,7 @@ namespace GolfRecord.Model
 
         public bool IsVisible(IPrincipal principal, Golfer target, string memberName)
         {
-            if (target.Title == Enums.Title.ClubManager)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            throw new NotImplementedException();
         }
     }
 }

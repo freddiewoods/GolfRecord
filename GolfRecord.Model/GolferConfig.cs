@@ -1,6 +1,8 @@
 ﻿using NakedObjects;
 using System.Linq;
-
+using System;
+using static GolfRecord.Model.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace GolfRecord.Model
 {
@@ -13,12 +15,6 @@ namespace GolfRecord.Model
         //An implementation of this interface is injected automatically by the framework
         public IDomainObjectContainer Container { set; protected get; }
         #endregion
-        public Golfer CreateNewGolfer()
-        {
-            //'Transient' means 'unsaved' -  returned to the user
-            //for fields to be filled-in and the object saved.
-            return Container.NewTransientInstance<Golfer>();
-        }
 
         public IQueryable<Golfer> AllGolfers()
         {
@@ -29,13 +25,33 @@ namespace GolfRecord.Model
         public Golfer Me()
         {
             var username = Container.Principal.Identity.Name;
-            return AllGolfers().Where(g => g.Username.ToUpper().Contains(username.ToUpper())).SingleOrDefault();
+            var user = AllGolfers().Where(g => g.Username.ToUpper().Contains(username.ToUpper())).SingleOrDefault();
+            if (user == null)
+            {
+
+                user = Container.NewTransientInstance<Player>();
+                user.Username = Container.Principal.Identity.Name;
+                user.Position = Title.Player;
+                return user;
+            }
+            else
+            {
+                return user;
+            }
+
         }
+
+
         public IQueryable<Golfer> FindGolferByName(string name)
         {
             //Filters students to find a match to play
             return AllGolfers().Where(c => c.FullName.ToUpper().Contains(name.ToUpper()));
         }
-}
+        [PageSize(3)]
+        public IQueryable<Golfer> AutoComplete0FindGolferByName([MinLength(2)] string matching)
+        {
+            return AllGolfers().Where(g => g.FullName.Contains(matching));
+        }
+    }
 
 }
