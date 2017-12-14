@@ -38,19 +38,25 @@ namespace GolfRecord.Model
             {
                 return user;
             }
-
         }
 
+        [NakedObjectsIgnore]
+        public bool IsPlayer()
+        {
+            if (Me() != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public IQueryable<Golfer> FindGolferByName(string name)
         {
             //Filters students to find a match to play
             return AllGolfers().Where(c => c.FullName.ToUpper().Contains(name.ToUpper()));
-        }
-        [PageSize(3)]
-        public IQueryable<Golfer> AutoComplete0FindGolferByName([MinLength(2)] string matching)
-        {
-            return AllGolfers().Where(g => g.FullName.Contains(matching));
         }
     }
 

@@ -183,7 +183,7 @@ namespace GolfRecord.DataBase
 
             // AddScoreStrokePlay(s2, 
 
-            var MP = AddNewGolfer2("Peter Miller", 1, "08188 464638", Gender.Male,"");
+            var MP = AddNewGolfer2("Peter Miller", 1, "08188 464638", Gender.Male,"wooodssy@gmail.com");
             context.SaveChanges();
             //Add Scores.
 
