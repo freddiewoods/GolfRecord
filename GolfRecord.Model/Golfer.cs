@@ -18,9 +18,7 @@ namespace GolfRecord.Model
         public CourseConfig CourseConfig { set; protected get; }
 
         public MatchConfig MatchConfig { set; protected get; }
-
-        public GolferAuthoriser GolferAuthoriser { set; protected get; }
-
+       
         [NakedObjectsIgnore]//Indicates that this property will never be seen in the UI
         public virtual int Id { get; set; }
 

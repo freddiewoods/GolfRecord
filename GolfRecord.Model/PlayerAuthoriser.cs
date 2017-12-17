@@ -10,14 +10,36 @@ namespace GolfRecord.Model
 {
     public class PlayerAuthoriser : ITypeAuthorizer<Player>
     {
-        public bool IsEditable(IPrincipal principal, Player target, string memberName)
+        public bool IsEditable(IPrincipal principal, Player player, string memberName)
         {
-            throw new NotImplementedException();
+            if (player.Username == principal.Identity.Name)
+            {
+                if ((memberName == "Position" ) | (memberName == "Username"))
+                {
+                    return false;
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public bool IsVisible(IPrincipal principal, Player target, string memberName)
+        public bool IsVisible(IPrincipal principal, Player player, string memberName)
         {
-            throw new NotImplementedException();
+            if (player.Username == principal.Identity.Name)
+            {
+                return true;
+            }
+            else if ((memberName == "AddFavouriteCourses") | (memberName == "AddRegisteredGolfers") | (memberName == "AddMatchHistory") | (memberName == "AddFriend"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

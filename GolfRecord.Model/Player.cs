@@ -31,11 +31,11 @@ namespace GolfRecord.Model
         }
 
 
-        [PageSize(3)]
-        public IQueryable<Course> AutoComplete0AddFavouriteCourses([MinLength(2)] string matching)
-        {
-            return CourseConfig.ShowExistingCourses().Where(c => c.CourseName.Contains(matching));
-        }
+      //  [PageSize(3)]
+      //  public IQueryable<Course> AutoCompleteAddFavouriteCourses([MinLength(2)] string matching)
+      //  {
+      //      return CourseConfig.ShowExistingCourses().Where(c => c.CourseName.Contains(matching));
+      //  }
         #endregion
     }
 }

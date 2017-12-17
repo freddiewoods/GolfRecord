@@ -58,19 +58,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClubManager.cs" />
+    <Compile Include="ClubManagerAuthoriser.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="CourseConfig.cs" />
     <Compile Include="DefaultAuthorizer.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Golfer.cs" />
-    <Compile Include="GolferAuthoriser.cs" />
     <Compile Include="GolferConfig.cs" />
     <Compile Include="Hole.cs" />
     <Compile Include="HoleConfig.cs" />
     <Compile Include="HoleScoreAbstract.cs" />
-    <Compile Include="MatchAuthoriser.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="MatchPlayAuthoriser.cs" />
     <Compile Include="PlayerAuthoriser.cs" />
+    <Compile Include="StableFordAuthoriser.cs" />
+    <Compile Include="StrokePlayAuthoriser.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="TwoPlayerHoleScore.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="MatchConfig.cs" />
@@ -79,6 +81,8 @@
     <Compile Include="MatchStableFord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FourPlayerHoleScore.cs" />
+    <Compile Include="UnregisteredGolferAuthoriser.cs" />
+    <Compile Include="UnregisteredPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Diagram of Inheritence.cd" />

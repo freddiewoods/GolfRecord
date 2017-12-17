@@ -90,7 +90,11 @@ namespace NakedObjects.GolfRecord {
             var config = new AuthorizationConfiguration<DefaultAuthorizer>();
             //  config.AddNamespaceAuthorizer<MyAppAuthorizer>("MyApp");
             // config.AddNamespaceAuthorizer<MyCluster1Authorizer>("MyApp.MyCluster1");
-            config.AddTypeAuthorizer<Match, MatchAuthoriser>();
+            config.AddTypeAuthorizer<MatchStrokePlay, StrokePlayAuthoriser>();
+            config.AddTypeAuthorizer<MatchStableFord, StableFordAuthoriser>();
+            config.AddTypeAuthorizer<MatchPlay, MatchPlayAuthoriser>();
+            config.AddTypeAuthorizer<Player, PlayerAuthoriser>();
+            config.AddTypeAuthorizer<ClubManager, ClubManagerAuthoriser>();
             return config;
         }
 

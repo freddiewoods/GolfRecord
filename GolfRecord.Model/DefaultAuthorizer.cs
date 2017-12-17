@@ -20,7 +20,7 @@ namespace GolfRecord.Model
                 (
                   (memberName == "Position")
                 | (memberName == "Username")
-                | (typeof(Course).IsAssignableFrom(target.GetType())) //layed out just for better understanding of whats happening.
+                | (typeof(Course).IsAssignableFrom(target.GetType())) 
                 | (typeof(Hole).IsAssignableFrom(target.GetType()))
                 )
                 )

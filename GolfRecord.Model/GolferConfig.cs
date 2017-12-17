@@ -22,6 +22,12 @@ namespace GolfRecord.Model
             //dealing with the database directly.
             return Container.Instances<Golfer>();
         }
+
+        public IQueryable<ClubManager> AllManagers()
+        {
+            return Container.Instances<ClubManager>();
+        }
+
         public Golfer Me()
         {
             var username = Container.Principal.Identity.Name;
