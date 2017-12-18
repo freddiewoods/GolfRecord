@@ -1,4 +1,5 @@
 ﻿using NakedObjects;
+using NakedObjects.Value;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +40,30 @@ namespace GolfRecord.Model
         [MemberOrder(9)]
         public virtual int RedStrokeIndex { get; set; }
 
-        
-        
+        public virtual FileAttachment Attachment
+        {
+            get
+            {
+                if (AttContent == null) return null;
+                return new FileAttachment(AttContent, AttName, AttMime);
+            }
+        }
+
+        [NakedObjectsIgnore]
+        public virtual byte[] AttContent { get; set; }
+
+        [NakedObjectsIgnore]
+        public virtual string AttName { get; set; }
+
+        [NakedObjectsIgnore]
+        public virtual string AttMime { get; set; }
+
+        public void AddOrChangeAttachment(FileAttachment newAttachment)
+        {
+            AttContent = newAttachment.GetResourceAsByteArray();
+            AttName = newAttachment.Name;
+            AttMime = newAttachment.MimeType;
+        }
+
     }
 }

@@ -39,7 +39,7 @@ namespace GolfRecord.Model
 
         public bool IsVisible(IPrincipal principal, object target, string memberName)
         {
-            if ((memberName == "CreateNewCourse") | (memberName == "AddMatchHistory"))
+            if ((memberName == "AddNewCourse") | (memberName == "AddMatchHistory"))
             {
                 return false;
             }

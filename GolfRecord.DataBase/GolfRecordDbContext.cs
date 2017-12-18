@@ -19,6 +19,7 @@ namespace GolfRecord.DataBase
         public DbSet<HoleScoreAbstract> HoleScore { get; set; }
         public DbSet<FourPlayerHoleScore> FourPlayerHoleScore { get; set; }
         public DbSet<TwoPlayerHoleScore> TwoPlayerHoleScore { get; set; }
+        public DbSet<Invite> Invite { get; set; }
 
 
 
@@ -30,6 +31,7 @@ namespace GolfRecord.DataBase
             DefineMatch(modelBuilder.Entity<Match>());
             DefineCourse(modelBuilder.Entity<Course>());
             DefineGolferMatch(modelBuilder);
+
         }
         private void DefineCourse(EntityTypeConfiguration<Course> courseconfiguration )
         {

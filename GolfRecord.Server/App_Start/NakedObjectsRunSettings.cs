@@ -95,6 +95,7 @@ namespace NakedObjects.GolfRecord {
             config.AddTypeAuthorizer<MatchPlay, MatchPlayAuthoriser>();
             config.AddTypeAuthorizer<Player, PlayerAuthoriser>();
             config.AddTypeAuthorizer<ClubManager, ClubManagerAuthoriser>();
+            config.AddTypeAuthorizer<Hole, HoleAuthorier>();
             return config;
         }
 

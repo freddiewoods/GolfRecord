@@ -71,21 +71,20 @@
   <Class Name="GolfRecord.Model.Course" Collapsed="true">
     <Position X="11" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AADCAAQAAQAAAgEIAAIAQAAAAAAAAAECAAAAAAAAAAA=</HashCode>
+      <HashCode>AADCABQAAQAAAgEIAAIAQAAAAAAAAAECAIAAgABAAAA=</HashCode>
       <FileName>Course.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GolfRecord.Model.Golfer">
     <Position X="11" Y="1.5" Width="1.5" />
     <Members>
-      <Field Name="_Favourites" Hidden="true" />
       <Field Name="_MatchHistory" Hidden="true" />
     </Members>
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>ABACAAAAhTBAAICAAAAAAABQAAAAAACAAIBAEIAAgAI=</HashCode>
+      <HashCode>ABECAAQABQBAAICgAQAAAABQAAABAACAAAAAMIAAAAI=</HashCode>
       <FileName>Golfer.cs</FileName>
     </TypeIdentifier>
   </Class>

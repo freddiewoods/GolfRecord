@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using static GolfRecord.Model.Enums;
 using System.Security;
+using NakedObjects.Value;
 
 namespace GolfRecord.Model
 {
@@ -40,9 +41,9 @@ namespace GolfRecord.Model
         public virtual bool WithinMatch { get; set; }
 
         public virtual string Username { get; set; }
- 
+
         #region Friends (collection)
-          private ICollection<Golfer> _Friends = new List<Golfer>();
+        private ICollection<Golfer> _Friends = new List<Golfer>();
 
           public virtual ICollection<Golfer> Friends
           {
@@ -92,6 +93,33 @@ namespace GolfRecord.Model
         }
         #endregion
 
-        }
+        // #region Invitations
+        //    private ICollection<Invite> _Invitations = new List<Invite>();
+
+        //    public virtual ICollection<Invite> Invitations
+        //    {
+        //       get
+        //        {
+        //            return _Invitations;
+        //        }
+        //        set
+        //        {
+        //            _Invitations = value;
+        //        }
+        //    }
+
+        //       public void Sendmessage(Golfer golfer)
+        //        {
+        //            var invite =  GolferConfig.SendInvite(golfer);
+        //            GolferConfig.Me().Invite = invite;
+        //        }
+
+        //  [PageSize(3)]
+        //  public IQueryable<Golfer> AutoComplete0Sendmessage([MinLength(2)] string name)
+        //  {
+        //    return GolferConfig.AllGolfers().Where(g => g.FullName.Contains(name));
+        //  }
+        // #endregion
+    }
 }
 

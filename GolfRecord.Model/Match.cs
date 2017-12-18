@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NakedObjects;
-using NakedObjects.Value;
-using NakedObjects.Menu;
 using static GolfRecord.Model.Enums;
-using GolfRecord.Model;
 using System.ComponentModel.DataAnnotations;
 
 namespace GolfRecord.Model
@@ -76,28 +71,6 @@ namespace GolfRecord.Model
             }
         }
 
-        public void AddUnregisteredGolfer()
-        {
-            var newGolfer = Container.NewTransientInstance<UnregisteredPlayer>();
-            if (MatchType == MatchType.MatchPlay & Golfers.Count < 2)
-            {
-                Golfers.Add(newGolfer);
-            }
-            else if (MatchType == MatchType.StrokePlay & Golfers.Count < 4)
-            {
-
-                Golfers.Add(newGolfer);
-            }
-            else if (MatchType == MatchType.StableFord & Golfers.Count < 4)
-            {
-
-                Golfers.Add(newGolfer);
-            }
-            else
-            {
-                Container.InformUser("Too many players in this match or golfer is already in a match");
-            }
-        }
 
         [PageSize(3)]
         public IQueryable<Golfer> AutoComplete0AddRegisteredGolfers([MinLength(2)] string name)

@@ -55,6 +55,31 @@ namespace GolfRecord.Model
         public virtual int Yardage { get; set; }
 
         public virtual string PhoneNumber { get; set; }
+
+        public virtual FileAttachment Attachment
+        {
+            get
+            {
+                if (AttContent == null) return null;
+                return new FileAttachment(AttContent, AttName, AttMime);
+            }
+        }
+
+        [NakedObjectsIgnore]
+        public virtual byte[] AttContent { get; set; }
+
+        [NakedObjectsIgnore]
+        public virtual string AttName { get; set; }
+
+        [NakedObjectsIgnore]
+        public virtual string AttMime { get; set; }
+
+        public void AddOrChangeAttachment(FileAttachment newAttachment)
+        {
+            AttContent = newAttachment.GetResourceAsByteArray();
+            AttName = newAttachment.Name;
+            AttMime = newAttachment.MimeType;
+        }
     }
 }
 
