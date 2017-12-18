@@ -93,6 +93,17 @@ namespace GolfRecord.Model
         }
         #endregion
 
+        #region Groups
+
+        public Group CreateNewGroup()
+        {
+            var Group = Container.NewTransientInstance<Group>();
+            Group.GroupOwner = GolferConfig.Me();
+            return Group;
+        }
+
+
+        #endregion
         // #region Invitations
         //    private ICollection<Invite> _Invitations = new List<Invite>();
 

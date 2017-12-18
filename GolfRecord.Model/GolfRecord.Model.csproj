@@ -65,6 +65,7 @@
     <Compile Include="Enums.cs" />
     <Compile Include="Golfer.cs" />
     <Compile Include="GolferConfig.cs" />
+    <Compile Include="Group.cs" />
     <Compile Include="Hole.cs" />
     <Compile Include="HoleAuthorier.cs" />
     <Compile Include="HoleConfig.cs" />
