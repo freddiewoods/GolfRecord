@@ -97,13 +97,26 @@ namespace GolfRecord.Model
 
         public Group CreateNewGroup()
         {
-            var Group = Container.NewTransientInstance<Group>();
-            Group.GroupOwner = GolferConfig.Me();
-            return Group;
+            var group = Container.NewTransientInstance<Group>(); //Need to automatically add the leader
+            group.GroupOwner = GolferConfig.Me();
+            return group;
         }
+      
+        private ICollection<Group> _Groups = new List<Group>();
 
-
+        public virtual ICollection<Group> Groups
+        {
+            get
+            {
+                return _Groups;
+            }
+            set
+            {
+                _Groups = value;
+            }
+        }
         #endregion
+
         // #region Invitations
         //    private ICollection<Invite> _Invitations = new List<Invite>();
 

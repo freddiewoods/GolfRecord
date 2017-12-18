@@ -41,3 +41,21 @@ WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignori
 WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
 WARN 8 NakedObjects.Persistor.Entity.Component.EntityObjectStore - Ignoring exception Sequence contains no matching element
 WARN 8 NakedObjects.Persistor.Entity.Component.EntityObjectStore - Ignoring exception Sequence contains no matching element
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender

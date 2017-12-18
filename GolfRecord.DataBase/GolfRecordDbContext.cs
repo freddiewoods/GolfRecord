@@ -31,6 +31,7 @@ namespace GolfRecord.DataBase
             DefineMatch(modelBuilder.Entity<Match>());
             DefineCourse(modelBuilder.Entity<Course>());
             DefineGolferMatch(modelBuilder);
+            DefineGroupMember(modelBuilder);
 
         }
         private void DefineCourse(EntityTypeConfiguration<Course> courseconfiguration )
@@ -61,6 +62,18 @@ namespace GolfRecord.DataBase
             });
         }
 
+        private void DefineGroupMember(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Golfer>()
+                .HasMany(x => x.Groups)
+                .WithMany(x => x.Members)
+            .Map(x =>
+            {
+                x.ToTable("GroupMember"); // third table is named GolferMatch
+                x.MapLeftKey("Id");
+                x.MapRightKey("GolferId");
+            });
+        }
         private void DefineGolfer(EntityTypeConfiguration<Golfer> golferconfiguration)
         {
             golferconfiguration.ToTable("PLAYERS");

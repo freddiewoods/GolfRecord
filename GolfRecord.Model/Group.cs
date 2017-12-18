@@ -16,8 +16,9 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]
         public virtual int Id { get; set; }
 
-        [Title]
+        [Title][MemberOrder(1)]
         public virtual string Name { get; set; }
+
 
         public virtual Golfer GroupOwner { get; set; }
 
@@ -39,6 +40,7 @@ namespace GolfRecord.Model
         public void AddNewMember(Golfer Golfer)
         {
             Members.Add(Golfer);
+            Golfer.Groups.Add(this);
         }
         [PageSize(3)]
         public IQueryable<Golfer> AutoComplete0AddNewMember([MinLength(2)] string name)

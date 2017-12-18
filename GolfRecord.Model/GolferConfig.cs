@@ -64,25 +64,32 @@ namespace GolfRecord.Model
             //Filters students to find a match to play
             return AllGolfers().Where(c => c.FullName.ToUpper().Contains(name.ToUpper()));
         }
-       #region Invite
-       // public Invite SendInvite(Golfer golfer)
-       // {
-       //     Invite invite = null;
-       //     invite = Container.NewTransientInstance<Invite>();
-       //     invite.Reciever = golfer;
-       //     invite.Sender = Me();
-       //     return invite;
-       //}
-       // [PageSize(3)]
-       // public IQueryable<Golfer> AutoComplete0SendInvite([MinLength(2)] string name)
-       // {
-       //     return AllGolfers().Where(g => g.FullName.Contains(name));
-       // }
-       //
-       // public IQueryable<Invite> AllInvites()
-       // {
-       //     return Container.Instances<Invite>();
-       // }
+
+        public IQueryable<Group> AllGroups()
+        {
+            //The 'Container' masks all the complexities of 
+            //dealing with the database directly.
+            return Container.Instances<Group>();
+        }
+        #region Invite
+        // public Invite SendInvite(Golfer golfer)
+        // {
+        //     Invite invite = null;
+        //     invite = Container.NewTransientInstance<Invite>();
+        //     invite.Reciever = golfer;
+        //     invite.Sender = Me();
+        //     return invite;
+        //}
+        // [PageSize(3)]
+        // public IQueryable<Golfer> AutoComplete0SendInvite([MinLength(2)] string name)
+        // {
+        //     return AllGolfers().Where(g => g.FullName.Contains(name));
+        // }
+        //
+        // public IQueryable<Invite> AllInvites()
+        // {
+        //     return Container.Instances<Invite>();
+        // }
         #endregion
     }
 
