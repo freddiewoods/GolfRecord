@@ -28,13 +28,19 @@ namespace GolfRecord.Model
 
         public bool IsVisible(IPrincipal principal, Player player, string memberName)
         {
-            if (player.Username == principal.Identity.Name)
-            {
-                return true;
-            }
-            else if ((memberName == "AddFavouriteCourses") | (memberName == "AddRegisteredGolfers") | (memberName == "AddMatchHistory") | (memberName == "AddFriend"))
+            if (memberName == "AddMatchHistory")
             {
                 return false;
+            }
+            else if (((player.FavouriteCourses.Count == 0) & (memberName == "FavouriteCourses"))
+                    | ((player.Friends.Count == 0) & (memberName == "Friends"))
+                    | ((player.Groups.Count == 0) &(memberName == "Groups")))
+            {
+                return false;
+            }
+            else if (player.Username == principal.Identity.Name)
+            {
+                return true;
             }
             else
             {

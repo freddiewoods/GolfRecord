@@ -25,7 +25,7 @@ namespace GolfRecord.Model
             }
         }
 
-        public void AddFavouriteCourses(Course course)
+        public void AddCourseToFavourites(Course course)
         {
             FavouriteCourses.Add(course);
         }
