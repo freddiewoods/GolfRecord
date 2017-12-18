@@ -44,7 +44,15 @@ namespace GolfRecord.Model
             }
             else
             {
-                return true;
+                if ((memberName == "Mobile") | (memberName == "AddFriend") | (memberName == "AddCourseToFavourites"))
+                {
+                    return false;
+                }
+                else
+                {
+
+                    return true;
+                }
             }
         }
     }
