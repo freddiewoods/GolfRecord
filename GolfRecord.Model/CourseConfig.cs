@@ -17,7 +17,7 @@ namespace GolfRecord.Model
            return Container.NewTransientInstance<Course>();
         }
 
-        public IQueryable<Course> ShowExistingCourses()
+        public IQueryable<Course> BrowseCourses()
         {
             return Container.Instances<Course>();
         }

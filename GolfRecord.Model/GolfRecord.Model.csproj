@@ -72,6 +72,7 @@
     <Compile Include="HoleConfig.cs" />
     <Compile Include="HoleScoreAbstract.cs" />
     <Compile Include="Invite.cs" />
+    <Compile Include="MatchAuthoriser.cs" />
     <Compile Include="MatchPlayAuthoriser.cs" />
     <Compile Include="PlayerAuthoriser.cs" />
     <Compile Include="StableFordAuthoriser.cs" />
