@@ -14,11 +14,12 @@ namespace GolfRecord.Model
 
         public bool IsEditable(IPrincipal principal, MatchStableFord match, string memberName)
         {
-            if (match.Golfers.Contains(GolferConfig.Me()) == false)
-            {
-                return false;
-            }
-            else if ((memberName == "Winner") | (memberName == "MatchType"))
+          //  if (match.Golfers.Contains(GolferConfig.Me()) == false)
+          //  {
+          //      return false;
+          //   }
+          //  else
+            if ((memberName == "Winner") | (memberName == "MatchType"))
             {
                 return false;
             }

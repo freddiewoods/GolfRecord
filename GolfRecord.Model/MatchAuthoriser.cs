@@ -19,22 +19,22 @@ namespace GolfRecord.Model
             {
                 return true;
             }
-            else
+           else
             {
                 return false;
             }
         }
 
-        public bool IsVisible(IPrincipal principal, Match match, string memberName)
+       public bool IsVisible(IPrincipal principal, Match match, string memberName)
         {
-            if (match.Golfers.Contains(GolferConfig.Me()))
+           if (match.Golfers.Contains(GolferConfig.Me()))
             {
                 return true;
-            }
+           }
             else
-            {
+           {
                 return false;
-            }
+           }
         }
     }
 }
