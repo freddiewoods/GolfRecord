@@ -11,7 +11,7 @@ namespace GolfRecord.Model
     public class Group
     {
 
-        public GolferConfig GolferConfig { set; protected get; }
+        public GolferServices GolferConfig { set; protected get; }
 
         [NakedObjectsIgnore]
         public virtual int Id { get; set; }

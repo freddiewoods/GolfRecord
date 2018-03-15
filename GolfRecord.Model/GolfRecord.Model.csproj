@@ -60,16 +60,16 @@
     <Compile Include="ClubManager.cs" />
     <Compile Include="ClubManagerAuthoriser.cs" />
     <Compile Include="Course.cs" />
-    <Compile Include="CourseConfig.cs" />
+    <Compile Include="CourseServices.cs" />
     <Compile Include="DefaultAuthorizer.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Golfer.cs" />
-    <Compile Include="GolferConfig.cs" />
+    <Compile Include="GolferServices.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="GroupAuthoriser.cs" />
     <Compile Include="Hole.cs" />
     <Compile Include="HoleAuthorier.cs" />
-    <Compile Include="HoleConfig.cs" />
+    <Compile Include="HoleServices.cs" />
     <Compile Include="HoleScoreAbstract.cs" />
     <Compile Include="Invite.cs" />
     <Compile Include="MatchAuthoriser.cs" />
@@ -80,7 +80,7 @@
     <Compile Include="Player.cs" />
     <Compile Include="TwoPlayerHoleScore.cs" />
     <Compile Include="Match.cs" />
-    <Compile Include="MatchConfig.cs" />
+    <Compile Include="MatchServices.cs" />
     <Compile Include="MatchPlay.cs" />
     <Compile Include="MatchStrokePlay.cs" />
     <Compile Include="MatchStableFord.cs" />
@@ -90,6 +90,7 @@
   <ItemGroup>
     <None Include="Diagram of Inheritence.cd" />
     <None Include="packages.config" />
+    <None Include="Properties.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -55,10 +55,10 @@ namespace NakedObjects.GolfRecord {
             get
             {
                 return new Type[] {
-                    typeof(GolferConfig),
-                    typeof(MatchConfig),
-                    typeof(CourseConfig),
-                    typeof(HoleConfig)
+                    typeof(GolferServices),
+                    typeof(MatchServices),
+                    typeof(CourseServices),
+                    typeof(HoleServices)
                     
 
             };
@@ -80,9 +80,9 @@ namespace NakedObjects.GolfRecord {
         public static IMenu[] MainMenus(IMenuFactory factory)
         {
             return new IMenu[] {
-                factory.NewMenu<GolferConfig>(true, "Golfers"),
-                factory.NewMenu<MatchConfig>(true,"Matches"),
-                factory.NewMenu<CourseConfig>(true,"Courses")
+                factory.NewMenu<GolferServices>(true, "Golfers"),
+                factory.NewMenu<MatchServices>(true,"Matches"),
+                factory.NewMenu<CourseServices>(true,"Courses")
             };
         }
         public static IAuthorizationConfiguration AuthorizationConfig()
@@ -96,8 +96,8 @@ namespace NakedObjects.GolfRecord {
             config.AddTypeAuthorizer<Player, PlayerAuthoriser>();
             config.AddTypeAuthorizer<ClubManager, ClubManagerAuthoriser>();
             config.AddTypeAuthorizer<Hole, HoleAuthorier>();
-            config.AddTypeAuthorizer<Group, GroupAuthoriser>();
             config.AddTypeAuthorizer<Match, MatchAuthoriser>();
+            config.AddTypeAuthorizer<Group, GroupAuthoriser>();
             return config;
         }
 

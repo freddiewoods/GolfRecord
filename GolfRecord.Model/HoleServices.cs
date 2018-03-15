@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GolfRecord.Model
 {
-    public class HoleConfig
+    public class HoleServices
     {
         public IDomainObjectContainer Container { set; protected get; }
 

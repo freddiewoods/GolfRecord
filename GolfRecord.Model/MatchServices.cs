@@ -10,9 +10,9 @@ using static GolfRecord.Model.Enums;
 
 namespace GolfRecord.Model
 {
-    public class MatchConfig
+    public class MatchServices
     {
-        public GolferConfig GolferConfig { set; protected get; }
+        public GolferServices GolferConfig { set; protected get; }
         public IDomainObjectContainer Container { set; protected get; }
 
         public Match CreateNewMatch(MatchType matchtype)
@@ -44,6 +44,14 @@ namespace GolfRecord.Model
             return Container.Instances<Match>();
         }
 
+        public IQueryable<Match> MyMatches()
+        {
+            return Container.Instances<Match>();
+        }
 
+      //  public IQueryable<Match> MyMatch()
+      //  {
+      //      return ShowMatches().Where(m => m.Golfers.Contains(GolferConfig.Me()));
+      //  }
     }
 }

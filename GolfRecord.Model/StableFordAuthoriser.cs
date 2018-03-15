@@ -10,7 +10,7 @@ namespace GolfRecord.Model
 {
     public class StableFordAuthoriser : ITypeAuthorizer<MatchStableFord>
     {
-        public GolferConfig GolferConfig { set; protected get; }
+        public GolferServices GolferConfig { set; protected get; }
 
         public bool IsEditable(IPrincipal principal, MatchStableFord match, string memberName)
         {

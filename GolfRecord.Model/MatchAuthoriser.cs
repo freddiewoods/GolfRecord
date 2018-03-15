@@ -11,7 +11,7 @@ namespace GolfRecord.Model
     public class MatchAuthoriser : ITypeAuthorizer<Match>
     {
 
-        public GolferConfig GolferConfig { set; protected get; }
+        public GolferServices GolferConfig { set; protected get; }
 
         public bool IsEditable(IPrincipal principal, Match match, string memberName)
         {
@@ -27,10 +27,15 @@ namespace GolfRecord.Model
 
        public bool IsVisible(IPrincipal principal, Match match, string memberName)
         {
-           if (match.Golfers.Contains(GolferConfig.Me()))
+            if ((memberName == "CreateNewMatch") & !(principal.Identity.Name == GolferConfig.Me().Username))
+                {
+                    return false;
+                }
+                else if (match.Golfers.Contains(GolferConfig.Me()))
             {
                 return true;
            }
+       
             else
            {
                 return false;

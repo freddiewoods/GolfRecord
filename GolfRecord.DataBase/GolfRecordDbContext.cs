@@ -20,6 +20,7 @@ namespace GolfRecord.DataBase
         public DbSet<FourPlayerHoleScore> FourPlayerHoleScore { get; set; }
         public DbSet<TwoPlayerHoleScore> TwoPlayerHoleScore { get; set; }
         public DbSet<Invite> Invite { get; set; }
+        public DbSet<Group> Group { get; set; }
 
 
 
@@ -36,16 +37,16 @@ namespace GolfRecord.DataBase
         }
         private void DefineCourse(EntityTypeConfiguration<Course> courseconfiguration )
         {
-            courseconfiguration.ToTable("COURSE");
+            courseconfiguration.ToTable("Course");
             courseconfiguration.HasKey(c => c.Id);
-            courseconfiguration.Property(c => c.Address).HasColumnName("PostCode");
+            courseconfiguration.Property(c => c.Address).HasColumnName("PostalAddress");
             courseconfiguration.Property(c => c.CourseDescription).HasColumnName("DescriptionOfCourse");
             courseconfiguration.Property(c => c.CourseName).HasColumnName("NameOfCourse");
         }
 
         private void DefineMatch(EntityTypeConfiguration<Match> matchconfiguration)
         {
-            matchconfiguration.ToTable("TOURNAMENTS");
+            matchconfiguration.ToTable("FriendlyMatches");
 
         }
 
@@ -56,7 +57,7 @@ namespace GolfRecord.DataBase
                 .WithMany(x => x.MatchHistory)
             .Map(x =>
             {
-                x.ToTable("GolferMatch"); // third table is named GolferMatch
+                x.ToTable("GolferMatch"); 
         x.MapLeftKey("GolferId");
                 x.MapRightKey("MatchId");
             });
@@ -69,14 +70,14 @@ namespace GolfRecord.DataBase
                 .WithMany(x => x.Members)
             .Map(x =>
             {
-                x.ToTable("GroupMember"); // third table is named GolferMatch
+                x.ToTable("GroupMember"); 
                 x.MapLeftKey("Id");
                 x.MapRightKey("GolferId");
             });
         }
         private void DefineGolfer(EntityTypeConfiguration<Golfer> golferconfiguration)
         {
-            golferconfiguration.ToTable("PLAYERS");
+            golferconfiguration.ToTable("Players");
             
         }
     }

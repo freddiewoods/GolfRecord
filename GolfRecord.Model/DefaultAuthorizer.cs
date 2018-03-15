@@ -12,7 +12,7 @@ namespace GolfRecord.Model
     public class DefaultAuthorizer : ITypeAuthorizer<object>
     {
 
-        public GolferConfig GolferConfig { set; protected get; }
+        public GolferServices GolferConfig { set; protected get; }
 
         public bool IsEditable(IPrincipal principal, object target, string memberName)
         {
@@ -40,6 +40,10 @@ namespace GolfRecord.Model
         public bool IsVisible(IPrincipal principal, object target, string memberName)
         {
             if ((memberName == "AddNewCourse") | (memberName == "AddMatchHistory"))
+            {
+                return false;
+            }
+            else if ((memberName == "CreateNewMatch") & (GolferConfig.Me().FullName == null))
             {
                 return false;
             }

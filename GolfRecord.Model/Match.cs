@@ -13,9 +13,9 @@ namespace GolfRecord.Model
 
         public IDomainObjectContainer Container { set; protected get; }
 
-        public CourseConfig CourseConfig { set; protected get; }
+        public CourseServices CourseConfig { set; protected get; }
 
-        public GolferConfig GolferConfig { set; protected get; }
+        public GolferServices GolferConfig { set; protected get; }
 
         #endregion
         [NakedObjectsIgnore]

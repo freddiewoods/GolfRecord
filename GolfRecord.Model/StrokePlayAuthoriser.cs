@@ -10,7 +10,7 @@ namespace GolfRecord.Model
 {
     public class StrokePlayAuthoriser : ITypeAuthorizer<MatchStrokePlay>
     {
-        public GolferConfig GolferConfig { set; protected get; }
+        public GolferServices GolferConfig { set; protected get; }
 
         public bool IsEditable(IPrincipal principal, MatchStrokePlay match, string memberName)
         {

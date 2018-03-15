@@ -20,15 +20,14 @@ namespace GolfRecord.Model
             hs.ScoreGolferD = ScoreD;
             hs.Hole = hole;
             HoleScores.Add(hs);
-            int[] handicaps = CalculateHandicapForEachGolfer(hole);
-            int[] ParsForEach = CalculateParForEachGolfer(hole);
+            int[] StrokeIndexs = StrokeIndexEffect(hole);
+            int[] GenderEffectOfGolfer = GenderEffect(hole);
             int[] Scores = { ScoreA, ScoreB, ScoreC, ScoreD };
-            ScoresAddedToHs(hole, Scores, hs, handicaps, ParsForEach);
+            TotalScoreCalculated(hole, Scores, hs, StrokeIndexs, GenderEffectOfGolfer);
             Container.Persist(ref hs);
             HoleScores.Add(hs);
             if (hole.HoleNumber == Course.Holes.Count)
             {
-                Golfers.First().MatchHistory.Add(this);
                 Winner = Golfers.ElementAt(FindWinner());
                 for (int i = 0; i < 4; i++)
                 {
@@ -38,7 +37,7 @@ namespace GolfRecord.Model
             }
         }
 
-        private int[] CalculateParForEachGolfer(Hole hole)
+        private int[] GenderEffect(Hole hole)
         {
             int[] ParsForEachG = new int[4];
             for (int i = 0; i < 4; i++)
@@ -55,7 +54,7 @@ namespace GolfRecord.Model
             return ParsForEachG;
         }
 
-        private int[] CalculateHandicapForEachGolfer(Hole hole)
+        private int[] StrokeIndexEffect(Hole hole)
         {
             int[] Difficulties = new int[4];
             for (int i = 0; i < 4; i++)
@@ -78,7 +77,7 @@ namespace GolfRecord.Model
         }
 
         [NakedObjectsIgnore]
-        public void ScoresAddedToHs(Hole hole, int[] Scores, FourPlayerHoleScore hs, int[] handicaps ,int[] ParsForEachG)
+        public void TotalScoreCalculated(Hole hole, int[] Scores, FourPlayerHoleScore hs, int[] handicaps ,int[] ParsForEachG)
         {
             
             int[] FinalPar = new int[4];
@@ -106,7 +105,7 @@ namespace GolfRecord.Model
             }
             else if (Score - Par < 0)
             {
-                TotalScore += 3;
+                TotalScore += ((Score- Par) - 2)* (-1);
             }
             else
             {
