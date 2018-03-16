@@ -15,7 +15,7 @@ namespace GolfRecord.Model
 
         public bool IsEditable(IPrincipal principal, Match match, string memberName)
         {
-            if (match.Golfers.Contains(GolferConfig.Me()))
+            if ((match.Golfers.Contains(GolferConfig.Me()))|(match.MatchCreator == GolferConfig.Me()))
             {
                 return true;
             }

@@ -35,7 +35,7 @@ namespace GolfRecord.Model
                 default:
                     break;
             }
-            match.Golfers.Add(GolferConfig.Me());
+            match.MatchCreator = GolferConfig.Me();
             return match;
         }
 

@@ -14,18 +14,18 @@ namespace GolfRecord.Model
 
         public bool IsEditable(IPrincipal principal, MatchPlay match, string memberName)
         {
-          //  if (match.Golfers.Contains(GolferConfig.Me()) == false)
-          //  {
-          //      return false;
-          //  }
-          //  else 
-            if ((memberName == "Winner") | (memberName == "MatchType"))
+
+            if ((memberName == "Winner") | (memberName == "MatchType") | (memberName == "MatchCreator"))
             {
                 return false;
             }
-            else
+            else if ((match.Golfers.Contains(GolferConfig.Me())) | (match.MatchCreator == GolferConfig.Me()))
             {
                 return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
