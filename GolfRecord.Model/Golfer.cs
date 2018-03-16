@@ -37,9 +37,6 @@ namespace GolfRecord.Model
 
         public virtual Title Position { get; set; }
 
-        [NakedObjectsIgnore]
-        public virtual bool WithinMatch { get; set; }
-
         public virtual string Username { get; set; }
 
         #region Friends (collection)

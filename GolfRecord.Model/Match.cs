@@ -55,19 +55,20 @@ namespace GolfRecord.Model
         #region Add Golfers
         public void AddRegisteredGolfers(Golfer Golfer)
         {
-            if (MatchType == MatchType.MatchPlay & Golfers.Count < 2 & Golfer.WithinMatch == false)
+            if (MatchType == MatchType.MatchPlay & Golfers.Count < 2)
             {
-                Golfer.WithinMatch = true;
+                if (Golfers.Contains(GolferConfig.Me()) == false)
+                {
+                    Golfers.Add(GolferConfig.Me());
+                }
                 Golfers.Add(Golfer);
             }
-            else if (MatchType == MatchType.StrokePlay & Golfers.Count < 4 & Golfer.WithinMatch == false)
+            else if (MatchType == MatchType.StrokePlay & Golfers.Count < 4)
             {
-                Golfer.WithinMatch = true;
                 Golfers.Add(Golfer);
             }
-            else if (MatchType == MatchType.StableFord & Golfers.Count < 4 & Golfer.WithinMatch == false)
+            else if (MatchType == MatchType.StableFord & Golfers.Count < 4)
             {
-                Golfer.WithinMatch = true;
                 Golfers.Add(Golfer);
             }
             else

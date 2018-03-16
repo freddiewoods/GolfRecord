@@ -16,8 +16,8 @@
         <Point X="4.25" Y="0.75" />
         <Point X="4.25" Y="0.5" />
         <Point X="10.625" Y="0.5" />
-        <Point X="10.625" Y="3.28" />
-        <Point X="11" Y="3.28" />
+        <Point X="10.625" Y="3.207" />
+        <Point X="11" Y="3.207" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -82,7 +82,7 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>ABECAMQABQBAAICgAQAAAADQAAABAACAAAAAMIAAAAI=</HashCode>
+      <HashCode>ABECAMQABABAAICgAQAAAADQAAABAACAAAAAMIAAAAI=</HashCode>
       <FileName>Golfer.cs</FileName>
     </TypeIdentifier>
   </Class>

@@ -28,7 +28,6 @@ namespace GolfRecord.Model
                 Winner = Golfers.ElementAt(Gwin);
                 for (int i = 0; i < 2; i++)
                 {
-                    Golfers.ElementAt(i).WithinMatch = false;
                     Golfers.ElementAt(i).MatchHistory.Add(this);
                 }
                 
