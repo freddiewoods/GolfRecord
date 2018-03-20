@@ -96,6 +96,17 @@ namespace GolfRecord.Model
             }
         }
 
+        public void sendInvite(Golfer golfer)
+        {
+
+            var invite = Container.NewTransientInstance<Invite>();
+            invite.match = this;
+            invite.Sender = GolferConfig.Me();
+            invite.Reciever = golfer;
+            Container.Persist(ref invite);
+            golfer.Invites.Add(invite);
+        }
+
         #endregion
         #region Golfers (collection)
         private ICollection<Golfer> _Golfers = new List<Golfer>();

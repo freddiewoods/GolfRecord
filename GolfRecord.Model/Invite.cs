@@ -12,8 +12,16 @@ namespace GolfRecord.Model
 
         public virtual Golfer Sender { get; set; }
 
-        [MemberOrder(1)][Optionally]
+        [Optionally]
         public virtual bool Response { get; set; }
 
+        [Title]
+        public virtual Match match { get; set; }
+
+        public void AcceptInvite()
+        {
+            Response = true;
+            this.match.Golfers.Add(this.Reciever);
+        }
    }
 }

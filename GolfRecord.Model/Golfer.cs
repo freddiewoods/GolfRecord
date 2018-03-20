@@ -112,6 +112,22 @@ namespace GolfRecord.Model
             }
         }
         #endregion
+
+        #region Invites (collection)
+        private ICollection<Invite> _Invites = new List<Invite>();
+
+        public virtual ICollection<Invite> Invites
+        {
+            get
+            {
+                return _Invites;
+            }
+            set
+            {
+                _Invites = value;
+            }
+        }
+        #endregion
     }
 }
 
