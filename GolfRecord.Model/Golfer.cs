@@ -29,7 +29,7 @@ namespace GolfRecord.Model
         [MemberOrder(2)] //this property is not neccessary
         public virtual int Handicap { get; set; }
 
-        [Optionally][MemberOrder(4)]
+        [Optionally][MemberOrder(3)]
         public virtual string Mobile { get; set; }
 
         [Optionally]
@@ -91,10 +91,9 @@ namespace GolfRecord.Model
         #endregion
 
         #region Groups
-
         public Group CreateNewGroup()
         {
-            var group = Container.NewTransientInstance<Group>(); //Need to automatically add the leader
+            var group = Container.NewTransientInstance<Group>();
             group.GroupOwner = GolferConfig.Me();
             return group;
         }
@@ -113,34 +112,6 @@ namespace GolfRecord.Model
             }
         }
         #endregion
-
-        // #region Invitations
-        //    private ICollection<Invite> _Invitations = new List<Invite>();
-
-        //    public virtual ICollection<Invite> Invitations
-        //    {
-        //       get
-        //        {
-        //            return _Invitations;
-        //        }
-        //        set
-        //        {
-        //            _Invitations = value;
-        //        }
-        //    }
-
-        //       public void Sendmessage(Golfer golfer)
-        //        {
-        //            var invite =  GolferConfig.SendInvite(golfer);
-        //            GolferConfig.Me().Invite = invite;
-        //        }
-
-        //  [PageSize(3)]
-        //  public IQueryable<Golfer> AutoComplete0Sendmessage([MinLength(2)] string name)
-        //  {
-        //    return GolferConfig.AllGolfers().Where(g => g.FullName.Contains(name));
-        //  }
-        // #endregion
     }
 }
 

@@ -23,10 +23,6 @@ namespace GolfRecord.Model
 
         public virtual int Par { get; set; }
 
-      //  [Optionally]
-      //  public virtual ClubManager ClubManger { get; set; }
-
-
         private ICollection<Hole> _Holes = new List<Hole>();
         [Hidden(WhenTo.UntilPersisted)]
         public virtual ICollection<Hole> Holes
@@ -42,10 +38,8 @@ namespace GolfRecord.Model
         }
 
         [Optionally]
-        public virtual string CourseDescription { get; set; } //So people can look at the course and see whats its like
-        //event schedule using a callender.
-
-        
+        public virtual string CourseDescription { get; set; } //So people can look at the course and see whats its li
+            
         [Optionally][NakedObjectsIgnore]
         public virtual double Rating { get; set; } //to make the overall rating fromt the small ratings.
 

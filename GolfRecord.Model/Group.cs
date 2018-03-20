@@ -36,11 +36,9 @@ namespace GolfRecord.Model
                 _Members = value;
             }
         }
-
         public void AddNewMember(Golfer Golfer)
         {
             Members.Add(Golfer);
-            Golfer.Groups.Add(this);
         }
         [PageSize(3)]
         public IQueryable<Golfer> AutoComplete0AddNewMember([MinLength(2)] string name)

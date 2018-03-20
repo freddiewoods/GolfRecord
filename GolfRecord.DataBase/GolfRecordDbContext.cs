@@ -20,7 +20,7 @@ namespace GolfRecord.DataBase
         public DbSet<FourPlayerHoleScore> FourPlayerHoleScore { get; set; }
         public DbSet<TwoPlayerHoleScore> TwoPlayerHoleScore { get; set; }
         public DbSet<Invite> Invite { get; set; }
-        public DbSet<Group> Group { get; set; }
+        public DbSet<Group> Groups { get; set; }
 
 
 

@@ -18,7 +18,7 @@ namespace GolfRecord.Model
             }
             else
             {
-                return false;
+                return true;
             }
         }
 

@@ -1,0 +1,315 @@
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+ERROR 5 NakedObjects.Persistor.Entity.Component.EntityObjectStore - Failed to create Code First DbContext: Object reference not set to an instance of an object.
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 7 NakedObjects.Facade.Impl.Utility.EntityOidStrategy - Domain Object not found with exception
+System.Data.Entity.Core.EntitySqlException: 'Group' is a reserved keyword and cannot be used as an alias, unless it is escaped. Near line 3, column 21.
+   at System.Data.Entity.Core.Common.EntitySql.CqlLexer.MapUnescapedIdentifier(String symbol)
+   at System.Data.Entity.Core.Common.EntitySql.CqlLexer.MapIdentifierOrKeyword(String symbol)
+   at System.Data.Entity.Core.Common.EntitySql.CqlLexer.Accept_83()
+   at System.Data.Entity.Core.Common.EntitySql.CqlLexer.yylex()
+   at System.Data.Entity.Core.Common.EntitySql.CqlParser.yylex()
+   at System.Data.Entity.Core.Common.EntitySql.CqlParser.yyparse()
+   at System.Data.Entity.Core.Common.EntitySql.CqlParser.internalParseEntryPoint()
+   at System.Data.Entity.Core.Common.EntitySql.CqlParser.Parse(String query)
+   at System.Data.Entity.Core.Common.EntitySql.CqlQuery.Parse(String commandText, ParserOptions parserOptions)
+   at System.Data.Entity.Core.Common.EntitySql.CqlQuery.CompileCommon[TResult](String commandText, ParserOptions parserOptions, Func`3 compilationFunction)
+   at System.Data.Entity.Core.Common.EntitySql.CqlQuery.CompileQueryCommandLambda(String queryCommandText, Perspective perspective, ParserOptions parserOptions, IEnumerable`1 parameters, IEnumerable`1 variables)
+   at System.Data.Entity.Core.Objects.EntitySqlQueryState.Parse()
+   at System.Data.Entity.Core.Objects.EntitySqlQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute2[T0,T1,TRet](CallSite site, T0 arg0, T1 arg1)
+   at CallSite.Target(Closure , CallSite , Object , MergeOption )
+   at NakedObjects.Persistor.Entity.Component.EntityObjectStore.GetObjectByKey(IEntityOid eoid, Type type)
+   at NakedObjects.Persistor.Entity.Component.EntityObjectStore.GetObjectByKey(IEntityOid eoid, IObjectSpec hint)
+   at NakedObjects.Persistor.Entity.Component.EntityObjectStore.GetObject(IOid oid, IObjectSpec hint)
+   at NakedObjects.Persistor.Entity.Component.EntityObjectStore.FindByKeys(Type type, Object[] keys)
+   at NakedObjects.Core.Component.ObjectPersistor.FindByKeys(Type type, Object[] keys)
+   at NakedObjects.Facade.Impl.Utility.EntityOidStrategy.GetDomainObject(String[] keys, Type type)
+WARN 7 NakedObjects.Facade.Impl.Utility.EntityOidStrategy - Domain Object not found keys:  1 type: GolfRecord.Model.Group
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 8 NakedObjects.Facade.Impl.Utility.EntityOidStrategy - Domain Object not found with exception
+System.Data.Entity.Core.EntitySqlException: 'Group' is a reserved keyword and cannot be used as an alias, unless it is escaped. Near line 3, column 21.
+   at System.Data.Entity.Core.Common.EntitySql.CqlLexer.MapUnescapedIdentifier(String symbol)
+   at System.Data.Entity.Core.Common.EntitySql.CqlLexer.MapIdentifierOrKeyword(String symbol)
+   at System.Data.Entity.Core.Common.EntitySql.CqlLexer.Accept_83()
+   at System.Data.Entity.Core.Common.EntitySql.CqlLexer.yylex()
+   at System.Data.Entity.Core.Common.EntitySql.CqlParser.yylex()
+   at System.Data.Entity.Core.Common.EntitySql.CqlParser.yyparse()
+   at System.Data.Entity.Core.Common.EntitySql.CqlParser.internalParseEntryPoint()
+   at System.Data.Entity.Core.Common.EntitySql.CqlParser.Parse(String query)
+   at System.Data.Entity.Core.Common.EntitySql.CqlQuery.Parse(String commandText, ParserOptions parserOptions)
+   at System.Data.Entity.Core.Common.EntitySql.CqlQuery.CompileCommon[TResult](String commandText, ParserOptions parserOptions, Func`3 compilationFunction)
+   at System.Data.Entity.Core.Common.EntitySql.CqlQuery.CompileQueryCommandLambda(String queryCommandText, Perspective perspective, ParserOptions parserOptions, IEnumerable`1 parameters, IEnumerable`1 variables)
+   at System.Data.Entity.Core.Objects.EntitySqlQueryState.Parse()
+   at System.Data.Entity.Core.Objects.EntitySqlQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute2[T0,T1,TRet](CallSite site, T0 arg0, T1 arg1)
+   at CallSite.Target(Closure , CallSite , Object , MergeOption )
+   at NakedObjects.Persistor.Entity.Component.EntityObjectStore.GetObjectByKey(IEntityOid eoid, Type type)
+   at NakedObjects.Persistor.Entity.Component.EntityObjectStore.GetObjectByKey(IEntityOid eoid, IObjectSpec hint)
+   at NakedObjects.Persistor.Entity.Component.EntityObjectStore.GetObject(IOid oid, IObjectSpec hint)
+   at NakedObjects.Persistor.Entity.Component.EntityObjectStore.FindByKeys(Type type, Object[] keys)
+   at NakedObjects.Core.Component.ObjectPersistor.FindByKeys(Type type, Object[] keys)
+   at NakedObjects.Facade.Impl.Utility.EntityOidStrategy.GetDomainObject(String[] keys, Type type)
+WARN 8 NakedObjects.Facade.Impl.Utility.EntityOidStrategy - Domain Object not found keys:  1 type: GolfRecord.Model.Group
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+WARN 7 NakedObjects.Facade.Impl.Utility.EntityOidStrategy - Domain Object not found with exception
+System.Data.Entity.Core.EntitySqlException: 'Group' is a reserved keyword and cannot be used as an alias, unless it is escaped. Near line 3, column 21.
+   at System.Data.Entity.Core.Common.EntitySql.CqlLexer.MapUnescapedIdentifier(String symbol)
+   at System.Data.Entity.Core.Common.EntitySql.CqlLexer.MapIdentifierOrKeyword(String symbol)
+   at System.Data.Entity.Core.Common.EntitySql.CqlLexer.Accept_83()
+   at System.Data.Entity.Core.Common.EntitySql.CqlLexer.yylex()
+   at System.Data.Entity.Core.Common.EntitySql.CqlParser.yylex()
+   at System.Data.Entity.Core.Common.EntitySql.CqlParser.yyparse()
+   at System.Data.Entity.Core.Common.EntitySql.CqlParser.internalParseEntryPoint()
+   at System.Data.Entity.Core.Common.EntitySql.CqlParser.Parse(String query)
+   at System.Data.Entity.Core.Common.EntitySql.CqlQuery.Parse(String commandText, ParserOptions parserOptions)
+   at System.Data.Entity.Core.Common.EntitySql.CqlQuery.CompileCommon[TResult](String commandText, ParserOptions parserOptions, Func`3 compilationFunction)
+   at System.Data.Entity.Core.Common.EntitySql.CqlQuery.CompileQueryCommandLambda(String queryCommandText, Perspective perspective, ParserOptions parserOptions, IEnumerable`1 parameters, IEnumerable`1 variables)
+   at System.Data.Entity.Core.Objects.EntitySqlQueryState.Parse()
+   at System.Data.Entity.Core.Objects.EntitySqlQueryState.GetExecutionPlan(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.Execute(MergeOption mergeOption)
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute2[T0,T1,TRet](CallSite site, T0 arg0, T1 arg1)
+   at CallSite.Target(Closure , CallSite , Object , MergeOption )
+   at NakedObjects.Persistor.Entity.Component.EntityObjectStore.GetObjectByKey(IEntityOid eoid, Type type)
+   at NakedObjects.Persistor.Entity.Component.EntityObjectStore.GetObjectByKey(IEntityOid eoid, IObjectSpec hint)
+   at NakedObjects.Persistor.Entity.Component.EntityObjectStore.GetObject(IOid oid, IObjectSpec hint)
+   at NakedObjects.Persistor.Entity.Component.EntityObjectStore.FindByKeys(Type type, Object[] keys)
+   at NakedObjects.Core.Component.ObjectPersistor.FindByKeys(Type type, Object[] keys)
+   at NakedObjects.Facade.Impl.Utility.EntityOidStrategy.GetDomainObject(String[] keys, Type type)
+WARN 7 NakedObjects.Facade.Impl.Utility.EntityOidStrategy - Domain Object not found keys:  1 type: GolfRecord.Model.Group

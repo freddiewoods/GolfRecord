@@ -6,9 +6,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GolfRecord.Model
 {
-    //This example service acts as both a 'repository' (with methods for
-    //retrieving objects from the database) and as a 'factory' i.e. providing
-    //one or more methods for creating new object(s) from scratch.
     public class GolferServices
     {
         #region Injected Services
@@ -18,8 +15,7 @@ namespace GolfRecord.Model
 
         public IQueryable<Golfer> AllGolfers()
         {
-            //The 'Container' masks all the complexities of 
-            //dealing with the database directly.
+
             return Container.Instances<Golfer>();
         }
 
@@ -61,14 +57,11 @@ namespace GolfRecord.Model
 
         public IQueryable<Golfer> FindGolferByName(string name)
         {
-            //Filters students to find a match to play
            return AllGolfers().Where(c => c.FullName.ToUpper().Contains(name.ToUpper()));
        }
 
         public IQueryable<Group> AllGroups()
         {
-            //The 'Container' masks all the complexities of 
-            //dealing with the database directly.
             return Container.Instances<Group>();
         }
         #region Invite

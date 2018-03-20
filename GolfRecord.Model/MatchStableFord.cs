@@ -75,44 +75,6 @@ namespace GolfRecord.Model
             return Handicaps;
         }
 
-        [NakedObjectsIgnore]
-        public void TotalScoreCalculated(Hole hole, int[] Scores, FourPlayerHoleScore hs, int[] handicaps ,int[] ParsForEachG)
-        {
-            
-            int[] FinalPar = new int[4];
-            int[] TotalScores = new int[4];
-            for (int i = 0; i < 4; i++)
-            {
-                FinalPar[i] = ModifiedPar(hs, handicaps[i], ParsForEachG[i]);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                TotalScores[i] += FindScore(Scores[i], FinalPar[i]);
-            }
-        }
-
-        private int FindScore(int Score, int Par)
-        {
-            int  TotalScore = 0;
-            if (Score - Par == 1)
-            {
-                TotalScore += 1;
-            }
-            else if (Score - Par == 0)
-            {
-                TotalScore += 2;
-            }
-            else if (Score - Par < 0)
-            {
-                TotalScore += ((Score- Par) - 2)* (-1);
-            }
-            else
-            {
-                TotalScore += 0;
-            }
-            return TotalScore;
-        }
-
         private int ModifiedPar(FourPlayerHoleScore hs, int handi, int intitialPar)
         {
             int FinalPar = 0;
@@ -138,6 +100,44 @@ namespace GolfRecord.Model
             return FinalPar;
         }
 
+
+        private int FindScore(int Score, int Par)
+        {
+            int  TotalScore = 0;
+            if (Score - Par == 1)
+            {
+                TotalScore += 1;
+            }
+            else if (Score - Par == 0)
+            {
+                TotalScore += 2;
+            }
+            else if (Score - Par < 0)
+            {
+                TotalScore += ((Score- Par) - 2)* (-1);
+            }
+            else
+            {
+                TotalScore += 0;
+            }
+            return TotalScore;
+        }
+
+        [NakedObjectsIgnore]
+        public void TotalScoreCalculated(Hole hole, int[] Scores, FourPlayerHoleScore hs, int[] handicaps, int[] ParsForEachG)
+        {
+
+            int[] FinalPar = new int[4];
+            int[] TotalScores = new int[4];
+            for (int i = 0; i < 4; i++)
+            {
+                FinalPar[i] = ModifiedPar(hs, handicaps[i], ParsForEachG[i]);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                TotalScores[i] += FindScore(Scores[i], FinalPar[i]);
+            }
+        }
         [NakedObjectsIgnore]
         public int FindWinner()
         {
