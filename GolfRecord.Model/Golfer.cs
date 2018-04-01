@@ -56,9 +56,13 @@ namespace GolfRecord.Model
 
           public void AddFriend(Golfer golfer)
           {
-              Friends.Add(golfer);
-        
-          }
+            var invite = Container.NewTransientInstance<FriendInvite>();
+            invite.Sender = GolferConfig.Me();
+            invite.Reciever = golfer;
+            Container.Persist(ref invite);
+            golfer.Invites.Add(invite);
+
+        }
           [PageSize(3)]
           public IQueryable<Golfer> AutoComplete0AddFriend([MinLength(2)] string matching)
           {
@@ -95,6 +99,10 @@ namespace GolfRecord.Model
         {
             var group = Container.NewTransientInstance<Group>();
             group.GroupOwner = GolferConfig.Me();
+            group.PrivateGroup = false;
+            group.Name = (GolferConfig.Me().FullName + "'s group");
+            Container.Persist(ref group);
+            GolferConfig.Me().Groups.Add(group);
             return group;
         }
       
@@ -113,7 +121,8 @@ namespace GolfRecord.Model
         }
         #endregion
 
-        #region Invites (collection)
+        #region Invites
+
         private ICollection<Invite> _Invites = new List<Invite>();
 
         public virtual ICollection<Invite> Invites
@@ -127,6 +136,65 @@ namespace GolfRecord.Model
                 _Invites = value;
             }
         }
+
+        public void DeclineInvite(Invite invite)
+        {
+            Container.DisposeInstance(this);
+        }
+
+        public void AcceptFriendship(FriendInvite invite)
+        {
+            invite.Sender.Friends.Add(invite.Reciever);
+            invite.Reciever.Friends.Add(invite.Sender);
+            Container.DisposeInstance(invite);
+        }
+
+        public void AcceptGroup(GroupInvite invite)
+        {
+           invite.group.Members.Add(invite.Reciever);
+            Container.DisposeInstance(invite);
+        }
+        public void AcceptMatch(MatchInvite invite)
+        {
+            invite.match.Golfers.Add(invite.Reciever);
+            Container.DisposeInstance(invite);
+        }
+
+        #endregion
+
+        #region Messages
+        private ICollection<PlayerMessage> _Messages = new List<PlayerMessage>();
+
+        public virtual ICollection<PlayerMessage> Messages
+        {
+            get
+            {
+                return _Messages;
+            }
+            set
+            {
+                _Messages = value;
+            }
+        }
+
+        public PlayerMessage SendMessage()
+        {
+            PlayerMessage m = null;
+            m = Container.NewTransientInstance<PlayerMessage>();
+            m.Reciever = this;
+            m.Sender = GolferConfig.Me();
+            m.SendersName = m.Sender.FullName;
+            m.Content = ("Please Press Edit To Change");            
+            Container.Persist(ref m);
+            m.Reciever.Messages.Add(m);
+            return m;
+        }
+
+        public void DeleteMessage(PlayerMessage m)
+        {
+            Container.DisposeInstance(m);
+        }
+
         #endregion
     }
 }

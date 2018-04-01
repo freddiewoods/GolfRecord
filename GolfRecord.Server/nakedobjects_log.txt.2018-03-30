@@ -1,0 +1,20 @@
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+ERROR 11 NakedObjects.Meta.Component.Metamodel - Failed to Load Specification for: GolfRecord.Model.FriendInvite error: unexpected null
+ERROR 11 NakedObjects.Meta.Component.Metamodel - Failed to Load Specification for: GolfRecord.Model.FriendInvite error: NakedObjects.Core.NakedObjectSystemException: Failed to Load Specification for: GolfRecord.Model.FriendInvite error: unexpected null
+   at NakedObjects.Meta.Component.Metamodel.GetSpecification(Type type, Boolean allowNull)
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in Match, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Golfer.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.ClubManager.Gender
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStableFord, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchStrokePlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.TitleMethodFacetFactory - Title annotation is used more than once in MatchPlay, this time on property MatchType; this will be ignored
+WARN 1 NakedObjects.Reflect.FacetFactory.OptionalAnnotationFacetFactory - Ignoring Optionally annotation on primitive or un-readable parameter on GolfRecord.Model.Player.Gender
+ERROR 5 NakedObjects.Meta.Component.Metamodel - Failed to Load Specification for: GolfRecord.Model.GroupInvite error: unexpected null
+ERROR 5 NakedObjects.Meta.Component.Metamodel - Failed to Load Specification for: GolfRecord.Model.GroupInvite error: NakedObjects.Core.NakedObjectSystemException: Failed to Load Specification for: GolfRecord.Model.GroupInvite error: unexpected null
+   at NakedObjects.Meta.Component.Metamodel.GetSpecification(Type type, Boolean allowNull)

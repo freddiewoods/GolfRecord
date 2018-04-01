@@ -99,7 +99,7 @@ namespace GolfRecord.Model
         public void sendInvite(Golfer golfer)
         {
 
-            var invite = Container.NewTransientInstance<Invite>();
+            var invite = Container.NewTransientInstance<MatchInvite>();
             invite.match = this;
             invite.Sender = GolferConfig.Me();
             invite.Reciever = golfer;

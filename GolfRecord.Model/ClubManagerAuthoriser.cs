@@ -12,13 +12,19 @@ namespace GolfRecord.Model
     {
         public bool IsEditable(IPrincipal principal, ClubManager manager, string memberName)
         {
-            if (manager.Username == principal.Identity.Name)
+            if ((manager.Username == principal.Identity.Name) & (memberName == "Course")
+                | (memberName == "Username")
+                | (memberName == "Position"))
+            {
+                return false;
+            }
+            else if (manager.Username == principal.Identity.Name)
             {
                 return true;
             }
             else
             {
-                return true;
+                return false;
             }
         }
 
@@ -29,7 +35,33 @@ namespace GolfRecord.Model
                 return false;
             }
             else if (((manager.Friends.Count == 0) & (memberName == "Friends"))
-                    | ((manager.Groups.Count == 0) & (memberName == "Groups")))
+                    | ((manager.Groups.Count == 0) & (memberName == "Groups"))
+                    | ((manager.Invites.Count == 0) & (memberName == "Invites"))
+                    | ((manager.Messages.Count == 0) & (memberName == "Messages"))
+                    | ((manager.MatchHistory.Count == 0) & (memberName == "MatchHistory")))
+
+            {
+                return false;
+            }
+            else if ((manager.Username == principal.Identity.Name) & (memberName == "SendMessage"))
+            {
+                return false;
+            }
+            else if ((manager.Username == principal.Identity.Name) &
+                    ((manager.Invites.Count == 0) & ((memberName == "AcceptFriendship")
+                                                      | (memberName == "AcceptGroup")
+                                                      | (memberName == "AcceptMatch")
+                                                      | (memberName == "DeclineInvite"))
+                    | ((manager.Messages.Count == 0) & (memberName == "DeleteMessage")))
+                    | ((manager.MatchHistory.Count == 0) & (memberName == "MatchHistory")))
+            {
+                return false;
+            }
+            else if ((manager.Username != principal.Identity.Name) & (memberName == "AcceptFriendship")
+                                                                   | (memberName == "AcceptGroup")
+                                                                   | (memberName == "AcceptMatch")
+                                                                   | (memberName == "DeclineInvite")
+                                                                   | (memberName == "DeleteMessage"))
             {
                 return false;
             }

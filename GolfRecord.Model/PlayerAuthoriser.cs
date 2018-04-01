@@ -32,9 +32,35 @@ namespace GolfRecord.Model
             {
                 return false;
             }
-            else if (((player.FavouriteCourses.Count == 0) & (memberName == "FavouriteCourses"))
-                    | ((player.Friends.Count == 0) & (memberName == "Friends"))
-                    | ((player.Groups.Count == 0) &(memberName == "Groups")))
+            else if (((player.Friends.Count == 0) & (memberName == "Friends"))
+                    | ((player.Groups.Count == 0) & (memberName == "Groups"))
+                    | ((player.Invites.Count == 0) & (memberName == "Invites"))
+                    | ((player.Messages.Count == 0) & (memberName == "Messages"))
+                    | ((player.MatchHistory.Count == 0) & (memberName == "MatchHistory")))
+
+            {
+                return false;
+            }
+            else if ((player.Username == principal.Identity.Name) & (memberName == "SendMessage"))
+            {
+                return false;
+            }
+            else if ((player.Username == principal.Identity.Name) &
+                    ((player.Invites.Count == 0) & ((memberName == "AcceptFriendship")
+                                                      | (memberName == "AcceptGroup")
+                                                      | (memberName == "AcceptMatch")
+                                                      | (memberName == "DeclineInvite"))
+                    | ((player.Messages.Count == 0) & (memberName == "DeleteMessage")))
+                    | ((player.MatchHistory.Count == 0) & (memberName == "MatchHistory"))
+                    | ((player.FavouriteCourses.Count == 0) & (memberName == "FavouriteCourses")))
+            {
+                return false;
+            }
+            else if ((player.Username != principal.Identity.Name) & (memberName == "AcceptFriendship")
+                                                                   | (memberName == "AcceptGroup")
+                                                                   | (memberName == "AcceptMatch")
+                                                                   | (memberName == "DeclineInvite")
+                                                                   | (memberName == "DeleteMessage"))
             {
                 return false;
             }

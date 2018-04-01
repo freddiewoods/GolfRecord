@@ -42,7 +42,13 @@ namespace NakedObjects.GolfRecord {
                     typeof(FourPlayerHoleScore),
                     typeof(TwoPlayerHoleScore),
                     typeof(ClubManager),
-                    typeof(Player)
+                    typeof(Player),
+                    typeof(MatchInvite),
+                    typeof(FriendInvite),
+                    typeof(GroupInvite),
+                    typeof(RequestToJoin),
+                    typeof(PlayerMessage),
+                    typeof(GroupMessage)
                     //You need only register here any domain model types that cannot be
                     //'discovered' by the framework when it 'walks the graph' from the methods
                     //defined on services registered below
@@ -59,8 +65,6 @@ namespace NakedObjects.GolfRecord {
                     typeof(MatchServices),
                     typeof(CourseServices),
                     typeof(HoleServices)
-                    
-
             };
                 }
         }

@@ -1,15 +1,18 @@
 ﻿using NakedObjects;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static GolfRecord.Model.Enums;
 
 namespace GolfRecord.Model
 {
     public class Group
     {
+        public IDomainObjectContainer Container { set; protected get; }
 
         public GolferServices GolferConfig { set; protected get; }
 
@@ -21,6 +24,9 @@ namespace GolfRecord.Model
 
 
         public virtual Golfer GroupOwner { get; set; }
+
+
+        public virtual Boolean PrivateGroup { get; set; }
 
         #region GroupMembers (collection)
         private ICollection<Golfer> _Members = new List<Golfer>();
@@ -36,18 +42,63 @@ namespace GolfRecord.Model
                 _Members = value;
             }
         }
-        public void AddNewMember(Golfer Golfer)
-        {
-            Members.Add(Golfer);
-        }
         [PageSize(3)]
         public IQueryable<Golfer> AutoComplete0AddNewMember([MinLength(2)] string name)
         {
             return GolferConfig.AllGolfers().Where(g => g.FullName.Contains(name));
         }
 
+        public void AddNewMember(Golfer golfer)
+        {
+            var invite = Container.NewTransientInstance<GroupInvite>();
+            invite.group = this;
+            invite.Sender = GolferConfig.Me();
+            invite.Reciever = golfer;
+            Container.Persist(ref invite);
+            golfer.Invites.Add(invite);
+        }
+
+
+        public void RequestToJoin()
+        {
+            var invite = Container.NewTransientInstance<RequestToJoin>();
+            invite.group = this;
+            invite.Sender = GolferConfig.Me();
+            Container.Persist(ref invite);
+            GroupOwner.Invites.Add(invite);
+        }
         #endregion
-    }
+
+        #region GroupMessages
+        private ICollection<GroupMessage> _Messages = new List<GroupMessage>();
+
+        public virtual ICollection<GroupMessage> Messages
+        {
+            get
+            {
+                return _Messages;
+            }
+            set
+            {
+                _Messages = value;
+            }
+        }
+
+
+        public GroupMessage SendGroupMessage()
+        {
+            GroupMessage m = Container.NewTransientInstance<GroupMessage>();
+            m.Sender = GolferConfig.Me();
+            m.SendersName = GolferConfig.Me().FullName;
+            m.Content = ("Please press edit to enter your response.");
+            Container.Persist(ref m);
+            Messages.Add(m);
+            return m;
+        }
+
+
+            #endregion
+        }
 }
 
 
