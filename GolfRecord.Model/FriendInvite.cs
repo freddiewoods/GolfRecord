@@ -10,6 +10,6 @@ namespace GolfRecord.Model
 {
     public class FriendInvite: Invite
     {
-        public virtual Golfer Reciever { get; set; }
+
     }
 }

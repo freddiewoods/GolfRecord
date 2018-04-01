@@ -14,7 +14,5 @@ namespace GolfRecord.Model
         [Title]
         public virtual Group group { get; set; }
 
-        public virtual Golfer Reciever { get; set; }
-
         }
 }

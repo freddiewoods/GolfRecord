@@ -22,11 +22,7 @@ namespace GolfRecord.Model
         [Title][MemberOrder(1)]
         public virtual string Name { get; set; }
 
-
         public virtual Golfer GroupOwner { get; set; }
-
-
-        public virtual Boolean PrivateGroup { get; set; }
 
         #region GroupMembers (collection)
         private ICollection<Golfer> _Members = new List<Golfer>();
@@ -53,7 +49,7 @@ namespace GolfRecord.Model
             var invite = Container.NewTransientInstance<GroupInvite>();
             invite.group = this;
             invite.Sender = GolferConfig.Me();
-            invite.Reciever = golfer;
+            invite.Receiver = golfer;
             Container.Persist(ref invite);
             golfer.Invites.Add(invite);
         }
@@ -64,6 +60,7 @@ namespace GolfRecord.Model
             var invite = Container.NewTransientInstance<RequestToJoin>();
             invite.group = this;
             invite.Sender = GolferConfig.Me();
+            invite.Receiver = GroupOwner;
             Container.Persist(ref invite);
             GroupOwner.Invites.Add(invite);
         }

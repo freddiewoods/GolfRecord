@@ -11,5 +11,8 @@ namespace GolfRecord.Model
 
         public virtual Golfer Sender { get; set; }
 
+        public virtual Golfer Receiver { get; set; }
+
+        public virtual InviteType inviteType { get; set; }
     }
 }

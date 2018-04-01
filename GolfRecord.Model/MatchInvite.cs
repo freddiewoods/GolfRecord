@@ -14,7 +14,5 @@ namespace GolfRecord.Model
         [Title]
         public virtual Match match { get; set; }
 
-        public virtual Golfer Reciever { get; set; }
-
         }
 }

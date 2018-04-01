@@ -28,7 +28,12 @@ namespace GolfRecord.Model
 
         public bool IsVisible(IPrincipal principal, Player player, string memberName)
         {
-            if (memberName == "AddMatchHistory")
+            if ((player.PrivateAccount == true) & (memberName == "Mobile")
+                                                 | (memberName == "Username"))
+            {
+                return false;
+            }
+            else if (memberName == "AddMatchHistory")
             {
                 return false;
             }
@@ -56,11 +61,11 @@ namespace GolfRecord.Model
             {
                 return false;
             }
-            else if ((player.Username != principal.Identity.Name) & (memberName == "AcceptFriendship")
+            else if ((player.Username != principal.Identity.Name) & ((memberName == "AcceptFriendship")
                                                                    | (memberName == "AcceptGroup")
                                                                    | (memberName == "AcceptMatch")
                                                                    | (memberName == "DeclineInvite")
-                                                                   | (memberName == "DeleteMessage"))
+                                                                   | (memberName == "DeleteMessage")))
             {
                 return false;
             }

@@ -39,6 +39,8 @@ namespace GolfRecord.Model
 
         public virtual string Username { get; set; }
 
+        public virtual bool PrivateAccount { get; set; }
+
         #region Friends (collection)
         private ICollection<Golfer> _Friends = new List<Golfer>();
 
@@ -58,7 +60,7 @@ namespace GolfRecord.Model
           {
             var invite = Container.NewTransientInstance<FriendInvite>();
             invite.Sender = GolferConfig.Me();
-            invite.Reciever = golfer;
+            invite.Receiver = golfer;
             Container.Persist(ref invite);
             golfer.Invites.Add(invite);
 
@@ -99,7 +101,6 @@ namespace GolfRecord.Model
         {
             var group = Container.NewTransientInstance<Group>();
             group.GroupOwner = GolferConfig.Me();
-            group.PrivateGroup = false;
             group.Name = (GolferConfig.Me().FullName + "'s group");
             Container.Persist(ref group);
             GolferConfig.Me().Groups.Add(group);
@@ -144,22 +145,79 @@ namespace GolfRecord.Model
 
         public void AcceptFriendship(FriendInvite invite)
         {
-            invite.Sender.Friends.Add(invite.Reciever);
-            invite.Reciever.Friends.Add(invite.Sender);
+            invite.Sender.Friends.Add(invite.Receiver);
+            invite.Receiver.Friends.Add(invite.Sender);
             Container.DisposeInstance(invite);
+        }
+
+        public bool HideAcceptFriendship()
+        {
+            int AmountOfInvites = 0;
+            for (int i = 0; i < Invites.Count; i++)
+            {
+                if (Invites.ElementAt(i).inviteType == InviteType.FriendInvite)
+                {
+                    AmountOfInvites += 1;
+                }
+            }
+            return AmountOfInvites < 0;
+        }
+
+        public void AcceptGroupMember(RequestToJoin invite)
+        {
+            invite.group.Members.Add(invite.Sender);
+            Container.DisposeInstance(invite);
+        }
+
+        public bool HideAcceptGroupMember()
+        {
+            int AmountOfInvites = 0;
+            for (int i = 0; i < Invites.Count; i++)
+            {
+                if (Invites.ElementAt(i).inviteType == InviteType.RequestToJoin)
+                {
+                    AmountOfInvites += 1;
+                }
+            }
+            return AmountOfInvites < 0;
         }
 
         public void AcceptGroup(GroupInvite invite)
         {
-           invite.group.Members.Add(invite.Reciever);
-            Container.DisposeInstance(invite);
+           invite.group.Members.Add(invite.Receiver);
+           Container.DisposeInstance(invite);
         }
-        public void AcceptMatch(MatchInvite invite)
+        public bool HideAcceptGroup()
         {
-            invite.match.Golfers.Add(invite.Reciever);
-            Container.DisposeInstance(invite);
+            int AmountOfInvites = 0;
+            for (int i = 0; i < Invites.Count; i++)
+            {
+                if (Invites.ElementAt(i).inviteType == InviteType.GroupInvite)
+                {
+                    AmountOfInvites += 1;
+                }
+            }
+            return AmountOfInvites < 0;
         }
 
+
+        public void AcceptMatch(MatchInvite invite)
+        {
+            invite.match.Golfers.Add(invite.Receiver);
+            Container.DisposeInstance(invite);
+        }
+        public bool HideAcceptMatch()
+        {
+            int AmountOfInvites = 0;
+            for (int i = 0; i < Invites.Count; i++)
+            {
+                if (Invites.ElementAt(i).inviteType == InviteType.MatchInvite)
+                {
+                    AmountOfInvites += 1;
+                }
+            }
+            return AmountOfInvites < 0;
+        }
         #endregion
 
         #region Messages
@@ -194,7 +252,6 @@ namespace GolfRecord.Model
         {
             Container.DisposeInstance(m);
         }
-
         #endregion
     }
 }

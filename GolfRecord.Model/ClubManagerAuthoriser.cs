@@ -30,7 +30,12 @@ namespace GolfRecord.Model
 
         public bool IsVisible(IPrincipal principal, ClubManager manager, string memberName)
         {
-            if (memberName == "AddMatchHistory")
+            if ((manager.PrivateAccount == true) & (memberName == "Mobile")
+                                                  | (memberName == "Username"))
+            {
+                return false;
+            }
+            else if (memberName == "AddMatchHistory")
             {
                 return false;
             }
@@ -51,17 +56,19 @@ namespace GolfRecord.Model
                     ((manager.Invites.Count == 0) & ((memberName == "AcceptFriendship")
                                                       | (memberName == "AcceptGroup")
                                                       | (memberName == "AcceptMatch")
-                                                      | (memberName == "DeclineInvite"))
+                                                      | (memberName == "DeclineInvite")
+                                                      | (memberName == "AcceptGroupMember"))
                     | ((manager.Messages.Count == 0) & (memberName == "DeleteMessage")))
                     | ((manager.MatchHistory.Count == 0) & (memberName == "MatchHistory")))
             {
                 return false;
             }
-            else if ((manager.Username != principal.Identity.Name) & (memberName == "AcceptFriendship")
+            else if ((manager.Username != principal.Identity.Name) & ((memberName == "AcceptFriendship")
                                                                    | (memberName == "AcceptGroup")
                                                                    | (memberName == "AcceptMatch")
                                                                    | (memberName == "DeclineInvite")
-                                                                   | (memberName == "DeleteMessage"))
+                                                                   | (memberName == "DeleteMessage")
+                                                                   | (memberName == "AcceptGroupMember")))
             {
                 return false;
             }

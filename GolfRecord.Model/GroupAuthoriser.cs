@@ -27,14 +27,18 @@ namespace GolfRecord.Model
 
         public bool IsVisible(IPrincipal principal, Group target, string memberName)
         {
-            if (target.Members.Contains(GolferConfig.Me()) == true)
+            if (((target.GroupOwner == GolferConfig.Me()) | (target.Members.Contains(GolferConfig.Me())) & (memberName == "RequestToJoin")))
+            {
+                return false;
+            }
+            else if (target.Members.Contains(GolferConfig.Me()) == true)
             {
                 return true;
             }
             else if ((target.Members.Contains(GolferConfig.Me()) == false) & (memberName == "Messages"))
             {
                 return false;
-            }
+            }     
             else
             {
                 return true;

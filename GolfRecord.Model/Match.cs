@@ -102,7 +102,7 @@ namespace GolfRecord.Model
             var invite = Container.NewTransientInstance<MatchInvite>();
             invite.match = this;
             invite.Sender = GolferConfig.Me();
-            invite.Reciever = golfer;
+            invite.Receiver = golfer;
             Container.Persist(ref invite);
             golfer.Invites.Add(invite);
         }
