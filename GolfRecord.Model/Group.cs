@@ -50,6 +50,7 @@ namespace GolfRecord.Model
             invite.group = this;
             invite.Sender = GolferServices.Me();
             invite.Receiver = golfer;
+            invite.inviteType = InviteType.GroupInvite;
             Container.Persist(ref invite);
             golfer.Invites.Add(invite);
         }
@@ -61,6 +62,7 @@ namespace GolfRecord.Model
             invite.group = this;
             invite.Sender = GolferServices.Me();
             invite.Receiver = GroupOwner;
+            invite.inviteType = InviteType.RequestToJoin;
             Container.Persist(ref invite);
             GroupOwner.Invites.Add(invite);
         }

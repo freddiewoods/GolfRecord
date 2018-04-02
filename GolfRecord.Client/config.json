@@ -9,7 +9,7 @@
       
     },
     "subtypeMap": {
-      "GolfRecord.Model.Invite": 2
+      "GolfRecordModel.GroupInvite": 2
     }
   },
   "masks": {

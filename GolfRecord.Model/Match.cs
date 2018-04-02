@@ -60,6 +60,7 @@ namespace GolfRecord.Model
             invite.match = this;
             invite.Sender = GolferServices.Me();
             invite.Receiver = golfer;
+            invite.inviteType = InviteType.MatchInvite;
             Container.Persist(ref invite);
             golfer.Invites.Add(invite);
         }

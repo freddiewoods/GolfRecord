@@ -98,7 +98,7 @@ namespace GolfRecord.DataBase
             var s1 = AddNewMatch("Stowe boys Strokeplay Match", date1, 1);
             Context.SaveChanges();
             var p1 = AddNewGolfer(s1, "Tiger Hancox", 13, "56473 829106", Gender.Male);
-            AddNewGolfer(s1, "Rory Gabriel", 14, "01296 234324", Gender.Male);
+            var p2 = AddNewGolfer(s1, "Rory Gabriel", 14, "01296 234324", Gender.Male);
             AddNewGolfer(s1, "Rookie Player", 12, "07810 675443", Gender.Male);
             AddNewGolfer(s1, "Adam Chair", 13, "01234 753234", Gender.Male);
             context.SaveChanges();
@@ -194,7 +194,12 @@ namespace GolfRecord.DataBase
             AddFriend(CM, MP);
             AddFriend(MP, CM);
             context.SaveChanges();
-        
+            s10.Golfers.Add(MP);
+            s10.Golfers.Add(CM);
+            s10.Golfers.Add(p1);
+            s10.Golfers.Add(p2);
+            Context.SaveChanges();
+
 
         }
         private Player AddNewGolfer(Match m, string name, int handi, string mobile, Gender gender, bool withinmatch = true, Title title = Title.Player)

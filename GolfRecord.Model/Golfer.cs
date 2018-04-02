@@ -67,6 +67,7 @@ namespace GolfRecord.Model
             var invite = Container.NewTransientInstance<FriendInvite>();
             invite.Sender = GolferServices.Me();
             invite.Receiver = golfer;
+            invite.inviteType = InviteType.FriendInvite;
             Container.Persist(ref invite);
             golfer.Invites.Add(invite);
 
@@ -74,7 +75,7 @@ namespace GolfRecord.Model
           [PageSize(3)]
           public IQueryable<Golfer> AutoComplete0AddFriend([MinLength(2)] string matching)
           {
-              return GolferServices.AllGolfers().Where(g => g.FullName.Contains(matching));
+              return GolferServices.AllGolfers().Where(g => (g.FullName.Contains(matching) & (!g.Friends.Contains(GolferServices.Me()))));
           }
           #endregion
 

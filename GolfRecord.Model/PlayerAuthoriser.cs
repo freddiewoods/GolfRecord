@@ -70,6 +70,10 @@ namespace GolfRecord.Model
             {
                 return false;
             }
+            else if ((player.Friends.Contains(GolferServices.Me())) & (memberName == "AddFriend"))
+            {
+                return false;
+            }
             else if ((player.Username != principal.Identity.Name) & ((memberName == "AcceptFriendship")
                                                                    | (memberName == "AcceptGroup")
                                                                    | (memberName == "AcceptGroupMember")

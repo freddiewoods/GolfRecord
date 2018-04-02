@@ -27,7 +27,7 @@ namespace GolfRecord.Model
 
         public bool IsVisible(IPrincipal principal, Group target, string memberName)
         {
-            if (((target.GroupOwner == GolferServices.Me()) | (target.Members.Contains(GolferServices.Me())) & (memberName == "RequestToJoin")))
+            if (((target.GroupOwner == GolferServices.Me()) | (target.Members.Contains(GolferServices.Me()))) & (memberName == "RequestToJoin"))
             {
                 return false;
             }

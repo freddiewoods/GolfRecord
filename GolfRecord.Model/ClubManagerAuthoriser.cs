@@ -38,6 +38,10 @@ namespace GolfRecord.Model
             {
                 return false;
             }
+            else if ((manager.Friends.Contains(GolferServices.Me())) & (memberName == "AddFriend"))
+                {
+                return false;
+                    }
             else if ((manager.PrivateAccount == true) & (memberName == "Mobile")
                                                   | (memberName == "Username"))
             {
@@ -73,7 +77,6 @@ namespace GolfRecord.Model
             }
             else if ((manager.Username != principal.Identity.Name) & ((memberName == "AcceptFriendship")
                                                                    | (memberName == "AcceptGroup")
-                                                                   | (memberName == "AcceptGroupMember")
                                                                    | (memberName == "AcceptMatch")
                                                                    | (memberName == "DeclineInvite")
                                                                    | (memberName == "DeleteMessage")
