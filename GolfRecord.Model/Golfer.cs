@@ -14,11 +14,11 @@ namespace GolfRecord.Model
         //All persisted properties on a domain object must be 'virtual'
         public IDomainObjectContainer Container { set; protected get; }
 
-        public GolferServices GolferConfig { set; protected get; }
+        public GolferServices GolferServices { set; protected get; }
 
-        public CourseServices CourseConfig { set; protected get; }
+        public CourseServices CourseServices { set; protected get; }
 
-        public MatchServices MatchConfig { set; protected get; }
+        public MatchServices MatchServices { set; protected get; }
        
         [NakedObjectsIgnore]//Indicates that this property will never be seen in the UI
         public virtual int Id { get; set; }
@@ -41,6 +41,12 @@ namespace GolfRecord.Model
 
         public virtual bool PrivateAccount { get; set; }
 
+        public Match CreateNewMatch(MatchType matchtype)
+        {
+            var m = MatchServices.CreateNewMatch(matchtype);
+            return m;
+        }
+
         #region Friends (collection)
         private ICollection<Golfer> _Friends = new List<Golfer>();
 
@@ -59,7 +65,7 @@ namespace GolfRecord.Model
           public void AddFriend(Golfer golfer)
           {
             var invite = Container.NewTransientInstance<FriendInvite>();
-            invite.Sender = GolferConfig.Me();
+            invite.Sender = GolferServices.Me();
             invite.Receiver = golfer;
             Container.Persist(ref invite);
             golfer.Invites.Add(invite);
@@ -68,11 +74,11 @@ namespace GolfRecord.Model
           [PageSize(3)]
           public IQueryable<Golfer> AutoComplete0AddFriend([MinLength(2)] string matching)
           {
-              return GolferConfig.AllGolfers().Where(g => g.FullName.Contains(matching));
+              return GolferServices.AllGolfers().Where(g => g.FullName.Contains(matching));
           }
           #endregion
 
-        #region MatchHistory (collection)
+       #region MatchHistory (collection)
         private  ICollection<Match> _MatchHistory = new List<Match>();
 
         public virtual ICollection<Match> MatchHistory
@@ -92,7 +98,7 @@ namespace GolfRecord.Model
         }
         public IQueryable<Match> AutoComplete0AddMatchHistory([MinLength(2)] string matching)
         {
-            return MatchConfig.ShowMatches().Where(m => m.MatchName.Contains(matching));
+            return MatchServices.ShowMatches().Where(m => m.MatchName.Contains(matching));
         }
         #endregion
 
@@ -100,10 +106,10 @@ namespace GolfRecord.Model
         public Group CreateNewGroup()
         {
             var group = Container.NewTransientInstance<Group>();
-            group.GroupOwner = GolferConfig.Me();
-            group.Name = (GolferConfig.Me().FullName + "'s group");
+            group.GroupOwner = GolferServices.Me();
+            group.Name = (GolferServices.Me().FullName + "'s group");
             Container.Persist(ref group);
-            GolferConfig.Me().Groups.Add(group);
+            GolferServices.Me().Groups.Add(group);
             return group;
         }
       
@@ -240,7 +246,7 @@ namespace GolfRecord.Model
             PlayerMessage m = null;
             m = Container.NewTransientInstance<PlayerMessage>();
             m.Reciever = this;
-            m.Sender = GolferConfig.Me();
+            m.Sender = GolferServices.Me();
             m.SendersName = m.Sender.FullName;
             m.Content = ("Please Press Edit To Change");            
             Container.Persist(ref m);

@@ -8,7 +8,7 @@ using static GolfRecord.Model.Enums;
 
 namespace GolfRecord.Model
 {
-    public class MatchPlay : Match //normally have 2 people playing unless its four ball better ball teams of 2.
+    public class Matchplay : Match //normally have 2 people playing unless its four ball better ball teams of 2.
     {
         public int[] TotalScore = new int[2];
         public int[] Handicaps = new int[2];

@@ -36,9 +36,9 @@ namespace NakedObjects.GolfRecord {
             get
             {
                 return new Type[] {
-                    typeof(MatchStableFord),
-                    typeof(MatchStrokePlay),
-                    typeof(MatchPlay),
+                    typeof(Stableford),
+                    typeof(Strokeplay),
+                    typeof(Matchplay),
                     typeof(FourPlayerHoleScore),
                     typeof(TwoPlayerHoleScore),
                     typeof(ClubManager),
@@ -94,9 +94,9 @@ namespace NakedObjects.GolfRecord {
             var config = new AuthorizationConfiguration<DefaultAuthorizer>();
             //  config.AddNamespaceAuthorizer<MyAppAuthorizer>("MyApp");
             // config.AddNamespaceAuthorizer<MyCluster1Authorizer>("MyApp.MyCluster1");
-            config.AddTypeAuthorizer<MatchStrokePlay, StrokePlayAuthoriser>();
-            config.AddTypeAuthorizer<MatchStableFord, StableFordAuthoriser>();
-            config.AddTypeAuthorizer<MatchPlay, MatchPlayAuthoriser>();
+            config.AddTypeAuthorizer<Strokeplay, StrokePlayAuthoriser>();
+            config.AddTypeAuthorizer<Stableford, StablefordAuthoriser>();
+            config.AddTypeAuthorizer<Matchplay, MatchplayAuthoriser>();
             config.AddTypeAuthorizer<Player, PlayerAuthoriser>();
             config.AddTypeAuthorizer<ClubManager, ClubManagerAuthoriser>();
             config.AddTypeAuthorizer<Hole, HoleAuthorier>();

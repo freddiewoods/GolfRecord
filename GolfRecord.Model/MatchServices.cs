@@ -12,7 +12,7 @@ namespace GolfRecord.Model
 {
     public class MatchServices
     {
-        public GolferServices GolferConfig { set; protected get; }
+        public GolferServices GolferServices { set; protected get; }
         public IDomainObjectContainer Container { set; protected get; }
 
         public Match CreateNewMatch(MatchType matchtype)
@@ -20,22 +20,22 @@ namespace GolfRecord.Model
             Match match = null;
             switch (matchtype)
             {
-                case MatchType.StrokePlay:
-                    match = Container.NewTransientInstance<MatchStrokePlay>();
-                    match.MatchType = MatchType.StrokePlay;
+                case MatchType.Strokeplay:
+                    match = Container.NewTransientInstance<Strokeplay>();
+                    match.MatchType = MatchType.Strokeplay;
                     break;
-                case MatchType.MatchPlay:
-                    match = Container.NewTransientInstance<MatchPlay>();
-                    match.MatchType = MatchType.MatchPlay;
+                case MatchType.Matchplay:
+                    match = Container.NewTransientInstance<Matchplay>();
+                    match.MatchType = MatchType.Matchplay;
                     break;
-                case MatchType.StableFord:
-                    match = Container.NewTransientInstance<MatchStableFord>();
-                    match.MatchType = MatchType.StableFord;
+                case MatchType.Stableford:
+                    match = Container.NewTransientInstance<Stableford>();
+                    match.MatchType = MatchType.Stableford;
                     break;
                 default:
                     break;
             }
-            match.MatchCreator = GolferConfig.Me();
+            match.MatchCreator = GolferServices.Me();
             return match;
         }
 

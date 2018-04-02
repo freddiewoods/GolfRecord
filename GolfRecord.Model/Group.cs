@@ -14,7 +14,7 @@ namespace GolfRecord.Model
     {
         public IDomainObjectContainer Container { set; protected get; }
 
-        public GolferServices GolferConfig { set; protected get; }
+        public GolferServices GolferServices { set; protected get; }
 
         [NakedObjectsIgnore]
         public virtual int Id { get; set; }
@@ -41,14 +41,14 @@ namespace GolfRecord.Model
         [PageSize(3)]
         public IQueryable<Golfer> AutoComplete0AddNewMember([MinLength(2)] string name)
         {
-            return GolferConfig.AllGolfers().Where(g => g.FullName.Contains(name));
+            return GolferServices.AllGolfers().Where(g => g.FullName.Contains(name));
         }
 
         public void AddNewMember(Golfer golfer)
         {
             var invite = Container.NewTransientInstance<GroupInvite>();
             invite.group = this;
-            invite.Sender = GolferConfig.Me();
+            invite.Sender = GolferServices.Me();
             invite.Receiver = golfer;
             Container.Persist(ref invite);
             golfer.Invites.Add(invite);
@@ -59,7 +59,7 @@ namespace GolfRecord.Model
         {
             var invite = Container.NewTransientInstance<RequestToJoin>();
             invite.group = this;
-            invite.Sender = GolferConfig.Me();
+            invite.Sender = GolferServices.Me();
             invite.Receiver = GroupOwner;
             Container.Persist(ref invite);
             GroupOwner.Invites.Add(invite);
@@ -85,8 +85,8 @@ namespace GolfRecord.Model
         public GroupMessage SendGroupMessage()
         {
             GroupMessage m = Container.NewTransientInstance<GroupMessage>();
-            m.Sender = GolferConfig.Me();
-            m.SendersName = GolferConfig.Me().FullName;
+            m.Sender = GolferServices.Me();
+            m.SendersName = GolferServices.Me().FullName;
             m.Content = ("Please press edit to enter your response.");
             Container.Persist(ref m);
             Messages.Add(m);

@@ -105,7 +105,7 @@ namespace GolfRecord.DataBase
 
             var s2 = AddNewMatch("Stowe girls stroke play match", date1, 2);
             Context.SaveChanges();
-            s2.AddRegisteredGolfers(p1);
+            AddNewGolfer(s2, "Dandy Smith", 3, "01238 942343", Gender.Female);
             AddNewGolfer(s2, "Rafa Lauren", 16, "19876 543210", Gender.Female);
             AddNewGolfer(s2, "Roger Perry", 16, "10202 304050", Gender.Female);
             AddNewGolfer(s2, "Andy Hacket", 8, "01020 030405", Gender.Female);
@@ -120,25 +120,25 @@ namespace GolfRecord.DataBase
             Context.SaveChanges();
 
 
-            var s4 = AddNewMatch("Stowe Boys MatchPlay Team", date1, 2, MatchType.MatchPlay);
+            var s4 = AddNewMatch("Stowe Boys MatchPlay Team", date1, 2, MatchType.Matchplay);
             context.SaveChanges();
             AddNewGolfer(s4, "Jimmy Hart", 10, "01234 123414", Gender.Male);
             AddNewGolfer(s4, "Andrew Tait", 2, "01234 3214312", Gender.Male);
             Context.SaveChanges();
 
-            var s5 = AddNewMatch("Stowe girls MatchPlay Team", date1, 4, MatchType.MatchPlay);
+            var s5 = AddNewMatch("Stowe girls MatchPlay Team", date1, 4, MatchType.Matchplay);
             Context.SaveChanges();
             AddNewGolfer(s5, "Theresa Lolly", 22, "05324 234519", Gender.Female);
             AddNewGolfer(s5, "Mary Jane", 5, "01324 590123", Gender.Female);
             Context.SaveChanges();
 
-            var s6 = AddNewMatch("Stowe Mixed MatchPlay Team", date1, 3, MatchType.MatchPlay);
+            var s6 = AddNewMatch("Stowe Mixed MatchPlay Team", date1, 3, MatchType.Matchplay);
             Context.SaveChanges();
             AddNewGolfer(s6, "Obi Wan", 10, "12345 098765", Gender.Male);
             AddNewGolfer(s6, "Mace Windu", 5, "98754 123415", Gender.Female);
             Context.SaveChanges();
 
-            var s7 = AddNewMatch("Stowe Mens Stableford Team", date1, 2, MatchType.StableFord);
+            var s7 = AddNewMatch("Stowe Mens Stableford Team", date1, 2, MatchType.Stableford);
             context.SaveChanges();
             AddNewGolfer(s7, "Albert Einstein", 0, "57324 321414", Gender.Male);
             AddNewGolfer(s7, "Max Born", 2, "12345 123456", Gender.Male);
@@ -146,14 +146,14 @@ namespace GolfRecord.DataBase
             AddNewGolfer(s7, "Nikola Tesla", 7, "09832 111111", Gender.Male);
             Context.SaveChanges();
 
-            var s8 = AddNewMatch("Stowe Womens Stableford Team", date1, 1, MatchType.StableFord);
+            var s8 = AddNewMatch("Stowe Womens Stableford Team", date1, 1, MatchType.Stableford);
             context.SaveChanges();
             AddNewGolfer(s8, "Marie Curie", 15, "01234 132443", Gender.Female);
             AddNewGolfer(s8, "Rosamund Flip", 18, "01135 353426", Gender.Female);
             AddNewGolfer(s8, "Genie Booch", 4, "01823 988132", Gender.Female);
             context.SaveChanges();
 
-            var s9 = AddNewMatch("Stowe Mixed Stableford Team", date1, 4, MatchType.StableFord);
+            var s9 = AddNewMatch("Stowe Mixed Stableford Team", date1, 4, MatchType.Stableford);
             context.SaveChanges();
             AddNewGolfer(s9, "Jim Breithaupt", 0, "01942 872356", Gender.Male);
             AddNewGolfer(s9, "Saul Muliplem", 5, "01492 845483", Gender.Male);
@@ -161,10 +161,10 @@ namespace GolfRecord.DataBase
             AddNewGolfer(s9, "Linda Green", 14, "01234 123441", Gender.Female);
             Context.SaveChanges();
 
-            var s10 = AddNewMatch("Test Empty Match", date1, 1, MatchType.StrokePlay);
+            var s10 = AddNewMatch("Test Empty Match", date1, 1, MatchType.Strokeplay);
             context.SaveChanges();
 
-            var s11 = AddNewMatch("Strokeplay match with scores except last", date1, 1, MatchType.StrokePlay);
+            var s11 = AddNewMatch("Strokeplay match with scores except last", date1, 1, MatchType.Strokeplay);
             context.SaveChanges();
             AddNewGolfer(s11, "Martin Finion", 5, "01278 564127", Gender.Male);
             AddNewGolfer(s11, "Noah Castillo", 6, "01728 123412", Gender.Male);
@@ -212,19 +212,19 @@ namespace GolfRecord.DataBase
             Context.SaveChanges();
             return (g2);
         }
-        private Match AddNewMatch(string name, DateTime date, int courseID, MatchType matchType = MatchType.StrokePlay)
+        private Match AddNewMatch(string name, DateTime date, int courseID, MatchType matchType = MatchType.Strokeplay)
         {// work for each match type
             Match m = null;
             switch (matchType)
             {
-                case MatchType.StrokePlay:
-                    m = new MatchStrokePlay() { MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType };
+                case MatchType.Strokeplay:
+                    m = new Strokeplay() { MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType };
                     break;
-                case MatchType.MatchPlay:
-                    m = new MatchPlay() { MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType };
+                case MatchType.Matchplay:
+                    m = new Matchplay() { MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType };
                     break;
-                case MatchType.StableFord:
-                    m = new MatchStableFord() { MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType };
+                case MatchType.Stableford:
+                    m = new Stableford() { MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType };
                     break;
                 default:
                     break;

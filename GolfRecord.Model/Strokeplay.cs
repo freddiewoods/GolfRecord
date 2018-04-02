@@ -8,7 +8,7 @@ using GolfRecord.Model;
 
 namespace GolfRecord.Model
 {
-    public class MatchStrokePlay : Match 
+    public class Strokeplay : Match 
     {
         public int[] InitialScorePerHole = new int[4];
         public int[] TotalScores = new int[4];

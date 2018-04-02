@@ -11,11 +11,11 @@ namespace GolfRecord.Model
     public class GroupAuthoriser : ITypeAuthorizer<Group>
     {
 
-        public GolferServices GolferConfig { set; protected get; }
+        public GolferServices GolferServices { set; protected get; }
 
         public bool IsEditable(IPrincipal principal, Group target, string memberName)
         {
-            if (target.GroupOwner == GolferConfig.Me())
+            if (target.GroupOwner == GolferServices.Me())
             {
                 return true;
             }
@@ -27,15 +27,15 @@ namespace GolfRecord.Model
 
         public bool IsVisible(IPrincipal principal, Group target, string memberName)
         {
-            if (((target.GroupOwner == GolferConfig.Me()) | (target.Members.Contains(GolferConfig.Me())) & (memberName == "RequestToJoin")))
+            if (((target.GroupOwner == GolferServices.Me()) | (target.Members.Contains(GolferServices.Me())) & (memberName == "RequestToJoin")))
             {
                 return false;
             }
-            else if (target.Members.Contains(GolferConfig.Me()) == true)
+            else if (target.Members.Contains(GolferServices.Me()) == true)
             {
                 return true;
             }
-            else if ((target.Members.Contains(GolferConfig.Me()) == false) & (memberName == "Messages"))
+            else if ((target.Members.Contains(GolferServices.Me()) == false) & (memberName == "Messages"))
             {
                 return false;
             }     

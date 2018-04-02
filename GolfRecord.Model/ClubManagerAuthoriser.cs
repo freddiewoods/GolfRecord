@@ -10,6 +10,8 @@ namespace GolfRecord.Model
 {
     public class ClubManagerAuthoriser : ITypeAuthorizer<ClubManager>
     {
+        public GolferServices GolferServices { set; protected get; }
+
         public bool IsEditable(IPrincipal principal, ClubManager manager, string memberName)
         {
             if ((manager.Username == principal.Identity.Name) & (memberName == "Course")
@@ -30,7 +32,13 @@ namespace GolfRecord.Model
 
         public bool IsVisible(IPrincipal principal, ClubManager manager, string memberName)
         {
-            if ((manager.PrivateAccount == true) & (memberName == "Mobile")
+            if ((manager != GolferServices.Me()) & ((memberName == "PrivateAccount")
+                                                     | (memberName == "CreateNewGroup")
+                                                     | (memberName == "CreateNewMatch")))
+            {
+                return false;
+            }
+            else if ((manager.PrivateAccount == true) & (memberName == "Mobile")
                                                   | (memberName == "Username"))
             {
                 return false;
@@ -65,6 +73,7 @@ namespace GolfRecord.Model
             }
             else if ((manager.Username != principal.Identity.Name) & ((memberName == "AcceptFriendship")
                                                                    | (memberName == "AcceptGroup")
+                                                                   | (memberName == "AcceptGroupMember")
                                                                    | (memberName == "AcceptMatch")
                                                                    | (memberName == "DeclineInvite")
                                                                    | (memberName == "DeleteMessage")

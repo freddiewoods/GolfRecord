@@ -21,7 +21,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>ACAAEAQABAAAgBIACIqACAQQgIAECAQAgAAAAAAQAAA=</HashCode>
+      <HashCode>ACAAEAQAAAAAgBIACJqACAQAgIAECAQAgAAAAAAQBAA=</HashCode>
       <FileName>Match.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -31,25 +31,26 @@
       <Property Name="Golfers" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="GolfRecord.Model.MatchPlay">
+  <Class Name="GolfRecord.Model.Matchplay">
     <Position X="7.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAgBAAAAAAAAAAAgAAAAAAAACBAAAAAAAAAAI=</HashCode>
-      <FileName>MatchPlay.cs</FileName>
+      <FileName>Matchplay.cs</FileName>
+      <NewMemberFileName>MatchPlay.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GolfRecord.Model.MatchStableFord">
+  <Class Name="GolfRecord.Model.Stableford">
     <Position X="6" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIQAAABQAACAAAAAAAAAAABAAAQBAAAgAA=</HashCode>
-      <FileName>MatchStableFord.cs</FileName>
+      <FileName>Stableford.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GolfRecord.Model.MatchStrokePlay">
+  <Class Name="GolfRecord.Model.Strokeplay">
     <Position X="8.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAAABAAAAAAAAAAAAAAABAAAQAAAgCAA=</HashCode>
-      <FileName>MatchStrokePlay.cs</FileName>
+      <FileName>Strokeplay.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GolfRecord.Model.Hole" Collapsed="true">
@@ -82,7 +83,7 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>ABkCAMQCRABIAIShASAAAADUABABgACAAgAAMYCCAAI=</HashCode>
+      <HashCode>ABkCAMQCRAAoAIShATAAAADEABABgACAAgAAMYCCBAI=</HashCode>
       <FileName>Golfer.cs</FileName>
     </TypeIdentifier>
   </Class>

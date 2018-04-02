@@ -10,6 +10,8 @@ namespace GolfRecord.Model
 {
     public class PlayerAuthoriser : ITypeAuthorizer<Player>
     {
+        public GolferServices GolferServices { set; protected get; }
+
         public bool IsEditable(IPrincipal principal, Player player, string memberName)
         {
             if (player.Username == principal.Identity.Name)
@@ -28,7 +30,13 @@ namespace GolfRecord.Model
 
         public bool IsVisible(IPrincipal principal, Player player, string memberName)
         {
-            if ((player.PrivateAccount == true) & (memberName == "Mobile")
+            if ((player != GolferServices.Me()) & ((memberName == "PrivateAccount")
+                                                        | (memberName == "CreateNewGroup")
+                                                        | (memberName == "CreateNewMatch")))
+            {
+                return false;
+            }
+            else if ((player.PrivateAccount == true) & (memberName == "Mobile")
                                                  | (memberName == "Username"))
             {
                 return false;
@@ -53,6 +61,7 @@ namespace GolfRecord.Model
             else if ((player.Username == principal.Identity.Name) &
                     ((player.Invites.Count == 0) & ((memberName == "AcceptFriendship")
                                                       | (memberName == "AcceptGroup")
+                                                      | (memberName == "AcceptGroupMember")
                                                       | (memberName == "AcceptMatch")
                                                       | (memberName == "DeclineInvite"))
                     | ((player.Messages.Count == 0) & (memberName == "DeleteMessage")))
@@ -63,6 +72,7 @@ namespace GolfRecord.Model
             }
             else if ((player.Username != principal.Identity.Name) & ((memberName == "AcceptFriendship")
                                                                    | (memberName == "AcceptGroup")
+                                                                   | (memberName == "AcceptGroupMember")
                                                                    | (memberName == "AcceptMatch")
                                                                    | (memberName == "DeclineInvite")
                                                                    | (memberName == "DeleteMessage")))

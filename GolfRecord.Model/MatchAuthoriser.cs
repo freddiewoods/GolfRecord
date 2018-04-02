@@ -11,11 +11,11 @@ namespace GolfRecord.Model
     public class MatchAuthoriser : ITypeAuthorizer<Match>
     {
 
-        public GolferServices GolferConfig { set; protected get; }
+        public GolferServices GolferServices { set; protected get; }
 
         public bool IsEditable(IPrincipal principal, Match match, string memberName)
         {
-            if ((match.Golfers.Contains(GolferConfig.Me()))|(match.MatchCreator == GolferConfig.Me()))
+            if ((match.Golfers.Contains(GolferServices.Me()))|(match.MatchCreator == GolferServices.Me()))
             {
                 return true;
             }
@@ -27,11 +27,11 @@ namespace GolfRecord.Model
 
        public bool IsVisible(IPrincipal principal, Match match, string memberName)
         {
-            if ((memberName == "CreateNewMatch") & !(principal.Identity.Name == GolferConfig.Me().Username))
+            if ((memberName == "CreateNewMatch") & !(principal.Identity.Name == GolferServices.Me().Username))
                 {
                     return false;
                 }
-                else if (match.Golfers.Contains(GolferConfig.Me()))
+                else if (match.Golfers.Contains(GolferServices.Me()))
             {
                 return true;
            }

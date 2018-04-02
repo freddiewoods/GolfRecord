@@ -8,18 +8,18 @@ using System.Security.Principal;
 
 namespace GolfRecord.Model
 {
-    public class StrokePlayAuthoriser : ITypeAuthorizer<MatchStrokePlay>
+    public class StrokePlayAuthoriser : ITypeAuthorizer<Strokeplay>
     {
-        public GolferServices GolferConfig { set; protected get; }
+        public GolferServices GolferServices { set; protected get; }
 
-        public bool IsEditable(IPrincipal principal, MatchStrokePlay match, string memberName)
+        public bool IsEditable(IPrincipal principal, Strokeplay match, string memberName)
         {
 
             if ((memberName == "Winner") | (memberName == "MatchType") | (memberName == "MatchCreator"))
             {
                 return false;
             }
-            else if ((match.Golfers.Contains(GolferConfig.Me())) | (match.MatchCreator == GolferConfig.Me()))
+            else if ((match.Golfers.Contains(GolferServices.Me())) | (match.MatchCreator == GolferServices.Me()))
             {
                 return true;
             }
@@ -28,9 +28,9 @@ namespace GolfRecord.Model
                 return false;
             }
         }
-        public bool IsVisible(IPrincipal principal, MatchStrokePlay match, string memberName)
+        public bool IsVisible(IPrincipal principal, Strokeplay match, string memberName)
         {
-               if ((match.Golfers.Contains(GolferConfig.Me()) == false) & (memberName == "AddScores"))
+               if ((match.Golfers.Contains(GolferServices.Me()) == false) & (memberName == "AddScores"))
              {
                  return false;
               }

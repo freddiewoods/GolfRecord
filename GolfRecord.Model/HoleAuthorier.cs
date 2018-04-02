@@ -10,11 +10,11 @@ namespace GolfRecord.Model
 {
     public class HoleAuthorier : ITypeAuthorizer<Hole>
     {
-        public GolferServices GolferConfig { set; protected get; }
+        public GolferServices GolferServices { set; protected get; }
 
         public bool IsEditable(IPrincipal principal, Hole target, string memberName)
         {
-            if (principal.Identity.Name == GolferConfig.Me().Username & GolferConfig.Me().Position == Enums.Title.ClubManager)
+            if (principal.Identity.Name == GolferServices.Me().Username & GolferServices.Me().Position == Enums.Title.ClubManager)
             {
                 return true;
             }

@@ -12,11 +12,11 @@ namespace GolfRecord.Model
     public class DefaultAuthorizer : ITypeAuthorizer<object>
     {
 
-        public GolferServices GolferConfig { set; protected get; }
+        public GolferServices GolferServices { set; protected get; }
 
         public bool IsEditable(IPrincipal principal, object target, string memberName)
         {
-            if ((GolferConfig.IsPlayer() == true) & // needs to be changed with
+            if ((GolferServices.IsPlayer() == true) & // needs to be changed with
                 (
                   (memberName == "Position")
                 | (memberName == "Username")
@@ -43,7 +43,7 @@ namespace GolfRecord.Model
             {
                 return false;
             }
-            else if ((memberName == "CreateNewMatch") & (GolferConfig.Me().FullName == null))
+            else if ((memberName == "CreateNewMatch") & (GolferServices.Me().FullName == null))
             {
                 return false;
             }

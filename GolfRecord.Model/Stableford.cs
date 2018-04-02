@@ -7,7 +7,7 @@ using NakedObjects;
 
 namespace GolfRecord.Model
 {
-    public class MatchStableFord : Match
+    public class Stableford : Match
     {
         public int[] TotalScores;
         public void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)

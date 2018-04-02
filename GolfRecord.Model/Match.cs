@@ -13,9 +13,9 @@ namespace GolfRecord.Model
 
         public IDomainObjectContainer Container { set; protected get; }
 
-        public CourseServices CourseConfig { set; protected get; }
+        public CourseServices CourseServices { set; protected get; }
 
-        public GolferServices GolferConfig { set; protected get; }
+        public GolferServices GolferServices { set; protected get; }
 
         #endregion
         [NakedObjectsIgnore]
@@ -38,7 +38,7 @@ namespace GolfRecord.Model
         [PageSize(3)]
         public IQueryable<Course> AutoCompleteCourse([MinLength(2)] string matching)
         {
-            return CourseConfig.BrowseCourses().Where(c => c.CourseName.Contains(matching));
+            return CourseServices.BrowseCourses().Where(c => c.CourseName.Contains(matching));
         }
 
         [Title]
@@ -53,60 +53,34 @@ namespace GolfRecord.Model
         public virtual bool Completed { get; set; }
 
         #region Add Golfers
-        public void AddRegisteredGolfers(Golfer Golfer)
-        {
-            if (MatchType == MatchType.MatchPlay & Golfers.Count < 2)
-            {
-                if (Golfers.Contains(GolferConfig.Me()) == false)
-                {
-                    Golfers.Add(GolferConfig.Me());
-                }
-                Golfers.Add(Golfer);
-            }
-            else if (MatchType == MatchType.StrokePlay & Golfers.Count < 4)
-            {
-                Golfers.Add(Golfer);
-            }
-            else if (MatchType == MatchType.StableFord & Golfers.Count < 4)
-            {
-                Golfers.Add(Golfer);
-            }
-            else
-            {
-                Container.InformUser("Too many players in this match or golfer is already in a match");
-            }
-        }
-
-
-        [PageSize(3)]
-        public IQueryable<Golfer> AutoComplete0AddRegisteredGolfers([MinLength(2)] string name)
-        {
-            return GolferConfig.AllGolfers().Where(g => g.FullName.Contains(name));
-        }
-
-        public bool HideAddRegisteredGolfers()
-        {
-            if (MatchType == MatchType.MatchPlay)
-            {
-                return Golfers.Count > 1;
-            }
-            else 
-            {
-                return Golfers.Count > 3;
-            }
-        }
-
         public void sendInvite(Golfer golfer)
         {
 
             var invite = Container.NewTransientInstance<MatchInvite>();
             invite.match = this;
-            invite.Sender = GolferConfig.Me();
+            invite.Sender = GolferServices.Me();
             invite.Receiver = golfer;
             Container.Persist(ref invite);
             golfer.Invites.Add(invite);
         }
 
+        public bool HideSendInvite()
+        {
+            if (MatchType == MatchType.Matchplay)
+            {
+                return Golfers.Count > 1;
+            }
+            else
+            {
+                return Golfers.Count > 3;
+            }
+        }
+
+        [PageSize(3)]
+        public IQueryable<Golfer> AutoComplete0SendInvite([MinLength(2)] string name)
+        {
+            return GolferServices.AllGolfers().Where(g => g.FullName.Contains(name));
+        }
         #endregion
         #region Golfers (collection)
         private ICollection<Golfer> _Golfers = new List<Golfer>();
