@@ -60,6 +60,7 @@
     <Compile Include="ClubManager.cs" />
     <Compile Include="ClubManagerAuthoriser.cs" />
     <Compile Include="Course.cs" />
+    <Compile Include="CourseAuthoriser.cs" />
     <Compile Include="CourseServices.cs" />
     <Compile Include="DefaultAuthorizer.cs" />
     <Compile Include="Enums.cs" />

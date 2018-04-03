@@ -55,7 +55,10 @@ namespace GolfRecord.Model
         #region Add Golfers
         public void sendInvite(Golfer golfer)
         {
-
+            if (Golfers.Contains(MatchCreator)== false)
+            {
+                Golfers.Add(MatchCreator);
+            }
             var invite = Container.NewTransientInstance<MatchInvite>();
             invite.match = this;
             invite.Sender = GolferServices.Me();

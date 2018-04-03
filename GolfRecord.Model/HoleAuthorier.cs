@@ -14,7 +14,7 @@ namespace GolfRecord.Model
 
         public bool IsEditable(IPrincipal principal, Hole target, string memberName)
         {
-            if (principal.Identity.Name == GolferServices.Me().Username & GolferServices.Me().Position == Enums.Title.ClubManager)
+            if (target.Course.ClubManager == GolferServices.Me())
             {
                 return true;
             }

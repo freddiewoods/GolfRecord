@@ -75,11 +75,12 @@ namespace GolfRecord.Model
           [PageSize(3)]
           public IQueryable<Golfer> AutoComplete0AddFriend([MinLength(2)] string matching)
           {
-              return GolferServices.AllGolfers().Where(g => (g.FullName.Contains(matching) & (!g.Friends.Contains(GolferServices.Me()))));
+            return GolferServices.AllGolfers().Where(g => (g.FullName.Contains(matching)));
+            //& (g.Friends.Contains(GolferServices.Me())))));
           }
           #endregion
 
-       #region MatchHistory (collection)
+        #region MatchHistory (collection)
         private  ICollection<Match> _MatchHistory = new List<Match>();
 
         public virtual ICollection<Match> MatchHistory
@@ -147,7 +148,7 @@ namespace GolfRecord.Model
 
         public void DeclineInvite(Invite invite)
         {
-            Container.DisposeInstance(this);
+            Container.DisposeInstance(invite);
         }
 
         public void AcceptFriendship(FriendInvite invite)
@@ -167,7 +168,7 @@ namespace GolfRecord.Model
                     AmountOfInvites += 1;
                 }
             }
-            return AmountOfInvites < 0;
+            return AmountOfInvites == 0;
         }
 
         public void AcceptGroupMember(RequestToJoin invite)
@@ -186,7 +187,7 @@ namespace GolfRecord.Model
                     AmountOfInvites += 1;
                 }
             }
-            return AmountOfInvites < 0;
+            return AmountOfInvites == 0;
         }
 
         public void AcceptGroup(GroupInvite invite)
@@ -204,7 +205,7 @@ namespace GolfRecord.Model
                     AmountOfInvites += 1;
                 }
             }
-            return AmountOfInvites < 0;
+            return AmountOfInvites == 0;
         }
 
 
@@ -215,6 +216,7 @@ namespace GolfRecord.Model
         }
         public bool HideAcceptMatch()
         {
+
             int AmountOfInvites = 0;
             for (int i = 0; i < Invites.Count; i++)
             {
@@ -223,7 +225,7 @@ namespace GolfRecord.Model
                     AmountOfInvites += 1;
                 }
             }
-            return AmountOfInvites < 0;
+            return AmountOfInvites == 0;
         }
         #endregion
 

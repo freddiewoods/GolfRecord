@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NakedObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace GolfRecord.Model
 {
     public class RequestToJoin: Invite
     {
-
+        [Title]
         public virtual Group group { get; set; }
 
     }

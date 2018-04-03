@@ -40,6 +40,12 @@ namespace GolfRecord.Model
         [MemberOrder(9)]
         public virtual int RedStrokeIndex { get; set; }
 
+
+        public virtual Course Course { get; set; }
+
+
+
+
         public virtual FileAttachment Attachment
         {
             get

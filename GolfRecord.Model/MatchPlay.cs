@@ -58,7 +58,7 @@ namespace GolfRecord.Model
             {
                 TotalScore[0] += 1;
             }
-            else if (Scores[0] < Scores[1])
+            else if (Scores[1] < Scores[0])
             {
                 TotalScore[1] += 1;
             }
