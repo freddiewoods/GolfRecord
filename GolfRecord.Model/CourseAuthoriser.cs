@@ -25,7 +25,18 @@ namespace GolfRecord.Model
 
         public bool IsVisible(IPrincipal principal, Course target, string memberName)
         {
-            return true;
+            if ((GolferServices.Me() == target.ClubManager) & (memberName == "AddFacility"))
+            {
+                return true;
+            }
+            else if (memberName == "AddFacility")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

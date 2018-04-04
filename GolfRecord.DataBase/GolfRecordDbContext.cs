@@ -19,8 +19,9 @@ namespace GolfRecord.DataBase
         public DbSet<HoleScoreAbstract> HoleScore { get; set; }
         public DbSet<FourPlayerHoleScore> FourPlayerHoleScore { get; set; }
         public DbSet<TwoPlayerHoleScore> TwoPlayerHoleScore { get; set; }
-        public DbSet<Invite> Invite { get; set; }
+        public DbSet<Invitation> Invite { get; set; }
         public DbSet<Group> Groups { get; set; }
+        public DbSet<Facility> Facilities { get; set; }
 
 
 
@@ -52,14 +53,14 @@ namespace GolfRecord.DataBase
 
         private void DefineGolferMatch(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Match>()
-                .HasMany(x => x.Golfers)
-                .WithMany(x => x.MatchHistory)
+            modelBuilder.Entity<Golfer>()
+                .HasMany(x => x.MyMatches)
+                .WithMany(x => x.Golfers)
             .Map(x =>
             {
                 x.ToTable("GolferMatch"); 
-        x.MapLeftKey("GolferId");
-                x.MapRightKey("MatchId");
+        x.MapLeftKey("MatchId");
+                x.MapRightKey("GolferId");
             });
         }
 

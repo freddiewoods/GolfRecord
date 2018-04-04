@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GolfRecord.Model
 {
-    public class RequestToJoin: Invite
+    public class RequestToJoin: Invitation
     {
         [Title]
         public virtual Group group { get; set; }

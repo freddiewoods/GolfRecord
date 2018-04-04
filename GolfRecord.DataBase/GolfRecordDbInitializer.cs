@@ -16,10 +16,10 @@ namespace GolfRecord.DataBase
         protected override void Seed(GolfRecordDbContext context)
         {
             this.Context = context;
-            var ro = AddNewCourse("Royal Oak", "Scotland", "http://www.golfroyaloak.com", "Royal Oak Golf Club is a beautiful, and challenging 9 Hole Golf Course with a great location, (10 minutes from the downtown core, 15 minutes from Swartz Bay Ferry Terminal).", 79.4d, "540 Marsett Place, Victoria B.C. V8Z-5M1", 32, 2000, " 250 658 - 1433");
-            var pb = AddNewCourse("Pebble Beach", "Croatia", "https://www.pebblebeach.com/golf/", "The sport of golf is at its worldwide best at Pebble Beach Resorts. Whether you want to play the most exciting closing hole in golf, finally master the toughest hole on the PGA TOUR or simply anticipate walking in the footsteps of golf’s greatest names, we invite you to become a part of the incomparable experience that is Pebble Beach.", 74.7, "1700 17 - Mile Drive, PebbleBeach, CA 93953", 72, 6828, "(800) 877‑0597");
-            var ss = AddNewCourse("Stowe Golf Club", "England", "https://www.stowe.co.uk/house/venue-hire/golf-club", "Stowe has a 9-hole course situated in the historic setting of Lancelot ‘Capability’ Brown’s landscaped garden. The Club has an extensive range of social gatherings and competitions to get involved in.", 60.5d, "Stowe House Preservation Trust, Stowe, Buckingham, MK18 5EH", 66, 4500, "01280 818282");
-            var st = AddNewCourse("Silverstone Golf Club", "England", " http://www.silverstonegolfclub.co.uk/", "Set on the Buckinghamshire/Northamptonshire border and surrounded by forest this beautiful 18 hole parkland course was designed by David Snell and offers the golfers a great challenge", 55.6d, "Silverstone Road, Stowe, Buckingham MK18 5LH", 72, 6600, "01280-850005");
+            var ro = AddNewCourse("Royal Oak", "Scotland", "http://www.golfroyaloak.com", "Royal Oak Golf Club is a beautiful, and challenging 9 Hole Golf Course with a great location, (10 minutes from the downtown core, 15 minutes from Swartz Bay Ferry Terminal).", "540 Marsett Place, Victoria B.C. V8Z-5M1", 32, 2000, " 250 658 - 1433");
+            var pb = AddNewCourse("Pebble Beach", "Croatia", "https://www.pebblebeach.com/golf/", "The sport of golf is at its worldwide best at Pebble Beach Resorts. Whether you want to play the most exciting closing hole in golf, finally master the toughest hole on the PGA TOUR or simply anticipate walking in the footsteps of golf’s greatest names, we invite you to become a part of the incomparable experience that is Pebble Beach.", "1700 17 - Mile Drive, PebbleBeach, CA 93953", 72, 6828, "(800) 877‑0597");
+            var ss = AddNewCourse("Stowe Golf Club", "England", "https://www.stowe.co.uk/house/venue-hire/golf-club", "Stowe has a 9-hole course situated in the historic setting of Lancelot ‘Capability’ Brown’s landscaped garden. The Club has an extensive range of social gatherings and competitions to get involved in.", "Stowe House Preservation Trust, Stowe, Buckingham, MK18 5EH", 66, 4500, "01280 818282");
+            var st = AddNewCourse("Silverstone Golf Club", "England", " http://www.silverstonegolfclub.co.uk/", "Set on the Buckinghamshire/Northamptonshire border and surrounded by forest this beautiful 18 hole parkland course was designed by David Snell and offers the golfers a great challenge", "Silverstone Road, Stowe, Buckingham MK18 5LH", 72, 6600, "01280-850005");
             context.SaveChanges();
             AddNewHole(pb, 1, 3, 400, 2);
             AddNewHole(pb, 2, 4, 600, 3);
@@ -183,7 +183,7 @@ namespace GolfRecord.DataBase
 
             // AddScoreStrokePlay(s2, 
 
-            var MP = AddNewGolfer2("Peter Miller", 1, "08188 464638", Gender.Male,"wooodssy@gmail.com");
+            var MP = AddNewGolfer2("Peter Miller", 1, "08188 464638", Gender.Male, "wooodssy@gmail.com");
             context.SaveChanges();
             //Add Scores.
 
@@ -200,6 +200,19 @@ namespace GolfRecord.DataBase
             s10.Golfers.Add(p2);
             Context.SaveChanges();
 
+            AddNewFacility(Facilities.ATM);
+            AddNewFacility(Facilities.ChangingRooms);
+            AddNewFacility(Facilities.ClubHouse);
+            AddNewFacility(Facilities.ConferenceRoom);
+            AddNewFacility(Facilities.FreeWifi);
+            AddNewFacility(Facilities.Hotel);
+            AddNewFacility(Facilities.ProShop);
+            AddNewFacility(Facilities.Restaurant);
+            AddNewFacility(Facilities.WeddingVenue);
+            Context.SaveChanges();
+
+            EditCourse(pb, CM);
+            Context.SaveChanges();
 
         }
         private Player AddNewGolfer(Match m, string name, int handi, string mobile, Gender gender, bool withinmatch = true, Title title = Title.Player)
@@ -247,9 +260,9 @@ namespace GolfRecord.DataBase
             Match.HoleScores.Add(s);
             return (s);
         }
-        private Course AddNewCourse(string CourseName, string Location, string WebsiteLink, string ShortParagraph, double rating, string address, int par, int yardage, string Phone)
+        private Course AddNewCourse(string CourseName, string Location, string WebsiteLink, string ShortParagraph, string address, int par, int yardage, string Phone)
         {
-            var c = new Course() { CourseName = CourseName, Location = Location, WebsiteLink = WebsiteLink, CourseDescription = ShortParagraph, Rating = rating, Address = address, Par = par, Yardage = yardage, PhoneNumber = Phone };
+            var c = new Course() { CourseName = CourseName, Location = Location, WebsiteLink = WebsiteLink, CourseDescription = ShortParagraph, Address = address, Par = par, Yardage = yardage, PhoneNumber = Phone };
             Context.Courses.Add(c);
             return (c);
         }
@@ -280,6 +293,21 @@ namespace GolfRecord.DataBase
         {
             golfer1.Friends.Add(golfer2);
             Context.SaveChanges();
+        }
+        private Course EditCourse(Course course, Golfer golfer)
+        {
+            var c = course;
+            c.ClubManager = golfer;
+            Context.SaveChanges();
+            return c;
+        }
+
+        private Facility AddNewFacility(Facilities Facility)
+        {
+            var F = new Facility() { facility = Facility, Name = Facility.ToString() };
+            Context.Facilities.Add(F);
+            Context.SaveChanges();
+            return F;
         }
     }
 }

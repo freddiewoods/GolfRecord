@@ -36,10 +36,6 @@ namespace GolfRecord.Model
                 }
                 int Gwin = FindWinnerStrokePlay();
                 Winner = Golfers.ElementAt(Gwin);
-                for (int i = 0; i < 4; i++)
-                {
-                    Golfers.ElementAt(i).AddMatchHistory(this);
-                }
             }
         }
 
@@ -58,6 +54,10 @@ namespace GolfRecord.Model
                 {
                     Gwin = i;
                 }
+            }
+            for (int i = 0; i < Golfers.Count; i++)
+            {
+                Golfers.ElementAt(i).MyMatches.Remove(this);
             }
             return Gwin;
                       

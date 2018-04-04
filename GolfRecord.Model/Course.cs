@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 using NakedObjects;
 using NakedObjects.Menu;
 using NakedObjects.Value;
+using System.ComponentModel.DataAnnotations;
 
 namespace GolfRecord.Model
 {
     public class Course
     {
+        public FacilityServices FacilityServices { set; protected get; }
+
         [NakedObjectsIgnore]
         public virtual int Id { get; set; }
 
@@ -22,6 +25,16 @@ namespace GolfRecord.Model
         public virtual string Address { get; set; }
 
         public virtual int Par { get; set; }
+        public string ValidatePar(int par)
+        {
+            if (par == 0)
+            {
+                return "Par Must me larger than 0";
+            }
+            return null;
+        }
+
+
 
         public virtual Golfer ClubManager { get; set; }
 
@@ -41,9 +54,6 @@ namespace GolfRecord.Model
 
         [Optionally]
         public virtual string CourseDescription { get; set; } //So people can look at the course and see whats its li
-            
-        [Optionally][NakedObjectsIgnore]
-        public virtual double Rating { get; set; } //to make the overall rating fromt the small ratings.
 
         [Optionally]
         public virtual string WebsiteLink { get; set; } //link to the course website.
@@ -76,7 +86,34 @@ namespace GolfRecord.Model
             AttName = newAttachment.Name;
             AttMime = newAttachment.MimeType;
         }
+
+        #region Facilities (collection)
+        private ICollection<Facility> _Facilities = new List<Facility>();
+
+        public virtual ICollection<Facility> Facilities
+        {
+            get
+            {
+                return _Facilities;
+            }
+            set
+            {
+                _Facilities = value;
+            }
+        }
+        public void AddFacility(Facility facility)
+        {
+            Facilities.Add(facility);
+        }
+        public IQueryable<Facility> AutoComplete0AddFacility([MinLength(2)] string matching)
+        {
+            return FacilityServices.AllFacilites().Where(f => f.Name.Contains(matching));
+        }
+
+        #endregion 
     }
+
+
 }
 
 

@@ -64,7 +64,7 @@ namespace GolfRecord.Model
 
           public void AddFriend(Golfer golfer)
           {
-            var invite = Container.NewTransientInstance<FriendInvite>();
+            var invite = Container.NewTransientInstance<FriendInvitation>();
             invite.Sender = GolferServices.Me();
             invite.Receiver = golfer;
             invite.inviteType = InviteType.FriendInvite;
@@ -80,23 +80,23 @@ namespace GolfRecord.Model
           }
           #endregion
 
-        #region MatchHistory (collection)
-        private  ICollection<Match> _MatchHistory = new List<Match>();
+        #region MyMatches (collection)
+        private  ICollection<Match> _MyMatches = new List<Match>();
 
-        public virtual ICollection<Match> MatchHistory
+        public virtual ICollection<Match> MyMatches
         {
             get
             {
-                return _MatchHistory;
+                return _MyMatches;
             }
             set
             {
-                _MatchHistory = value;
+                _MyMatches = value;
             }
         }
-        public void AddMatchHistory(Match match)
+        public void AddMatch(Match match)
         {
-            MatchHistory.Add(match);
+            MyMatches.Add(match);
         }
         public IQueryable<Match> AutoComplete0AddMatchHistory([MinLength(2)] string matching)
         {
@@ -132,9 +132,9 @@ namespace GolfRecord.Model
 
         #region Invites
 
-        private ICollection<Invite> _Invites = new List<Invite>();
+        private ICollection<Invitation> _Invites = new List<Invitation>();
 
-        public virtual ICollection<Invite> Invites
+        public virtual ICollection<Invitation> Invites
         {
             get
             {
@@ -146,12 +146,12 @@ namespace GolfRecord.Model
             }
         }
 
-        public void DeclineInvite(Invite invite)
+        public void DeclineInvite(Invitation invite)
         {
             Container.DisposeInstance(invite);
         }
 
-        public void AcceptFriendship(FriendInvite invite)
+        public void AcceptFriendship(FriendInvitation invite)
         {
             invite.Sender.Friends.Add(invite.Receiver);
             invite.Receiver.Friends.Add(invite.Sender);
@@ -190,7 +190,7 @@ namespace GolfRecord.Model
             return AmountOfInvites == 0;
         }
 
-        public void AcceptGroup(GroupInvite invite)
+        public void AcceptGroup(GroupInvitation invite)
         {
            invite.group.Members.Add(invite.Receiver);
            Container.DisposeInstance(invite);
@@ -209,7 +209,7 @@ namespace GolfRecord.Model
         }
 
 
-        public void AcceptMatch(MatchInvite invite)
+        public void AcceptMatch(MatchInvitation invite)
         {
             invite.match.Golfers.Add(invite.Receiver);
             Container.DisposeInstance(invite);

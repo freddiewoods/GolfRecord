@@ -46,7 +46,7 @@ namespace GolfRecord.Model
 
         public void AddNewMember(Golfer golfer)
         {
-            var invite = Container.NewTransientInstance<GroupInvite>();
+            var invite = Container.NewTransientInstance<GroupInvitation>();
             invite.group = this;
             invite.Sender = GolferServices.Me();
             invite.Receiver = golfer;

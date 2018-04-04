@@ -8,7 +8,7 @@ using static GolfRecord.Model.Enums;
 
 namespace GolfRecord.Model
 {
-    public class GroupInvite:Invite
+    public class GroupInvitation:Invitation
     {
         public IDomainObjectContainer Container;
         [Title]

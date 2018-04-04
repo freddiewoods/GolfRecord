@@ -8,11 +8,8 @@ using static GolfRecord.Model.Enums;
 
 namespace GolfRecord.Model
 {
-    public class MatchInvite : Invite
+    public class FriendInvitation: Invitation
     {
-        public IDomainObjectContainer Container;
-        [Title]
-        public virtual Match match { get; set; }
 
-        }
+    }
 }

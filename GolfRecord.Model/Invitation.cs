@@ -4,7 +4,7 @@ using static GolfRecord.Model.Enums;
 
 namespace GolfRecord.Model
 {
-    public class Invite
+    public class Invitation
     {
         [NakedObjectsIgnore]
         public virtual int Id { get; set; }

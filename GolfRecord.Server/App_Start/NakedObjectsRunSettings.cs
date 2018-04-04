@@ -43,9 +43,9 @@ namespace NakedObjects.GolfRecord {
                     typeof(TwoPlayerHoleScore),
                     typeof(ClubManager),
                     typeof(Player),
-                    typeof(MatchInvite),
-                    typeof(FriendInvite),
-                    typeof(GroupInvite),
+                    typeof(MatchInvitation),
+                    typeof(FriendInvitation),
+                    typeof(GroupInvitation),
                     typeof(RequestToJoin),
                     typeof(PlayerMessage),
                     typeof(GroupMessage)
@@ -64,7 +64,8 @@ namespace NakedObjects.GolfRecord {
                     typeof(GolferServices),
                     typeof(MatchServices),
                     typeof(CourseServices),
-                    typeof(HoleServices)
+                    typeof(HoleServices),
+                    typeof(FacilityServices)
             };
                 }
         }
@@ -86,8 +87,7 @@ namespace NakedObjects.GolfRecord {
             return new IMenu[] {
                 factory.NewMenu<GolferServices>(true, "Golfers"),
                 factory.NewMenu<MatchServices>(true,"Matches"),
-                factory.NewMenu<CourseServices>(true,"Courses")
-            };
+                factory.NewMenu<CourseServices>(true,"Courses"),            };
         }
         public static IAuthorizationConfiguration AuthorizationConfig()
         {

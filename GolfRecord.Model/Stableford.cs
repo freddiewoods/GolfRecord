@@ -29,10 +29,6 @@ namespace GolfRecord.Model
             if (hole.HoleNumber == Course.Holes.Count)
             {
                 Winner = Golfers.ElementAt(FindWinner());
-                for (int i = 0; i < 4; i++)
-                {
-                    Golfers.ElementAt(i).MatchHistory.Add(this);
-                }
             }
         }
 
@@ -148,7 +144,11 @@ namespace GolfRecord.Model
                 {
                     Gwin = i;
                 }
-            }         
+            }
+            for (int i = 0; i < Golfers.Count; i++)
+            {
+                Golfers.ElementAt(i).MyMatches.Remove(this);
+            }
             return Gwin;
         }
 

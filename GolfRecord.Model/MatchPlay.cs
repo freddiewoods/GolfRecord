@@ -25,12 +25,7 @@ namespace GolfRecord.Model
             if (hole.HoleNumber == Course.Holes.Count)
             {
                 int Gwin = findWinnerMatchPlay();
-                Winner = Golfers.ElementAt(Gwin);
-                for (int i = 0; i < 2; i++)
-                {
-                    Golfers.ElementAt(i).MatchHistory.Add(this);
-                }
-                
+                Winner = Golfers.ElementAt(Gwin);               
             }
             Container.Persist(ref hs);
             HoleScores.Add(hs);
@@ -109,6 +104,10 @@ namespace GolfRecord.Model
                 gwin = 1;
             }
             else gwin = 0;
+            for (int i = 0; i < Golfers.Count; i++)
+            {
+                Golfers.ElementAt(i).MyMatches.Remove(this);
+            }
             return gwin;
         }
     }

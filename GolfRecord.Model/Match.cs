@@ -17,6 +17,8 @@ namespace GolfRecord.Model
 
         public GolferServices GolferServices { set; protected get; }
 
+        public MatchServices MatchServices { set; protected get; }
+
         #endregion
         [NakedObjectsIgnore]
         public virtual int ID { get; set; }
@@ -58,8 +60,9 @@ namespace GolfRecord.Model
             if (Golfers.Contains(MatchCreator)== false)
             {
                 Golfers.Add(MatchCreator);
+                MatchCreator.MyMatches.Add(this);
             }
-            var invite = Container.NewTransientInstance<MatchInvite>();
+            var invite = Container.NewTransientInstance<MatchInvitation>();
             invite.match = this;
             invite.Sender = GolferServices.Me();
             invite.Receiver = golfer;

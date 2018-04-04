@@ -55,7 +55,7 @@ namespace GolfRecord.Model
                     | ((manager.Groups.Count == 0) & (memberName == "Groups"))
                     | ((manager.Invites.Count == 0) & (memberName == "Invites"))
                     | ((manager.Messages.Count == 0) & (memberName == "Messages"))
-                    | ((manager.MatchHistory.Count == 0) & (memberName == "MatchHistory")))
+                    | ((manager.MyMatches.Count == 0) & (memberName == "MyMatches")))
 
             {
                 return false;
@@ -71,7 +71,7 @@ namespace GolfRecord.Model
                                                       | (memberName == "DeclineInvite")
                                                       | (memberName == "AcceptGroupMember"))
                     | ((manager.Messages.Count == 0) & (memberName == "DeleteMessage")))
-                    | ((manager.MatchHistory.Count == 0) & (memberName == "MatchHistory")))
+                    | ((manager.MyMatches.Count == 0) & (memberName == "MyMatches")))
             {
                 return false;
             }

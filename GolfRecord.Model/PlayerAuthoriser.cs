@@ -49,7 +49,7 @@ namespace GolfRecord.Model
                     | ((player.Groups.Count == 0) & (memberName == "Groups"))
                     | ((player.Invites.Count == 0) & (memberName == "Invites"))
                     | ((player.Messages.Count == 0) & (memberName == "Messages"))
-                    | ((player.MatchHistory.Count == 0) & (memberName == "MatchHistory")))
+                    | ((player.MyMatches.Count == 0) & (memberName == "MyMatches")))
 
             {
                 return false;
@@ -65,7 +65,7 @@ namespace GolfRecord.Model
                                                       | (memberName == "AcceptMatch")
                                                       | (memberName == "DeclineInvite"))
                     | ((player.Messages.Count == 0) & (memberName == "DeleteMessage")))
-                    | ((player.MatchHistory.Count == 0) & (memberName == "MatchHistory"))
+                    | ((player.MyMatches.Count == 0) & (memberName == "MyMatches"))
                     | ((player.FavouriteCourses.Count == 0) & (memberName == "FavouriteCourses")))
             {
                 return false;
