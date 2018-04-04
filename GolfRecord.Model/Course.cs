@@ -34,8 +34,6 @@ namespace GolfRecord.Model
             return null;
         }
 
-
-
         public virtual Golfer ClubManager { get; set; }
 
         private ICollection<Hole> _Holes = new List<Hole>();
@@ -59,8 +57,31 @@ namespace GolfRecord.Model
         public virtual string WebsiteLink { get; set; } //link to the course website.
 
         public virtual int Yardage { get; set; }
+        public string ValidateYardage(int Yardage)
+        {
+            if (Yardage == 0)
+            {
+                return "Yardage Must me larger than 0";
+            }
+            return null;
+        }
 
         public virtual string PhoneNumber { get; set; }
+        public string ValidatePhoneNumber(string PhoneNumber)
+        {
+            if ((PhoneNumber.ElementAt(0) == '+') & (PhoneNumber.Length == 13))
+            {
+                return null;
+            }
+            else if ((PhoneNumber.ElementAt(0) == '0') & (PhoneNumber.Length == 11))
+            {
+                return null;
+            }
+            else
+            {
+                return ("Incorrect length of phone number please check");
+            }
+        }
 
         public virtual FileAttachment Attachment
         {

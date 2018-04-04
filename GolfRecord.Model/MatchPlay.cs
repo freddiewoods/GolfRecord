@@ -13,7 +13,6 @@ namespace GolfRecord.Model
         public int[] TotalScore = new int[2];
         public int[] Handicaps = new int[2];
         public int[] DifficultyPerGolfer = new int[2];
-        
 
         public void AddScores(Hole hole, int ScoreA, int ScoreB)
         {
@@ -30,7 +29,17 @@ namespace GolfRecord.Model
             Container.Persist(ref hs);
             HoleScores.Add(hs);
         }
-
+        public string ValidateAddScores(int A, int B)
+        {
+            if ((A <= 0) | (B <= 0))
+            {
+                return "A score can not be negative or 0";
+            }
+            else
+            {
+                return null;
+            }
+        }
         [NakedObjectsIgnore]
         public void ScoreCalculation(Hole hole, int[] Scores, TwoPlayerHoleScore hs)
         {

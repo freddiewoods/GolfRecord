@@ -14,7 +14,7 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]
         public virtual int ID { get; set; }
 
-
+        [Title]
         public virtual Facilities facility { get; set; }
 
         [NakedObjectsIgnore]

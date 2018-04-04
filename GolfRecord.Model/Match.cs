@@ -33,9 +33,7 @@ namespace GolfRecord.Model
 
         public virtual Course Course { get; set; }
 
-
         public virtual Golfer MatchCreator { get; set; }
-
 
         [PageSize(3)]
         public IQueryable<Course> AutoCompleteCourse([MinLength(2)] string matching)
@@ -45,7 +43,6 @@ namespace GolfRecord.Model
 
         [Title]
         public virtual MatchType MatchType { get; set; }
-
 
         [Optionally]
         [Hidden(WhenTo.UntilPersisted)]

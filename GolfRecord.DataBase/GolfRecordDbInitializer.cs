@@ -16,6 +16,8 @@ namespace GolfRecord.DataBase
         protected override void Seed(GolfRecordDbContext context)
         {
             this.Context = context;
+
+            #region Courses
             var ro = AddNewCourse("Royal Oak", "Scotland", "http://www.golfroyaloak.com", "Royal Oak Golf Club is a beautiful, and challenging 9 Hole Golf Course with a great location, (10 minutes from the downtown core, 15 minutes from Swartz Bay Ferry Terminal).", "540 Marsett Place, Victoria B.C. V8Z-5M1", 32, 2000, " 250 658 - 1433");
             var pb = AddNewCourse("Pebble Beach", "Croatia", "https://www.pebblebeach.com/golf/", "The sport of golf is at its worldwide best at Pebble Beach Resorts. Whether you want to play the most exciting closing hole in golf, finally master the toughest hole on the PGA TOUR or simply anticipate walking in the footsteps of golf’s greatest names, we invite you to become a part of the incomparable experience that is Pebble Beach.", "1700 17 - Mile Drive, PebbleBeach, CA 93953", 72, 6828, "(800) 877‑0597");
             var ss = AddNewCourse("Stowe Golf Club", "England", "https://www.stowe.co.uk/house/venue-hire/golf-club", "Stowe has a 9-hole course situated in the historic setting of Lancelot ‘Capability’ Brown’s landscaped garden. The Club has an extensive range of social gatherings and competitions to get involved in.", "Stowe House Preservation Trust, Stowe, Buckingham, MK18 5EH", 66, 4500, "01280 818282");
@@ -90,83 +92,94 @@ namespace GolfRecord.DataBase
             AddNewHole2(st, 17, "Buttockspire", 390, 384, 4, 9, 365, 4, 5);
             AddNewHole2(st, 18, "Wet Leys", 583, 563, 5, 5, 406, 5, 9);
             context.SaveChanges();
+#endregion
+
+            #region MatchCreators
+            var CM = AddNewClubManager("Philip Leny", 0, "07123 7392833", Gender.Male, pb, "fwoodscomp@gmail.com");
+            var TH = AddNewClubManager("Tiger Hancox", 13, "56473 829106", Gender.Male,ro, "few@more.com");
+            var DS = AddNewClubManager("Dandy Smith", 3, "01238 942343", Gender.Female,st);
+            var NS = AddNewClubManager("Nathan Swanson", 12, "01296 749916", Gender.Male,ss);
+            var JH = AddNewGolfer2("Jimmy Hart", 10, "01234 123414", Gender.Male);
+            var TL = AddNewGolfer2("Theresa Lolly", 22, "05324 234519", Gender.Female);
+            var OW = AddNewGolfer2("Obi Wan", 10, "12345 098765", Gender.Male);
+            var AE = AddNewGolfer2("Albert Einstein", 0, "57324 321414", Gender.Male);
+            var MC = AddNewGolfer2("Marie Curie", 15, "01234 132443", Gender.Female);
+            var JB = AddNewGolfer2("Jim Breithaupt", 0, "01942 872356", Gender.Male);
+            context.SaveChanges();
+            #endregion
 
 
-
-
-
-            var s1 = AddNewMatch("Stowe boys Strokeplay Match", date1, 1);
+            #region Matches
+            var s1 = AddNewMatch("Stowe boys Strokeplay Match", date1, 1,TH);
             Context.SaveChanges();
-            var p1 = AddNewGolfer(s1, "Tiger Hancox", 13, "56473 829106", Gender.Male);
+            s1.Golfers.Add(TH);
             var p2 = AddNewGolfer(s1, "Rory Gabriel", 14, "01296 234324", Gender.Male);
             AddNewGolfer(s1, "Rookie Player", 12, "07810 675443", Gender.Male);
             AddNewGolfer(s1, "Adam Chair", 13, "01234 753234", Gender.Male);
             context.SaveChanges();
 
-            var s2 = AddNewMatch("Stowe girls stroke play match", date1, 2);
+            var s2 = AddNewMatch("Stowe girls stroke play match", date1, 2, DS);
             Context.SaveChanges();
-            AddNewGolfer(s2, "Dandy Smith", 3, "01238 942343", Gender.Female);
+            s2.Golfers.Add(DS);
             AddNewGolfer(s2, "Rafa Lauren", 16, "19876 543210", Gender.Female);
             AddNewGolfer(s2, "Roger Perry", 16, "10202 304050", Gender.Female);
             AddNewGolfer(s2, "Andy Hacket", 8, "01020 030405", Gender.Female);
             Context.SaveChanges();
 
-            var s3 = AddNewMatch("Stowe Mixed Stroked play Match", date1, 3);
+            var s3 = AddNewMatch("Stowe Mixed Stroked play Match", date1, 3,NS);
             context.SaveChanges();
-            AddNewGolfer(s3, "Nathan Swanson", 12, "01296 749916", Gender.Male);
+            s3.Golfers.Add(NS);
             AddNewGolfer(s3, "Rafferty Reeves", 8, "01289 743123", Gender.Male);
             AddNewGolfer(s3, "Bethany philip", 12, "01233 123414", Gender.Female);
             AddNewGolfer(s3, "Rachel wright", 3, "01234 321413", Gender.Female);
             Context.SaveChanges();
 
 
-            var s4 = AddNewMatch("Stowe Boys MatchPlay Team", date1, 2, MatchType.Matchplay);
+            var s4 = AddNewMatch("Stowe Boys MatchPlay Team", date1, 2,JH, MatchType.Matchplay);
             context.SaveChanges();
-            AddNewGolfer(s4, "Jimmy Hart", 10, "01234 123414", Gender.Male);
+            s4.Golfers.Add(JH);
             AddNewGolfer(s4, "Andrew Tait", 2, "01234 3214312", Gender.Male);
             Context.SaveChanges();
 
-            var s5 = AddNewMatch("Stowe girls MatchPlay Team", date1, 4, MatchType.Matchplay);
+            var s5 = AddNewMatch("Stowe girls MatchPlay Team", date1, 4,TL, MatchType.Matchplay);
             Context.SaveChanges();
-            AddNewGolfer(s5, "Theresa Lolly", 22, "05324 234519", Gender.Female);
+            s5.Golfers.Add(TL);
             AddNewGolfer(s5, "Mary Jane", 5, "01324 590123", Gender.Female);
             Context.SaveChanges();
 
-            var s6 = AddNewMatch("Stowe Mixed MatchPlay Team", date1, 3, MatchType.Matchplay);
+            var s6 = AddNewMatch("Stowe Mixed MatchPlay Team", date1, 3,OW, MatchType.Matchplay);
             Context.SaveChanges();
-            AddNewGolfer(s6, "Obi Wan", 10, "12345 098765", Gender.Male);
+            s6.Golfers.Add(OW);
             AddNewGolfer(s6, "Mace Windu", 5, "98754 123415", Gender.Female);
             Context.SaveChanges();
 
-            var s7 = AddNewMatch("Stowe Mens Stableford Team", date1, 2, MatchType.Stableford);
+            var s7 = AddNewMatch("Stowe Mens Stableford Team", date1, 2,AE, MatchType.Stableford);
             context.SaveChanges();
-            AddNewGolfer(s7, "Albert Einstein", 0, "57324 321414", Gender.Male);
+            s7.Golfers.Add(AE);
             AddNewGolfer(s7, "Max Born", 2, "12345 123456", Gender.Male);
             AddNewGolfer(s7, "Isaac Newton", 5, "56392 123441", Gender.Male);
             AddNewGolfer(s7, "Nikola Tesla", 7, "09832 111111", Gender.Male);
             Context.SaveChanges();
 
-            var s8 = AddNewMatch("Stowe Womens Stableford Team", date1, 1, MatchType.Stableford);
+            var s8 = AddNewMatch("Stowe Womens Stableford Team", date1, 1,MC, MatchType.Stableford);
             context.SaveChanges();
-            AddNewGolfer(s8, "Marie Curie", 15, "01234 132443", Gender.Female);
+            s8.Golfers.Add(MC);
             AddNewGolfer(s8, "Rosamund Flip", 18, "01135 353426", Gender.Female);
             AddNewGolfer(s8, "Genie Booch", 4, "01823 988132", Gender.Female);
             context.SaveChanges();
 
-            var s9 = AddNewMatch("Stowe Mixed Stableford Team", date1, 4, MatchType.Stableford);
+            var s9 = AddNewMatch("Stowe Mixed Stableford Team", date1, 4,JB, MatchType.Stableford);
             context.SaveChanges();
-            AddNewGolfer(s9, "Jim Breithaupt", 0, "01942 872356", Gender.Male);
+            s9.Golfers.Add(JB);
             AddNewGolfer(s9, "Saul Muliplem", 5, "01492 845483", Gender.Male);
             AddNewGolfer(s9, "Mary Teapot", 9, "01832 144324", Gender.Female);
             AddNewGolfer(s9, "Linda Green", 14, "01234 123441", Gender.Female);
             Context.SaveChanges();
 
-            var s10 = AddNewMatch("Test Empty Match", date1, 1, MatchType.Strokeplay);
-            context.SaveChanges();
 
-            var s11 = AddNewMatch("Strokeplay match with scores except last", date1, 1, MatchType.Strokeplay);
+            var s11 = AddNewMatch("Strokeplay match with scores except last", date1, 1, CM, MatchType.Strokeplay);
             context.SaveChanges();
-            AddNewGolfer(s11, "Martin Finion", 5, "01278 564127", Gender.Male);
+            s11.Golfers.Add(CM);
             AddNewGolfer(s11, "Noah Castillo", 6, "01728 123412", Gender.Male);
             AddNewGolfer(s11, "Cody Turner", 6, "01383 132414", Gender.Male);
             AddNewGolfer(s11, "Aidan Hopkins", 5, "01256 122122", Gender.Male);
@@ -185,21 +198,33 @@ namespace GolfRecord.DataBase
 
             var MP = AddNewGolfer2("Peter Miller", 1, "08188 464638", Gender.Male, "wooodssy@gmail.com");
             context.SaveChanges();
-            //Add Scores.
-
-            var CM = AddNewClubManager("Philip Leny", 0, "07123 7392833", Gender.Male, pb, "fwoodscomp@gmail.com");
-            context.SaveChanges();
-
 
             AddFriend(CM, MP);
             AddFriend(MP, CM);
             context.SaveChanges();
-            s10.Golfers.Add(MP);
-            s10.Golfers.Add(CM);
-            s10.Golfers.Add(p1);
-            s10.Golfers.Add(p2);
+            var TSP = AddNewMatch("Test Strokeplay Match", date1, 1,MP, MatchType.Strokeplay);
+            context.SaveChanges();
+            TSP.Golfers.Add(MP);
+            TSP.Golfers.Add(CM);
+            TSP.Golfers.Add(TH);
+            TSP.Golfers.Add(p2);
+
+            var TMP = AddNewMatch("Test Matchplay Match", date1, 2,CM, MatchType.Matchplay);
+            context.SaveChanges();
+            TMP.Golfers.Add(MP);
+            TSP.Golfers.Add(CM);
             Context.SaveChanges();
 
+            var TSF = AddNewMatch("Test Stableford Match", date1, 1,MP, MatchType.Stableford);
+            context.SaveChanges();
+            TSF.Golfers.Add(MP);
+            TSF.Golfers.Add(CM);
+            TSF.Golfers.Add(TH);
+            TSF.Golfers.Add(p2);
+            Context.SaveChanges();
+            #endregion
+
+            #region Facilities
             AddNewFacility(Facilities.ATM);
             AddNewFacility(Facilities.ChangingRooms);
             AddNewFacility(Facilities.ClubHouse);
@@ -210,9 +235,28 @@ namespace GolfRecord.DataBase
             AddNewFacility(Facilities.Restaurant);
             AddNewFacility(Facilities.WeddingVenue);
             Context.SaveChanges();
+#endregion
+
+
 
             EditCourse(pb, CM);
+            EditCourse(ro, TH);
+            EditCourse(st, DS);
+            EditCourse(ss, NS);
             Context.SaveChanges();
+
+           #region Groups
+            var group1 = AddNewGroup("Philip's Group", CM);
+            Context.SaveChanges();
+            group1.Members.Add(CM);
+            group1.Members.Add(MP);
+            group1.Members.Add(JB);
+            group1.Members.Add(MC);
+            group1.Members.Add(AE);
+            Context.SaveChanges();
+
+#endregion
+
 
         }
         private Player AddNewGolfer(Match m, string name, int handi, string mobile, Gender gender, bool withinmatch = true, Title title = Title.Player)
@@ -230,19 +274,19 @@ namespace GolfRecord.DataBase
             Context.SaveChanges();
             return (g2);
         }
-        private Match AddNewMatch(string name, DateTime date, int courseID, MatchType matchType = MatchType.Strokeplay)
+        private Match AddNewMatch(string name, DateTime date, int courseID, Golfer MatchCreator, MatchType matchType = MatchType.Strokeplay)
         {// work for each match type
             Match m = null;
             switch (matchType)
             {
                 case MatchType.Strokeplay:
-                    m = new Strokeplay() { MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType };
+                    m = new Strokeplay() { MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType, MatchCreator = MatchCreator };
                     break;
                 case MatchType.Matchplay:
-                    m = new Matchplay() { MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType };
+                    m = new Matchplay() { MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType, MatchCreator = MatchCreator };
                     break;
                 case MatchType.Stableford:
-                    m = new Stableford() { MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType };
+                    m = new Stableford() { MatchName = name, DateOfMatch = date, CourseID = courseID, MatchType = matchType, MatchCreator = MatchCreator };
                     break;
                 default:
                     break;
@@ -308,6 +352,13 @@ namespace GolfRecord.DataBase
             Context.Facilities.Add(F);
             Context.SaveChanges();
             return F;
+        }
+        private Group AddNewGroup(string GroupName, Golfer golfer)
+        {
+            var g = new Group() { Name = GroupName, GroupOwner = golfer };
+            Context.Groups.Add(g);
+            Context.SaveChanges();
+            return g;
         }
     }
 }

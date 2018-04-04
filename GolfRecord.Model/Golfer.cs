@@ -29,8 +29,27 @@ namespace GolfRecord.Model
         [MemberOrder(2)] //this property is not neccessary
         public virtual int Handicap { get; set; }
 
+
+
+
+
         [Optionally][MemberOrder(3)]
         public virtual string Mobile { get; set; }
+        public string ValidateMobile(string Mobile)
+        {
+            if ((Mobile.ElementAt(0) == '+') & (Mobile.Length == 13))
+            {
+                return null;
+            }
+            else if ((Mobile.ElementAt(0) == '0') & (Mobile.Length == 11))
+            {
+                return null;
+            }
+            else
+            {
+                return ("Incorrect length of mobile number please check");
+            }
+        }
 
         [Optionally]
         public virtual Gender Gender { get; set; }
@@ -153,11 +172,17 @@ namespace GolfRecord.Model
 
         public void AcceptFriendship(FriendInvitation invite)
         {
-            invite.Sender.Friends.Add(invite.Receiver);
-            invite.Receiver.Friends.Add(invite.Sender);
-            Container.DisposeInstance(invite);
+            if (invite.Sender.Friends.Contains(invite.Receiver))
+            {
+                Container.DisposeInstance(invite);
+            }
+            else
+            {
+                invite.Sender.Friends.Add(invite.Receiver);
+                invite.Receiver.Friends.Add(invite.Sender);
+                Container.DisposeInstance(invite);
+            }
         }
-
         public bool HideAcceptFriendship()
         {
             int AmountOfInvites = 0;
@@ -173,10 +198,16 @@ namespace GolfRecord.Model
 
         public void AcceptGroupMember(RequestToJoin invite)
         {
-            invite.group.Members.Add(invite.Sender);
-            Container.DisposeInstance(invite);
+            if (invite.group.Members.Contains(invite.Sender))
+            {
+                Container.DisposeInstance(invite);
+            }
+            else
+            {
+                invite.group.Members.Add(invite.Sender);
+                Container.DisposeInstance(invite);
+            }
         }
-
         public bool HideAcceptGroupMember()
         {
             int AmountOfInvites = 0;
@@ -192,8 +223,15 @@ namespace GolfRecord.Model
 
         public void AcceptGroup(GroupInvitation invite)
         {
-           invite.group.Members.Add(invite.Receiver);
-           Container.DisposeInstance(invite);
+            if (invite.group.Members.Contains(invite.Receiver))
+            {
+                Container.DisposeInstance(invite);
+            }
+            else
+            {
+                invite.group.Members.Add(invite.Receiver);
+                Container.DisposeInstance(invite);
+            }
         }
         public bool HideAcceptGroup()
         {
@@ -211,7 +249,17 @@ namespace GolfRecord.Model
 
         public void AcceptMatch(MatchInvitation invite)
         {
-            invite.match.Golfers.Add(invite.Receiver);
+            if ((invite.match.MatchType == MatchType.Matchplay) & ((invite.match.Golfers.Count == 2) | (invite.match.Golfers.Contains(invite.Receiver))))
+            {
+                Container.DisposeInstance(invite);
+            }
+            else if ((invite.match.Golfers.Count == 2) | (invite.match.Golfers.Contains(invite.Receiver)))
+            {
+                Container.DisposeInstance(invite);
+            }
+            {
+                invite.match.Golfers.Add(invite.Receiver);
+            }
             Container.DisposeInstance(invite);
         }
         public bool HideAcceptMatch()
