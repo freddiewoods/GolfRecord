@@ -42,11 +42,6 @@ namespace GolfRecord.Model
         public IQueryable<Match> ShowMatches()
         {
             return Container.Instances<Match>();
-        }
-
-        public IQueryable<Match> MyMatches()
-        {
-            return Container.Instances<Match>().Where(m => m.Golfers.Contains(GolferServices.Me()));
-        }
+        } 
     }
 }

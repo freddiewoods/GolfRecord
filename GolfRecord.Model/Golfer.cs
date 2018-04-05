@@ -117,10 +117,6 @@ namespace GolfRecord.Model
         {
             MyMatches.Add(match);
         }
-        public IQueryable<Match> AutoComplete0AddMatchHistory([MinLength(2)] string matching)
-        {
-            return MatchServices.ShowMatches().Where(m => m.MatchName.Contains(matching));
-        }
         #endregion
 
         #region Groups
