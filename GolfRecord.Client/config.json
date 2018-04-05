@@ -9,7 +9,10 @@
             
     },
     "subtypeMap": {
-            "GolfRecord.Model.GroupInvitation": 2
+      "GolfRecord.Model.GroupInvitation": 2,
+      "GolfRecord.Model.MatchInvitation": 3,
+      "GolfRecord.Model.FriendInvitation": 4,
+      "GolfRecord.Model.RequestToJoin": 5
     }
   },
   "masks": {

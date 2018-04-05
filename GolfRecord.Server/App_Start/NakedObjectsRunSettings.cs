@@ -87,13 +87,14 @@ namespace NakedObjects.GolfRecord {
             return new IMenu[] {
                 factory.NewMenu<GolferServices>(true, "Golfers"),
                 factory.NewMenu<MatchServices>(true,"Matches"),
-                factory.NewMenu<CourseServices>(true,"Courses"),            };
+                factory.NewMenu<CourseServices>(true,"Courses")
+            };
         }
         public static IAuthorizationConfiguration AuthorizationConfig()
         {
             var config = new AuthorizationConfiguration<DefaultAuthorizer>();
             //  config.AddNamespaceAuthorizer<MyAppAuthorizer>("MyApp");
-            // config.AddNamespaceAuthorizer<MyCluster1Authorizer>("MyApp.MyCluster1");
+            //  config.AddNamespaceAuthorizer<MyCluster1Authorizer>("MyApp.MyCluster1");
             config.AddTypeAuthorizer<Strokeplay, StrokePlayAuthoriser>();
             config.AddTypeAuthorizer<Stableford, StablefordAuthoriser>();
             config.AddTypeAuthorizer<Matchplay, MatchplayAuthoriser>();
@@ -103,6 +104,7 @@ namespace NakedObjects.GolfRecord {
             config.AddTypeAuthorizer<Match, MatchAuthoriser>();
             config.AddTypeAuthorizer<Group, GroupAuthoriser>();
             config.AddTypeAuthorizer<Course, CourseAuthoriser>();
+            config.AddTypeAuthorizer<Invitation, InvitationAuthoriser>();
             return config;
         }
 

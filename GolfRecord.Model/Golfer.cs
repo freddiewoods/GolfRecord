@@ -179,6 +179,26 @@ namespace GolfRecord.Model
                 Container.DisposeInstance(invite);
             }
         }
+
+        public string ValidateAcceptFriendship(Invitation invite)
+        {
+            if (invite.inviteType == InviteType.FriendInvite)
+            {
+                if (invite.Receiver.Friends.Contains(invite.Sender))
+                {
+                    return ("You are already friends with this person please delete the invite");
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return ("This is not an Friend Invitation");
+            }
+        }
+
         public bool HideAcceptFriendship()
         {
             int AmountOfInvites = 0;
@@ -194,14 +214,20 @@ namespace GolfRecord.Model
 
         public void AcceptGroupMember(RequestToJoin invite)
         {
-            if (invite.group.Members.Contains(invite.Sender))
-            {
-                Container.DisposeInstance(invite);
-            }
-            else
-            {
                 invite.group.Members.Add(invite.Sender);
                 Container.DisposeInstance(invite);
+            
+        }
+        public string ValidateAcceptGroupMember(GroupInvitation invite)
+        {
+            if (invite.group.Members.Contains(invite.Receiver))
+            {
+                return ("The send is already in this group please delete the invitation");
+            }
+            
+            else
+            {
+                return null;
             }
         }
         public bool HideAcceptGroupMember()

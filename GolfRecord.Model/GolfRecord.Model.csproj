@@ -78,6 +78,7 @@
     <Compile Include="HoleServices.cs" />
     <Compile Include="HoleScoreAbstract.cs" />
     <Compile Include="Invitation.cs" />
+    <Compile Include="InvitationAuthoriser.cs" />
     <Compile Include="MatchAuthoriser.cs" />
     <Compile Include="MatchInvitation.cs" />
     <Compile Include="MatchplayAuthoriser.cs" />
