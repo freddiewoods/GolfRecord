@@ -254,12 +254,17 @@ namespace GolfRecord.DataBase
             group1.Members.Add(MC);
             group1.Members.Add(AE);
             Context.SaveChanges();
+            MP.PrivateAccount = true;
+            Context.SaveChanges();
+            #endregion
 
-#endregion
+            var Me = AddNewGolfer2("John Smith", 10, "07910715641", Gender.Male, "fwoodscomp3@gmail.com");
+            Context.SaveChanges();
+       
 
 
         }
-        private Player AddNewGolfer(Match m, string name, int handi, string mobile, Gender gender, bool withinmatch = true, Title title = Title.Player)
+        private Player AddNewGolfer(Match m, string name, int handi, string mobile, Gender gender,  Title title = Title.Player)
         {
             var g = new Player() { FullName = name, Handicap = handi, Mobile = mobile, Gender = gender, Position = title };
             Context.Golfers.Add(g);
@@ -267,7 +272,7 @@ namespace GolfRecord.DataBase
             m.Golfers.Add(g);
             return (g);
         }
-        private Player AddNewGolfer2(string name, int handi, string mobile, Gender gender, string username = "", bool withinmatch = true, Title title = Title.Player)
+        private Player AddNewGolfer2(string name, int handi, string mobile, Gender gender, string username = "",  Title title = Title.Player)
         {
             var g2 = new Player() { FullName = name, Handicap = handi, Mobile = mobile, Gender = gender, Username = username, Position = title };
             Context.Golfers.Add(g2);

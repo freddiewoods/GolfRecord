@@ -11,7 +11,7 @@ namespace GolfRecord.Model
     public class MatchInvitation : Invitation
     {
         public IDomainObjectContainer Container;
-        [Title]
+
         public virtual Match match { get; set; }
 
         }

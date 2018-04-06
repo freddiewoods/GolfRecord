@@ -27,6 +27,15 @@ namespace GolfRecord.Model
         public virtual string MatchName { get; set; }
 
         public virtual DateTime DateOfMatch { get; set; }
+        public string ValidateFromDateOfMatch(DateTime d)
+        {
+            if (!d.IsAfterToday())
+            {
+                return "Must be after Today";
+            }
+            return null;
+        }
+
 
         [NakedObjectsIgnore]
         public virtual int CourseID { get; set; }

@@ -1,5 +1,6 @@
 ﻿using NakedObjects;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using static GolfRecord.Model.Enums;
 
 namespace GolfRecord.Model
@@ -13,6 +14,7 @@ namespace GolfRecord.Model
 
         public virtual Golfer Receiver { get; set; }
 
+        [Title]
         public virtual InviteType inviteType { get; set; }
     }
 }

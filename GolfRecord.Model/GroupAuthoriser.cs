@@ -27,6 +27,10 @@ namespace GolfRecord.Model
 
         public bool IsVisible(IPrincipal principal, Group target, string memberName)
         {
+            if ((GolferServices.Me().FullName == null) & ((memberName == "RequestToJoin") | (memberName == "Messages" ) |(memberName == "AddNewMember") | (memberName == "SendGroupMessage")))
+            {
+                return false;
+            }
             if (((target.GroupOwner == GolferServices.Me()) | (target.Members.Contains(GolferServices.Me()))) & (memberName == "RequestToJoin"))
             {
                 return false;
@@ -35,7 +39,7 @@ namespace GolfRecord.Model
             {
                 return true;
             }
-            else if ((target.Members.Contains(GolferServices.Me()) == false) & (memberName == "Messages"))
+            else if ((target.Members.Contains(GolferServices.Me()) == false) & ((memberName == "Messages") | (memberName == "AddNewMember") | (memberName == "SendGroupMessage")))
             {
                 return false;
             }     

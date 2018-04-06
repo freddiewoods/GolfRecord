@@ -19,21 +19,18 @@ namespace GolfRecord.Model
         public CourseServices CourseServices { set; protected get; }
 
         public MatchServices MatchServices { set; protected get; }
-       
+
         [NakedObjectsIgnore]//Indicates that this property will never be seen in the UI
         public virtual int Id { get; set; }
 
-        [Title][MemberOrder(1)]//This property will be used for the object's title at the top of the view and in a link
+        [Title]
+        [MemberOrder(1)]//This property will be used for the object's title at the top of the view and in a link
         public virtual string FullName { get; set; }
 
         [MemberOrder(2)] //this property is not neccessary
         public virtual int Handicap { get; set; }
 
-
-
-
-
-        [Optionally][MemberOrder(3)]
+        [MemberOrder(3)][Optionally]
         public virtual string Mobile { get; set; }
         public string ValidateMobile(string Mobile)
         {
@@ -47,8 +44,9 @@ namespace GolfRecord.Model
             }
             else
             {
-                return ("Incorrect length of mobile number please check");
-            }
+            return ("Incorrect length of mobile number please check");
+        }
+    
         }
 
         [Optionally]
@@ -214,20 +212,14 @@ namespace GolfRecord.Model
 
         public void AcceptGroupMember(RequestToJoin invite)
         {
-                invite.group.Members.Add(invite.Sender);
-                Container.DisposeInstance(invite);
-            
-        }
-        public string ValidateAcceptGroupMember(GroupInvitation invite)
-        {
-            if (invite.group.Members.Contains(invite.Receiver))
+            if (invite.group.Members.Contains(invite.Sender))
             {
-                return ("The send is already in this group please delete the invitation");
+                Container.DisposeInstance(invite);
             }
-            
             else
             {
-                return null;
+                invite.group.Members.Add(invite.Sender);
+                Container.DisposeInstance(invite);
             }
         }
         public bool HideAcceptGroupMember()

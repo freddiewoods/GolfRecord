@@ -11,7 +11,6 @@ namespace GolfRecord.Model
     public class GroupInvitation:Invitation
     {
         public IDomainObjectContainer Container;
-        [Title]
         public virtual Group group { get; set; }
 
         }

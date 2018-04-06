@@ -30,14 +30,24 @@ namespace GolfRecord.Model
 
         public bool IsVisible(IPrincipal principal, Player player, string memberName)
         {
-            if ((player != GolferServices.Me()) & ((memberName == "PrivateAccount")
+            if ((GolferServices.Me().FullName == null) & ((memberName == "SendMessage") | (memberName == "AddMatch")))
+            {
+                return false;
+            }
+            else
+               if ((player != GolferServices.Me()) & ((memberName == "PrivateAccount")
                                                         | (memberName == "CreateNewGroup")
                                                         | (memberName == "CreateNewMatch")))
             {
                 return false;
             }
-            else if ((player.PrivateAccount == true) & (memberName == "Mobile")
-                                                 | (memberName == "Username"))
+            else if ((player.Username == GolferServices.Me().Username ) & ((player.PrivateAccount == true) & (memberName == "Mobile")
+                                                 | (memberName == "Username")))
+            {
+                return true;
+            }
+            else if ((player.PrivateAccount == true) & ((memberName == "Mobile")
+                                                 | (memberName == "Username")))
             {
                 return false;
             }
@@ -89,7 +99,7 @@ namespace GolfRecord.Model
             }
             else
             {
-                if ((memberName == "Mobile") | (memberName == "AddFriend") | (memberName == "AddCourseToFavourites"))
+                if ((memberName == "AddFriend") | (memberName == "AddCourseToFavourites"))
                 {
                     return false;
                 }
