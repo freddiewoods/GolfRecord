@@ -260,7 +260,14 @@ namespace GolfRecord.DataBase
 
             var Me = AddNewGolfer2("John Smith", 10, "07910715641", Gender.Male, "fwoodscomp3@gmail.com");
             Context.SaveChanges();
-       
+
+            AddFriend(Me, CM);
+            AddFriend(CM, Me);
+            var group2 = AddNewGroup("John's Group", Me);
+            Context.SaveChanges();
+            group2.Members.Add(Me);
+            group2.Members.Add(CM);
+            context.SaveChanges();
 
 
         }

@@ -108,7 +108,7 @@ namespace GolfRecord.Model
 
         public virtual Course Course { get; set; }
 
-        public virtual FileAttachment Attachment
+        public virtual FileAttachment PhotoOfHole
         {
             get
             {

@@ -83,6 +83,7 @@
     <Compile Include="MatchInvitation.cs" />
     <Compile Include="MatchplayAuthoriser.cs" />
     <Compile Include="Message.cs" />
+    <Compile Include="MessageAuthoriser.cs" />
     <Compile Include="PlayerAuthoriser.cs" />
     <Compile Include="PlayerMessage.cs" />
     <Compile Include="RequestToJoin.cs" />
@@ -100,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Diagram of Inheritence.cd" />
+    <None Include="Main Objects.cd" />
     <None Include="packages.config" />
     <None Include="Properties.cd" />
   </ItemGroup>

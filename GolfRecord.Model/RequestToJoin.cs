@@ -9,7 +9,6 @@ namespace GolfRecord.Model
 {
     public class RequestToJoin: Invitation
     {
-        [Title]
         public virtual Group group { get; set; }
 
     }

@@ -24,15 +24,8 @@ namespace GolfRecord.Model
 
         public virtual string Address { get; set; }
 
+        [Optionally]
         public virtual int Par { get; set; }
-        public string ValidatePar(int par)
-        {
-            if (par == 0)
-            {
-                return "Par Must me larger than 0";
-            }
-            return null;
-        }
 
         public virtual Golfer ClubManager { get; set; }
 
@@ -56,15 +49,8 @@ namespace GolfRecord.Model
         [Optionally]
         public virtual string WebsiteLink { get; set; } //link to the course website.
 
+        [Optionally]
         public virtual int Yardage { get; set; }
-        public string ValidateYardage(int Yardage)
-        {
-            if (Yardage == 0)
-            {
-                return "Yardage Must me larger than 0";
-            }
-            return null;
-        }
 
         public virtual string PhoneNumber { get; set; }
         public string ValidatePhoneNumber(string PhoneNumber)
@@ -83,7 +69,7 @@ namespace GolfRecord.Model
             }
         }
 
-        public virtual FileAttachment Attachment
+        public virtual FileAttachment PhotoOfCourse
         {
             get
             {

@@ -32,6 +32,11 @@ namespace GolfRecord.Model
 
         public bool IsVisible(IPrincipal principal, ClubManager manager, string memberName)
         {
+            if (memberName == "AddMatch")
+            {
+                return false;
+            }
+            else
             if (((GolferServices.Me().FullName == null) & ((memberName == "SendMessage") | (memberName == "AddMatch"))))
                 {
                 return false;

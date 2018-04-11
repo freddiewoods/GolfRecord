@@ -29,9 +29,9 @@ namespace GolfRecord.Model
         public virtual DateTime DateOfMatch { get; set; }
         public string ValidateFromDateOfMatch(DateTime d)
         {
-            if (!d.IsAfterToday())
+            if (( d.IsAfterToday() )| (d.IsToday() ))
             {
-                return "Must be after Today";
+                return "Must be Today or after Today";
             }
             return null;
         }
@@ -56,9 +56,6 @@ namespace GolfRecord.Model
         [Optionally]
         [Hidden(WhenTo.UntilPersisted)]
         public virtual Golfer Winner { get; set; }
-
-        [NakedObjectsIgnore]
-        public virtual bool Completed { get; set; }
 
         #region Add Golfers
         public void sendInvite(Golfer golfer)

@@ -39,7 +39,7 @@ namespace GolfRecord.Model
             }
         }
         [PageSize(3)]
-        public IQueryable<Golfer> AutoComplete0AddNewMember([MinLength(2)] string name)
+        public IQueryable<Golfer> AutoComplete0AddNewMember([MinLength(3)] string name)
         {
             return GolferServices.AllGolfers().Where(g => g.FullName.Contains(name));
         }
