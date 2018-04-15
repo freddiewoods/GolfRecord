@@ -263,17 +263,34 @@ namespace GolfRecord.Model
 
         public void AcceptMatch(MatchInvitation invite)
         {
-            if ((invite.match.MatchType == MatchType.Matchplay) & ((invite.match.Golfers.Count == 2) | (invite.match.Golfers.Contains(invite.Receiver))))
+            if ((invite.match.MatchType == MatchType.Matchplay) & (invite.match.Golfers.Count == 2))
             {
-                Container.DisposeInstance(invite);
+                PlayerMessage msg = Container.NewTransientInstance<PlayerMessage>();
+                msg.Content = "This match is already full, please delete the Invite";
+                Container.Persist(ref msg);
+                Messages.Add(msg);
+
             }
-            else if ((invite.match.Golfers.Count == 2) | (invite.match.Golfers.Contains(invite.Receiver)))
+            else if (invite.match.Golfers.Count == 4)
             {
-                Container.DisposeInstance(invite);
+                var msg = Container.NewTransientInstance<PlayerMessage>();
+                msg.Content = "This match is already full, please delete the Invite";
+                Container.Persist(ref msg);
+                Messages.Add(msg);
+            }
+
+            else if (invite.match.Golfers.Contains(invite.Receiver))
+            {
+                var msg = Container.NewTransientInstance<PlayerMessage>();
+                msg.Content = "You are already appart of this match";
+                Container.Persist(ref msg);
+                Messages.Add(msg);
             }
             {
                 invite.match.Golfers.Add(invite.Receiver);
             }
+            
+
             Container.DisposeInstance(invite);
         }
         public bool HideAcceptMatch()

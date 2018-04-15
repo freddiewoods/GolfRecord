@@ -26,13 +26,17 @@ namespace GolfRecord.Model
 
         public bool IsVisible(IPrincipal principal, Hole target, string memberName)
         {
+            if ((GolferServices.Me().Position == Enums.Title.ClubManager) & (memberName == "AddOrChangeAttachment"))
+            {
+                return true;
+            }
             if (((target.LadiesRedYards == 0) & (memberName == "LadiesRedYards"))
                 | ((target.Name == null) & (memberName == "Name"))
                 | ((target.RedPar == 0) & (memberName == "RedPar"))
                 | ((target.RedStrokeIndex == 0) & (memberName == "RedStrokeIndex"))
                 | ((target.WhiteYards == 0) & (memberName == "WhiteYards"))
                 | ((target.YellowYards == 0) & (memberName == "YellowYards"))
-               )
+                | (memberName == "AddOrChangeAttachment"))               
             {
                 return false;
             }

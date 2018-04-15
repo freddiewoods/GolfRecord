@@ -10,31 +10,13 @@ namespace GolfRecord.Model
     public class TwoPlayerHoleScore:HoleScoreAbstract
     {
      
-        public virtual int ScoreGolferA { get; set; }
-        public string ValidateScoreGolferA(int S)
-        {
-            if (S <= 0)
-            {
-                return "A score can not be negative or 0";
-            }
-            else
-            {
-                return null;
-            }
-        }
+        public virtual int GolferARawScore { get; set; }
+
+        public virtual int GolferBRawScore { get; set; }
 
 
-        public virtual int ScoreGolferB { get; set; }
-        public string ValidateScoreGolferB(int S)
-        {
-            if (S <= 0)
-            {
-                return "A score can not be negative or 0";
-            }
-            else
-            {
-                return null;
-            }
-        }
+        public virtual int GolferAActualScore { get; set; }
+
+        public virtual int GolferBActualScore { get; set; }
     }
 }

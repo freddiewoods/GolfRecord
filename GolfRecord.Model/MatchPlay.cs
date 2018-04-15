@@ -18,6 +18,8 @@ namespace GolfRecord.Model
         {
             var hs = Container.NewTransientInstance<TwoPlayerHoleScore>();
             int[] Scores = { ScoreA, ScoreB };
+            hs.GolferARawScore = ScoreA;
+            hs.GolferBRawScore = ScoreB;
             CalculateStrokeIndexEffect(hole);
             CalculateHandicapEffect();
             ScoreCalculation(hole, Scores, hs);
@@ -29,7 +31,7 @@ namespace GolfRecord.Model
             Container.Persist(ref hs);
             HoleScores.Add(hs);
         }
-        public string ValidateAddScores(int A, int B)
+        public string ValidateAddScores(Hole hole,int A, int B)
         {
             if ((A <= 0) | (B <= 0))
             {
@@ -70,8 +72,8 @@ namespace GolfRecord.Model
             {
             }        
             hs.Hole = hole;
-            hs.ScoreGolferA = Scores[0];
-            hs.ScoreGolferB = Scores[1];
+            hs.GolferAActualScore = Scores[0];
+            hs.GolferBActualScore = Scores[1];
         }
         [NakedObjectsIgnore]
         public void CalculateStrokeIndexEffect(Hole hole)

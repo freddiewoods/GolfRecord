@@ -4,6 +4,7 @@ using System.Linq;
 using NakedObjects;
 using static GolfRecord.Model.Enums;
 using System.ComponentModel.DataAnnotations;
+using GolfRecord.Model;
 
 namespace GolfRecord.Model
 {
@@ -27,7 +28,7 @@ namespace GolfRecord.Model
         public virtual string MatchName { get; set; }
 
         public virtual DateTime DateOfMatch { get; set; }
-        public string ValidateFromDateOfMatch(DateTime d)
+        public string ValidateDateOfMatch(DateTime d)
         {
             if (( d.IsAfterToday() )| (d.IsToday() ))
             {
@@ -55,6 +56,10 @@ namespace GolfRecord.Model
 
         [Optionally]
         [Hidden(WhenTo.UntilPersisted)]
+        public virtual string DescriptionOfMatch { get; set; }
+
+        [Optionally]
+        [Hidden(WhenTo.UntilPersisted)]
         public virtual Golfer Winner { get; set; }
 
         #region Add Golfers
@@ -74,7 +79,31 @@ namespace GolfRecord.Model
             golfer.Invites.Add(invite);
         }
 
+        public UnRegisteredGolfer AddUnregisteredGolfer(string name, int handicap, Gender gender)
+        {
+            var UnregisteredGolfer = Container.NewTransientInstance<UnRegisteredGolfer>();
+            UnregisteredGolfer.FullName = name;
+            UnregisteredGolfer.Handicap = handicap;
+            UnregisteredGolfer.Gender = gender;
+            UnregisteredGolfer.GolferCreator = GolferServices.Me();
+            Container.Persist(ref UnregisteredGolfer);
+            Golfers.Add(UnregisteredGolfer);
+            return UnregisteredGolfer;
+        }
+
         public bool HideSendInvite()
+        {
+            if (MatchType == MatchType.Matchplay)
+            {
+                return Golfers.Count > 1;
+            }
+            else
+            {
+                return Golfers.Count > 3;
+            }
+        }
+
+        public bool HideAddUnregisteredGolfer()
         {
             if (MatchType == MatchType.Matchplay)
             {
@@ -150,5 +179,10 @@ namespace GolfRecord.Model
 
 
         #endregion
+
+        public void AddPostMatchDescription(string Description)
+        {
+            DescriptionOfMatch = Description;
+        }
     }
 }

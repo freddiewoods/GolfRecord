@@ -18,12 +18,12 @@ namespace GolfRecord.Model
         {
             var hs = Container.NewTransientInstance<FourPlayerHoleScore>();
             hs.Hole = hole;
-            Container.Persist(ref hs);
-            hs.ScoreGolferA = ScoreA;
-            hs.ScoreGolferB = ScoreB;
-            hs.ScoreGolferC = ScoreC;
-            hs.ScoreGolferD = ScoreD;
-            HoleScores.Add(hs);
+           
+            hs.GolferARawScore = ScoreA;
+            hs.GolferBRawScore = ScoreB;
+            hs.GolferCRawScore = ScoreC;
+            hs.GolferDRawScore = ScoreD;
+            
             for (int i = 0; i < 4; i++)
             {
                 TotalScores[i] = InitialScorePerHole[i];
@@ -37,6 +37,12 @@ namespace GolfRecord.Model
                 int Gwin = FindWinnerStrokePlay();
                 Winner = Golfers.ElementAt(Gwin);
             }
+            hs.GolferAActualScore = TotalScores[0];
+            hs.GolferBActualScore = TotalScores[1];
+            hs.GolferCActualScore = TotalScores[2];
+            hs.GolferDActualScore = TotalScores[3];
+            Container.Persist(ref hs);
+            HoleScores.Add(hs);
         }
 
 
@@ -54,10 +60,6 @@ namespace GolfRecord.Model
                 {
                     Gwin = i;
                 }
-            }
-            for (int i = 0; i < Golfers.Count; i++)
-            {
-                Golfers.ElementAt(i).MyMatches.Remove(this);
             }
             return Gwin;
                       

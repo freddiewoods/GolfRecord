@@ -310,7 +310,7 @@ namespace GolfRecord.DataBase
 
         private FourPlayerHoleScore AddScoreStrokePlay(Match Match, Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
-            var s = new FourPlayerHoleScore { Hole = hole, ScoreGolferA = ScoreA, ScoreGolferB = ScoreB, ScoreGolferC = ScoreC, ScoreGolferD = ScoreD };
+            var s = new FourPlayerHoleScore { Hole = hole, GolferARawScore = ScoreA, GolferBRawScore = ScoreB, GolferCRawScore = ScoreC, GolferDRawScore = ScoreD };
             Context.FourPlayerHoleScore.Add(s);
             Context.SaveChanges();
             Match.HoleScores.Add(s);

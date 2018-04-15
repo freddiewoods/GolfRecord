@@ -30,14 +30,22 @@ namespace GolfRecord.Model
         }
         public bool IsVisible(IPrincipal principal, Strokeplay match, string memberName)
         {
-               if ((match.Golfers.Contains(GolferServices.Me()) == false) & (memberName == "AddScores"))
-             {
-                 return false;
-              }
-              else
-              {
-                 return true;
-             }
+            if ((match.Golfers.Contains(GolferServices.Me()) == false) & ((memberName == "AddScores") | (memberName == "DescriptionOfMatch") | (memberName == "AddPostMatchDescription")))
+            {
+                return false;
+            }
+            else if ((match.Golfers.Contains(GolferServices.Me())) & (match.Winner != null) & ((memberName == "DescriptionOfMatch")))
+            {
+                return true;
+            }
+            else if ((match.Winner == null) & ((memberName == "DescriptionOfMatch") | (memberName == "AddPostMatchDescription")))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

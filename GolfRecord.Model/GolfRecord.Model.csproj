@@ -98,6 +98,7 @@
     <Compile Include="Stableford.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FourPlayerHoleScore.cs" />
+    <Compile Include="UnRegisteredGolfer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Diagram of Inheritence.cd" />
