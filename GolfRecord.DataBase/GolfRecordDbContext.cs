@@ -17,8 +17,9 @@ namespace GolfRecord.DataBase
         public DbSet<Course> Courses { get; set; }
         public DbSet<Hole> Holes { get; set; }
         public DbSet<HoleScoreAbstract> HoleScore { get; set; }
-        public DbSet<FourPlayerHoleScore> FourPlayerHoleScore { get; set; }
-        public DbSet<TwoPlayerHoleScore> TwoPlayerHoleScore { get; set; }
+        public DbSet<StrokeplayScores> StrokeplayScores { get; set; }
+        public DbSet<StablefordScores> StablefordScores { get; set; }
+        public DbSet<MatchPlayHoleScore> MatchPlayScore { get; set; }
         public DbSet<Invitation> Invite { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Facility> Facilities { get; set; }

@@ -38,6 +38,7 @@ namespace GolfRecord.Model
             {
                 return true;
             }
+
             else if ((match.Winner == null) & ((memberName == "DescriptionOfMatch") | (memberName == "AddPostMatchDescription")))
             {
                 return false;

@@ -15,7 +15,7 @@ namespace GolfRecord.Model
         public bool IsEditable(IPrincipal principal, Matchplay match, string memberName)
         {
 
-            if ((memberName == "Winner") | (memberName == "MatchType") | (memberName == "MatchCreator"))
+            if ((memberName == "Winner") | (memberName == "MatchType") | (memberName == "MatchCreator") | (memberName == "MatchOver"))
             {
                 return false;
             }
@@ -35,11 +35,15 @@ namespace GolfRecord.Model
             {
                 return false;
             }
-           else if ((match.Golfers.Contains(GolferServices.Me())) & (match.Winner != null) & (memberName == "DescriptionOfMatch"))
+            else if ((match.Golfers.Contains(GolferServices.Me())) & (match.MatchOver == true) & (memberName == "DescriptionOfMatch"))
             {
                 return true;
             }
-            else if ((match.Winner == null) & ((memberName == "DescriptionOfMatch") | (memberName == "AddPostMatchDescription")))
+            else if ((match.MatchOver == true) & (memberName == "AddScores"))
+            {
+                return false;
+            }
+            else if ((match.MatchOver == false) & ((memberName == "DescriptionOfMatch") | (memberName == "AddPostMatchDescription")))
             {
                 return false;
             }

@@ -10,116 +10,129 @@ namespace GolfRecord.Model
 {
     public class Matchplay : Match //normally have 2 people playing unless its four ball better ball teams of 2.
     {
-        public int[] TotalScore = new int[2];
+
+        [NakedObjectsIgnore]
+        public virtual int TotalScoreA { get; set; }
+
+        [NakedObjectsIgnore]
+
+        public virtual int TotalScoreB { get; set; }
+
+
         public int[] Handicaps = new int[2];
         public int[] DifficultyPerGolfer = new int[2];
 
         public void AddScores(Hole hole, int ScoreA, int ScoreB)
         {
-            var hs = Container.NewTransientInstance<TwoPlayerHoleScore>();
+            var hs = Container.NewTransientInstance<MatchPlayHoleScore>();
             int[] Scores = { ScoreA, ScoreB };
             hs.GolferARawScore = ScoreA;
             hs.GolferBRawScore = ScoreB;
-            CalculateStrokeIndexEffect(hole);
-            CalculateHandicapEffect();
-            ScoreCalculation(hole, Scores, hs);
-            if (hole.HoleNumber == Course.Holes.Count)
-            {
-                int Gwin = findWinnerMatchPlay();
-                Winner = Golfers.ElementAt(Gwin);               
-            }
+            int[] ModifiedScore = StrokeIndexandHandicapEffectOnScore(hole, Scores);
+            ScoreCalculation(hole, ModifiedScore, hs );
             Container.Persist(ref hs);
             HoleScores.Add(hs);
-        }
-        public string ValidateAddScores(Hole hole,int A, int B)
-        {
-            if ((A <= 0) | (B <= 0))
+            if (hole.HoleNumber == Course.Holes.Count)
             {
-                return "A score can not be negative or 0";
+                findWinnerMatchPlay();                            
             }
-            else
-            {
-                return null;
-            }
+
         }
-        [NakedObjectsIgnore]
-        public void ScoreCalculation(Hole hole, int[] Scores, TwoPlayerHoleScore hs)
+
+        private int[] StrokeIndexandHandicapEffectOnScore(Hole hole, int[] Scores)
         {
-            for (int i = 0; i < 2; i++)
+            int[] ModifiedScore = new int[4];
+            for (int i = 0; i< 2; i++)
             {
-                if (Handicaps[i] > 1)
+                if ((Golfers.ElementAt(i).Gender == Gender.Female) & (hole.RedStrokeIndex != 0))
                 {
-                    if (Handicaps[i] >= 18)
+                    if (Golfers.ElementAt(i).Handicap >= hole.RedStrokeIndex)
                     {
-                        Scores[i] -= 2;
+                        if ((Golfers.ElementAt(i).Handicap >= (hole.RedStrokeIndex + 18)) & (Course.Holes.Count == 18))
+                        {
+                            ModifiedScore[i] = Scores[i] - 2;
+                        }
+                        else if ((Golfers.ElementAt(i).Handicap >= (hole.RedStrokeIndex + 9)) & (Course.Holes.Count == 9))
+                        {
+                            ModifiedScore[i] = Scores[i] - 2;
+                        }
+
+                        else
+                        {
+                            ModifiedScore[i] = Scores[i] - 1;
+                        }
                     }
                     else
                     {
-                        Scores[i] -= 1;
+                        ModifiedScore[i] = Scores[i];
                     }
                 }
-            }
+                else 
+                {
+                    if (Golfers.ElementAt(i).Handicap >= hole.StrokeIndex)
+                    {
+                        if ((Golfers.ElementAt(i).Handicap >= (hole.StrokeIndex + 18)) & (Course.Holes.Count == 18))
+                        {
+                            ModifiedScore[i] = Scores[i] - 2;
+                        }
+                        else if ((Golfers.ElementAt(i).Handicap >= (hole.StrokeIndex + 9)) & (Course.Holes.Count == 9))
+                        {
+                            ModifiedScore[i] = Scores[i] - 2;
+                        }
+                        else
+                        {
+                            ModifiedScore[i] = Scores[i] - 1;
+                        }
+                    }
+                    else
+                    {
+                        ModifiedScore[i] = Scores[i];
+                    }
+                }
+
+            }  
+            return ModifiedScore;
+        } 
+    
+        [NakedObjectsIgnore]
+        public void ScoreCalculation(Hole hole, int[] Scores, MatchPlayHoleScore hs)
+        {
+
             
             if (Scores[0] < Scores[1])
             {
-                TotalScore[0] += 1;
+                hs.HoleWinner = Golfers.ElementAt(0);
+                TotalScoreA += 1;
             }
             else if (Scores[1] < Scores[0])
             {
-                TotalScore[1] += 1;
+                hs.HoleWinner = Golfers.ElementAt(1);
+                TotalScoreB += 1;
+                
             }
             else // if there is a draw dont add a score.
             {
             }        
             hs.Hole = hole;
+            hs.GolferATotalScore = TotalScoreA;
+            hs.GolferBTotalScore = TotalScoreB;
             hs.GolferAActualScore = Scores[0];
             hs.GolferBActualScore = Scores[1];
         }
+
         [NakedObjectsIgnore]
-        public void CalculateStrokeIndexEffect(Hole hole)
+        public void findWinnerMatchPlay()
         {
-            for (int i = 0; i < 2; i++)
+            if (TotalScoreA > TotalScoreB)
             {
+                Winner = Golfers.ElementAt(0);
+            }
+            else if (TotalScoreB > TotalScoreA)
+            {
+                Winner = Golfers.ElementAt(1);
+            }
+            MatchOver = true;
 
-
-                if (Golfers.ElementAt(i).Gender == Gender.Female)
-                {
-
-                    DifficultyPerGolfer[i] = 19 - hole.RedStrokeIndex;
-                }
-                else
-                {
-
-                    DifficultyPerGolfer[i] = 19 - hole.StrokeIndex;
-                }
-            }
-        }
-        [NakedObjectsIgnore]
-        private void CalculateHandicapEffect()
-        {
-            for (int i = 0; i < 2; i++)
-            {
-                Handicaps[i] = Golfers.ElementAt(i).Handicap - DifficultyPerGolfer[i];
-            }
-        }
-        [NakedObjectsIgnore]
-        public int findWinnerMatchPlay()
-        {
-            int gwin = 0;
-            if (TotalScore[0] > TotalScore[1])
-            {
-                gwin = 0;
-            }
-            else if (TotalScore[1] > TotalScore[0])
-            {
-                gwin = 1;
-            }
-            else gwin = 0;
-            for (int i = 0; i < Golfers.Count; i++)
-            {
-                Golfers.ElementAt(i).MyMatches.Remove(this);
-            }
-            return gwin;
         }
     }
 }

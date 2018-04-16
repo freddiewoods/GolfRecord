@@ -21,7 +21,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAEAQAABAggBIAAJqAAAQAgIBECAQAgAAAAAAQBAA=</HashCode>
+      <HashCode>AABIEAQAABAggBIAAJqAAAQggIFECAQCgAAQAAAQDAA=</HashCode>
       <FileName>Match.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -34,7 +34,7 @@
   <Class Name="GolfRecord.Model.Matchplay">
     <Position X="7.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAgBAAAAAAAAAAAgAAAAAAAACBAAAAAAAAAAI=</HashCode>
+      <HashCode>ACAAAAAAgBAAAAAAAAAAAgAAAAAAAACBAAAAQAAAAAI=</HashCode>
       <FileName>Matchplay.cs</FileName>
       <NewMemberFileName>MatchPlay.cs</NewMemberFileName>
     </TypeIdentifier>
@@ -42,21 +42,21 @@
   <Class Name="GolfRecord.Model.Stableford">
     <Position X="6" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAIQAAABQAACAAAAAAAAAAABAAAQBAAAgAA=</HashCode>
+      <HashCode>ACAAAAAAAAIQAAAASAACAAAAAAAAAQABAACAQAAAgAA=</HashCode>
       <FileName>Stableford.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GolfRecord.Model.Strokeplay">
     <Position X="8.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAAAABAAAAAAAAAAAAAAABAAAQAAAgCAA=</HashCode>
+      <HashCode>ACAAAAAAAAAAAAAACAAAAAAAAAAAAQABAACAQAAgAAA=</HashCode>
       <FileName>Strokeplay.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GolfRecord.Model.Hole" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACABCIAAAAAkAACIAAAAQAAAAAAAAABJAAgABAEAA=</HashCode>
+      <HashCode>AAACABCIAAAEBkIQCIBEAAQAAAAAAgAEBJAAgABIEAA=</HashCode>
       <FileName>Hole.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -70,7 +70,7 @@
   <Class Name="GolfRecord.Model.Course" Collapsed="true">
     <Position X="11" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AADCABQAAQAAAgEIAAIAQAAAAAAEAAECAIAAgABAAAA=</HashCode>
+      <HashCode>QADCABQAAYAAAgEIAAIAQAAAAAEEQEACAIBAgABAAEA=</HashCode>
       <FileName>Course.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -83,7 +83,7 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAkCAMQCRAAoQIShATAAAACEABABgACAAgAAcQCSBAI=</HashCode>
+      <HashCode>AAkCAMQCRAAoQIShATKAAACEABABgACAAgAAYQCSBAI=</HashCode>
       <FileName>Golfer.cs</FileName>
     </TypeIdentifier>
   </Class>

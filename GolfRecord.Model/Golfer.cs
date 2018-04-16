@@ -266,7 +266,7 @@ namespace GolfRecord.Model
             if ((invite.match.MatchType == MatchType.Matchplay) & (invite.match.Golfers.Count == 2))
             {
                 PlayerMessage msg = Container.NewTransientInstance<PlayerMessage>();
-                msg.Content = "This match is already full, please delete the Invite";
+                msg.Content = "This match is already full";
                 Container.Persist(ref msg);
                 Messages.Add(msg);
 
@@ -274,7 +274,7 @@ namespace GolfRecord.Model
             else if (invite.match.Golfers.Count == 4)
             {
                 var msg = Container.NewTransientInstance<PlayerMessage>();
-                msg.Content = "This match is already full, please delete the Invite";
+                msg.Content = "This match is already full";
                 Container.Persist(ref msg);
                 Messages.Add(msg);
             }

@@ -31,11 +31,10 @@ namespace GolfRecord.Model
                 {
                     return false;
                 }
-                else if (match.Golfers.Contains(GolferServices.Me()))
-            {
+           else if (match.Golfers.Contains(GolferServices.Me()))
+                {
                 return true;
-           }
-       
+                 }       
             else
            {
                 return false;

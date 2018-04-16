@@ -269,6 +269,25 @@ namespace GolfRecord.DataBase
             group2.Members.Add(CM);
             context.SaveChanges();
 
+            var MainMatch = AddNewMatch("1 on 1 with Philip", date1, ro.Id, Me, MatchType.Matchplay);
+            MainMatch.Golfers.Add(Me);
+            MainMatch.Golfers.Add(CM);
+            context.SaveChanges();
+
+            var MainMatch2 = AddNewMatch("Strokeplay", date1, pb.Id, Me, MatchType.Strokeplay);
+            MainMatch2.Golfers.Add(Me);
+            MainMatch2.Golfers.Add(CM);
+            MainMatch2.Golfers.Add(AE);
+            MainMatch2.Golfers.Add(JB);
+            context.SaveChanges();
+
+            var MainMatch3 = AddNewMatch("Stableford", date1, pb.Id, Me, MatchType.Stableford);
+            MainMatch3.Golfers.Add(Me);
+            MainMatch3.Golfers.Add(MC);
+            MainMatch3.Golfers.Add(MP);
+            MainMatch3.Golfers.Add(CM);
+            context.SaveChanges();
+
 
         }
         private Player AddNewGolfer(Match m, string name, int handi, string mobile, Gender gender,  Title title = Title.Player)
@@ -308,10 +327,10 @@ namespace GolfRecord.DataBase
             return (m);
         }
 
-        private FourPlayerHoleScore AddScoreStrokePlay(Match Match, Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
+        private StrokeplayScores AddScoreStrokePlay(Match Match, Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
-            var s = new FourPlayerHoleScore { Hole = hole, GolferARawScore = ScoreA, GolferBRawScore = ScoreB, GolferCRawScore = ScoreC, GolferDRawScore = ScoreD };
-            Context.FourPlayerHoleScore.Add(s);
+            var s = new StrokeplayScores { Hole = hole, GolferARawScore = ScoreA, GolferBRawScore = ScoreB, GolferCRawScore = ScoreC, GolferDRawScore = ScoreD };
+            Context.StrokeplayScores.Add(s);
             Context.SaveChanges();
             Match.HoleScores.Add(s);
             return (s);

@@ -37,6 +37,7 @@ namespace GolfRecord.Model
             return null;
         }
 
+        public virtual bool MatchOver { get; set; }
 
         [NakedObjectsIgnore]
         public virtual int CourseID { get; set; }
@@ -114,6 +115,22 @@ namespace GolfRecord.Model
                 return Golfers.Count > 3;
             }
         }
+        public bool HideAddScores()
+        {
+            if (HoleScores.Count == Course.Holes.Count)
+            {
+                return false;
+            }
+            else
+            if (MatchType == MatchType.Matchplay)
+            {
+                return Golfers.Count != 2;
+            }
+            else
+            {
+                return Golfers.Count != 4;
+            }
+        }
 
         [PageSize(3)]
         public IQueryable<Golfer> AutoComplete0SendInvite([MinLength(2)] string name)
@@ -184,5 +201,7 @@ namespace GolfRecord.Model
         {
             DescriptionOfMatch = Description;
         }
+
+
     }
 }

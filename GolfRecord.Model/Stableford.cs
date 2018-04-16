@@ -9,94 +9,102 @@ namespace GolfRecord.Model
 {
     public class Stableford : Match
     {
-        public int[] TotalScores;
+        [NakedObjectsIgnore]
+        public virtual int TotalScoreA { get; set; }
+
+        [NakedObjectsIgnore]
+        public virtual int TotalScoreB { get; set; }
+
+        [NakedObjectsIgnore]
+        public virtual int TotalScoreC { get; set; }
+
+        [NakedObjectsIgnore]
+        public virtual int TotalScoreD { get; set; }
+
         public void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
-            var hs = Container.NewTransientInstance<FourPlayerHoleScore>();
+            var hs = Container.NewTransientInstance<StablefordScores>();
             Container.Persist(ref hs);
             hs.GolferARawScore = ScoreA;
             hs.GolferBRawScore = ScoreB;
             hs.GolferCRawScore = ScoreC;
             hs.GolferDRawScore = ScoreD;
             hs.Hole = hole;
-            HoleScores.Add(hs);
-            int[] StrokeIndexs = StrokeIndexEffect(hole);
-            int[] GenderEffectOfGolfer = GenderEffect(hole);
+            int[] Pars = StrokeIndexandHandicapEffectonPar(hole);
             int[] Scores = { ScoreA, ScoreB, ScoreC, ScoreD };
-            TotalScoreCalculated(hole, Scores, hs, StrokeIndexs, GenderEffectOfGolfer);
+            TotalScoreCalculated(hole, Scores, hs, Pars);
             Container.Persist(ref hs);
             HoleScores.Add(hs);
             if (hole.HoleNumber == Course.Holes.Count)
             {
-                Winner = Golfers.ElementAt(FindWinner());
+               FindWinner();
             }
         }
-
-        private int[] GenderEffect(Hole hole)
+        public string ValidateAddScores(Hole hole, int A, int B, int C, int D)
         {
-            int[] ParsForEachG = new int[4];
-            for (int i = 0; i < 4; i++)
+            if ((A <= 0) | (B <= 0) | (C <= 0) | (D<= 0))
             {
-                if (Golfers.ElementAt(i).Gender == Enums.Gender.Female)
-                {
-                    ParsForEachG[i] = 1;
-                }
-                else
-                {
-                    ParsForEachG[i] = 2;
-                }
+                return "A score can not be negative or 0";
             }
-            return ParsForEachG;
+            else
+            {
+                return null;
+            }
         }
-
-        private int[] StrokeIndexEffect(Hole hole)
+        private int[] StrokeIndexandHandicapEffectonPar(Hole hole)
         {
-            int[] Difficulties = new int[4];
+            int[] ModifiedPar = new int[4];
             for (int i = 0; i < 4; i++)
             {
-                if (Golfers.ElementAt(i).Gender == Enums.Gender.Female)
+                if ((Golfers.ElementAt(i).Gender == Enums.Gender.Female) & (hole.RedStrokeIndex != 0))
                 {
-                    Difficulties[i] = 19 - hole.RedStrokeIndex;
+                    if (Golfers.ElementAt(i).Handicap >= hole.RedStrokeIndex)
+                    {
+                        if ((Golfers.ElementAt(i).Handicap >= (hole.RedStrokeIndex + 18)) & (Course.Holes.Count == 18))
+                        {
+                            ModifiedPar[i] = hole.RedPar + 2;
+                        }
+                        else if ((Golfers.ElementAt(i).Handicap >= (hole.RedStrokeIndex + 9)) & (Course.Holes.Count == 9))
+                        {
+                            ModifiedPar[i] = hole.RedPar + 2;
+                        }
+
+                        else
+                        {
+                            ModifiedPar[i] = hole.RedPar + 1;
+                        }
+                    }
+                    else
+                    {
+                        ModifiedPar[i] = hole.RedPar;
+                    }
                 }
-                else
+                else 
                 {
-                    Difficulties[i] = 19 - hole.StrokeIndex;
+                    if (Golfers.ElementAt(i).Handicap >= hole.StrokeIndex)
+                    {
+                        if ((Golfers.ElementAt(i).Handicap >= (hole.StrokeIndex + 18)) & (Course.Holes.Count == 18))
+                        {
+                            ModifiedPar[i] = hole.Par + 2;
+                        }
+                        else if ((Golfers.ElementAt(i).Handicap >= (hole.StrokeIndex + 9)) & (Course.Holes.Count == 9))
+                        {
+                            ModifiedPar[i] = hole.Par + 2;
+                        }
+                        else
+                        {
+                            ModifiedPar[i] = hole.Par + 1;
+                        }
+                    }
+                    else
+                    {
+                        ModifiedPar[i] = hole.Par;
+                    }
                 }
-            }
-            int[] Handicaps = new int[4];
-            for (int i = 0; i < 4; i++)
-            {
-                Handicaps[i] = Golfers.ElementAt(i).Handicap - Difficulties[i];
+
             }  
-            return Handicaps;
-        }
-
-        private int ModifiedPar(FourPlayerHoleScore hs, int handi, int intitialPar)
-        {
-            int FinalPar = 0;
-            if (handi >= 1)
-            {
-                if (handi >= 18 & intitialPar == 2)
-                {
-                    FinalPar = hs.Hole.Par + 2;
-                }
-                else if (handi >= 1 & handi < 18 & intitialPar == 2)
-                {
-                    FinalPar = hs.Hole.Par + 1;
-                }
-                else if (handi >= 18 & intitialPar == 1)
-                {
-                    FinalPar = hs.Hole.RedPar + 2;
-                }
-                else if (handi >= 1 & handi < 18 & intitialPar == 1)
-                {
-                    FinalPar = hs.Hole.RedPar + 1;
-                }
-            }
-            return FinalPar;
-        }
-
-
+            return ModifiedPar;
+        } 
         private int FindScore(int Score, int Par)
         {
             int  TotalScore = 0;
@@ -120,44 +128,40 @@ namespace GolfRecord.Model
         }
 
         [NakedObjectsIgnore]
-        public void TotalScoreCalculated(Hole hole, int[] Scores, FourPlayerHoleScore hs, int[] handicaps, int[] ParsForEachG)
+        public void TotalScoreCalculated(Hole hole, int[] Scores, StablefordScores hs, int[] handicaps)
         {
-
-            int[] FinalPar = new int[4];
-            int[] TotalScores = new int[4];
+            int[] TotalScore = new int[4];
             for (int i = 0; i < 4; i++)
             {
-                FinalPar[i] = ModifiedPar(hs, handicaps[i], ParsForEachG[i]);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                TotalScores[i] += FindScore(Scores[i], FinalPar[i]);
-                Scores[i] = TotalScores[i];
+                TotalScore[i] += FindScore(Scores[i], handicaps[i]);
+                Scores[i] = TotalScore[i];
             }
             hs.GolferAActualScore = Scores[0];
             hs.GolferBActualScore = Scores[1];
             hs.GolferCActualScore = Scores[2];
             hs.GolferDActualScore = Scores[3];
-        }
-        [NakedObjectsIgnore]
-        public int FindWinner()
-        {
-            int Gwin = 0;
-            for (int i = 0; i < 4; i++)
-            {
-                if (TotalScores.Min() == TotalScores[i])
-                {
-                    Gwin = i;
-                }
-            }
-            return Gwin;
+            TotalScoreA += Scores[0];
+            TotalScoreB += Scores[1];
+            TotalScoreC += Scores[2];
+            TotalScoreD += Scores[3];
+            hs.GolferATotalScore = TotalScoreA;
+            hs.GolferBTotalScore = TotalScoreB;
+            hs.GolferCTotalScore = TotalScoreC;
+            hs.GolferDTotalScore = TotalScoreD;
         }
 
-        #region HideAddScores()
-        public bool HideAddScores()
+        [NakedObjectsIgnore]
+        public void FindWinner()
         {
-            return (Golfers.Count != 4);
+            int[] TotalScores = { TotalScoreA, TotalScoreB, TotalScoreC, TotalScoreD };
+            for (int i = 0; i < 4; i++)
+            {
+                if (TotalScores.Max() == TotalScores[i])
+                {
+                    Winner = Golfers.ElementAt(i);
+                }
+            }
+            MatchOver = true;
         }
-        #endregion  
     }
 }

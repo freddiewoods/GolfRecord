@@ -37,10 +37,10 @@ namespace GolfRecord.Model
                 return false;
             }
             else
-            if (((GolferServices.Me().FullName == null) & ((memberName == "SendMessage") | (memberName == "AddMatch"))))
-                {
+            if ((GolferServices.Me().FullName == null) & (memberName == "SendMessage"))
+            {
                 return false;
-                    }
+            }
             else if ((manager != GolferServices.Me()) & ((memberName == "PrivateAccount")
                                                      | (memberName == "CreateNewGroup")
                                                      | (memberName == "CreateNewMatch")))
@@ -48,9 +48,9 @@ namespace GolfRecord.Model
                 return false;
             }
             else if ((manager.Friends.Contains(GolferServices.Me())) & (memberName == "AddFriend"))
-                {
+            {
                 return false;
-                    }
+            }
             else if ((manager.PrivateAccount == true) & (memberName == "Mobile")
                                                   | (memberName == "Username"))
             {
@@ -93,21 +93,9 @@ namespace GolfRecord.Model
             {
                 return false;
             }
-            else if (manager.Username == principal.Identity.Name)
-            {
-                return true;
-            }
             else
             {
-                if ((memberName == "Mobile") | (memberName == "AddFriend") | (memberName == "AddCourseToFavourites"))
-                {
-                    return false;
-                }
-                else
-                {
-
-                    return true;
-                }
+                return true;
             }
         }
     }

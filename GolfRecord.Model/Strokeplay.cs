@@ -10,46 +10,52 @@ namespace GolfRecord.Model
 {
     public class Strokeplay : Match 
     {
-        public int[] InitialScorePerHole = new int[4];
-        public int[] TotalScores = new int[4];
-        public int Gwin;
+
+        [NakedObjectsIgnore]
+        public virtual int TotalScoreA { get; set; }
+
+        [NakedObjectsIgnore]
+        public virtual int TotalScoreB { get; set; }
+
+        [NakedObjectsIgnore]
+        public virtual int TotalScoreC { get; set; }
+
+        [NakedObjectsIgnore]
+        public virtual int TotalScoreD { get; set; }
 
         public void AddScores(Hole hole, int ScoreA, int ScoreB, int ScoreC, int ScoreD)
         {
-            var hs = Container.NewTransientInstance<FourPlayerHoleScore>();
-            hs.Hole = hole;
-           
+            int[] TotalScores = { TotalScoreA + ScoreA, TotalScoreB +ScoreB, TotalScoreC+ScoreC,TotalScoreD+ScoreD };
+            var hs = Container.NewTransientInstance<StrokeplayScores>();
+            hs.Hole = hole;         
             hs.GolferARawScore = ScoreA;
             hs.GolferBRawScore = ScoreB;
             hs.GolferCRawScore = ScoreC;
             hs.GolferDRawScore = ScoreD;
-            
-            for (int i = 0; i < 4; i++)
-            {
-                TotalScores[i] = InitialScorePerHole[i];
-            }
+            hs.GolferAActualScore = TotalScores[0];
+            hs.GolferBActualScore = TotalScores[1];
+            hs.GolferCActualScore = TotalScores[2];
+            hs.GolferDActualScore = TotalScores[3];
+            TotalScoreA = TotalScores[0];
+            TotalScoreB = TotalScores[1];
+            TotalScoreC = TotalScores[2];
+            TotalScoreD = TotalScores[3];
+            Container.Persist(ref hs);
+            HoleScores.Add(hs);
             if (hole.HoleNumber == Course.Holes.Count)
             {
                 for (int i = 0; i < 4; i++)
                 {
                     TotalScores[i] -= Golfers.ElementAt(i).Handicap;
                 }
-                int Gwin = FindWinnerStrokePlay();
-                Winner = Golfers.ElementAt(Gwin);
+                FindWinnerStrokePlay();
             }
-            hs.GolferAActualScore = TotalScores[0];
-            hs.GolferBActualScore = TotalScores[1];
-            hs.GolferCActualScore = TotalScores[2];
-            hs.GolferDActualScore = TotalScores[3];
-            Container.Persist(ref hs);
-            HoleScores.Add(hs);
         }
-
-
         [NakedObjectsIgnore]
-        public int FindWinnerStrokePlay()
+        public void FindWinnerStrokePlay()
         {
             List<int> Scores = new List<int>();
+            int[] TotalScores = { TotalScoreA, TotalScoreB, TotalScoreC, TotalScoreD };
             for (int i = 0; i < 4; i++)
             {
                 Scores.Add(TotalScores[i]);
@@ -58,20 +64,23 @@ namespace GolfRecord.Model
             {
                 if (Scores.Min() == TotalScores[i])
                 {
-                    Gwin = i;
+                    Winner = Golfers.ElementAt(i);
                 }
             }
-            return Gwin;
+            MatchOver = true;
                       
         }
 
-
-        #region HideAddScores()
-
-        public bool HideAddScores()
+        public string ValidateAddScores(Hole hole, int A, int B, int C,int D)
         {
-            return (Golfers.Count != 4);
+            if ((A <= 0) | (B <= 0) | (C<= 0) | (D<=0))
+            {
+                return "A score can not be negative or 0";
+            }
+            else
+            {
+                return null;
+            }
         }
-        #endregion 
     }
 }

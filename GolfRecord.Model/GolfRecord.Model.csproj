@@ -88,16 +88,17 @@
     <Compile Include="PlayerMessage.cs" />
     <Compile Include="RequestToJoin.cs" />
     <Compile Include="StablefordAuthoriser.cs" />
+    <Compile Include="StablefordScores.cs" />
     <Compile Include="StrokePlayAuthoriser.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="TwoPlayerHoleScore.cs" />
+    <Compile Include="MatchPlayHoleScore.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="MatchServices.cs" />
     <Compile Include="Matchplay.cs" />
     <Compile Include="Strokeplay.cs" />
     <Compile Include="Stableford.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FourPlayerHoleScore.cs" />
+    <Compile Include="StrokeplayScores.cs" />
     <Compile Include="UnRegisteredGolfer.cs" />
   </ItemGroup>
   <ItemGroup>

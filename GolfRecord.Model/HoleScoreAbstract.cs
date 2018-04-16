@@ -15,7 +15,7 @@ namespace GolfRecord.Model
         [NakedObjectsIgnore]
         public virtual int HoleId { get; set; }
 
-        [Title]
+        [Title][MemberOrder(1)]
         public virtual Hole Hole { get; set; }
 
     }
